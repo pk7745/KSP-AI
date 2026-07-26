@@ -21,6 +21,188 @@ The **KSP AI Crime Intelligence Platform** is an enterprise-grade, AI-powered in
 
 ---
 
+## 🚀 3-Minute Quickstart (Run Locally)
+
+Copy and paste these commands into your terminal to get up and running immediately:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/pk7745/KSP-AI.git
+cd KSP-AI
+
+# 2. Install frontend dependencies
+cd webclient
+npm install
+
+# 3. Start local development server
+npm run dev
+```
+
+> 💡 **Expected Output**: Your terminal will display `Vite v8.1.5 ready in XXX ms`. Open `http://localhost:5173/` in your browser.
+
+---
+
+## 📖 Comprehensive Setup & Execution Instructions
+
+### 1. System Prerequisites
+
+Ensure your environment meets the following requirements before installation:
+
+| Requirement | Recommended Version | Download / Command |
+| :--- | :--- | :--- |
+| **Node.js** | `v18.0.0` or higher (`v20.x` recommended) | [nodejs.org](https://nodejs.org) |
+| **npm** | `v9.0.0` or higher | Included with Node.js (`npm -v`) |
+| **Git** | `v2.30+` | `git --version` |
+| **Zoho Catalyst CLI** | Latest *(Optional for deployment)* | `npm install -g zcatalyst-cli` |
+
+---
+
+### 2. Step-by-Step Installation
+
+#### Step 2.1: Clone the Repository
+Open PowerShell or Terminal and run:
+
+```bash
+git clone https://github.com/pk7745/KSP-AI.git
+cd KSP-AI
+```
+
+#### Step 2.2: Install Webclient (Frontend) Dependencies
+Navigate to the `webclient` directory and install NPM packages:
+
+```bash
+cd webclient
+npm install
+```
+
+#### Step 2.3: Install Serverless Backend Dependencies (Optional)
+If you wish to test or run backend Catalyst AppSail functions locally:
+
+```bash
+cd ../functions/ksp_crime_intelligence_function
+npm install
+cd ../..
+```
+
+---
+
+### 3. Running the Application Locally
+
+To start the Vite development web server with Hot Module Reloading (HMR):
+
+```bash
+cd webclient
+npm run dev
+```
+
+Terminal Console Output:
+```text
+  VITE v8.1.5  ready in 320 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+```
+
+Open **`http://localhost:5173/`** in Chrome, Edge, or Firefox.
+
+---
+
+### 4. Compiling a Production Build
+
+To run TypeScript type validation (`tsc -b`) and bundle optimized static assets (`vite build`):
+
+```bash
+cd webclient
+npm run build
+```
+
+Terminal Console Output:
+```text
+> webclient@0.0.0 build
+> tsc -b && vite build
+
+vite v8.1.5 building client environment for production...
+transforming...✓ 3110 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                               3.34 kB
+dist/assets/index-LiiotwBn.js               459.49 kB
+
+✓ built in 936ms
+```
+
+The optimized build files will be generated in `webclient/dist/`. You can preview the production build locally using `npm run preview`.
+
+---
+
+### 5. Zoho Catalyst Cloud Deployment Instructions
+
+To deploy updates to live Zoho Catalyst Cloud hosting:
+
+#### Step 5.1: Login to Zoho Catalyst CLI
+```bash
+catalyst login
+```
+*(Follow the browser authentication prompt to log into your Zoho Catalyst account)*.
+
+#### Step 5.2: Deploy Static Web Client
+```bash
+catalyst deploy --only client
+```
+Expected Output:
+```text
+ >>>>>>>>>>>>> Web Client <<<<<<<<<<<<
+
+√ DEPLOYMENT SUCCESSFUL: webclient
+i ACCESS URL : https://ksp-crime-intelligence-929238497.development.catalystserverless.com/app/index.html
+
+√ Catalyst deploy complete!
+```
+
+#### Step 5.3: Deploy AppSail Node.js Backend Functions
+```bash
+catalyst deploy --only functions
+```
+
+---
+
+## 🔒 Environment & GCP Credentials Configuration
+
+The backend AI services (Google Gemini 1.5 Pro and Google Cloud Text-to-Speech) utilize service account credentials located at:
+`functions/ksp_crime_intelligence_function/gcp-credentials.json`
+
+> ⚠️ **Security Note**: `gcp-credentials.json` is excluded via `.gitignore` to prevent secret leakage. For local backend testing, place your valid Google Cloud Service Account JSON file in that directory.
+
+---
+
+## 🔧 Troubleshooting & Common Fixes
+
+### Issue 1: PowerShell Script Execution Error on Windows
+```text
+File ... cannot be loaded because running scripts is disabled on this system.
+```
+**Fix**: Run PowerShell as Administrator and execute:
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
+### Issue 2: Port 5173 is Already in Use
+**Fix**: Specify a custom port when starting Vite:
+```bash
+npx vite --port 3000
+```
+
+### Issue 3: Missing Node Modules
+**Fix**: Clean node_modules cache and reinstall:
+```bash
+cd webclient
+rm -rf node_modules package-lock.json
+npm install
+```
+
+---
+
 ## ✨ Complete Feature Matrix & Platform Capabilities
 
 ### 🎙️ 1. Virtual Police Guide & Voice Avatar Assistant
@@ -158,96 +340,6 @@ ksp-ai/
 │   └── vite.config.ts
 ├── catalyst.json               # Zoho Catalyst Deployment Configuration
 └── README.md                   # Project Documentation
-```
-
----
-
-## 🚀 Setup & Execution Instructions
-
-### Prerequisites
-Make sure you have the following installed on your system:
-- **Node.js**: v18.0.0 or higher
-- **npm**: v9.0.0 or higher
-- **Git**
-- **Zoho Catalyst CLI** *(for deployment)*: `npm install -g zcatalyst-cli`
-
----
-
-### Step 1: Clone the Repository
-
-```bash
-git clone https://github.com/pk7745/KSP-AI.git
-cd KSP-AI
-```
-
----
-
-### Step 2: Install Dependencies
-
-#### 1. Install Webclient Dependencies:
-```bash
-cd webclient
-npm install
-```
-
-#### 2. Install Backend Function Dependencies:
-```bash
-cd ../functions/ksp_crime_intelligence_function
-npm install
-cd ../..
-```
-
----
-
-### Step 3: Local Development Execution
-
-To start the Vite development server locally:
-
-```bash
-cd webclient
-npm run dev
-```
-
-Open your browser and navigate to:  
-👉 `http://localhost:5173/`
-
----
-
-### Step 4: Build for Production
-
-To perform TypeScript type-checking and compile the production bundle:
-
-```bash
-cd webclient
-npm run build
-```
-
-The compiled static files will be placed inside `webclient/dist`.
-
----
-
-### Step 5: Zoho Catalyst Cloud Deployment
-
-To deploy the platform directly to **Zoho Catalyst Cloud Hosting**:
-
-#### 1. Login to Catalyst CLI:
-```bash
-catalyst login
-```
-
-#### 2. Deploy Webclient Static Hosting:
-```bash
-catalyst deploy --only client
-```
-
-#### 3. Deploy Backend Functions (AppSail):
-```bash
-catalyst deploy --only functions
-```
-
-#### 4. Deploy Full Application Stack:
-```bash
-catalyst deploy
 ```
 
 ---
