@@ -38,169 +38,6 @@ npm install
 npm run dev
 ```
 
-> 💡 **Expected Output**: Your terminal will display `Vite v8.1.5 ready in XXX ms`. Open `http://localhost:5173/` in your browser.
-
----
-
-## 📖 Comprehensive Setup & Execution Instructions
-
-### 1. System Prerequisites
-
-Ensure your environment meets the following requirements before installation:
-
-| Requirement | Recommended Version | Download / Command |
-| :--- | :--- | :--- |
-| **Node.js** | `v18.0.0` or higher (`v20.x` recommended) | [nodejs.org](https://nodejs.org) |
-| **npm** | `v9.0.0` or higher | Included with Node.js (`npm -v`) |
-| **Git** | `v2.30+` | `git --version` |
-| **Zoho Catalyst CLI** | Latest *(Optional for deployment)* | `npm install -g zcatalyst-cli` |
-
----
-
-### 2. Step-by-Step Installation
-
-#### Step 2.1: Clone the Repository
-Open PowerShell or Terminal and run:
-
-```bash
-git clone https://github.com/pk7745/KSP-AI.git
-cd KSP-AI
-```
-
-#### Step 2.2: Install Webclient (Frontend) Dependencies
-Navigate to the `webclient` directory and install NPM packages:
-
-```bash
-cd webclient
-npm install
-```
-
-#### Step 2.3: Install Serverless Backend Dependencies (Optional)
-If you wish to test or run backend Catalyst AppSail functions locally:
-
-```bash
-cd ../functions/ksp_crime_intelligence_function
-npm install
-cd ../..
-```
-
----
-
-### 3. Running the Application Locally
-
-To start the Vite development web server with Hot Module Reloading (HMR):
-
-```bash
-cd webclient
-npm run dev
-```
-
-Terminal Console Output:
-```text
-  VITE v8.1.5  ready in 320 ms
-
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
-  ➜  press h + enter to show help
-```
-
-Open **`http://localhost:5173/`** in Chrome, Edge, or Firefox.
-
----
-
-### 4. Compiling a Production Build
-
-To run TypeScript type validation (`tsc -b`) and bundle optimized static assets (`vite build`):
-
-```bash
-cd webclient
-npm run build
-```
-
-Terminal Console Output:
-```text
-> webclient@0.0.0 build
-> tsc -b && vite build
-
-vite v8.1.5 building client environment for production...
-transforming...✓ 3110 modules transformed.
-rendering chunks...
-computing gzip size...
-dist/index.html                               3.34 kB
-dist/assets/index-LiiotwBn.js               459.49 kB
-
-✓ built in 936ms
-```
-
-The optimized build files will be generated in `webclient/dist/`. You can preview the production build locally using `npm run preview`.
-
----
-
-### 5. Zoho Catalyst Cloud Deployment Instructions
-
-To deploy updates to live Zoho Catalyst Cloud hosting:
-
-#### Step 5.1: Login to Zoho Catalyst CLI
-```bash
-catalyst login
-```
-*(Follow the browser authentication prompt to log into your Zoho Catalyst account)*.
-
-#### Step 5.2: Deploy Static Web Client
-```bash
-catalyst deploy --only client
-```
-Expected Output:
-```text
- >>>>>>>>>>>>> Web Client <<<<<<<<<<<<
-
-√ DEPLOYMENT SUCCESSFUL: webclient
-i ACCESS URL : https://ksp-crime-intelligence-929238497.development.catalystserverless.com/app/index.html
-
-√ Catalyst deploy complete!
-```
-
-#### Step 5.3: Deploy AppSail Node.js Backend Functions
-```bash
-catalyst deploy --only functions
-```
-
----
-
-## 🔒 Environment & GCP Credentials Configuration
-
-The backend AI services (Google Gemini 1.5 Pro and Google Cloud Text-to-Speech) utilize service account credentials located at:
-`functions/ksp_crime_intelligence_function/gcp-credentials.json`
-
-> ⚠️ **Security Note**: `gcp-credentials.json` is excluded via `.gitignore` to prevent secret leakage. For local backend testing, place your valid Google Cloud Service Account JSON file in that directory.
-
----
-
-## 🔧 Troubleshooting & Common Fixes
-
-### Issue 1: PowerShell Script Execution Error on Windows
-```text
-File ... cannot be loaded because running scripts is disabled on this system.
-```
-**Fix**: Run PowerShell as Administrator and execute:
-```powershell
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-```
-
-### Issue 2: Port 5173 is Already in Use
-**Fix**: Specify a custom port when starting Vite:
-```bash
-npx vite --port 3000
-```
-
-### Issue 3: Missing Node Modules
-**Fix**: Clean node_modules cache and reinstall:
-```bash
-cd webclient
-rm -rf node_modules package-lock.json
-npm install
-```
-
 ---
 
 ## ✨ Complete Feature Matrix & Platform Capabilities
@@ -224,14 +61,12 @@ npm install
 
 ### 📁 5. Case 360 Workspace & Dossier Repository
 - **360-Degree Case Lifecycle (`CasesView.tsx` & `Case360Workspace.tsx`)**: Complete case tracking including FIR timeline, evidence chain-of-custody, charge-sheet draft status, and suspect interrogation logs.
-- **Case Detail Modal**: In-depth view for updating investigation notes, adding co-accused entities, and attaching forensic lab reports.
 
 ### 🚨 6. Emergency Command Center & 112 CAD Dispatch Grid
 - **Real-Time Incident Grid (`CommandCenterView.tsx`)**: Monitor incoming 112 emergency CAD calls, prioritize high-severity dispatch events, and track Hoysala patrol unit response times.
-- **Patrol Alert Broadcasting**: Direct push alerts to division patrol units based on real-time spatial trigger zones.
 
 ### 📊 7. Executive Statewide Crime Dashboard
-- **Real-Time Crime Analytics (`DashboardView.css` & `DashboardView.tsx`)**: High-level metrics tracking total registered FIRs, pending charge-sheets, conviction rates, and active hotspot warnings across Karnataka jurisdictions.
+- **Real-Time Crime Analytics (`DashboardView.tsx`)**: High-level metrics tracking total registered FIRs, pending charge-sheets, conviction rates, and active hotspot warnings across Karnataka jurisdictions.
 
 ### 🛟 8. 24×7 Officer Help Center
 - **Internal Support Assistant (`HelpCenter.tsx`)**: Government-themed support assistant answering platform queries 24/7.
@@ -246,7 +81,6 @@ npm install
 
 ### 🗺️ 11. Predictive Crime Intelligence & GIS Spatial Mapping
 - **Spatial Heatmaps (`PredictiveView.tsx`)**: Interactive Leaflet GIS maps visualizing crime density across Bengaluru, Mysuru, Mangaluru, Belagavi, and Hubballi-Dharwad.
-- **Predictive Analytics Engine**: Machine learning spatial-temporal models forecasting incident probability by hour, division, and environmental risk factors.
 
 ### 🕸️ 12. Criminal Syndicate Nexus Graph
 - **Network Link Analysis (`NetworkView.tsx`)**: Force-directed network graphs revealing co-accused connections, shared getaway vehicles, address overlaps, and syndicate leadership hierarchies.
@@ -260,11 +94,20 @@ npm install
 ### 📑 15. Automated Reports & Judicial Dossier Export
 - **Court-Ready PDF & Excel Briefs (`ReportsView.tsx`)**: One-click generation of prosecution dossiers with embedded official KSP emblem watermarks.
 
-### ⚙️ 16. System Settings & Role-Based Security
-- **RBAC Management (`SettingsView.tsx`)**: System preferences, theme customization, language switching, and Role-Based Access Control (`IO`, `SHO`, `DSP`, `ADMIN`).
+---
 
-### 🏛️ 17. Public Citizen Portal & Emergency Services
-- **Public Portal (`CitizenPortal.tsx` & `EmergencyServices.tsx`)**: Citizen FIR status tracking, emergency SOS button, and nearest police station locator.
+## 🔮 Future Development Roadmap
+
+### 🏛️ Unified Citizen-Police Constituency Portal & Real-Time Tracking
+1. **Constituency-Scoped Citizen Filing**: Citizens and officers utilize the same platform under unified RBAC. Citizens can file complaints scoped strictly to their registered electoral or police station constituency.
+2. **Instant Automated SMS & Email Alerts**: Upon complaint filing, Catalyst Email/SMS Notify services instantly alert assigned Station House Officers (SHOs) and Constituency Beat Officers.
+3. **Interactive Investigation Milestone Checkboxes**: Officers log into their dashboard to check off live investigation milestones:
+   - `[✓] Complaint Verified & Ingested`
+   - `[✓] Investigating Officer (IO) Assigned`
+   - `[✓] On-Site Investigation Started`
+   - `[✓] Evidence & Witness Records Collected`
+   - `[✓] Final Charge-Sheet Submitted`
+4. **Live Citizen Case Tracking Timeline**: Citizens log in to view real-time stage-by-stage progress tracking of their complaint as officers check off milestones.
 
 ---
 
@@ -280,67 +123,6 @@ npm install
 | **AI & LLM Services** | Google Gemini 1.5 Pro / Flash AI API |
 | **Speech & Audio** | Google Cloud Text-to-Speech (`@google-cloud/text-to-speech`) |
 | **Backend & Hosting** | Zoho Catalyst Serverless Web Client & AppSail Node.js Functions |
-
----
-
-## 📂 Project Directory Structure
-
-```text
-ksp-ai/
-├── client/                     # Zoho Catalyst Client Distribution
-├── functions/                  # Zoho Catalyst Backend Serverless Functions
-│   └── ksp_crime_intelligence_function/
-│       ├── gcp-credentials.json # GCP Service Account Credentials
-│       ├── index.js             # Main Backend Server Entry
-│       ├── package.json
-│       └── services/
-│           ├── gemini.js        # Google Gemini AI Integration Engine
-│           └── zcqlService.js   # Zoho Catalyst ZCQL Database Adapter
-├── public/                     # Static Root Media & Intro Audio Assets
-│   └── intro/audio/
-│       ├── en/intro.mp3        # English Male Intro Narration
-│       └── kn/intro.mp3        # Kannada Male Intro Narration
-├── scripts/                    # Offline TTS & Dataset Expansion Scripts
-│   ├── generate-intro-tts.js   # Intro Speech Generator Script
-│   └── generate-narration-tts.js # Scene Narration TTS Script
-├── webclient/                  # Main React + TypeScript Web Application
-│   ├── public/                 # Webclient Public Static Assets
-│   │   ├── avatar-intro.mp4    # English Video Intro Asset
-│   │   └── ksp-kannada.mp4     # Kannada Video Intro Asset
-│   ├── src/
-│   │   ├── assets/             # Logos, SVGs, and Static Images
-│   │   ├── components/         # Reusable UI Components
-│   │   │   ├── AIAssistant/    # Floating AI Assistant Copilot
-│   │   │   ├── HelpCenter/     # 24x7 Help Center Components
-│   │   │   ├── IntroductionPlayer/ # Bilingual Video Player
-│   │   │   ├── PlatformTour/   # 10-Scene Presentation Components
-│   │   │   ├── VirtualPoliceGuide/ # Voice & Speech Avatar Guide
-│   │   │   └── Sidebar.tsx     # Navigation Sidebar with Preloader
-│   │   ├── context/            # Auth, Navigation, & Assistant Contexts
-│   │   ├── data/               # FAQ, Articles, & Scene Datasets
-│   │   ├── features/           # Feature Modules
-│   │   │   ├── AIAnalysis/     # Gemini AI Dossier Analysis Engine
-│   │   │   ├── AIChat/         # Conversational Database Query View
-│   │   │   ├── Cases/          # Case 360 Workspace & FIR Timeline
-│   │   │   ├── CommandCenter/ # 112 CAD Emergency Dispatch Grid
-│   │   │   ├── Dashboard/      # Main Executive Intelligence Dashboard
-│   │   │   ├── Landing/        # Public Landing View with Intro Player
-│   │   │   ├── Network/        # Criminal Syndicate Graph Visualizer
-│   │   │   ├── OfficerPortal/  # Officer Scorecard & Shift Logs
-│   │   │   ├── People/         # Suspect Directory & Biometrics
-│   │   │   ├── Predictive/     # Spatial Hotspot & Crime Forecasting
-│   │   │   ├── Reports/        # Judicial Dossier PDF/Excel Exports
-│   │   │   └── Settings/       # System Settings & RBAC Management
-│   │   ├── hooks/              # Custom Hooks (useHelpChat, usePlatformTour, useAssistant)
-│   │   ├── pages/              # Top-Level Pages (HelpCenter, AboutPlatform, CitizenPortal)
-│   │   ├── App.tsx             # Root Router & Module Preloader
-│   │   └── main.tsx            # React Mount Entry Point
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── vite.config.ts
-├── catalyst.json               # Zoho Catalyst Deployment Configuration
-└── README.md                   # Project Documentation
-```
 
 ---
 
