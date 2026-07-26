@@ -9,7 +9,7 @@
 ## 🌐 Live Cloud Deployment Links
 
 - **Main Application Entry**: [https://ksp-crime-intelligence-929238497.development.catalystserverless.com/app/index.html](https://ksp-crime-intelligence-929238497.development.catalystserverless.com/app/index.html)
-- **24×7 Help Center**: [https://ksp-crime-intelligence-929238497.development.catalystserverless.com/app/index.html#/help-center](https://ksp-crime-intelligence-929238497.development.catalystserverless.com/app/index.html#/help-center)
+- **24×7 Officer Help Center**: [https://ksp-crime-intelligence-929238497.development.catalystserverless.com/app/index.html#/help-center](https://ksp-crime-intelligence-929238497.development.catalystserverless.com/app/index.html#/help-center)
 - **Interactive Platform Tour**: [https://ksp-crime-intelligence-929238497.development.catalystserverless.com/app/index.html#/about-platform](https://ksp-crime-intelligence-929238497.development.catalystserverless.com/app/index.html#/about-platform)
 - **Backend AppSail Function**: [https://ksp-crime-intelligence-function-10128235536.development.catalystappsail.com](https://ksp-crime-intelligence-function-10128235536.development.catalystappsail.com)
 
@@ -21,34 +21,68 @@ The **KSP AI Crime Intelligence Platform** is an enterprise-grade, AI-powered in
 
 ---
 
-## ✨ Key Features
+## ✨ Complete Feature Matrix & Platform Capabilities
 
-### 🛟 1. 24×7 Officer Help Center
-- **Internal Support Assistant**: Government-themed virtual support assistant answering platform queries 24/7.
-- **Support Contacts**: Direct email (`karnataka@ksp.gov.in`) and phone (`+91 80 2345 6789`) channels.
-- **Searchable Knowledge Base**: 12 comprehensive step-by-step help articles and 13 interactive FAQ accordions.
-- **Future-Ready AI Architecture**: Decoupled hook system (`useHelpChat.ts`) ready for Google Gemini / Vertex AI backend endpoints.
+### 🎙️ 1. Virtual Police Guide & Voice Avatar Assistant
+- **Interactive Speech Avatar (`VirtualPoliceGuide.tsx`)**: Embedded virtual police officer guide offering contextual speech bubbles and voice guidance for investigating officers.
+- **Smart Contextual Greetings (`useVirtualGuide.ts`)**: Time-aware greetings and speech prompts tailored to active officer workflows.
+- **Bilingual Voice Guidance**: Real-time narration delivered in English and Kannada across application views.
 
-### 🌐 2. Zero-Refresh Bilingual Support (English & Kannada)
-- Instant 0ms language toggle between **English** and **Kannada** across all UI components, case summaries, search bars, and voice narration streams.
-- Professional **Male Kannada Voice** (`kn-IN-Standard-B`) and **Male Indian English Voice** (`en-IN-Neural2-B`).
+### 🧠 2. AI Case Analysis & Forensic Investigative Copilot
+- **Deep Gemini AI Dossier Analysis (`AIAnalysisView.tsx`)**: Powered by Google Gemini 1.5 AI to detect modus operandi patterns, cross-reference historical FIRs, and identify witness statement inconsistencies.
+- **IPC & BNS Statutory Auto-Tagging**: Instant mapping of case details to IPC (Indian Penal Code) & BNS (Bharatiya Nyaya Sanhita) legal sections.
+- **AI Forensic Evidence OCR**: Scans physical evidence, handwritten FIRs, forensic lab notes, bank statements, and ID documents to auto-populate structured entity fields.
 
-### 🎬 3. 10-Scene Interactive Platform Tour
-- Guided visual presentation demonstrating core platform capabilities (Dashboard, CCTNS Cases, AI OCR Evidence, Gemini Legal Assistant, GIS Hotspots, Criminal Nexus, Reports, and Officer Portal).
-- Pre-warmed visual scene previews running at 60 FPS.
+### 💬 3. AI Chat & Natural Language Query Engine
+- **Conversational Database Search (`AIChatView.tsx`)**: Query CCTNS records using natural language (e.g., *"Find all commercial burglaries in Whitefield involving blue motorbikes in the last 6 months"*).
+- **Interactive Query Prompts**: Pre-built prompt buttons for rapid crime trend analysis and suspect pattern matching.
 
-### 🔬 4. AI Forensic Evidence OCR Analysis
-- Automatic entity extraction (suspect names, bank account numbers, Aadhaar IDs, vehicle registrations, IP addresses) from scanned physical evidence documents using Google Gemini AI.
+### 🤖 4. Floating AI Assistant Copilot
+- **Global Assistant Panel (`AIAssistant.tsx`)**: Accessible from any view (`useAssistant.ts`) to summarize active dossiers, draft FIR narratives, or retrieve suspect antecedents instantly.
 
-### 🗺️ 5. GIS Spatial Hotspot & Hoysala Patrol Route Dispatch
-- Interactive Leaflet heatmaps mapping crime density across Bengaluru, Mysuru, Mangaluru, Belagavi, and Hubballi-Dharwad.
-- Automated patrol route recommendations for Hoysala mobile units during peak risk hours.
+### 📁 5. Case 360 Workspace & Dossier Repository
+- **360-Degree Case Lifecycle (`CasesView.tsx` & `Case360Workspace.tsx`)**: Complete case tracking including FIR timeline, evidence chain-of-custody, charge-sheet draft status, and suspect interrogation logs.
+- **Case Detail Modal**: In-depth view for updating investigation notes, adding co-accused entities, and attaching forensic lab reports.
 
-### 🕸️ 6. Criminal Syndicate Nexus Graph
-- Force-directed network graphs visualizing co-accused linkages, shared getaway vehicles, address overlaps, and repeat offender syndicate hubs.
+### 🚨 6. Emergency Command Center & 112 CAD Dispatch Grid
+- **Real-Time Incident Grid (`CommandCenterView.tsx`)**: Monitor incoming 112 emergency CAD calls, prioritize high-severity dispatch events, and track Hoysala patrol unit response times.
+- **Patrol Alert Broadcasting**: Direct push alerts to division patrol units based on real-time spatial trigger zones.
 
-### 📑 7. Automated Reports & Judicial Dossier Export
-- One-click export for court-ready PDF briefs and master Excel datasets with embedded digital badge security watermarks.
+### 📊 7. Executive Statewide Crime Dashboard
+- **Real-Time Crime Analytics (`DashboardView.css` & `DashboardView.tsx`)**: High-level metrics tracking total registered FIRs, pending charge-sheets, conviction rates, and active hotspot warnings across Karnataka jurisdictions.
+
+### 🛟 8. 24×7 Officer Help Center
+- **Internal Support Assistant (`HelpCenter.tsx`)**: Government-themed support assistant answering platform queries 24/7.
+- **Official Helpdesk Contacts**: Direct email (`karnataka@ksp.gov.in`) and phone (`+91 80 2345 6789`) support channels.
+- **Knowledge Base**: 12 step-by-step help articles and 13 interactive FAQ accordions.
+
+### 🎮 9. 10-Scene Interactive Platform Tour
+- **Guided Platform Demonstration (`PlatformTour.tsx`)**: 10-scene interactive showcase highlighting core modules with synchronized scene audio previews and subtitles.
+
+### 🎬 10. Automatic Bilingual Introduction Video Player
+- **Preloaded Video Player (`IntroductionPlayer.tsx`)**: Instant 0ms language video switching between English (`avatar-intro.mp4`) and Kannada (`ksp-kannada.mp4`).
+
+### 🗺️ 11. Predictive Crime Intelligence & GIS Spatial Mapping
+- **Spatial Heatmaps (`PredictiveView.tsx`)**: Interactive Leaflet GIS maps visualizing crime density across Bengaluru, Mysuru, Mangaluru, Belagavi, and Hubballi-Dharwad.
+- **Predictive Analytics Engine**: Machine learning spatial-temporal models forecasting incident probability by hour, division, and environmental risk factors.
+
+### 🕸️ 12. Criminal Syndicate Nexus Graph
+- **Network Link Analysis (`NetworkView.tsx`)**: Force-directed network graphs revealing co-accused connections, shared getaway vehicles, address overlaps, and syndicate leadership hierarchies.
+
+### 👤 13. Suspect & Repeat Offender Directory
+- **Biometric & Antecedent Profiling (`PeopleView.tsx`)**: Searchable offender directory with gang affiliation tagging, modus operandi filters, bail monitoring, and conviction history.
+
+### 🎖️ 14. Officer Portal & Performance Scorecard
+- **Officer Scorecard (`OfficerPortalView.tsx`)**: Track case closure velocity, pending investigation queues, commendation badges, and active duty shift logs.
+
+### 📑 15. Automated Reports & Judicial Dossier Export
+- **Court-Ready PDF & Excel Briefs (`ReportsView.tsx`)**: One-click generation of prosecution dossiers with embedded official KSP emblem watermarks.
+
+### ⚙️ 16. System Settings & Role-Based Security
+- **RBAC Management (`SettingsView.tsx`)**: System preferences, theme customization, language switching, and Role-Based Access Control (`IO`, `SHO`, `DSP`, `ADMIN`).
+
+### 🏛️ 17. Public Citizen Portal & Emergency Services
+- **Public Portal (`CitizenPortal.tsx` & `EmergencyServices.tsx`)**: Citizen FIR status tracking, emergency SOS button, and nearest police station locator.
 
 ---
 
@@ -61,6 +95,7 @@ The **KSP AI Crime Intelligence Platform** is an enterprise-grade, AI-powered in
 | **Animations** | Framer Motion (GPU Hardware Accelerated) |
 | **Mapping & GIS** | Leaflet, React-Leaflet, CartoDB Light basemaps |
 | **Internationalization** | i18next, react-i18next (English & Kannada) |
+| **AI & LLM Services** | Google Gemini 1.5 Pro / Flash AI API |
 | **Speech & Audio** | Google Cloud Text-to-Speech (`@google-cloud/text-to-speech`) |
 | **Backend & Hosting** | Zoho Catalyst Serverless Web Client & AppSail Node.js Functions |
 
@@ -93,15 +128,29 @@ ksp-ai/
 │   ├── src/
 │   │   ├── assets/             # Logos, SVGs, and Static Images
 │   │   ├── components/         # Reusable UI Components
+│   │   │   ├── AIAssistant/    # Floating AI Assistant Copilot
 │   │   │   ├── HelpCenter/     # 24x7 Help Center Components
 │   │   │   ├── IntroductionPlayer/ # Bilingual Video Player
 │   │   │   ├── PlatformTour/   # 10-Scene Presentation Components
+│   │   │   ├── VirtualPoliceGuide/ # Voice & Speech Avatar Guide
 │   │   │   └── Sidebar.tsx     # Navigation Sidebar with Preloader
 │   │   ├── context/            # Auth, Navigation, & Assistant Contexts
 │   │   ├── data/               # FAQ, Articles, & Scene Datasets
-│   │   ├── features/           # Feature Modules (Dashboard, Cases, AI Analysis)
-│   │   ├── hooks/              # Custom Hooks (useHelpChat, usePlatformTour)
-│   │   ├── pages/              # Top-Level Pages (HelpCenter, AboutPlatform)
+│   │   ├── features/           # Feature Modules
+│   │   │   ├── AIAnalysis/     # Gemini AI Dossier Analysis Engine
+│   │   │   ├── AIChat/         # Conversational Database Query View
+│   │   │   ├── Cases/          # Case 360 Workspace & FIR Timeline
+│   │   │   ├── CommandCenter/ # 112 CAD Emergency Dispatch Grid
+│   │   │   ├── Dashboard/      # Main Executive Intelligence Dashboard
+│   │   │   ├── Landing/        # Public Landing View with Intro Player
+│   │   │   ├── Network/        # Criminal Syndicate Graph Visualizer
+│   │   │   ├── OfficerPortal/  # Officer Scorecard & Shift Logs
+│   │   │   ├── People/         # Suspect Directory & Biometrics
+│   │   │   ├── Predictive/     # Spatial Hotspot & Crime Forecasting
+│   │   │   ├── Reports/        # Judicial Dossier PDF/Excel Exports
+│   │   │   └── Settings/       # System Settings & RBAC Management
+│   │   ├── hooks/              # Custom Hooks (useHelpChat, usePlatformTour, useAssistant)
+│   │   ├── pages/              # Top-Level Pages (HelpCenter, AboutPlatform, CitizenPortal)
 │   │   ├── App.tsx             # Root Router & Module Preloader
 │   │   └── main.tsx            # React Mount Entry Point
 │   ├── package.json
