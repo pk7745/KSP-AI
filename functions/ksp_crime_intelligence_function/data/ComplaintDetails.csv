@@ -1,0 +1,11 @@
+ComplainantID,CaseID,ComplainantName,Gender,Age,Mobile,Email,Address,Occupation,RelationshipToVictim,IDProof,Statement
+CMP001,CASE001,Sneha Mehta,Female,35,9876501001,sneha.mehta@email.com,Indiranagar Bengaluru,Teacher,Wife,Aadhaar,Reported that her husband was found unconscious inside their apartment.
+CMP002,CASE002,Ramesh Verma,Male,48,9876501002,ramesh.verma@email.com,Whitefield Bengaluru,Businessman,Brother,Aadhaar,Reported an attack on his brother with a sharp weapon.
+CMP003,CASE003,Anjali Rao,Female,29,9876501003,anjali.rao@email.com,Indiranagar Bengaluru,Teacher,Self,Driving License,Reported theft of her motorcycle from the apartment parking area.
+CMP004,CASE004,Karthik Iyer,Male,35,9876501004,karthik.iyer@email.com,Electronic City Bengaluru,Software Engineer,Self,PAN,Reported unauthorized online banking transactions.
+CMP005,CASE005,Pooja Nair,Female,31,9876501005,pooja.nair@email.com,Jayanagar Bengaluru,Accountant,Self,Aadhaar,Filed a domestic violence complaint against her spouse.
+CMP006,CASE006,Rakesh Gowda,Male,27,9876501006,rakesh.gowda@email.com,Mysuru,Student,Self,Aadhaar,Reported illegal possession and sale of narcotic substances.
+CMP007,CASE007,Meera Shetty,Female,33,9876501007,meera.shetty@email.com,Mangaluru,Doctor,Self,Aadhaar,Reported injuries caused by a drunk driving accident.
+CMP008,CASE008,Vinod Kulkarni,Male,46,9876501008,vinod.kulkarni@email.com,Belagavi,Shop Owner,Self,Voter ID,Reported an individual carrying an illegal firearm and issuing threats.
+CMP009,CASE009,Sneha Patil,Female,40,9876501009,sneha.patil@email.com,Hubballi,Entrepreneur,Self,Aadhaar,Reported burglary at her commercial premises.
+CMP010,CASE010,Arun Kumar,Male,36,9876501010,arun.kumar@email.com,Shivamogga,Bank Employee,Self,PAN,Reported identity theft and fraudulent use of personal documents.

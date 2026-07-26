@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+webclient/node_modules/
+functions/ksp_crime_intelligence_function/node_modules/
+
+# Production build outputs
+dist/
+webclient/dist/
+
+# Zoho Catalyst temp files
+.catalyst/
+catalyst-count.json
+
+# Environment and GCP Credentials
+.env
+.env.local
+gcp-credentials.json
+functions/ksp_crime_intelligence_function/gcp-credentials.json
+
+# Logs & temp files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS metadata
+.DS_Store
+Thumbs.db

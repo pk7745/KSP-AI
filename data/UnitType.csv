@@ -1,0 +1,11 @@
+UnitTypeID,UnitTypeName,CityDistState,Hierarchy,IsActive
+UT001,Police Station,District,1,true
+UT002,Circle Office,District,2,true
+UT003,Sub Division,District,3,true
+UT004,Commissioner Office,City,4,true
+UT005,District Police Office,District,5,true
+UT006,Range Office,State,6,true
+UT007,State Headquarters,State,7,true
+UT008,Cyber Crime Police Station,State,8,true
+UT009,Women Police Station,District,9,true
+UT010,Traffic Police Station,City,10,true

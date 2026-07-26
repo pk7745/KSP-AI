@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCE96A"/>
+      <stop offset="50%" stop-color="#E5A913"/>
+      <stop offset="100%" stop-color="#996E00"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#991B1B"/>
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A8A"/>
+      <stop offset="100%" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Ring Shield -->
+  <circle cx="100" cy="100" r="95" fill="url(#blueGrad)" stroke="url(#goldGrad)" stroke-width="6"/>
+  <circle cx="100" cy="100" r="85" fill="none" stroke="url(#goldGrad)" stroke-width="2" stroke-dasharray="4,2"/>
+
+  <!-- Star at Top -->
+  <polygon points="100,20 104,32 116,32 106,40 110,52 100,44 90,52 94,40 84,32 96,32" fill="url(#goldGrad)"/>
+
+  <!-- Gandaberunda Emblem Base Shield -->
+  <path d="M 60,65 L 140,65 L 135,125 C 135,150 100,165 100,165 C 100,165 65,150 65,125 Z" fill="url(#redGrad)" stroke="url(#goldGrad)" stroke-width="3"/>
+
+  <!-- Twin-headed Eagle / Gandaberunda Wings -->
+  <!-- Left Head & Wing -->
+  <path d="M 90,75 C 80,70 70,75 68,85 C 66,95 78,98 82,90 L 72,110 L 88,110 Z" fill="url(#goldGrad)"/>
+  <!-- Right Head & Wing -->
+  <path d="M 110,75 C 120,70 130,75 132,85 C 134,95 122,98 118,90 L 128,110 L 112,110 Z" fill="url(#goldGrad)"/>
+  <!-- Center Body -->
+  <path d="M 100,75 L 110,95 L 100,135 L 90,95 Z" fill="url(#goldGrad)"/>
+
+  <!-- Ashoka Chakra Symbol in Center -->
+  <circle cx="100" cy="108" r="12" fill="#FFFFFF" stroke="url(#goldGrad)" stroke-width="1.5"/>
+  <circle cx="100" cy="108" r="10" fill="none" stroke="#1E3A8A" stroke-width="1"/>
+  <!-- Spokes -->
+  <line x1="100" y1="98" x2="100" y2="118" stroke="#1E3A8A" stroke-width="1"/>
+  <line x1="90" y1="108" x2="110" y2="108" stroke="#1E3A8A" stroke-width="1"/>
+  <line x1="93" y1="101" x2="107" y2="115" stroke="#1E3A8A" stroke-width="1"/>
+  <line x1="93" y1="115" x2="107" y2="101" stroke="#1E3A8A" stroke-width="1"/>
+
+  <!-- Bottom Banner Ribbon -->
+  <path d="M 35,155 L 165,155 L 155,175 L 45,175 Z" fill="url(#goldGrad)" stroke="#78350F" stroke-width="1.5"/>
+  <text x="100" y="169" font-family="Arial, sans-serif" font-weight="900" font-size="10" fill="#0F172A" text-anchor="middle" letter-spacing="1">KARNATAKA POLICE</text>
+</svg>

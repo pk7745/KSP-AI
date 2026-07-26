@@ -1,0 +1,11 @@
+ActID,ActName,ActCode,Description,EffectiveFrom,IsActive
+ACT001,Indian Penal Code,IPC,Primary criminal code of India,1862-01-01,true
+ACT002,Code of Criminal Procedure,CrPC,Procedural law for criminal justice administration,1974-04-01,true
+ACT003,Bharatiya Nyaya Sanhita,BNS,New criminal code replacing IPC,2024-07-01,true
+ACT004,Bharatiya Nagarik Suraksha Sanhita,BNSS,New criminal procedure code replacing CrPC,2024-07-01,true
+ACT005,Information Technology Act,ITA,Law governing cyber crimes and electronic records,2000-10-17,true
+ACT006,Narcotic Drugs and Psychotropic Substances Act,NDPS,Law relating to narcotic drugs and psychotropic substances,1985-11-14,true
+ACT007,Protection of Children from Sexual Offences Act,POCSO,Protection of children from sexual offences,2012-11-14,true
+ACT008,Motor Vehicles Act,MVA,Law regulating motor vehicles and road safety,1988-07-01,true
+ACT009,Arms Act,ARMS,Law regulating arms and ammunition,1959-10-01,true
+ACT010,Prevention of Corruption Act,PCA,Law to combat corruption by public servants,1988-09-09,true

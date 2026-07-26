@@ -1,0 +1,11 @@
+CrimeHeadID,CrimeHeadName,CategoryID,GravityID,Description,IsActive
+CH001,Murder,CAT001,GR010,Intentional unlawful killing,true
+CH002,Assault,CAT001,GR004,Physical attack causing injury,true
+CH003,Theft,CAT002,GR003,Unlawful taking of property,true
+CH004,Burglary,CAT002,GR005,Breaking into property to commit theft,true
+CH005,Cheating and Fraud,CAT003,GR005,Financial deception and fraud,true
+CH006,Cyber Fraud,CAT004,GR007,Online financial and identity fraud,true
+CH007,Crime Against Women,CAT005,GR008,Offences against women,true
+CH008,Narcotics Offence,CAT006,GR006,Illegal possession or trafficking of drugs,true
+CH009,Traffic Accident,CAT007,GR002,Road traffic related offences,true
+CH010,Rioting,CAT008,GR006,Unlawful assembly involving violence,true

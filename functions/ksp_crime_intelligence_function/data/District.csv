@@ -1,0 +1,11 @@
+DistrictID,StateID,DistrictName,IsActive
+DIS001,ST001,Bengaluru Urban,true
+DIS002,ST001,Mysuru,true
+DIS003,ST001,Mangaluru,true
+DIS004,ST001,Belagavi,true
+DIS005,ST001,Hubballi-Dharwad,true
+DIS006,ST001,Shivamogga,true
+DIS007,ST001,Davanagere,true
+DIS008,ST001,Ballari,true
+DIS009,ST001,Tumakuru,true
+DIS010,ST001,Udupi,true

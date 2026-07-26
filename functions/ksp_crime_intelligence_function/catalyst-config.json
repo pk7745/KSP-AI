@@ -1,0 +1,6 @@
+{
+  "name": "ksp_crime_intelligence_function",
+  "type": "appsail",
+  "stack": "node18",
+  "command": "npm start"
+}

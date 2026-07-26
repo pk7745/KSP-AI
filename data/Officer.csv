@@ -1,0 +1,37 @@
+OfficerID,CaseID,OfficerName,Rank,PoliceStation,Contact,RankID,DesignationID,UnitID,DistrictID,StateID,Email,Status,JoiningDate
+OFF001,CASE001,Rajesh Kumar,Inspector,Cubbon Park Police Station,9876510000,R008,DES001,U001,DIS001,ST001,rajesh.kumar@ksp.gov.in,Active,2018-06-15
+OFF002,CASE002,Priya Sharma,Sub Inspector,Whitefield Police Station,9876510001,R009,DES003,U002,DIS001,ST001,priya.sharma@ksp.gov.in,Active,2018-06-15
+OFF003,CASE003,Manjunath Hegde,Inspector,Indiranagar Police Station,9876510002,R008,DES001,U003,DIS001,ST001,manjunath.hegde@ksp.gov.in,Active,2018-06-15
+OFF004,CASE004,Anita Rao,Deputy Superintendent of Police,Electronic City Police Station,9876510003,R006,DES005,U004,DIS001,ST001,anita.rao@ksp.gov.in,Active,2018-06-15
+OFF005,CASE005,Suresh Patil,Inspector,Jayanagar Police Station,9876510004,R008,DES001,U005,DIS001,ST001,suresh.patil@ksp.gov.in,Active,2018-06-15
+OFF008,CASE006,Ramesh Kulkarni,IGP,Belagavi Police Station,9876510005,R-01,DES005,U008,DIS004,ST001,ramesh.kulkarni@ksp.gov.in,Active,2018-06-15
+OFF011,CASE007,Bengaluru Urban SP,SP,Cubbon Park Police Station,9876510006,R006,DES005,U001,DIS001,ST001,sp.bengaluruurban@ksp.gov.in,Active,2018-06-15
+OFF012,CASE008,Bengaluru Urban Inspector,Inspector,Cubbon Park Police Station,9876510007,R008,DES001,U001,DIS001,ST001,inspector.bengaluruurban@ksp.gov.in,Active,2018-06-15
+OFF013,CASE009,Bengaluru Urban Sub Inspector,Sub Inspector,Cubbon Park Police Station,9876510008,R009,DES003,U001,DIS001,ST001,si.bengaluruurban@ksp.gov.in,Active,2018-06-15
+OFF014,CASE0010,Mysuru SP,SP,Mysuru South Police Station,9876510009,R006,DES005,U006,DIS002,ST001,sp.mysuru@ksp.gov.in,Active,2018-06-15
+OFF015,CASE001,Mysuru Inspector,Inspector,Mysuru South Police Station,9876510010,R008,DES001,U006,DIS002,ST001,inspector.mysuru@ksp.gov.in,Active,2018-06-15
+OFF016,CASE002,Mysuru Sub Inspector,Sub Inspector,Mysuru South Police Station,9876510011,R009,DES003,U006,DIS002,ST001,si.mysuru@ksp.gov.in,Active,2018-06-15
+OFF017,CASE003,Mangaluru SP,SP,Mangaluru North Police Station,9876510012,R006,DES005,U007,DIS003,ST001,sp.mangaluru@ksp.gov.in,Active,2018-06-15
+OFF018,CASE004,Mangaluru Inspector,Inspector,Mangaluru North Police Station,9876510013,R008,DES001,U007,DIS003,ST001,inspector.mangaluru@ksp.gov.in,Active,2018-06-15
+OFF019,CASE005,Mangaluru Sub Inspector,Sub Inspector,Mangaluru North Police Station,9876510014,R009,DES003,U007,DIS003,ST001,si.mangaluru@ksp.gov.in,Active,2018-06-15
+OFF020,CASE006,Belagavi SP,SP,Belagavi Police Station,9876510015,R006,DES005,U008,DIS004,ST001,sp.belagavi@ksp.gov.in,Active,2018-06-15
+OFF021,CASE007,Belagavi Inspector,Inspector,Belagavi Police Station,9876510016,R008,DES001,U008,DIS004,ST001,inspector.belagavi@ksp.gov.in,Active,2018-06-15
+OFF022,CASE008,Belagavi Sub Inspector,Sub Inspector,Belagavi Police Station,9876510017,R009,DES003,U008,DIS004,ST001,si.belagavi@ksp.gov.in,Active,2018-06-15
+OFF023,CASE009,Hubballi-Dharwad SP,SP,Hubballi Town Police Station,9876510018,R006,DES005,U009,DIS005,ST001,sp.hubballi-dharwad@ksp.gov.in,Active,2018-06-15
+OFF024,CASE0010,Hubballi-Dharwad Inspector,Inspector,Hubballi Town Police Station,9876510019,R008,DES001,U009,DIS005,ST001,inspector.hubballi-dharwad@ksp.gov.in,Active,2018-06-15
+OFF025,CASE001,Hubballi-Dharwad Sub Inspector,Sub Inspector,Hubballi Town Police Station,9876510020,R009,DES003,U009,DIS005,ST001,si.hubballi-dharwad@ksp.gov.in,Active,2018-06-15
+OFF026,CASE002,Shivamogga SP,SP,Shivamogga Police Station,9876510021,R006,DES005,U010,DIS006,ST001,sp.shivamogga@ksp.gov.in,Active,2018-06-15
+OFF027,CASE003,Shivamogga Inspector,Inspector,Shivamogga Police Station,9876510022,R008,DES001,U010,DIS006,ST001,inspector.shivamogga@ksp.gov.in,Active,2018-06-15
+OFF028,CASE004,Shivamogga Sub Inspector,Sub Inspector,Shivamogga Police Station,9876510023,R009,DES003,U010,DIS006,ST001,si.shivamogga@ksp.gov.in,Active,2018-06-15
+OFF029,CASE005,Davanagere SP,SP,Davanagere Town Police Station,9876510024,R006,DES005,U011,DIS007,ST001,sp.davanagere@ksp.gov.in,Active,2018-06-15
+OFF030,CASE006,Davanagere Inspector,Inspector,Davanagere Town Police Station,9876510025,R008,DES001,U011,DIS007,ST001,inspector.davanagere@ksp.gov.in,Active,2018-06-15
+OFF031,CASE007,Davanagere Sub Inspector,Sub Inspector,Davanagere Town Police Station,9876510026,R009,DES003,U011,DIS007,ST001,si.davanagere@ksp.gov.in,Active,2018-06-15
+OFF032,CASE008,Ballari SP,SP,Ballari Central Police Station,9876510027,R006,DES005,U012,DIS008,ST001,sp.ballari@ksp.gov.in,Active,2018-06-15
+OFF033,CASE009,Ballari Inspector,Inspector,Ballari Central Police Station,9876510028,R008,DES001,U012,DIS008,ST001,inspector.ballari@ksp.gov.in,Active,2018-06-15
+OFF034,CASE0010,Ballari Sub Inspector,Sub Inspector,Ballari Central Police Station,9876510029,R009,DES003,U012,DIS008,ST001,si.ballari@ksp.gov.in,Active,2018-06-15
+OFF035,CASE001,Tumakuru SP,SP,Tumakuru Town Police Station,9876510030,R006,DES005,U013,DIS009,ST001,sp.tumakuru@ksp.gov.in,Active,2018-06-15
+OFF036,CASE002,Tumakuru Inspector,Inspector,Tumakuru Town Police Station,9876510031,R008,DES001,U013,DIS009,ST001,inspector.tumakuru@ksp.gov.in,Active,2018-06-15
+OFF037,CASE003,Tumakuru Sub Inspector,Sub Inspector,Tumakuru Town Police Station,9876510032,R009,DES003,U013,DIS009,ST001,si.tumakuru@ksp.gov.in,Active,2018-06-15
+OFF038,CASE004,Udupi SP,SP,Udupi Town Police Station,9876510033,R006,DES005,U014,DIS010,ST001,sp.udupi@ksp.gov.in,Active,2018-06-15
+OFF039,CASE005,Udupi Inspector,Inspector,Udupi Town Police Station,9876510034,R008,DES001,U014,DIS010,ST001,inspector.udupi@ksp.gov.in,Active,2018-06-15
+OFF040,CASE006,Udupi Sub Inspector,Sub Inspector,Udupi Town Police Station,9876510035,R009,DES003,U014,DIS010,ST001,si.udupi@ksp.gov.in,Active,2018-06-15

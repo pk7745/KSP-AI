@@ -1,0 +1,11 @@
+{
+  "client": {
+    "source": "webclient/dist"
+  },
+  "appsail": [
+    {
+      "source": "functions/ksp_crime_intelligence_function",
+      "name": "ksp-crime-intelligence-function"
+    }
+  ]
+}

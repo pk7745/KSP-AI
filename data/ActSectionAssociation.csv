@@ -1,0 +1,11 @@
+AssociationID,CaseID,ActID,SectionID,AppliedByOfficerID,Remarks,AppliedDate
+ASA001,CASE001,ACT001,SEC001,OFF001,Applicable IPC section added after initial investigation,2026-01-16
+ASA002,CASE002,ACT001,SEC002,OFF002,Attempt to murder section applied based on victim statement,2026-02-11
+ASA003,CASE003,ACT001,SEC003,OFF003,Vehicle theft provisions applied after evidence collection,2026-03-06
+ASA004,CASE004,ACT002,SEC004,OFF004,Relevant IT Act section applied for cyber fraud,2026-04-13
+ASA005,CASE005,ACT003,SEC005,OFF005,Domestic violence provisions applied after complaint verification,2026-05-19
+ASA006,CASE006,ACT004,SEC006,OFF006,NDPS Act provisions applied after narcotics seizure,2026-06-23
+ASA007,CASE007,ACT005,SEC007,OFF007,Motor Vehicles Act section applied after accident investigation,2026-07-10
+ASA008,CASE008,ACT006,SEC008,OFF008,Arms Act provisions applied after illegal weapon recovery,2026-08-15
+ASA009,CASE009,ACT001,SEC009,OFF009,Burglary related IPC section applied after forensic examination,2026-09-04
+ASA010,CASE010,ACT002,SEC010,OFF010,Identity fraud provisions applied based on digital evidence,2026-10-02

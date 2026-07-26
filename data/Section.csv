@@ -1,0 +1,13 @@
+SectionID,ActID,SectionNumber,SectionTitle,Punishment,Description,IsCognizable,IsActive,IsBailable
+SEC001,ACT001,302,Murder,Death or life imprisonment,Whoever commits murder shall be punished,true,true,false
+SEC002,ACT001,307,Attempt to Murder,Up to 10 years or life imprisonment,Attempt to commit murder,true,true,false
+SEC003,ACT001,379,Theft,Up to 3 years imprisonment or fine,Whoever commits theft,true,true,true
+SEC004,ACT001,420,Cheating,Up to 7 years imprisonment and fine,Cheating and dishonestly inducing delivery of property,true,true,false
+SEC005,ACT001,376,Rape,Rigorous imprisonment not less than 10 years,Offence of rape,true,true,false
+SEC006,ACT005,66C,Identity Theft,Up to 3 years imprisonment and fine,Fraudulent use of electronic identity,true,true,true
+SEC007,ACT005,66D,Cheating by Personation Online,Up to 3 years imprisonment and fine,Online cheating using computer resources,true,true,true
+SEC008,ACT006,21,Possession of Narcotic Drugs,Rigorous imprisonment and fine,Illegal possession of narcotic substances,true,true,false
+SEC009,ACT007,4,Penetrative Sexual Assault,Imprisonment not less than 20 years,Penalty under the POCSO Act,true,true,false
+SEC010,ACT008,185,Driving Under Influence,Up to 6 months imprisonment or fine,Driving under the influence of alcohol,false,true,true
+SEC011,ACT009,25,Illegal Possession of Arms,Up to 7 years imprisonment and fine,Possession of arms without licence,true,true,false
+SEC012,ACT010,7,Public Servant Taking Bribe,Imprisonment and fine,Illegal gratification by a public servant,true,true,false

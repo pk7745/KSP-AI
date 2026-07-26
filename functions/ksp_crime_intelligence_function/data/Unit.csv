@@ -1,0 +1,15 @@
+UnitID,UnitName,UnitTypeID,StateID,DistrictID,ParentUnitID,Address,ContactNumber,Email,IsActive
+U001,Cubbon Park Police Station,UT001,ST001,DIS001,,Kasturba Road Bengaluru,08022943000,u001@ksp.gov.in,true
+U002,Whitefield Police Station,UT001,ST001,DIS001,,Whitefield Main Road Bengaluru,08022943000,u002@ksp.gov.in,true
+U003,Indiranagar Police Station,UT001,ST001,DIS001,,100 Feet Road Indiranagar Bengaluru,08022943000,u003@ksp.gov.in,true
+U004,Electronic City Police Station,UT001,ST001,DIS001,,Electronic City Phase 1 Bengaluru,08022943000,u004@ksp.gov.in,true
+U005,Jayanagar Police Station,UT001,ST001,DIS001,,4th Block Jayanagar Bengaluru,08022943000,u005@ksp.gov.in,true
+U006,Mysuru South Police Station,UT001,ST001,DIS002,,Nazarbad Mysuru,08022943000,u006@ksp.gov.in,true
+U007,Mangaluru North Police Station,UT001,ST001,DIS003,,Lalbagh Mangaluru,08022943000,u007@ksp.gov.in,true
+U008,Belagavi Police Station,UT001,ST001,DIS004,,Tilakwadi Belagavi,08022943000,u008@ksp.gov.in,true
+U009,Hubballi Town Police Station,UT001,ST001,DIS005,,Old Hubballi Hubballi,08022943000,u009@ksp.gov.in,true
+U010,Shivamogga Police Station,UT001,ST001,DIS006,,Vinoba Nagar Shivamogga,08022943000,u010@ksp.gov.in,true
+U011,Davanagere Town Police Station,UT001,ST001,DIS007,,PB Road Davanagere,08022943000,u011@ksp.gov.in,true
+U012,Ballari Central Police Station,UT001,ST001,DIS008,,Station Road Ballari,08022943000,u012@ksp.gov.in,true
+U013,Tumakuru Town Police Station,UT001,ST001,DIS009,,BH Road Tumakuru,08022943000,u013@ksp.gov.in,true
+U014,Udupi Town Police Station,UT001,ST001,DIS010,,Court Road Udupi,08022943000,u014@ksp.gov.in,true

@@ -1,0 +1,41 @@
+AIAnalysisID,CaseID,CrimePattern,SuspectPrediction,RiskScore,MOType,HotspotLocation,AnalysisDate,Recommendation
+AI001,KSP/DIS001/2026/0001,Murder cluster detected,High probability match with habitual offender DB,60,Homicide,Bengaluru Urban Sector 1,2026-02-15,Deploy CCTV verification and check ANPR logs.
+AI002,KSP/DIS001/2026/0002,Attempt to Murder cluster detected,High probability match with habitual offender DB,70,Attempted Homicide,Bengaluru Urban Sector 2,2026-03-15,Deploy CCTV verification and check ANPR logs.
+AI003,KSP/DIS001/2026/0003,Cyber Crime cluster detected,High probability match with habitual offender DB,80,Financial Phishing Fraud,Bengaluru Urban Sector 3,2026-04-15,Deploy CCTV verification and check ANPR logs.
+AI004,KSP/DIS001/2026/0004,Theft cluster detected,High probability match with habitual offender DB,90,Vehicle Theft,Bengaluru Urban Sector 4,2026-05-15,Deploy CCTV verification and check ANPR logs.
+AI005,KSP/DIS002/2026/0005,Burglary cluster detected,High probability match with habitual offender DB,60,Commercial Burglary,Mysuru Sector 1,2026-06-15,Deploy CCTV verification and check ANPR logs.
+AI006,KSP/DIS002/2026/0006,Narcotics Offence cluster detected,High probability match with habitual offender DB,70,Drug Trafficking,Mysuru Sector 2,2026-01-15,Deploy CCTV verification and check ANPR logs.
+AI007,KSP/DIS002/2026/0007,Domestic Violence cluster detected,High probability match with habitual offender DB,80,Domestic Assault,Mysuru Sector 3,2026-02-15,Deploy CCTV verification and check ANPR logs.
+AI008,KSP/DIS002/2026/0008,Kidnapping cluster detected,High probability match with habitual offender DB,90,Ransom Kidnapping,Mysuru Sector 4,2026-03-15,Deploy CCTV verification and check ANPR logs.
+AI009,KSP/DIS003/2026/0009,Murder cluster detected,High probability match with habitual offender DB,60,Homicide,Mangaluru Sector 1,2026-04-15,Deploy CCTV verification and check ANPR logs.
+AI010,KSP/DIS003/2026/0010,Attempt to Murder cluster detected,High probability match with habitual offender DB,70,Attempted Homicide,Mangaluru Sector 2,2026-05-15,Deploy CCTV verification and check ANPR logs.
+AI011,KSP/DIS003/2026/0011,Cyber Crime cluster detected,High probability match with habitual offender DB,80,Financial Phishing Fraud,Mangaluru Sector 3,2026-06-15,Deploy CCTV verification and check ANPR logs.
+AI012,KSP/DIS003/2026/0012,Theft cluster detected,High probability match with habitual offender DB,90,Vehicle Theft,Mangaluru Sector 4,2026-01-15,Deploy CCTV verification and check ANPR logs.
+AI013,KSP/DIS004/2026/0013,Burglary cluster detected,High probability match with habitual offender DB,60,Commercial Burglary,Belagavi Sector 1,2026-02-15,Deploy CCTV verification and check ANPR logs.
+AI014,KSP/DIS004/2026/0014,Narcotics Offence cluster detected,High probability match with habitual offender DB,70,Drug Trafficking,Belagavi Sector 2,2026-03-15,Deploy CCTV verification and check ANPR logs.
+AI015,KSP/DIS004/2026/0015,Domestic Violence cluster detected,High probability match with habitual offender DB,80,Domestic Assault,Belagavi Sector 3,2026-04-15,Deploy CCTV verification and check ANPR logs.
+AI016,KSP/DIS004/2026/0016,Kidnapping cluster detected,High probability match with habitual offender DB,90,Ransom Kidnapping,Belagavi Sector 4,2026-05-15,Deploy CCTV verification and check ANPR logs.
+AI017,KSP/DIS005/2026/0017,Murder cluster detected,High probability match with habitual offender DB,60,Homicide,Hubballi-Dharwad Sector 1,2026-06-15,Deploy CCTV verification and check ANPR logs.
+AI018,KSP/DIS005/2026/0018,Attempt to Murder cluster detected,High probability match with habitual offender DB,70,Attempted Homicide,Hubballi-Dharwad Sector 2,2026-01-15,Deploy CCTV verification and check ANPR logs.
+AI019,KSP/DIS005/2026/0019,Cyber Crime cluster detected,High probability match with habitual offender DB,80,Financial Phishing Fraud,Hubballi-Dharwad Sector 3,2026-02-15,Deploy CCTV verification and check ANPR logs.
+AI020,KSP/DIS005/2026/0020,Theft cluster detected,High probability match with habitual offender DB,90,Vehicle Theft,Hubballi-Dharwad Sector 4,2026-03-15,Deploy CCTV verification and check ANPR logs.
+AI021,KSP/DIS006/2026/0021,Burglary cluster detected,High probability match with habitual offender DB,60,Commercial Burglary,Shivamogga Sector 1,2026-04-15,Deploy CCTV verification and check ANPR logs.
+AI022,KSP/DIS006/2026/0022,Narcotics Offence cluster detected,High probability match with habitual offender DB,70,Drug Trafficking,Shivamogga Sector 2,2026-05-15,Deploy CCTV verification and check ANPR logs.
+AI023,KSP/DIS006/2026/0023,Domestic Violence cluster detected,High probability match with habitual offender DB,80,Domestic Assault,Shivamogga Sector 3,2026-06-15,Deploy CCTV verification and check ANPR logs.
+AI024,KSP/DIS006/2026/0024,Kidnapping cluster detected,High probability match with habitual offender DB,90,Ransom Kidnapping,Shivamogga Sector 4,2026-01-15,Deploy CCTV verification and check ANPR logs.
+AI025,KSP/DIS007/2026/0025,Murder cluster detected,High probability match with habitual offender DB,60,Homicide,Davanagere Sector 1,2026-02-15,Deploy CCTV verification and check ANPR logs.
+AI026,KSP/DIS007/2026/0026,Attempt to Murder cluster detected,High probability match with habitual offender DB,70,Attempted Homicide,Davanagere Sector 2,2026-03-15,Deploy CCTV verification and check ANPR logs.
+AI027,KSP/DIS007/2026/0027,Cyber Crime cluster detected,High probability match with habitual offender DB,80,Financial Phishing Fraud,Davanagere Sector 3,2026-04-15,Deploy CCTV verification and check ANPR logs.
+AI028,KSP/DIS007/2026/0028,Theft cluster detected,High probability match with habitual offender DB,90,Vehicle Theft,Davanagere Sector 4,2026-05-15,Deploy CCTV verification and check ANPR logs.
+AI029,KSP/DIS008/2026/0029,Burglary cluster detected,High probability match with habitual offender DB,60,Commercial Burglary,Ballari Sector 1,2026-06-15,Deploy CCTV verification and check ANPR logs.
+AI030,KSP/DIS008/2026/0030,Narcotics Offence cluster detected,High probability match with habitual offender DB,70,Drug Trafficking,Ballari Sector 2,2026-01-15,Deploy CCTV verification and check ANPR logs.
+AI031,KSP/DIS008/2026/0031,Domestic Violence cluster detected,High probability match with habitual offender DB,80,Domestic Assault,Ballari Sector 3,2026-02-15,Deploy CCTV verification and check ANPR logs.
+AI032,KSP/DIS008/2026/0032,Kidnapping cluster detected,High probability match with habitual offender DB,90,Ransom Kidnapping,Ballari Sector 4,2026-03-15,Deploy CCTV verification and check ANPR logs.
+AI033,KSP/DIS009/2026/0033,Murder cluster detected,High probability match with habitual offender DB,60,Homicide,Tumakuru Sector 1,2026-04-15,Deploy CCTV verification and check ANPR logs.
+AI034,KSP/DIS009/2026/0034,Attempt to Murder cluster detected,High probability match with habitual offender DB,70,Attempted Homicide,Tumakuru Sector 2,2026-05-15,Deploy CCTV verification and check ANPR logs.
+AI035,KSP/DIS009/2026/0035,Cyber Crime cluster detected,High probability match with habitual offender DB,80,Financial Phishing Fraud,Tumakuru Sector 3,2026-06-15,Deploy CCTV verification and check ANPR logs.
+AI036,KSP/DIS009/2026/0036,Theft cluster detected,High probability match with habitual offender DB,90,Vehicle Theft,Tumakuru Sector 4,2026-01-15,Deploy CCTV verification and check ANPR logs.
+AI037,KSP/DIS010/2026/0037,Burglary cluster detected,High probability match with habitual offender DB,60,Commercial Burglary,Udupi Sector 1,2026-02-15,Deploy CCTV verification and check ANPR logs.
+AI038,KSP/DIS010/2026/0038,Narcotics Offence cluster detected,High probability match with habitual offender DB,70,Drug Trafficking,Udupi Sector 2,2026-03-15,Deploy CCTV verification and check ANPR logs.
+AI039,KSP/DIS010/2026/0039,Domestic Violence cluster detected,High probability match with habitual offender DB,80,Domestic Assault,Udupi Sector 3,2026-04-15,Deploy CCTV verification and check ANPR logs.
+AI040,KSP/DIS010/2026/0040,Kidnapping cluster detected,High probability match with habitual offender DB,90,Ransom Kidnapping,Udupi Sector 4,2026-05-15,Deploy CCTV verification and check ANPR logs.

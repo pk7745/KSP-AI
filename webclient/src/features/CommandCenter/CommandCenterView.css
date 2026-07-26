@@ -1,0 +1,109 @@
+.command-center-view {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  height: 100%;
+}
+
+.command-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.command-title-area h2 {
+  font-size: 1.75rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.live-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--accent-emerald);
+  font-weight: 600;
+  padding: 8px 16px;
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.command-layout {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+  min-height: 500px;
+}
+
+.command-sidebar {
+  width: 320px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.command-sidebar h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.incident-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.incident-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+[data-theme='light'] .incident-card {
+  background: rgba(15, 23, 42, 0.02);
+}
+
+.incident-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.command-map {
+  flex: 1;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Fix leaflet map in dark mode */
+.leaflet-container {
+  background: #000;
+}
+
+[data-theme='light'] .leaflet-container {
+  background: #f8fafc;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-glass);
+}
+
+.leaflet-popup-tip {
+  background: var(--bg-secondary);
+}

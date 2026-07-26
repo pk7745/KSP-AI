@@ -1,0 +1,96 @@
+.portal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  border-radius: 16px;
+}
+
+.officer-profile {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: white;
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+.performance-metrics {
+  display: flex;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.metric-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+}
+
+.metric-val {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.portal-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-lg);
+}
+
+.briefing-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.briefing-item {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  border-left: 3px solid transparent;
+}
+
+.briefing-item.alert { border-left-color: var(--accent-crimson); background: rgba(225, 29, 72, 0.05); }
+.briefing-item.action { border-left-color: var(--accent-cyan); background: rgba(14, 165, 233, 0.05); }
+.briefing-item.ai { border-left-color: var(--accent-indigo); background: rgba(99, 102, 241, 0.05); }
+
+.mini .vt-content {
+  padding-bottom: 20px;
+}
+
+.mini .vt-item:last-child .vt-content {
+  padding-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .portal-header {
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .portal-grid {
+    grid-template-columns: 1fr;
+  }
+  .performance-metrics {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

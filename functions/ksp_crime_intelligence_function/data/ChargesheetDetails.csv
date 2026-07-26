@@ -1,0 +1,11 @@
+ChargesheetID,CaseID,ChargesheetNumber,CourtID,FilingOfficerID,FilingDate,ChargesheetStatus,HearingDate,NextHearingDate,JudgeName,FinalVerdict,Remarks
+CHG001,CASE001,CS-2026-001,CRT001,OFF001,2026-02-05,Filed,2026-02-20,2026-03-15,Justice Ramesh Kulkarni,Pending,Murder case chargesheet filed with forensic evidence.
+CHG002,CASE002,CS-2026-002,CRT002,OFF002,2026-03-01,Under Review,2026-03-18,2026-04-12,Justice Anitha Rao,Pending,Attempt to murder case under judicial review.
+CHG003,CASE003,CS-2026-003,CRT003,OFF003,2026-04-10,Filed,2026-04-25,2026-05-20,Justice Vivek Sharma,Pending,Vehicle theft chargesheet submitted with CCTV evidence.
+CHG004,CASE004,CS-2026-004,CRT004,OFF004,2026-05-15,Accepted,2026-05-30,2026-06-18,Justice Kavitha Menon,Pending,Cybercrime evidence accepted by court.
+CHG005,CASE005,CS-2026-005,CRT005,OFF005,2026-06-08,Filed,2026-06-24,2026-07-10,Justice Sandeep Patil,Pending,Domestic violence case filed with medical reports.
+CHG006,CASE006,CS-2026-006,CRT006,OFF006,2026-07-12,Accepted,2026-07-28,2026-08-18,Justice Prakash Gowda,Pending,Narcotics case supported by laboratory reports.
+CHG007,CASE007,CS-2026-007,CRT007,OFF007,2026-08-18,Filed,2026-09-02,2026-09-25,Justice Meena Desai,Pending,Road accident case awaiting witness examination.
+CHG008,CASE008,CS-2026-008,CRT008,OFF008,2026-09-20,Accepted,2026-10-05,2026-10-28,Justice Harish Kumar,Pending,Illegal arms possession case admitted by court.
+CHG009,CASE009,CS-2026-009,CRT009,OFF009,2026-10-14,Filed,2026-10-30,2026-11-20,Justice Shalini Verma,Pending,Burglary case filed with fingerprint evidence.
+CHG010,CASE010,CS-2026-010,CRT010,OFF010,2026-11-05,Under Review,2026-11-22,2026-12-15,Justice Arun Nair,Pending,Identity theft case under judicial scrutiny.

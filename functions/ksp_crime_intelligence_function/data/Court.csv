@@ -1,0 +1,9 @@
+CourtID,CourtName,CourtType,StateID,DistrictID,Address,ContactNumber,Email,IsActive
+CRT001,Bengaluru City Civil Court,District Court,ST001,DIS001,KG Road Bengaluru,08022950001,bengalurucivilcourt@karnataka.gov.in,true
+CRT002,Mysuru District Court,District Court,ST001,DIS002,Krishna Raja Boulevard Mysuru,08212235001,mysurudistrictcourt@karnataka.gov.in,true
+CRT003,Mangaluru District Court,District Court,ST001,DIS003,Hampankatta Mangaluru,08242235001,mangalurudistrictcourt@karnataka.gov.in,true
+CRT004,Belagavi District Court,District Court,ST001,DIS004,Camp Belagavi,08312235001,belagavidistrictcourt@karnataka.gov.in,true
+CRT005,Hubballi District Court,District Court,ST001,DIS005,Lamington Road Hubballi,08362235001,hubballidistrictcourt@karnataka.gov.in,true
+CRT006,Shivamogga District Court,District Court,ST001,DIS006,Savarlane Road Shivamogga,08182235001,shivamoggadistrictcourt@karnataka.gov.in,true
+CRT007,Karnataka High Court,High Court,ST001,DIS001,Dr B R Ambedkar Veedhi Bengaluru,08022951000,highcourt@karnataka.gov.in,true
+CRT008,Special CBI Court,Special Court,ST001,DIS001,Cunningham Road Bengaluru,08022952000,cbicourt@karnataka.gov.in,true

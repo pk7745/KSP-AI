@@ -1,0 +1,11 @@
+ArrestID,CaseID,AccusedID,ArrestType,ArrestLocation,ArrestingOfficerID,SurrenderDate,ArrestDate,BailStatus,BailDate,CustodyStatus,CourtID,Remarks
+ARR001,CASE001,ACC001,Arrest,Banashankari Bengaluru,OFF001,,2026-01-15,Denied,,Judicial Custody,CRT001,Accused arrested based on forensic evidence.
+ARR002,CASE002,ACC002,Arrest,Whitefield Bengaluru,OFF002,,2026-02-10,Granted,2026-02-20,Released on Bail,CRT002,Accused cooperated during investigation.
+ARR003,CASE003,ACC003,Surrender,Indiranagar Police Station,OFF003,2026-03-05,,Granted,2026-03-08,Released on Bail,CRT003,Accused voluntarily surrendered before police.
+ARR004,CASE004,ACC004,Arrest,Electronic City Bengaluru,OFF004,,2026-04-12,Pending,,Police Custody,CRT004,Cybercrime suspect arrested after digital investigation.
+ARR005,CASE005,ACC005,Arrest,Jayanagar Bengaluru,OFF005,,2026-05-18,Denied,,Judicial Custody,CRT005,Arrested following victim statement and witness evidence.
+ARR006,CASE006,ACC006,Surrender,Mysuru Police Station,OFF006,2026-06-22,,Granted,2026-06-25,Released on Bail,CRT006,Accused surrendered before narcotics investigation team.
+ARR007,CASE007,ACC007,Arrest,Mangaluru Highway,OFF007,,2026-07-09,Pending,,Police Custody,CRT007,Arrest made at accident location.
+ARR008,CASE008,ACC008,Arrest,Belagavi Market Area,OFF008,,2026-08-14,Denied,,Judicial Custody,CRT008,Illegal firearm recovered during arrest.
+ARR009,CASE009,ACC009,Arrest,Hubballi Commercial Complex,OFF009,,2026-09-03,Granted,2026-09-10,Released on Bail,CRT009,Bail granted after hearing before magistrate.
+ARR010,CASE010,ACC010,Surrender,Shivamogga Police Station,OFF010,2026-10-01,,Pending,,Judicial Custody,CRT010,Accused surrendered in identity theft case.

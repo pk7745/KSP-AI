@@ -1,0 +1,21 @@
+.chart-widget {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chart-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.chart-container {
+  width: 100%;
+  flex: 1;
+}
+
+.chart-container svg {
+  overflow: visible;
+}

@@ -1,0 +1,21 @@
+CrimeSubHeadID,CrimeHeadID,CrimeSubHeadName,Description,IsActive
+CSH001,CH001,Homicide,Intentional killing of a person,true
+CSH002,CH001,Attempt to Murder,Attempt to unlawfully kill a person,true
+CSH003,CH002,Simple Assault,Assault causing minor injuries,true
+CSH004,CH002,Aggravated Assault,Assault involving serious injuries or weapons,true
+CSH005,CH003,Vehicle Theft,Theft of cars, bikes, or other vehicles,true
+CSH006,CH003,Mobile Theft,Theft of mobile phones,true
+CSH007,CH004,House Burglary,Breaking into a residence to commit theft,true
+CSH008,CH004,Commercial Burglary,Breaking into commercial premises,true
+CSH009,CH005,Financial Fraud,Fraud involving money or financial transactions,true
+CSH010,CH005,Identity Fraud,Using another person's identity illegally,true
+CSH011,CH006,Online Banking Fraud,Fraud through internet banking,true
+CSH012,CH006,Phishing Attack,Stealing sensitive information through fake communications,true
+CSH013,CH007,Domestic Violence,Violence occurring within the family,true
+CSH014,CH007,Sexual Harassment,Harassment of a sexual nature,true
+CSH015,CH008,Drug Possession,Illegal possession of narcotic substances,true
+CSH016,CH008,Drug Trafficking,Illegal transportation or sale of narcotics,true
+CSH017,CH009,Drunk Driving,Driving under the influence of alcohol,true
+CSH018,CH009,Hit and Run,Leaving the accident scene without assistance,true
+CSH019,CH010,Unlawful Assembly,Gathering illegally and disturbing public order,true
+CSH020,CH010,Violent Riot,Riot involving violence and property damage,true

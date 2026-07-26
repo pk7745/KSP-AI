@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+:root {
+  /* Wireframe Aesthetic - Industry Blueprint (Slightly Darker) */
+  --bg-primary: #e6e8eb;
+  --bg-secondary: transparent;
+  
+  --text-primary: #1d1f20;
+  --text-secondary: #4a4a4a;
+  --text-muted: #888888;
+  
+  --border-light: #d1d5db;
+  --border-glass: #a0a0a0;
+  --border-dark: #6b7280;
+  
+  /* Single Steel Accent */
+  --accent-cyan: #5980a6; 
+  --accent-indigo: #5980a6; 
+  --accent-emerald: #5980a6; 
+  --accent-amber: #5980a6; 
+  --accent-crimson: #5980a6; 
+  
+  /* Status Colors (Muted to Steel Accent or Dark Gray) */
+  --status-success: #5980a6;
+  --status-warning: #5980a6;
+  --status-danger: #1d1f20;
+
+  --font-heading: 'Barlow Condensed', sans-serif;
+  --font-main: 'Barlow', sans-serif;
+}
+
+[data-theme='dark'] {
+  --bg-primary: #0f1115;
+  --bg-secondary: #1a1d24;
+  
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --text-muted: #9ca3af;
+  
+  --border-light: #374151;
+  --border-glass: #4b5563;
+  --border-dark: #6b7280;
+  
+  --accent-cyan: #5980a6;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Base structural wireframe class */
+.wireframe-box {
+  background: transparent;
+  border: 1px solid var(--text-primary);
+  border-radius: 0;
+  position: relative;
+  box-shadow: none !important;
+}
+
+/* Registration-mark framing for cards */
+.registration-mark {
+  position: relative;
+}
+
+.registration-mark::before,
+.registration-mark::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.registration-mark::before {
+  top: -6px; left: -6px; right: -6px; bottom: -6px;
+  border: 1px solid transparent;
+  border-left-color: var(--text-primary);
+  border-right-color: var(--text-primary);
+  clip-path: polygon(0 0, 100% 0, 100% 12px, 0 12px, 0 calc(100% - 12px), 100% calc(100% - 12px), 100% 100%, 0 100%);
+}
+
+.registration-mark::after {
+  top: -6px; left: -6px; right: -6px; bottom: -6px;
+  border: 1px solid transparent;
+  border-top-color: var(--text-primary);
+  border-bottom-color: var(--text-primary);
+  clip-path: polygon(0 0, 12px 0, 12px 100%, 0 100%, calc(100% - 12px) 0, 100% 0, 100% 100%, calc(100% - 12px) 100%);
+}
+
+/* Overriding old glass-panel to use wireframe */
+.glass-panel {
+  background: transparent;
+  border: 1px solid var(--text-primary);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.glass-panel-interactive {
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid var(--text-primary);
+  border-radius: 0;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.glass-panel-interactive:hover {
+  border-color: var(--accent-cyan);
+  background: rgba(89, 128, 166, 0.05); /* very light steel wash */
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 0;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border: 1px solid var(--text-primary);
+  background: transparent;
+  color: var(--text-primary);
+  outline: none;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+.btn-primary {
+  background: var(--accent-cyan);
+  color: #ffffff;
+  border: 1px solid var(--accent-cyan);
+  position: relative;
+}
+
+/* Add registration marks to primary buttons */
+.btn-primary::before,
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--text-primary);
+  pointer-events: none;
+  opacity: 1;
+}
+
+.btn-primary::before { top: -4px; left: -4px; border-right: none; border-bottom: none; }
+.btn-primary::after { bottom: -4px; right: -4px; border-left: none; border-top: none; }
+
+.btn-primary:hover {
+  background: #466788; /* Darker steel */
+  border-color: var(--text-primary);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+}
+
+.btn-ghost:hover {
+  color: var(--text-primary);
+  border-color: var(--border-glass);
+  background: var(--bg-secondary);
+}
+
+/* Inputs */
+.input-glass {
+  background: transparent;
+  border: 1px solid var(--text-primary);
+  border-radius: 0;
+  color: var(--text-primary);
+  padding: 10px 14px;
+  font-family: var(--font-main);
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.input-glass:focus {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: -1px;
+  border-color: var(--accent-cyan);
+  background: rgba(89, 128, 166, 0.05);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border-glass);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-dark);
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}
+
+/* Utility overrides */
+.badge-outline {
+  border-radius: 0 !important;
+  border: 1px solid var(--border-dark) !important;
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+}
+
+/* Override all icons to use 1.5 stroke and specific colors */
+svg {
+  stroke-width: 1.5;
+}
+
+.text-cyan, .icon-cyan, .icon-emerald, .icon-amber, .icon-indigo, .icon-crimson { 
+  color: var(--accent-cyan) !important; 
+}

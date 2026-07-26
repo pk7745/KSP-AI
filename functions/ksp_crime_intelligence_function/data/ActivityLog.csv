@@ -1,0 +1,11 @@
+LogID,OfficerID,CaseID,Action,Module,Description,Timemanage
+LOG001,OFF001,CASE001,Created Case,Case Management,Created FIR and initiated investigation for CASE001,2026-01-15 09:15:00
+LOG002,OFF002,CASE002,Updated Evidence,Evidence Management,Uploaded witness statements and forensic evidence,2026-02-11 11:30:00
+LOG003,OFF003,CASE003,Assigned Investigation,Case Management,Assigned investigation to the concerned officer,2026-03-05 10:00:00
+LOG004,OFF004,CASE004,Generated AI Analysis,AI Analysis,AI crime prediction report generated successfully,2026-04-18 14:45:00
+LOG005,OFF005,CASE005,Filed Chargesheet,Chargesheet,Chargesheet submitted before the jurisdictional court,2026-06-08 16:10:00
+LOG006,OFF006,CASE006,Recorded Surrender,Arrest Management,Updated surrender details of the accused,2026-06-22 09:20:00
+LOG007,OFF007,CASE007,Added Evidence,Evidence Management,Medical examination report uploaded to the case,2026-07-14 12:40:00
+LOG008,OFF008,CASE008,Arrested Accused,Arrest Management,Illegal firearm recovered and arrest recorded,2026-08-14 15:35:00
+LOG009,OFF009,CASE009,Updated Case Status,Case Management,Case status changed to Under Investigation,2026-09-04 10:50:00
+LOG010,OFF010,CASE010,Closed Investigation,Investigation,Investigation completed and final report submitted,2026-10-06 17:15:00

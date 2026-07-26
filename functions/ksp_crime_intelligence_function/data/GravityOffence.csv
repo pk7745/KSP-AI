@@ -1,0 +1,11 @@
+GravityID,GravityName,SeverityLevel,Description,IsActive
+GR001,Petty,1,Minor offences with low impact,true
+GR002,Minor,2,Offences punishable with comparatively lighter penalties,true
+GR003,Moderate,3,Offences requiring detailed investigation,true
+GR004,Serious,4,Serious offences affecting public safety,true
+GR005,Grave,5,Major offences with severe legal consequences,true
+GR006,Heinous,6,Crimes involving extreme violence or brutality,true
+GR007,Organized Crime,7,Crimes committed by organized criminal groups,true
+GR008,Terror Related,8,Offences related to terrorism and national security,true
+GR009,Cyber Critical,9,High-impact cyber crimes affecting critical systems,true
+GR010,Rarest of Rare,10,Extremely grave offences attracting the highest punishment,true
