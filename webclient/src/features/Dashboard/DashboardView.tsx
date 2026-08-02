@@ -7,8 +7,19 @@ import { ChartWidget } from '../../components/ChartWidget';
 import { api } from '../../services/api';
 import './DashboardView.css';
 
+const districtMapKn: Record<string, string> = {
+  'All': 'ಎಲ್ಲಾ ಕರ್ನಾಟಕ',
+  'Bengaluru City': 'ಬೆಂಗಳೂರು ನಗರ',
+  'Mysuru City': 'ಮೈಸೂರು ನಗರ',
+  'Mangaluru City': 'ಮಂಗಳೂರು ನಗರ',
+  'Hubballi-Dharwad': 'ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ',
+  'Belagavi': 'ಬೆಳಗಾವಿ',
+  'Kalaburagi': 'ಕಲಬುರಗಿ'
+};
+
 export function DashboardView() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isKn = i18n.language === 'kn';
   const [data, setData] = useState<any>(null);
   const [analytics, setAnalytics] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -43,9 +54,8 @@ export function DashboardView() {
       setLiveToast({ id: Date.now().toString(), ...mockAlerts[alertIndex] });
       alertIndex = (alertIndex + 1) % mockAlerts.length;
       
-      // Auto-hide toast after 5 seconds
       setTimeout(() => setLiveToast(null), 5000);
-    }, 15000); // Fire every 15 seconds
+    }, 15000);
 
     return () => clearInterval(interval);
   }, []);
@@ -70,7 +80,7 @@ export function DashboardView() {
       {/* District Filter */}
       <div className="district-filter-row">
         <MapPin size={16} className="icon-cyan" />
-        <span className="district-filter-label">{t('dashboard.districtInt', 'District Intelligence:')}</span>
+        <span className="district-filter-label">{isKn ? 'ಜಿಲ್ಲಾ ಗುಪ್ತಚರ:' : 'DISTRICT INTELLIGENCE:'}</span>
         <div className="district-chips">
           {districts.map(d => (
             <button 
@@ -78,7 +88,7 @@ export function DashboardView() {
               className={`district-chip ${selectedDistrict === d ? 'active' : ''}`}
               onClick={() => setSelectedDistrict(d)}
             >
-              {d === 'All' ? t('dashboard.allKarnataka', 'All Karnataka') : t(`db.districts.${d}`, { defaultValue: d })}
+              {isKn ? (districtMapKn[d] || d) : (d === 'All' ? 'ALL KARNATAKA' : d.toUpperCase())}
             </button>
           ))}
         </div>
@@ -136,7 +146,7 @@ export function DashboardView() {
             </div>
             <div className="toast-content">
               <strong>{t(`dashboardAlerts.${liveToast.titleKey}`)}</strong>
-              <span>{t('dashboard.station')}: {t(`db.districts.${liveToast.district}`, { defaultValue: liveToast.district })}</span>
+              <span>{t('dashboard.station')}: {liveToast.district}</span>
             </div>
           </div>
         )}

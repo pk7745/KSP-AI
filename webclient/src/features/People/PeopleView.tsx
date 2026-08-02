@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Users, Search, Shield, AlertTriangle, UserX, UserCheck, ShieldAlert } from 'lucide-react';
+import { Users, Search, UserX, UserCheck, ShieldAlert } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { api } from '../../services/api';
 import { useNavigation } from '../../context/NavigationContext';
@@ -7,6 +7,7 @@ import './PeopleView.css';
 
 export function PeopleView() {
   const { t, i18n } = useTranslation();
+  const isKn = i18n.language === 'kn';
   const [people, setPeople] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -59,7 +60,14 @@ export function PeopleView() {
       'MEDIUM': 'bg-blue',
       'LOW': 'bg-emerald'
     };
-    return <span className={`badge ${colors[label] || 'bg-gray'}`}>{label} RISK</span>;
+    const riskMapKn: Record<string, string> = {
+      'LOW': 'ಕಡಿಮೆ ಅಪಾಯ',
+      'MEDIUM': 'ಮಧ್ಯಮ ಅಪಾಯ',
+      'HIGH': 'ಹೆಚ್ಚಿನ ಅಪಾಯ',
+      'VERY HIGH': 'ಅತ್ಯಂತ ಹೆಚ್ಚಿನ ಅಪಾಯ'
+    };
+    const displayText = isKn ? (riskMapKn[label] || `${label} ಅಪಾಯ`) : `${label} RISK`;
+    return <span className={`badge ${colors[label] || 'bg-gray'}`}>{displayText}</span>;
   };
 
   return (
@@ -82,17 +90,17 @@ export function PeopleView() {
 
       <div className="content-area">
         {loading ? (
-          <div className="loading-state">{i18n.language === 'kn' ? 'ದಾಖಲೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...' : 'Loading intelligence records...'}</div>
+          <div className="loading-state">{isKn ? 'ದಾಖಲೆಗಳನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...' : 'Loading intelligence records...'}</div>
         ) : (
           <div className="people-grid">
             <div className="people-list glass-panel">
               <table className="data-table">
                 <thead>
                   <tr>
-                    <th>{i18n.language === 'kn' ? 'ಹೆಸರು' : 'Name'}</th>
-                    <th>{i18n.language === 'kn' ? 'ಪಾತ್ರ' : 'Role'}</th>
-                    <th>{i18n.language === 'kn' ? 'ಸಂಬಂಧಿತ ಪ್ರಕರಣ' : 'Linked Case'}</th>
-                    <th>{i18n.language === 'kn' ? 'ಅಪಾಯ' : 'Risk'}</th>
+                    <th>{isKn ? 'ಹೆಸರು' : 'Name'}</th>
+                    <th>{isKn ? 'ಪಾತ್ರ' : 'Role'}</th>
+                    <th>{isKn ? 'ಸಂಬಂಧಿತ ಪ್ರಕರಣ' : 'Linked Case'}</th>
+                    <th>{isKn ? 'ಅಪಾಯ' : 'Risk'}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -133,58 +141,29 @@ export function PeopleView() {
                 <div className="drawer-body mt-md">
                   <div className="info-grid">
                     <div className="info-item">
-                      <span className="label">{i18n.language === 'kn' ? 'ವಯಸ್ಸು/ಲಿಂಗ' : 'Age/Gender'}</span>
+                      <span className="label">{isKn ? 'ವಯಸ್ಸು/ಲಿಂಗ' : 'Age/Gender'}</span>
                       <span className="value">{selectedPerson.age} / {selectedPerson.gender}</span>
                     </div>
                     <div className="info-item">
-                      <span className="label">{i18n.language === 'kn' ? 'ದೂರವಾಣಿ' : 'Phone'}</span>
-                      <span className="value">{selectedPerson.phone || 'N/A'}</span>
+                      <span className="label">{isKn ? 'ದೂರವಾಣಿ' : 'Phone'}</span>
+                      <span className="value">{selectedPerson.phone}</span>
                     </div>
                     <div className="info-item">
-                      <span className="label">{i18n.language === 'kn' ? 'ವೃತ್ತಿ' : 'Occupation'}</span>
-                      <span className="value">{selectedPerson.occupation || 'N/A'}</span>
+                      <span className="label">{isKn ? 'ಸ್ಥಳೀಯ ವಿಳಾಸ' : 'Address'}</span>
+                      <span className="value">{selectedPerson.address}</span>
                     </div>
                     <div className="info-item">
-                      <span className="label">{i18n.language === 'kn' ? 'ಸ್ಥಿತಿ' : 'Status'}</span>
-                      <span className="value fw-bold text-amber">{selectedPerson.status}</span>
+                      <span className="label">{isKn ? 'ಅಪಾಯದ ಮಟ್ಟ' : 'Risk Assessment'}</span>
+                      <span className="value">{getRiskBadge(selectedPerson.riskLabel)}</span>
                     </div>
                   </div>
 
-                  {selectedPerson.riskLabel && (
-                    <div className="risk-card mt-md">
-                      <h4>{i18n.language === 'kn' ? 'ಎಐ ಅಪಾಯದ ಮೌಲ್ಯಮಾಪನ' : 'AI Risk Assessment'}</h4>
-                      <div className="flex-row gap-md mt-sm align-center">
-                        <div className="score-circle">
-                          {selectedPerson.riskScore}
-                        </div>
-                        <div>
-                          {getRiskBadge(selectedPerson.riskLabel)}
-                          <p className="mt-xs font-sm opacity-70">
-                            {i18n.language === 'kn' ? 'ಅಪರಾಧ ಇತಿಹಾಸ ಮತ್ತು ಅಪಾಯದ ಸೂಚಕಗಳ ಆಧಾರದ ಮೇಲೆ.' : 'Based on criminal history, bail jumps, and violence indicators.'}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="case-link mt-md p-md glass-panel-inner">
-                    <h4>{i18n.language === 'kn' ? 'ಮುಖ್ಯ ಪ್ರಕರಣ' : 'Primary Case'}</h4>
-                    <p className="mt-sm fw-bold text-cyan">{selectedPerson.linkedCase}</p>
-                    <div className="info-grid mt-sm">
-                      <div className="info-item">
-                        <span className="label">{i18n.language === 'kn' ? 'ತನಿಖಾಧಿಕಾರಿ' : 'Investigating Officer'}</span>
-                        <span className="value">{selectedPerson.officer || 'Unknown'}</span>
-                      </div>
-                      <div className="info-item">
-                        <span className="label">{i18n.language === 'kn' ? 'ಠಾಣೆ' : 'Station'}</span>
-                        <span className="value">{selectedPerson.station || 'Unknown'}</span>
-                      </div>
-                    </div>
+                  <div className="mt-md">
                     <button 
-                      className="btn btn-primary mt-sm w-full"
-                      onClick={() => openCase360(selectedPerson.caseId || selectedPerson.linkedCase)}
+                      className="btn btn-primary w-full"
+                      onClick={() => openCase360(selectedPerson.linkedCase)}
                     >
-                      {i18n.language === 'kn' ? 'ಪ್ರಕರಣ 360 ವೀಕ್ಷಿಸಿ' : 'View Case 360'}
+                      {isKn ? 'ಪ್ರಕರಣ 360 ಕಾರ್ಯಸ್ಥಳ ತೆರೆಯಿರಿ' : 'Open Case 360 Workspace'}
                     </button>
                   </div>
                 </div>
