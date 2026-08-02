@@ -7,8 +7,9 @@ import kspLogo from '../../assets/ksp-logo.svg';
 import './LoginView.css';
 
 export function LoginView() {
-  const { login } = useAuth();
+  const { user, login } = useAuth();
   const { t, i18n } = useTranslation();
+  const isKn = i18n.language === 'kn';
   
   const [authType, setAuthType] = useState<'id' | 'email' | 'phone'>('id');
   const [identifier, setIdentifier] = useState('');
@@ -18,7 +19,7 @@ export function LoginView() {
   const [forgotMode, setForgotMode] = useState(false);
 
   const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === 'kn' ? 'en' : 'kn');
+    i18n.changeLanguage(isKn ? 'en' : 'kn');
   };
 
   const handleBack = () => {
@@ -32,11 +33,19 @@ export function LoginView() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+
+    // Check if device/session is already logged in and not logged out
+    const activeSession = sessionStorage.getItem('ksp_user') || user;
+    if (activeSession) {
+      setError(isKn ? 'ಈಗಾಗಲೇ ಲಾಗ್ ಇನ್ ಆಗಿದ್ದೀರಿ (Already logged in)' : 'Already logged in');
+      return;
+    }
+
     setLoading(true);
 
     if (forgotMode) {
       setTimeout(() => {
-        setError('Password reset link sent to your registered contact.');
+        setError(isKn ? 'ನಿಮ್ಮ ನೋಂದಾಯಿತ ಸಂಪರ್ಕಕ್ಕೆ ಪಾಸ್‌ವರ್ಡ್ ಮರುಹೊಂದಿಸುವ ಲಿಂಕ್ ಕಳುಹಿಸಲಾಗಿದೆ.' : 'Password reset link sent to your registered contact.');
         setLoading(false);
         setForgotMode(false);
       }, 1500);
@@ -58,6 +67,12 @@ export function LoginView() {
   };
 
   const fillDemoCreds = (id: string, pass: string) => {
+    // Check if device is already logged in
+    const activeSession = sessionStorage.getItem('ksp_user') || user;
+    if (activeSession) {
+      setError(isKn ? 'ಈಗಾಗಲೇ ಲಾಗ್ ಇನ್ ಆಗಿದ್ದೀರಿ (Already logged in)' : 'Already logged in');
+      return;
+    }
     setAuthType('id');
     setIdentifier(id);
     setPassword(pass);
@@ -78,7 +93,7 @@ export function LoginView() {
             title="Navigate Back to Landing Page"
           >
             <ArrowLeft size={16} className="icon-cyan" />
-            <span>{i18n.language === 'kn' ? 'ಹಿಂದಕ್ಕೆ' : 'Back'}</span>
+            <span>{isKn ? 'ಹಿಂದಕ್ಕೆ' : 'Back'}</span>
           </button>
 
           <button 
@@ -88,7 +103,7 @@ export function LoginView() {
             title={t('header.toggleKannada')}
           >
             <Globe size={16} className="icon-cyan" />
-            <span className="font-heading font-bold">{i18n.language === 'kn' ? 'EN' : 'ಕನ್ನಡ'}</span>
+            <span className="font-heading font-bold">{isKn ? 'EN' : 'ಕನ್ನಡ'}</span>
           </button>
         </div>
 

@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
-import type { ReactNode } from 'react';export type Role = 'IO' | 'SHO' | 'DSP' | 'ADMIN';
+import type { ReactNode } from 'react';
+
+export type Role = 'IO' | 'SHO' | 'DSP' | 'ADMIN';
 
 export interface User {
   employeeId: string;
@@ -27,16 +29,20 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(() => {
-    const savedUser = localStorage.getItem('ksp_user');
+    // Read from sessionStorage for auto-logout when website/tab is closed
+    const savedUser = sessionStorage.getItem('ksp_user');
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
   const login = (userData: User) => {
-    localStorage.setItem('ksp_user', JSON.stringify(userData));
+    sessionStorage.setItem('ksp_user', JSON.stringify(userData));
+    localStorage.removeItem('ksp_user'); // Purge legacy localStorage
     setUser(userData);
   };
 
   const logout = () => {
+    sessionStorage.removeItem('ksp_user');
+    sessionStorage.removeItem('ksp_token');
     localStorage.removeItem('ksp_user');
     localStorage.removeItem('ksp_token');
     setUser(null);
@@ -46,7 +52,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     setUser(prev => {
       if (!prev) return null;
       const updated = { ...prev, ...data };
-      localStorage.setItem('ksp_user', JSON.stringify(updated));
+      sessionStorage.setItem('ksp_user', JSON.stringify(updated));
       return updated;
     });
   };
