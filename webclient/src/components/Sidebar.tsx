@@ -78,7 +78,7 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
         />
         <div className="brand-text">
           <h1 className="font-bold">KSP AI</h1>
-          <p className="tracking-wide text-xs">Crime Intelligence</p>
+          <p className="tracking-wide text-xs">{t('sidebar.brandSub', 'Crime Intelligence')}</p>
         </div>
       </div>
 
