@@ -106,7 +106,7 @@ export function Header() {
           <div className="header-search" onClick={() => { setShowSearch(true); setSearchQuery(''); }}>
             <Search className="search-icon" size={18} />
             <div className="search-placeholder">
-              <span>{t('header.searchPlaceholder')}</span>
+              <span>{t('header.searchPlaceholder', 'Search (FIR, Officer, Location)...')}</span>
               <kbd className="kbd-shortcut"><Command size={12}/> K</kbd>
             </div>
           </div>
@@ -115,13 +115,13 @@ export function Header() {
         <div className="header-actions">
           <div className="header-status">
             <span className="status-dot animate-pulse-glow"></span>
-            <span className="status-text">{t('header.syncActive')}</span>
+            <span className="status-text">{t('header.syncActive', 'Catalyst Sync Active')}</span>
           </div>
           
           <button 
             className="icon-btn" 
             onClick={() => i18n.changeLanguage(i18n.language === 'kn' ? 'en' : 'kn')} 
-            title={t('header.toggleKannada')}
+            title={t('header.toggleKannada', 'Toggle Language')}
           >
             <Globe size={18} />
             <span style={{ fontSize: '0.7rem', fontWeight: 'bold', marginLeft: '4px' }}>
@@ -129,7 +129,7 @@ export function Header() {
             </span>
           </button>
 
-          <button className="icon-btn" onClick={toggleTheme} title={t('header.toggleTheme')}>
+          <button className="icon-btn" onClick={toggleTheme} title={t('header.toggleTheme', 'Theme')}>
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
@@ -193,7 +193,7 @@ export function Header() {
                         setShowEmergencyModal(true);
                       }}
                     >
-                      <Shield size={16} /> Emergency Access
+                      <Shield size={16} /> {t('header.emergencyAccess', 'Emergency Access')}
                     </button>
                   )}
                   <button 
@@ -203,13 +203,13 @@ export function Header() {
                       setShowEditModal(true);
                     }}
                   >
-                    <Edit2 size={16} /> Edit Profile
+                    <Edit2 size={16} /> {t('header.editProfile', 'Edit Profile')}
                   </button>
                   <button 
                     className="nav-item cursor-pointer w-full text-left bg-transparent border-none py-sm px-md flex-row align-center gap-sm hover-bg-light text-crimson"
                     onClick={logout}
                   >
-                    <LogOut size={16} /> Logout
+                    <LogOut size={16} /> {t('nav.logout', 'Logout')}
                   </button>
                 </div>
               </div>
@@ -241,7 +241,7 @@ export function Header() {
                 <p className="text-muted text-sm" style={{ padding: '16px' }}>{t('header.searchOverlayHelper')}</p>
               )}
               {isSearching && searchQuery.trim() && (
-                <p className="text-muted text-sm" style={{ padding: '16px' }}>Searching live database...</p>
+                <p className="text-muted text-sm" style={{ padding: '16px' }}>{t('header.searchingLive', 'Searching live database...')}</p>
               )}
               {!isSearching && searchQuery.trim() && searchResults.length === 0 && (
                 <p className="text-muted text-sm" style={{ padding: '16px' }}>{t('header.noResults', 'No results found for')} "{searchQuery}"</p>

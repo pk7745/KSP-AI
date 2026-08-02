@@ -23,8 +23,8 @@ export function PredictiveView() {
     <div className="predictive-view animate-slide-in">
       <div className="predictive-header">
         <div className="predictive-title-area">
-          <h2>{t('predictive.title')}</h2>
-          <p className="subtitle">{t('predictive.subtitle')}</p>
+          <h2>{t('predictive.title', 'Predictive Analytics & Patrol')}</h2>
+          <p className="subtitle">{t('predictive.subtitle', 'AI-driven risk projections and resource allocation for proactive policing.')}</p>
         </div>
         <button 
           className="btn btn-primary" 
@@ -32,7 +32,7 @@ export function PredictiveView() {
           disabled={isRecalculating}
         >
           <Target size={18} className={isRecalculating ? "spin" : ""} /> 
-          {isRecalculating ? t('cases.drawer.loading') : t('predictive.recalculate')}
+          {isRecalculating ? t('cases.drawer.loading', 'Recalculating...') : t('predictive.recalculate', 'Recalculate Risks')}
         </button>
       </div>
 
@@ -41,26 +41,26 @@ export function PredictiveView() {
           {/* Early Warning Panel */}
           <div className="glass-panel predictive-panel">
             <div className="panel-header">
-              <h3><AlertTriangle size={18} className="icon-amber" /> {t('predictive.earlyWarning')}</h3>
+              <h3><AlertTriangle size={18} className="icon-amber" /> {t('predictive.earlyWarning', 'Early Warning Engine')}</h3>
             </div>
             <div className="panel-body">
               <div className="warning-card critical">
                 <div className="warning-header">
-                  <strong>{t('predictive.alerts.cyberSpike')}</strong>
-                  <span className="badge-outline">98% {t('predictive.probability')}</span>
+                  <strong>{t('predictive.alerts.cyberSpike', 'Cyber Fraud Spike Predicted')}</strong>
+                  <span className="badge-outline">98% {t('predictive.probability', 'Probability')}</span>
                 </div>
-                <p>{t('predictive.alerts.cyberDesc')}</p>
+                <p>{t('predictive.alerts.cyberDesc', 'Surge in cyber fraud along IT corridor during salary cycle.')}</p>
                 <button className="btn btn-ghost text-sm" style={{marginTop: 8}} onClick={() => setShowExplainAI(true)}>
-                  <Info size={14} /> Explain AI Decision
+                  <Info size={14} /> {t('predictive.explainAi', 'Explain AI Decision')}
                 </button>
               </div>
 
               <div className="warning-card high mt-4">
                 <div className="warning-header">
-                  <strong>{t('predictive.alerts.theftCluster')}</strong>
-                  <span className="badge-outline">72% {t('predictive.probability')}</span>
+                  <strong>{t('predictive.alerts.theftCluster', 'Two-Wheeler Theft Cluster')}</strong>
+                  <span className="badge-outline">72% {t('predictive.probability', 'Probability')}</span>
                 </div>
-                <p>{t('predictive.alerts.theftDesc')}</p>
+                <p>{t('predictive.alerts.theftDesc', 'High risk of vehicle theft between 10 PM and 4 AM.')}</p>
               </div>
             </div>
           </div>
@@ -68,15 +68,15 @@ export function PredictiveView() {
           {/* Resource Allocation */}
           <div className="glass-panel predictive-panel">
             <div className="panel-header">
-              <h3><ShieldCheck size={18} className="icon-emerald" /> {t('predictive.patrol')}</h3>
+              <h3><ShieldCheck size={18} className="icon-emerald" /> {t('predictive.patrol', 'AI Patrol Recommendations')}</h3>
             </div>
             <div className="panel-body">
               <div className="allocation-item">
                 <div className="allocation-header">
-                  <strong>{t('predictive.recommendations.hoysala')}</strong>
-                  <span className="badge-outline">{t('predictive.highPriority')}</span>
+                  <strong>{t('predictive.recommendations.hoysala', 'Increase Hoysala Mobile Patrol')}</strong>
+                  <span className="badge-outline">{t('predictive.highPriority', 'High Priority')}</span>
                 </div>
-                <p>{t('predictive.recommendations.hoysalaDesc')}</p>
+                <p>{t('predictive.recommendations.hoysalaDesc', 'Intensify patrol along Whitefield Junction and ITPL Main Road.')}</p>
                 <div className="progress-bar-container">
                   <div className="progress-bar" style={{ width: '85%', background: 'var(--accent-amber)' }}></div>
                 </div>
@@ -84,10 +84,10 @@ export function PredictiveView() {
 
               <div className="allocation-item">
                 <div className="allocation-header">
-                  <strong>{t('predictive.recommendations.beat')}</strong>
-                  <span className="badge-outline">{t('predictive.modPriority')}</span>
+                  <strong>{t('predictive.recommendations.beat', 'Foot Patrol Officer Deployment')}</strong>
+                  <span className="badge-outline">{t('predictive.modPriority', 'Medium Priority')}</span>
                 </div>
-                <p>{t('predictive.recommendations.beatDesc')}</p>
+                <p>{t('predictive.recommendations.beatDesc', 'Station beat constables near Indiranagar commercial complexes.')}</p>
                 <div className="progress-bar-container">
                   <div className="progress-bar" style={{ width: '60%', background: 'var(--accent-cyan)' }}></div>
                 </div>
@@ -99,42 +99,42 @@ export function PredictiveView() {
         {/* Temporal Trends */}
         <div className="glass-panel predictive-panel temporal-panel">
           <div className="panel-header">
-            <h3><TrendingUp size={18} className="icon-cyan" /> {t('predictive.temporalRisk')}</h3>
+            <h3><TrendingUp size={18} className="icon-cyan" /> {t('predictive.temporalRisk', 'Temporal Crime Risk')}</h3>
           </div>
           <div className="heatmap-mock" key={heatmapKey}>
             {/* Mock heatmap visual */}
             <div className="heatmap-row">
-              <span>{t('predictive.days.mon')}</span>
+              <span>{t('predictive.days.mon', 'Mon')}</span>
               <div className={`heat-cell ${['low', 'med'][Math.floor(Math.random() * 2)]}`}></div>
               <div className={`heat-cell ${['low', 'med'][Math.floor(Math.random() * 2)]}`}></div>
               <div className={`heat-cell ${['low', 'med', 'high'][Math.floor(Math.random() * 3)]}`}></div>
               <div className={`heat-cell ${['low', 'med'][Math.floor(Math.random() * 2)]}`}></div>
             </div>
             <div className="heatmap-row">
-              <span>{t('predictive.days.tue')}</span>
+              <span>{t('predictive.days.tue', 'Tue')}</span>
               <div className={`heat-cell ${['low', 'med'][Math.floor(Math.random() * 2)]}`}></div>
               <div className={`heat-cell low`}></div>
               <div className={`heat-cell low`}></div>
               <div className={`heat-cell ${['low', 'med'][Math.floor(Math.random() * 2)]}`}></div>
             </div>
             <div className="heatmap-row">
-              <span>{t('predictive.days.fri')}</span>
+              <span>{t('predictive.days.fri', 'Fri')}</span>
               <div className={`heat-cell ${['med', 'high'][Math.floor(Math.random() * 2)]}`}></div>
               <div className={`heat-cell ${['high', 'critical'][Math.floor(Math.random() * 2)]}`}></div>
               <div className={`heat-cell ${['critical', 'high'][Math.floor(Math.random() * 2)]}`}></div>
               <div className={`heat-cell ${['med', 'high'][Math.floor(Math.random() * 2)]}`}></div>
             </div>
             <div className="heatmap-row">
-              <span>{t('predictive.days.sat')}</span>
+              <span>{t('predictive.days.sat', 'Sat')}</span>
               <div className={`heat-cell ${['med', 'high'][Math.floor(Math.random() * 2)]}`}></div>
               <div className={`heat-cell ${['critical', 'high'][Math.floor(Math.random() * 2)]}`}></div>
               <div className={`heat-cell ${['critical', 'high'][Math.floor(Math.random() * 2)]}`}></div>
               <div className={`heat-cell ${['high', 'med'][Math.floor(Math.random() * 2)]}`}></div>
             </div>
             <div className="heatmap-legend">
-              <span>{t('predictive.lowRisk')}</span>
+              <span>{t('predictive.lowRisk', 'Low Risk')}</span>
               <div className="legend-gradient"></div>
-              <span>{t('predictive.highRisk')}</span>
+              <span>{t('predictive.highRisk', 'High Risk')}</span>
             </div>
           </div>
         </div>

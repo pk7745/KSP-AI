@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
-import { Filter, Maximize2, Share2 } from 'lucide-react';
+import { Filter, Share2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { api } from '../../services/api';
 import { useNavigation } from '../../context/NavigationContext';
@@ -165,8 +165,8 @@ export function NetworkView() {
     <div className="network-view animate-slide-in">
       <div className="network-header">
         <div className="network-title-area">
-          <h2>{t('network.title')}</h2>
-          <p className="subtitle">{t('network.subtitle')}</p>
+          <h2>{t('network.title', 'Criminal Nexus Visualization')}</h2>
+          <p className="subtitle">{t('network.subtitle', 'Graph database mapping links between suspects, cases, and syndicates.')}</p>
         </div>
         
         <div className="network-actions">
@@ -174,25 +174,25 @@ export function NetworkView() {
             className={`btn ${filterActive ? 'btn-primary' : 'btn-outline'}`} 
             onClick={() => setFilterActive(!filterActive)}
           >
-            <Filter size={16} /> {filterActive ? 'Clear Filter' : t('network.filter')}
+            <Filter size={16} /> {filterActive ? 'Clear Filter' : t('network.filter', 'Filter Nodes')}
           </button>
           <button className="btn btn-primary" onClick={handleExportCSV}>
-            <Share2 size={16} /> {t('network.export')}
+            <Share2 size={16} /> {t('network.export', 'Export Map')}
           </button>
         </div>
 
         {data?.summary && (
           <div className="network-stats glass-panel">
             <div className="stat-item">
-              <span className="stat-label">{t('network.stats.nodes')}</span>
+              <span className="stat-label">{t('network.stats.nodes', 'Nodes')}</span>
               <span className="stat-val">{data.summary.totalNodes}</span>
             </div>
             <div className="stat-item">
-              <span className="stat-label">{t('network.stats.links')}</span>
+              <span className="stat-label">{t('network.stats.links', 'Links')}</span>
               <span className="stat-val">{data.summary.totalLinks}</span>
             </div>
             <div className="stat-item">
-              <span className="stat-label text-crimson">{t('network.stats.repeatOffenders')}</span>
+              <span className="stat-label text-crimson">{t('network.stats.repeatOffenders', 'Repeat Offenders')}</span>
               <span className="stat-val text-crimson">{data.summary.repeatOffendersDetected}</span>
             </div>
           </div>
@@ -201,14 +201,14 @@ export function NetworkView() {
 
       <div className="network-canvas-container glass-panel" ref={containerRef}>
         {loading ? (
-          <div className="loading-state">{t('network.rendering')}</div>
+          <div className="loading-state">{t('network.rendering', 'Rendering Criminal Nexus Graph...')}</div>
         ) : (
           <>
             <div className="canvas-controls">
               <div className="legend">
-                <div className="legend-item"><span className="legend-box case"></span> {t('network.legend.case')}</div>
-                <div className="legend-item"><span className="legend-box accused"></span> {t('network.legend.accused')}</div>
-                <div className="legend-item"><span className="legend-box repeat"></span> {t('network.legend.repeat')}</div>
+                <div className="legend-item"><span className="legend-box case"></span> {t('network.legend.case', 'Cases (FIRs)')}</div>
+                <div className="legend-item"><span className="legend-box accused"></span> {t('network.legend.accused', 'Accused Entities')}</div>
+                <div className="legend-item"><span className="legend-box repeat"></span> {t('network.legend.repeat', 'Repeat Offenders')}</div>
               </div>
             </div>
             <svg ref={svgRef} className="network-svg"></svg>

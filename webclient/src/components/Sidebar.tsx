@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
-  LogOut, Shield, ChevronRight, Menu, LayoutDashboard, FileText, 
-  Network, Settings, Radio, Brain, Bot, Crosshair, BarChart3, Users,
+  LogOut, Shield, LayoutDashboard, FileText, 
+  Network, Settings, Brain, Users,
   Home, Microscope, MessageSquare, BarChart2, LifeBuoy
 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -45,19 +45,19 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
 
   const allNavItems = [
     { id: 'home', icon: Home, label: t('nav.home', 'Home'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
-    { id: 'dashboard', icon: LayoutDashboard, label: t('nav.dashboard'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
-    { id: 'cases', icon: FileText, label: t('nav.cases'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
+    { id: 'dashboard', icon: LayoutDashboard, label: t('nav.dashboard', 'Dashboard'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
+    { id: 'cases', icon: FileText, label: t('nav.cases', 'Cases 360'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
     { id: 'analysis', icon: Microscope, label: t('nav.analysis', 'AI Analysis'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
-    { id: 'chat', icon: MessageSquare, label: t('nav.chat'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
-    { id: 'officer', icon: Users, label: t('nav.officer'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
+    { id: 'chat', icon: MessageSquare, label: t('nav.chat', 'AI Investigator'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
+    { id: 'officer', icon: Users, label: t('nav.officer', 'Officer Portal'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
     
     // SHO and above
-    { id: 'command', icon: Shield, label: t('nav.command'), roles: ['SHO', 'DSP', 'ADMIN'] },
-    { id: 'reports', icon: BarChart2, label: t('nav.reports'), roles: ['SHO', 'DSP', 'ADMIN'] },
+    { id: 'command', icon: Shield, label: t('nav.command', 'Command Center'), roles: ['SHO', 'DSP', 'ADMIN'] },
+    { id: 'reports', icon: BarChart2, label: t('nav.reports', 'Automated Reports'), roles: ['SHO', 'DSP', 'ADMIN'] },
     
     // DSP and Admin only
-    { id: 'people', icon: Users, label: 'People CRM', roles: ['DSP', 'ADMIN'] },
-    { id: 'network', icon: Network, label: t('nav.network'), roles: ['DSP', 'ADMIN'] },
+    { id: 'people', icon: Users, label: t('nav.people', 'People CRM'), roles: ['DSP', 'ADMIN'] },
+    { id: 'network', icon: Network, label: t('nav.network', 'Criminal Nexus'), roles: ['DSP', 'ADMIN'] },
     { id: 'predictive', icon: Brain, label: t('nav.predictive', 'Predictive Analytics'), roles: ['DSP', 'ADMIN'] }
   ];
 
@@ -72,7 +72,7 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
       >
         <img 
           src={kspLogo} 
-          alt="Karnataka State Police Logo" 
+          alt="Official Karnataka State Police Logo" 
           className="w-[30px] h-[30px] sm:w-[34px] sm:h-[34px] lg:w-[38px] lg:h-[38px] object-contain shrink-0 select-none"
           decoding="sync"
         />
@@ -123,7 +123,7 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
 
         <button className="nav-item" onClick={logout} style={{ color: 'var(--accent-crimson)' }}>
           <LogOut className="nav-icon" size={20} />
-          <span>Logout</span>
+          <span>{t('nav.logout', 'Logout')}</span>
         </button>
       </div>
     </aside>
