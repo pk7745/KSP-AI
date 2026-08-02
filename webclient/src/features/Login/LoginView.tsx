@@ -2,13 +2,19 @@ import React, { useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { Shield, ChevronRight, AlertCircle, Key, User, Globe, Mail, Phone, ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { api } from '../../services/api';
 import kspLogo from '../../assets/ksp-logo.svg';
 import './LoginView.css';
 
-export function LoginView() {
+interface LoginViewProps {
+  onBack?: () => void;
+}
+
+export function LoginView({ onBack }: LoginViewProps) {
   const { user, login } = useAuth();
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const isKn = i18n.language === 'kn';
   
   const [authType, setAuthType] = useState<'id' | 'email' | 'phone'>('id');
@@ -22,11 +28,13 @@ export function LoginView() {
     i18n.changeLanguage(isKn ? 'en' : 'kn');
   };
 
-  const handleBack = () => {
-    if (window.history.length > 1) {
-      window.history.back();
+  const handleBackClick = () => {
+    if (onBack) {
+      onBack();
+    } else if (window.history.length > 1) {
+      navigate(-1);
     } else {
-      window.location.hash = '#/';
+      navigate('/citizen-portal');
     }
   };
 
@@ -34,9 +42,8 @@ export function LoginView() {
     e.preventDefault();
     setError('');
 
-    // Check if device/session is already logged in and not logged out
-    const activeSession = sessionStorage.getItem('ksp_user') || user;
-    if (activeSession) {
+    // Only display 'Already logged in' if an active session is currently logged in
+    if (user) {
       setError(isKn ? 'ಈಗಾಗಲೇ ಲಾಗ್ ಇನ್ ಆಗಿದ್ದೀರಿ (Already logged in)' : 'Already logged in');
       return;
     }
@@ -54,22 +61,20 @@ export function LoginView() {
 
     try {
       const response = await api.login(identifier, password);
-      if (response.user) {
+      if (response && response.user) {
         login(response.user);
       } else {
-        setError(t('login.errorInvalid'));
+        setError(t('login.errorInvalid', 'Invalid response from server'));
       }
     } catch (err: any) {
-      setError(t('login.errorCreds'));
+      setError(t('login.errorCreds', 'Invalid credentials or network error'));
     } finally {
       setLoading(false);
     }
   };
 
   const fillDemoCreds = (id: string, pass: string) => {
-    // Check if device is already logged in
-    const activeSession = sessionStorage.getItem('ksp_user') || user;
-    if (activeSession) {
+    if (user) {
       setError(isKn ? 'ಈಗಾಗಲೇ ಲಾಗ್ ಇನ್ ಆಗಿದ್ದೀರಿ (Already logged in)' : 'Already logged in');
       return;
     }
@@ -89,7 +94,7 @@ export function LoginView() {
           <button 
             type="button"
             className="btn btn-ghost flex items-center gap-1.5 text-xs font-bold px-2 py-1" 
-            onClick={handleBack}
+            onClick={handleBackClick}
             title="Navigate Back to Landing Page"
           >
             <ArrowLeft size={16} className="icon-cyan" />

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Bell, Search, User, Sun, Moon, Globe, Command, FileText, Users, MapPin, Shield, Edit2, LogOut, ArrowLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../context/AuthContext';
+import { useNavigation } from '../context/NavigationContext';
 import { api } from '../services/api';
 import { EditProfileModal } from './EditProfileModal';
 import { EmergencyAccessModal } from './EmergencyAccessModal';
@@ -9,6 +10,7 @@ import './Header.css';
 
 export function Header() {
   const { user, logout } = useAuth();
+  const { goBack } = useNavigation();
   const { t, i18n } = useTranslation();
   const [theme, setTheme] = useState('light');
   const [showSearch, setShowSearch] = useState(false);
@@ -60,12 +62,8 @@ export function Header() {
 
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
 
-  const handleBack = () => {
-    if (window.history.length > 1) {
-      window.history.back();
-    } else {
-      window.location.hash = '#/';
-    }
+  const handleBackClick = () => {
+    goBack();
   };
 
   const groupedResults = searchResults.reduce<Record<string, any[]>>((acc, item) => {
@@ -95,7 +93,7 @@ export function Header() {
         <div className="flex-row align-center gap-sm">
           {/* Universal Back Navigation Button */}
           <button 
-            onClick={handleBack} 
+            onClick={handleBackClick} 
             className="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800/80 hover:bg-slate-700 text-slate-100 font-bold text-xs flex items-center gap-1.5 transition-colors cursor-pointer mr-2 shadow-sm"
             title="Navigate Back"
           >

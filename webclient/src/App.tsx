@@ -63,7 +63,7 @@ function MainApp() {
 
   if (!user) {
     if (showLogin) {
-      return <LoginView />;
+      return <LoginView onBack={() => setShowLogin(false)} />;
     }
     return <PublicLandingView onLoginClick={() => setShowLogin(true)} />;
   }
@@ -98,8 +98,8 @@ function MainApp() {
         <div className="wireframe-box flex-col align-center justify-center p-xl mt-xl">
           <Shield size={48} className="text-crimson mb-md" />
           <h2 className="text-crimson">Unauthorized Access</h2>
-          <p className="text-muted mt-sm">Your rank ({user.rank}) does not grant clearance for the {currentView} module.</p>
-          <button className="btn btn-outline mt-md" onClick={() => setCurrentView('dashboard')}>
+          <p className="text-muted mt-sm">Your rank ({user.rank}) does not have permission to view this module.</p>
+          <button className="btn btn-primary mt-md" onClick={() => setCurrentView('dashboard')}>
             Return to Dashboard
           </button>
         </div>
@@ -111,87 +111,65 @@ function MainApp() {
         return <HomeView />;
       case 'dashboard':
         return <DashboardView />;
-      case 'chat':
-        return <AIChatView />;
       case 'cases':
         return <CasesView />;
-      case 'network':
-        return <NetworkView />;
-      case 'people':
-        return <PeopleView />;
-      case 'predictive':
-        return <PredictiveView />;
-      case 'reports':
-        return <ReportsView />;
-      case 'command':
-        return <CommandCenterView />;
-      case 'officer':
-        return <OfficerPortalView />;
-      case 'settings':
-        return <SettingsView />;
       case 'analysis':
         return <AIAnalysisView />;
+      case 'chat':
+        return <AIChatView />;
+      case 'officer':
+        return <OfficerPortalView />;
+      case 'command':
+        return <CommandCenterView />;
+      case 'reports':
+        return <ReportsView />;
+      case 'people':
+        return <PeopleView />;
+      case 'network':
+        return <NetworkView />;
+      case 'predictive':
+        return <PredictiveView />;
       case 'help':
       case 'help-center':
         return <HelpCenter />;
+      case 'settings':
+        return <SettingsView />;
       default:
-        return (
-          <div className="glass-panel" style={{ padding: 40, textAlign: 'center' }}>
-            <h2 style={{ color: 'var(--accent-cyan)' }}>Module Under Construction</h2>
-            <p style={{ color: 'var(--text-secondary)', marginTop: 8 }}>
-              The {currentView} module is currently being integrated with Zoho Catalyst.
-            </p>
-          </div>
-        );
+        return <DashboardView />;
     }
   };
 
   return (
     <div className="app-container">
-      <Sidebar currentView={currentView} onNavigate={setCurrentView} />
-      
-      <main className="main-content">
+      <Sidebar currentView={currentView} onNavigate={(view) => setCurrentView(view)} />
+      <div className="main-content">
         <Header />
-        <div className="page-container">
+        <main className="view-container">
           <Suspense fallback={<ViewFallback />}>
             {renderView()}
           </Suspense>
-        </div>
-      </main>
+        </main>
+      </div>
       
-      {/* Virtual Police Guide Digital Assistant */}
+      {/* 24/7 AI Voice Assistant Widget */}
       <VirtualPoliceGuide />
     </div>
   );
 }
 
-function DefaultLandingWrapper() {
-  const [showLogin, setShowLogin] = useState(false);
-
-  if (showLogin) {
-    return <LoginView />;
-  }
-
-  return <PublicLandingView onLoginClick={() => setShowLogin(true)} />;
-}
-
-function App() {
+export function App() {
   return (
     <AuthProvider>
-      <HashRouter>
-        <NavigationProvider>
+      <NavigationProvider>
+        <HashRouter>
           <Routes>
-            <Route path="/" element={<DefaultLandingWrapper />} />
-            <Route path="/about-platform" element={<AboutPlatform />} />
-            <Route path="/help-center" element={<HelpCenter />} />
+            <Route path="/" element={<MainApp />} />
             <Route path="/citizen-portal" element={<CitizenPortal />} />
             <Route path="/emergency-services" element={<EmergencyServices />} />
-            <Route path="/login" element={<LoginView />} />
-            <Route path="/dashboard/*" element={<MainApp />} />
-            <Route path="/*" element={<DefaultLandingWrapper />} />
+            <Route path="/about-platform" element={<AboutPlatform />} />
           </Routes>
-        </NavigationProvider>
-      </HashRouter>
+        </HashRouter>
+      </NavigationProvider>
     </AuthProvider>
   );
 }
