@@ -141,7 +141,7 @@ export function CasesView() {
     setComparing(true);
     try {
       const queryStr = `Compare Cases ${selectedCaseIds.join(' and ')}`;
-      const res = await api.chatWithGemini(queryStr, [], isKn ? 'kn' : 'en');
+      const res = await api.chatWithGemini(queryStr, [], isKn ? 'kn' : 'en', selectedCaseIds);
       setComparisonReport(res.reply || res.answer || '');
     } catch (err) {
       showToast('Failed to compare selected cases');

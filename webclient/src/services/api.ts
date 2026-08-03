@@ -44,12 +44,12 @@ export const api = {
     }
   },
   
-  chatWithGemini: async (query: string, history: any[], language: string = 'en') => {
+  chatWithGemini: async (query: string, history: any[], language: string = 'en', caseIds?: string[]) => {
     try {
       const response = await fetchWithAuth(`/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query, history, language })
+        body: JSON.stringify({ query, history, language, ...(caseIds && caseIds.length ? { caseIds } : {}) })
       });
       if (!response.ok) throw new Error('Network response was not ok');
       return await response.json();

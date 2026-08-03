@@ -4,6 +4,7 @@ import { discoverCriminalNexus } from './criminalNexusEngine.js';
 import { traverseMultiHopGraph } from './multiHopGraphEngine.js';
 import { reconstructTimelineWithDelays } from './timelineReasoningEngine.js';
 import { generateInvestigativeRecommendations } from './recommendationEngine.js';
+import { renderMultiCaseReport } from './multiCaseReport.js';
 
 /**
  * Enterprise Multi-Case Investigation Comparison Synthesizer
@@ -21,7 +22,13 @@ export function generateExplainableReport({
   officerContext = {}
 }) {
   // SCENARIO A: 13-Section Multi-Case Comparison Report (2 to 5 Cases)
+  // Delegated to the dedicated bilingual reasoning renderer (English + 100% pure Kannada).
   if (multiCaseResult && !multiCaseResult.error) {
+    return renderMultiCaseReport(multiCaseResult, { isKn, officerContext });
+  }
+
+  // Legacy inline renderer retained only as an unreachable reference implementation.
+  if (multiCaseResult && multiCaseResult.__legacy) {
     const { comparedCount, cases, similarityScore, similarityBreakdown, sharedNexus, patternAnalysis, recommendations } = multiCaseResult;
 
     if (isKn) {
