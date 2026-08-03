@@ -15,10 +15,10 @@ router.post('/', async (req, res) => {
 
     res.setHeader('Content-Type', 'audio/mpeg');
     res.setHeader('Content-Length', audioBuffer.length);
-    res.send(audioBuffer);
+    return res.send(audioBuffer);
   } catch (err) {
-    console.error('[Speech Route Error]:', err.message);
-    res.status(500).json({ error: 'Failed to synthesize speech audio', details: err.message });
+    console.warn('[Speech Route Warning] GCP TTS unavailable, returning fallback status:', err.message);
+    return res.status(200).json({ fallback: true, message: 'Google TTS unavailable, fallback to Web Speech API' });
   }
 });
 

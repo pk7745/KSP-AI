@@ -9,7 +9,6 @@ const fetchWithAuth = async (endpoint: string, options: RequestInit = {}) => {
   
   const response = await fetch(`${API_BASE_URL}${endpoint}`, { ...options, headers });
   if (response.status === 401) {
-    // Optionally trigger a logout here or handle unauthorized
     localStorage.removeItem('ksp_token');
     window.location.reload();
   }
@@ -85,10 +84,8 @@ export const api = {
   getCaseDetails: async (id: string | number) => {
     try {
       const cleanId = String(id).trim();
-      // Use query param /cases/detail?id=... to bypass Tomcat %2F path blocking on Catalyst AppSail
       const response = await fetchWithAuth(`/cases/detail?id=${encodeURIComponent(cleanId)}`);
       if (!response.ok) {
-        // Fallback to path parameter
         const fallback = await fetchWithAuth(`/cases/${encodeURIComponent(cleanId)}`);
         if (!fallback.ok) throw new Error('Network response was not ok');
         return await fallback.json();
@@ -100,17 +97,28 @@ export const api = {
     }
   },
 
-  createCase: async (caseData: any) => {
+  createCase: async (data: any) => {
     try {
       const response = await fetchWithAuth(`/cases`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(caseData)
+        body: JSON.stringify(data)
       });
       if (!response.ok) throw new Error('Network response was not ok');
       return await response.json();
     } catch (error) {
       console.error('Error creating case:', error);
+      throw error;
+    }
+  },
+
+  getNetworkData: async () => {
+    try {
+      const response = await fetchWithAuth(`/network`);
+      if (!response.ok) throw new Error('Network response was not ok');
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching network data:', error);
       throw error;
     }
   },
@@ -121,19 +129,40 @@ export const api = {
       if (!response.ok) throw new Error('Network response was not ok');
       return await response.json();
     } catch (error) {
-      console.error('Error fetching network:', error);
+      console.error('Error fetching network data:', error);
       throw error;
     }
   },
 
-  search: async (query: string) => {
+  getPredictiveData: async () => {
     try {
-      if (!query || query.length < 2) return { results: [] };
-      const response = await fetchWithAuth(`/search?q=${encodeURIComponent(query)}`);
+      const response = await fetchWithAuth(`/predict`);
       if (!response.ok) throw new Error('Network response was not ok');
       return await response.json();
     } catch (error) {
-      console.error('Error searching:', error);
+      console.error('Error fetching predictive data:', error);
+      throw error;
+    }
+  },
+
+  getCommandData: async () => {
+    try {
+      const response = await fetchWithAuth(`/command`);
+      if (!response.ok) throw new Error('Network response was not ok');
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching command data:', error);
+      throw error;
+    }
+  },
+
+  getPeople: async () => {
+    try {
+      const response = await fetchWithAuth(`/people`);
+      if (!response.ok) throw new Error('Network response was not ok');
+      return await response.json();
+    } catch (error) {
+      console.error('Error fetching people:', error);
       throw error;
     }
   },
@@ -149,7 +178,16 @@ export const api = {
     }
   },
 
-  // NEW MODULES
+  search: async (query: string) => {
+    try {
+      const response = await fetchWithAuth(`/search?q=${encodeURIComponent(query)}`);
+      if (!response.ok) throw new Error('Network response was not ok');
+      return await response.json();
+    } catch (error) {
+      console.error('Error searching:', error);
+      return { results: [] };
+    }
+  },
 
   getOfficerProfile: async (officerId: string) => {
     try {
@@ -162,20 +200,9 @@ export const api = {
     }
   },
 
-  getPeople: async () => {
-    try {
-      const res = await fetchWithAuth(`/people`);
-      if (!res.ok) throw new Error('Network response was not ok');
-      return await res.json();
-    } catch (error) {
-      console.error('Error fetching people:', error);
-      throw error;
-    }
-  },
-
   getEvidence: async (caseId: string) => {
     try {
-      const response = await fetchWithAuth(`/evidence/case/${caseId}`);
+      const response = await fetchWithAuth(`/evidence/${caseId}`);
       if (!response.ok) throw new Error('Network response was not ok');
       return await response.json();
     } catch (error) {
@@ -188,7 +215,7 @@ export const api = {
     try {
       const response = await fetchWithAuth(`/evidence`, {
         method: 'POST',
-        body: formData // DO NOT set Content-Type header, browser handles multipart boundaries
+        body: formData
       });
       if (!response.ok) throw new Error('Network response was not ok');
       return await response.json();
@@ -242,7 +269,6 @@ export const api = {
     }
   },
 
-  // EMERGENCY ACCESS METHODS
   grantEmergencyAccess: async (data: { grantedToOfficerId: string; caseId?: string; districtId?: string; permissionType?: string; reason: string; durationHours: number }) => {
     try {
       const response = await fetchWithAuth(`/auth/emergency-access/grant`, {
@@ -287,18 +313,21 @@ export const api = {
     }
   },
 
-  synthesizeSpeech: async (text: string, language: string = 'en'): Promise<Blob> => {
+  synthesizeSpeech: async (text: string, language: string = 'en'): Promise<Blob | null> => {
     try {
       const response = await fetch(`${API_BASE_URL}/speech`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text, language })
       });
-      if (!response.ok) throw new Error('Speech synthesis endpoint failed');
+      if (!response.ok) return null;
+      const contentType = response.headers.get('content-type') || '';
+      if (contentType.includes('application/json')) {
+        return null;
+      }
       return await response.blob();
     } catch (error) {
-      console.error('Error in speech synthesis API:', error);
-      throw error;
+      return null;
     }
   }
 };
