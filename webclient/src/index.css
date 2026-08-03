@@ -51,12 +51,14 @@
   padding: 0;
 }
 
-body {
+html, body {
   font-family: var(--font-main);
   background-color: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
-  overflow-x: hidden;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -98,94 +100,71 @@ p {
   pointer-events: none;
 }
 
-.registration-mark::before {
-  top: -6px; left: -6px; right: -6px; bottom: -6px;
-  border: 1px solid transparent;
-  border-left-color: var(--text-primary);
-  border-right-color: var(--text-primary);
-  clip-path: polygon(0 0, 100% 0, 100% 12px, 0 12px, 0 calc(100% - 12px), 100% calc(100% - 12px), 100% 100%, 0 100%);
-}
-
-.registration-mark::after {
-  top: -6px; left: -6px; right: -6px; bottom: -6px;
-  border: 1px solid transparent;
-  border-top-color: var(--text-primary);
-  border-bottom-color: var(--text-primary);
-  clip-path: polygon(0 0, 12px 0, 12px 100%, 0 100%, calc(100% - 12px) 0, 100% 0, 100% 100%, calc(100% - 12px) 100%);
-}
-
-/* Overriding old glass-panel to use wireframe */
 .glass-panel {
-  background: transparent;
-  border: 1px solid var(--text-primary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-dark);
   border-radius: 0;
-  box-shadow: none;
 }
 
 .glass-panel-interactive {
-  cursor: pointer;
-  background: transparent;
-  border: 1px solid var(--text-primary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-dark);
   border-radius: 0;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: all 0.2s;
 }
 
 .glass-panel-interactive:hover {
   border-color: var(--accent-cyan);
-  background: rgba(89, 128, 166, 0.05); /* very light steel wash */
 }
 
-/* Buttons */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: 0;
-  font-family: var(--font-heading);
-  text-transform: uppercase;
-  font-weight: 600;
-  font-size: 1rem;
-  letter-spacing: 0.05em;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  border: 1px solid var(--text-primary);
-  background: transparent;
+/* Glass inputs */
+.input-glass {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-dark);
   color: var(--text-primary);
-  outline: none;
+  padding: 8px 12px;
+  font-family: var(--font-main);
+  border-radius: 0;
 }
 
-.btn:focus-visible {
-  outline: 2px solid var(--accent-cyan);
-  outline-offset: 2px;
+.input-glass:focus {
+  outline: none;
+  border-color: var(--accent-cyan);
+}
+
+/* Wireframe buttons */
+.btn {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .btn-primary {
-  background: var(--accent-cyan);
-  color: #ffffff;
-  border: 1px solid var(--accent-cyan);
-  position: relative;
-}
-
-/* Add registration marks to primary buttons */
-.btn-primary::before,
-.btn-primary::after {
-  content: '';
-  position: absolute;
-  width: 6px;
-  height: 6px;
+  background: var(--text-primary);
+  color: var(--bg-primary);
   border: 1px solid var(--text-primary);
-  pointer-events: none;
-  opacity: 1;
 }
-
-.btn-primary::before { top: -4px; left: -4px; border-right: none; border-bottom: none; }
-.btn-primary::after { bottom: -4px; right: -4px; border-left: none; border-top: none; }
 
 .btn-primary:hover {
-  background: #466788; /* Darker steel */
-  border-color: var(--text-primary);
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-dark);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
 }
 
 .btn-ghost {
@@ -196,60 +175,24 @@ p {
 
 .btn-ghost:hover {
   color: var(--text-primary);
-  border-color: var(--border-glass);
-  background: var(--bg-secondary);
 }
 
-/* Inputs */
-.input-glass {
-  background: transparent;
-  border: 1px solid var(--text-primary);
-  border-radius: 0;
-  color: var(--text-primary);
-  padding: 10px 14px;
-  font-family: var(--font-main);
-  font-size: 0.95rem;
-  transition: all 0.2s ease;
-  width: 100%;
-}
-
-.input-glass:focus {
-  outline: 2px solid var(--accent-cyan);
-  outline-offset: -1px;
-  border-color: var(--accent-cyan);
-  background: rgba(89, 128, 166, 0.05);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
-  border-left: 1px solid var(--border-glass);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border-dark);
-  border-radius: 0;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-cyan);
-}
-
-/* Utility overrides */
+/* Badges */
 .badge-outline {
-  border-radius: 0 !important;
-  border: 1px solid var(--border-dark) !important;
+  display: inline-block;
+  padding: 2px 8px;
+  border: 1px solid var(--border-dark);
   font-family: var(--font-heading);
+  font-size: 0.75rem;
   text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
 }
 
-/* Override all icons to use 1.5 stroke and specific colors */
-svg {
-  stroke-width: 1.5;
-}
-
-.text-cyan, .icon-cyan, .icon-emerald, .icon-amber, .icon-indigo, .icon-crimson { 
-  color: var(--accent-cyan) !important; 
+/* Global table scroll wrapper */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
