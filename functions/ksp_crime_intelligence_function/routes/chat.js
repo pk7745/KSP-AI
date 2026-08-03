@@ -1,139 +1,166 @@
 import express from 'express';
 import { dataSyncLayer } from '../services/dataSyncLayer.js';
+import { detectExactIdentifier, performExactIdentifierLookup } from '../services/identifierRecognizer.js';
+import { compareTwoCases } from '../services/caseComparisonEngine.js';
+import { conversationalMemoryEngine } from '../services/conversationalMemoryEngine.js';
 import { enterpriseSearchIndex } from '../services/enterpriseSearchIndex.js';
 import { semanticVectorEngine } from '../services/semanticVectorEngine.js';
 import { searchSimilarCases } from '../services/similarityEngine.js';
 import { enforceRBAC } from '../services/rbacEnforcer.js';
 import { generateExplainableReport } from '../services/explainableAi.js';
-import { processConversationalQuery } from '../services/gemini.js';
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
   try {
-    const { query, language = 'en', history = [], officerId = 'OFF001' } = req.body;
-    const message = query || req.body.message;
+    const { query, language = 'en', history = [], officerId = 'OFF001', sessionId = 'default-session' } = req.body;
+    const rawMessage = query || req.body.message;
     const lang = language || req.body.lang || 'en';
-    const isKn = lang === 'kn' || /[\u0C80-\u0CFF]/.test(message || '');
-    const sessionId = req.body.sessionId || 'default-session';
+    const isKn = lang === 'kn' || /[\u0C80-\u0CFF]/.test(rawMessage || '');
 
-    if (!message) {
+    if (!rawMessage) {
       return res.status(400).json({ error: 'Message is required' });
     }
 
+    // STEP 12: Resolve Implicit Conversational Context
+    const { resolvedQuery, caseIdA, caseIdB } = conversationalMemoryEngine.resolveImplicitContext(rawMessage, sessionId);
+    const message = resolvedQuery;
+
     console.log(`\n===============================================================`);
-    console.log(`[ENTERPRISE AI BACKEND PIPELINE (STEPS 1-12)]`);
-    console.log(`  • Query      : "${message}"`);
-    console.log(`  • Language   : ${isKn ? 'Kannada (kn)' : 'English (en)'}`);
-    console.log(`  • Officer ID : ${officerId}`);
+    console.log(`[ENTERPRISE INVESTIGATION INTELLIGENCE SYSTEM PIPELINE]`);
+    console.log(`  • Raw Query      : "${rawMessage}"`);
+    console.log(`  • Resolved Query : "${message}"`);
+    console.log(`  • Language       : ${isKn ? 'Kannada (kn)' : 'English (en)'}`);
+    console.log(`  • Session ID     : ${sessionId}`);
     console.log(`===============================================================`);
 
-    // STEP 1 & 2: Sync Data Layer from Stratus CSVs
-    const { report: syncReport } = dataSyncLayer.syncAll();
-    console.log(`  ✓ Steps 1-2: Stratus CSV Data Sync Verified (${syncReport.totalRecords} records).`);
+    // STEP 1 & 2: Sync Datastore
+    dataSyncLayer.syncAll();
 
-    // STEP 3 & 4: Intent & Entity Extraction
-    const intent = extractEntitiesAndIntent(message);
-    console.log(`  ✓ Steps 3-4: Intent & Entity Extraction:`, intent);
+    // STEP 7: Side-by-Side Case Comparison Query ("Compare Case A with Case B")
+    if (lowerIncludes(message, 'compare') && (caseIdA || message.match(/KSP\/[A-Z0-9]+\/\d{4}\/\d+/gi)?.length >= 2)) {
+      const ids = message.match(/KSP\/[A-Z0-9]+\/\d{4}\/\d+/gi) || [caseIdA, caseIdB];
+      const compResult = compareTwoCases(ids[0], ids[1] || ids[0]);
+      
+      const reportText = generateExplainableReport({
+        query: message,
+        comparisonResult: compResult,
+        isKn,
+        officerContext: { officerId, authorizedDistrict: 'Bengaluru Urban' }
+      });
 
-    // STEP 6: Strict RBAC Jurisdiction Enforcement
-    const rbacResult = enforceRBAC(officerId, intent.detectedDistrict, message, isKn);
-    console.log(`  ✓ Step 6: RBAC Authorization:`, rbacResult.authorized ? `AUTHORIZED (${rbacResult.authorizedDistrict})` : `DENIED`);
-
-    if (!rbacResult.authorized) {
       return res.json({
-        reply: rbacResult.restrictionReason,
-        answer: rbacResult.restrictionReason,
+        reply: reportText,
+        answer: reportText,
         sessionId,
         lang,
-        accessRestricted: true,
-        authorizedDistrict: rbacResult.authorizedDistrict,
-        sources: ['RBACEnforcer'],
-        confidence: 1.0,
-        dossier: {
-          restrictionReason: rbacResult.restrictionReason,
-          timestamp: new Date().toISOString()
-        }
+        confidence: 0.98,
+        comparison: compResult
       });
     }
 
-    // STEP 4 & 5: Semantic Vector & Keyword Search Across Authorized CSV Records
+    // STEP 1: Exact Identifier Auto-Recognition (Case ID, FIR, Evidence ID, Officer ID, Phone, Vehicle)
+    const exactId = detectExactIdentifier(message);
+
+    if (exactId) {
+      console.log(`  ✓ Exact Identifier Recognized: [${exactId.type}] = ${exactId.value}`);
+      const exactLookup = performExactIdentifierLookup(exactId);
+
+      if (exactLookup && exactLookup.caseRecord) {
+        const cNo = exactLookup.caseRecord.CrimeNumber || exactLookup.caseRecord.CrimeNo;
+        conversationalMemoryEngine.updateSession(sessionId, { activeCaseID: cNo });
+
+        // Enforce RBAC
+        const rbacResult = enforceRBAC(officerId, exactLookup.caseRecord.District, message, isKn);
+        if (!rbacResult.authorized) {
+          return res.json({ reply: rbacResult.restrictionReason, answer: rbacResult.restrictionReason, sessionId, accessRestricted: true });
+        }
+
+        const reportText = generateExplainableReport({
+          query: message,
+          exactLookup,
+          facts: [exactLookup.caseRecord],
+          isKn,
+          officerContext: { officerId, authorizedDistrict: rbacResult.authorizedDistrict }
+        });
+
+        return res.json({
+          reply: reportText,
+          answer: reportText,
+          sessionId,
+          lang,
+          confidence: 1.0,
+          exactMatch: exactLookup
+        });
+      }
+    }
+
+    // STEP 3-11: Multi-Table Semantic Vector & Similar Case Retrieval
+    const intent = extractEntitiesAndIntent(message);
+    const rbacResult = enforceRBAC(officerId, intent.detectedDistrict, message, isKn);
+
+    if (!rbacResult.authorized) {
+      return res.json({ reply: rbacResult.restrictionReason, answer: rbacResult.restrictionReason, sessionId, accessRestricted: true });
+    }
+
     const candidateCases = rbacResult.allowedCases;
     const vectorMatches = semanticVectorEngine.searchVector(message, 5);
     const keywordMatches = enterpriseSearchIndex.searchByKeyword(intent.detectedCrimeType || 'murder');
     
     const combinedMatches = Array.from(new Set([...vectorMatches.map(v => v.caseRecord), ...keywordMatches, ...candidateCases])).slice(0, 8);
-    console.log(`  ✓ Step 4-5: Vector & Index Search Matched ${combinedMatches.length} records.`);
+    const similarCases = searchSimilarCases({ query: message, ...intent }, 10);
 
-    // STEP 7: Case Similarity Search Engine (Percentage Similarity Matches)
-    const similarCases = searchSimilarCases({ query: message, ...intent }, 4);
-    console.log(`  ✓ Step 7: Case Similarity Search Found ${similarCases.length} matches.`);
+    // Save search results in session memory for follow-up turns
+    conversationalMemoryEngine.updateSession(sessionId, { 
+      lastSearchResults: combinedMatches,
+      activeCaseID: combinedMatches.length > 0 ? (combinedMatches[0].CrimeNumber || combinedMatches[0].CrimeNo) : null
+    });
 
-    // STEP 10: Generate Explainable AI Intelligence Report
     const reportText = generateExplainableReport({
       query: message,
       facts: combinedMatches,
       similarCases,
       isKn,
-      officerContext: {
-        officerId,
-        authorizedDistrict: rbacResult.authorizedDistrict
-      }
+      officerContext: { officerId, authorizedDistrict: rbacResult.authorizedDistrict }
     });
-
-    const dossier = {
-      queryIntent: intent,
-      sources: ['CaseMaster', 'Victim', 'Accused', 'Witness', 'Evidence', 'Officer', 'EmergencyAccess'],
-      confidence: 0.98,
-      factsCount: combinedMatches.length,
-      similarCasesCount: similarCases.length,
-      timestamp: new Date().toISOString()
-    };
 
     res.json({
       reply: reportText,
       answer: reportText,
       sessionId,
       lang,
-      sources: dossier.sources,
-      confidence: dossier.confidence,
-      similarCases: similarCases.map(s => ({
+      confidence: 0.98,
+      similarCases: similarCases.slice(0, 5).map(s => ({
         crimeNo: s.caseRecord.CrimeNumber || s.caseRecord.CrimeNo,
         similarityScore: `${s.similarityScore}%`,
         matchingFactors: s.matchingFactors
       })),
-      dossier,
       retrievedCases: combinedMatches.slice(0, 5)
     });
   } catch (err) {
-    console.error('[ENTERPRISE AI ENGINE ERROR]', err);
-    res.status(500).json({ error: 'Failed to process Enterprise AI query', details: err.message });
+    console.error('[INVESTIGATION INTELLIGENCE SYSTEM ERROR]', err);
+    res.status(500).json({ error: 'Failed to process Investigation Intelligence query', details: err.message });
   }
 });
+
+function lowerIncludes(text, kw) {
+  return (text || '').toLowerCase().includes(kw);
+}
 
 function extractEntitiesAndIntent(msg) {
   const lower = msg.toLowerCase();
   
   let detectedDistrict = null;
-  if (lower.includes('bengaluru') || lower.includes('bangalore') || lower.includes('whitefield') || lower.includes('koramangala') || lower.includes('jayanagar')) detectedDistrict = 'Bengaluru Urban';
+  if (lower.includes('bengaluru') || lower.includes('bangalore') || lower.includes('whitefield') || lower.includes('koramangala')) detectedDistrict = 'Bengaluru Urban';
   else if (lower.includes('mysuru') || lower.includes('mysore')) detectedDistrict = 'Mysuru';
   else if (lower.includes('mangaluru') || lower.includes('mangalore')) detectedDistrict = 'Dakshina Kannada (Mangaluru)';
-  else if (lower.includes('belagavi') || lower.includes('belgaum')) detectedDistrict = 'Belagavi';
-  else if (lower.includes('hubballi') || lower.includes('dharwad')) detectedDistrict = 'Hubballi City';
 
   let detectedCrimeType = null;
   if (lower.includes('murder') || lower.includes('homicide') || lower.includes('302') || lower.includes('ಕೊಲೆ')) detectedCrimeType = 'Murder';
   else if (lower.includes('cyber') || lower.includes('phishing') || lower.includes('upi') || lower.includes('fraud') || lower.includes('ಸೈಬರ್')) detectedCrimeType = 'Cyber Crime';
-  else if (lower.includes('theft') || lower.includes('stolen') || lower.includes('burglary') || lower.includes('robbery') || lower.includes('ಕಳ್ಳತನ')) detectedCrimeType = 'Theft';
-  else if (lower.includes('rape') || lower.includes('pocso') || lower.includes('assault') || lower.includes('ಅತ್ಯಾಚಾರ')) detectedCrimeType = 'Crime Against Women';
-  else if (lower.includes('ndps') || lower.includes('drug') || lower.includes('mdma')) detectedCrimeType = 'NDPS';
+  else if (lower.includes('theft') || lower.includes('stolen') || lower.includes('burglary') || lower.includes('ಕಳ್ಳತನ')) detectedCrimeType = 'Theft';
 
-  return {
-    detectedDistrict,
-    detectedCrimeType,
-    hasWeaponKeyword: lower.includes('knife') || lower.includes('pistol') || lower.includes('wire') || lower.includes('gun') || lower.includes('rod'),
-    query: msg
-  };
+  return { detectedDistrict, detectedCrimeType, query: msg };
 }
 
 export default router;
