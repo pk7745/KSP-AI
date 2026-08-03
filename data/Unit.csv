@@ -1,15 +1,130 @@
 UnitID,UnitName,UnitTypeID,StateID,DistrictID,ParentUnitID,Address,ContactNumber,Email,IsActive
-U001,Cubbon Park Police Station,UT001,ST001,DIS001,,Kasturba Road Bengaluru,08022943000,u001@ksp.gov.in,true
-U002,Whitefield Police Station,UT001,ST001,DIS001,,Whitefield Main Road Bengaluru,08022943000,u002@ksp.gov.in,true
-U003,Indiranagar Police Station,UT001,ST001,DIS001,,100 Feet Road Indiranagar Bengaluru,08022943000,u003@ksp.gov.in,true
-U004,Electronic City Police Station,UT001,ST001,DIS001,,Electronic City Phase 1 Bengaluru,08022943000,u004@ksp.gov.in,true
-U005,Jayanagar Police Station,UT001,ST001,DIS001,,4th Block Jayanagar Bengaluru,08022943000,u005@ksp.gov.in,true
-U006,Mysuru South Police Station,UT001,ST001,DIS002,,Nazarbad Mysuru,08022943000,u006@ksp.gov.in,true
-U007,Mangaluru North Police Station,UT001,ST001,DIS003,,Lalbagh Mangaluru,08022943000,u007@ksp.gov.in,true
-U008,Belagavi Police Station,UT001,ST001,DIS004,,Tilakwadi Belagavi,08022943000,u008@ksp.gov.in,true
-U009,Hubballi Town Police Station,UT001,ST001,DIS005,,Old Hubballi Hubballi,08022943000,u009@ksp.gov.in,true
-U010,Shivamogga Police Station,UT001,ST001,DIS006,,Vinoba Nagar Shivamogga,08022943000,u010@ksp.gov.in,true
-U011,Davanagere Town Police Station,UT001,ST001,DIS007,,PB Road Davanagere,08022943000,u011@ksp.gov.in,true
-U012,Ballari Central Police Station,UT001,ST001,DIS008,,Station Road Ballari,08022943000,u012@ksp.gov.in,true
-U013,Tumakuru Town Police Station,UT001,ST001,DIS009,,BH Road Tumakuru,08022943000,u013@ksp.gov.in,true
-U014,Udupi Town Police Station,UT001,ST001,DIS010,,Court Road Udupi,08022943000,u014@ksp.gov.in,true
+U001,Bengaluru Urban Town PS,UT001,ST001,DIS001,,"Bengaluru Urban Town PS, Bengaluru Urban, Karnataka",08022943000,u001@ksp.gov.in,true
+U002,Bengaluru Urban Central PS,UT001,ST001,DIS001,,"Bengaluru Urban Central PS, Bengaluru Urban, Karnataka",08022943000,u002@ksp.gov.in,true
+U003,Bengaluru Urban Cyber Crime PS,UT001,ST001,DIS001,,"Bengaluru Urban Cyber Crime PS, Bengaluru Urban, Karnataka",08022943000,u003@ksp.gov.in,true
+U004,Bengaluru Urban Traffic PS,UT001,ST001,DIS001,,"Bengaluru Urban Traffic PS, Bengaluru Urban, Karnataka",08022943000,u004@ksp.gov.in,true
+U005,Cubbon Park Police Station,UT001,ST001,DIS001,,"Cubbon Park Police Station, Bengaluru Urban, Karnataka",08022943000,u005@ksp.gov.in,true
+U006,Whitefield Police Station,UT001,ST001,DIS001,,"Whitefield Police Station, Bengaluru Urban, Karnataka",08022943000,u006@ksp.gov.in,true
+U007,Indiranagar Police Station,UT001,ST001,DIS001,,"Indiranagar Police Station, Bengaluru Urban, Karnataka",08022943000,u007@ksp.gov.in,true
+U008,Electronic City Police Station,UT001,ST001,DIS001,,"Electronic City Police Station, Bengaluru Urban, Karnataka",08022943000,u008@ksp.gov.in,true
+U009,Jayanagar Police Station,UT001,ST001,DIS001,,"Jayanagar Police Station, Bengaluru Urban, Karnataka",08022943000,u009@ksp.gov.in,true
+U010,Bengaluru Rural Town PS,UT001,ST001,DIS002,,"Bengaluru Rural Town PS, Bengaluru Rural, Karnataka",08022943000,u010@ksp.gov.in,true
+U011,Bengaluru Rural Central PS,UT001,ST001,DIS002,,"Bengaluru Rural Central PS, Bengaluru Rural, Karnataka",08022943000,u011@ksp.gov.in,true
+U012,Bengaluru Rural Cyber Crime PS,UT001,ST001,DIS002,,"Bengaluru Rural Cyber Crime PS, Bengaluru Rural, Karnataka",08022943000,u012@ksp.gov.in,true
+U013,Bengaluru Rural Traffic PS,UT001,ST001,DIS002,,"Bengaluru Rural Traffic PS, Bengaluru Rural, Karnataka",08022943000,u013@ksp.gov.in,true
+U014,Ramanagara Town PS,UT001,ST001,DIS003,,"Ramanagara Town PS, Ramanagara, Karnataka",08022943000,u014@ksp.gov.in,true
+U015,Ramanagara Central PS,UT001,ST001,DIS003,,"Ramanagara Central PS, Ramanagara, Karnataka",08022943000,u015@ksp.gov.in,true
+U016,Ramanagara Cyber Crime PS,UT001,ST001,DIS003,,"Ramanagara Cyber Crime PS, Ramanagara, Karnataka",08022943000,u016@ksp.gov.in,true
+U017,Ramanagara Traffic PS,UT001,ST001,DIS003,,"Ramanagara Traffic PS, Ramanagara, Karnataka",08022943000,u017@ksp.gov.in,true
+U018,Chikkaballapura Town PS,UT001,ST001,DIS004,,"Chikkaballapura Town PS, Chikkaballapura, Karnataka",08022943000,u018@ksp.gov.in,true
+U019,Chikkaballapura Central PS,UT001,ST001,DIS004,,"Chikkaballapura Central PS, Chikkaballapura, Karnataka",08022943000,u019@ksp.gov.in,true
+U020,Chikkaballapura Cyber Crime PS,UT001,ST001,DIS004,,"Chikkaballapura Cyber Crime PS, Chikkaballapura, Karnataka",08022943000,u020@ksp.gov.in,true
+U021,Chikkaballapura Traffic PS,UT001,ST001,DIS004,,"Chikkaballapura Traffic PS, Chikkaballapura, Karnataka",08022943000,u021@ksp.gov.in,true
+U022,Kolar Town PS,UT001,ST001,DIS005,,"Kolar Town PS, Kolar, Karnataka",08022943000,u022@ksp.gov.in,true
+U023,Kolar Central PS,UT001,ST001,DIS005,,"Kolar Central PS, Kolar, Karnataka",08022943000,u023@ksp.gov.in,true
+U024,Kolar Cyber Crime PS,UT001,ST001,DIS005,,"Kolar Cyber Crime PS, Kolar, Karnataka",08022943000,u024@ksp.gov.in,true
+U025,Kolar Traffic PS,UT001,ST001,DIS005,,"Kolar Traffic PS, Kolar, Karnataka",08022943000,u025@ksp.gov.in,true
+U026,Tumakuru Town PS,UT001,ST001,DIS006,,"Tumakuru Town PS, Tumakuru, Karnataka",08022943000,u026@ksp.gov.in,true
+U027,Tumakuru Central PS,UT001,ST001,DIS006,,"Tumakuru Central PS, Tumakuru, Karnataka",08022943000,u027@ksp.gov.in,true
+U028,Tumakuru Cyber Crime PS,UT001,ST001,DIS006,,"Tumakuru Cyber Crime PS, Tumakuru, Karnataka",08022943000,u028@ksp.gov.in,true
+U029,Tumakuru Traffic PS,UT001,ST001,DIS006,,"Tumakuru Traffic PS, Tumakuru, Karnataka",08022943000,u029@ksp.gov.in,true
+U030,Shivamogga Town PS,UT001,ST001,DIS007,,"Shivamogga Town PS, Shivamogga, Karnataka",08022943000,u030@ksp.gov.in,true
+U031,Shivamogga Central PS,UT001,ST001,DIS007,,"Shivamogga Central PS, Shivamogga, Karnataka",08022943000,u031@ksp.gov.in,true
+U032,Shivamogga Cyber Crime PS,UT001,ST001,DIS007,,"Shivamogga Cyber Crime PS, Shivamogga, Karnataka",08022943000,u032@ksp.gov.in,true
+U033,Shivamogga Traffic PS,UT001,ST001,DIS007,,"Shivamogga Traffic PS, Shivamogga, Karnataka",08022943000,u033@ksp.gov.in,true
+U034,Chitradurga Town PS,UT001,ST001,DIS008,,"Chitradurga Town PS, Chitradurga, Karnataka",08022943000,u034@ksp.gov.in,true
+U035,Chitradurga Central PS,UT001,ST001,DIS008,,"Chitradurga Central PS, Chitradurga, Karnataka",08022943000,u035@ksp.gov.in,true
+U036,Chitradurga Cyber Crime PS,UT001,ST001,DIS008,,"Chitradurga Cyber Crime PS, Chitradurga, Karnataka",08022943000,u036@ksp.gov.in,true
+U037,Chitradurga Traffic PS,UT001,ST001,DIS008,,"Chitradurga Traffic PS, Chitradurga, Karnataka",08022943000,u037@ksp.gov.in,true
+U038,Davanagere Town PS,UT001,ST001,DIS009,,"Davanagere Town PS, Davanagere, Karnataka",08022943000,u038@ksp.gov.in,true
+U039,Davanagere Central PS,UT001,ST001,DIS009,,"Davanagere Central PS, Davanagere, Karnataka",08022943000,u039@ksp.gov.in,true
+U040,Davanagere Cyber Crime PS,UT001,ST001,DIS009,,"Davanagere Cyber Crime PS, Davanagere, Karnataka",08022943000,u040@ksp.gov.in,true
+U041,Davanagere Traffic PS,UT001,ST001,DIS009,,"Davanagere Traffic PS, Davanagere, Karnataka",08022943000,u041@ksp.gov.in,true
+U042,Mysuru Town PS,UT001,ST001,DIS010,,"Mysuru Town PS, Mysuru, Karnataka",08022943000,u042@ksp.gov.in,true
+U043,Mysuru Central PS,UT001,ST001,DIS010,,"Mysuru Central PS, Mysuru, Karnataka",08022943000,u043@ksp.gov.in,true
+U044,Mysuru Cyber Crime PS,UT001,ST001,DIS010,,"Mysuru Cyber Crime PS, Mysuru, Karnataka",08022943000,u044@ksp.gov.in,true
+U045,Mysuru Traffic PS,UT001,ST001,DIS010,,"Mysuru Traffic PS, Mysuru, Karnataka",08022943000,u045@ksp.gov.in,true
+U046,Mandya Town PS,UT001,ST001,DIS011,,"Mandya Town PS, Mandya, Karnataka",08022943000,u046@ksp.gov.in,true
+U047,Mandya Central PS,UT001,ST001,DIS011,,"Mandya Central PS, Mandya, Karnataka",08022943000,u047@ksp.gov.in,true
+U048,Mandya Cyber Crime PS,UT001,ST001,DIS011,,"Mandya Cyber Crime PS, Mandya, Karnataka",08022943000,u048@ksp.gov.in,true
+U049,Mandya Traffic PS,UT001,ST001,DIS011,,"Mandya Traffic PS, Mandya, Karnataka",08022943000,u049@ksp.gov.in,true
+U050,Hassan Town PS,UT001,ST001,DIS012,,"Hassan Town PS, Hassan, Karnataka",08022943000,u050@ksp.gov.in,true
+U051,Hassan Central PS,UT001,ST001,DIS012,,"Hassan Central PS, Hassan, Karnataka",08022943000,u051@ksp.gov.in,true
+U052,Hassan Cyber Crime PS,UT001,ST001,DIS012,,"Hassan Cyber Crime PS, Hassan, Karnataka",08022943000,u052@ksp.gov.in,true
+U053,Hassan Traffic PS,UT001,ST001,DIS012,,"Hassan Traffic PS, Hassan, Karnataka",08022943000,u053@ksp.gov.in,true
+U054,Chamarajanagara Town PS,UT001,ST001,DIS013,,"Chamarajanagara Town PS, Chamarajanagara, Karnataka",08022943000,u054@ksp.gov.in,true
+U055,Chamarajanagara Central PS,UT001,ST001,DIS013,,"Chamarajanagara Central PS, Chamarajanagara, Karnataka",08022943000,u055@ksp.gov.in,true
+U056,Chamarajanagara Cyber Crime PS,UT001,ST001,DIS013,,"Chamarajanagara Cyber Crime PS, Chamarajanagara, Karnataka",08022943000,u056@ksp.gov.in,true
+U057,Chamarajanagara Traffic PS,UT001,ST001,DIS013,,"Chamarajanagara Traffic PS, Chamarajanagara, Karnataka",08022943000,u057@ksp.gov.in,true
+U058,Kodagu Town PS,UT001,ST001,DIS014,,"Kodagu Town PS, Kodagu, Karnataka",08022943000,u058@ksp.gov.in,true
+U059,Kodagu Central PS,UT001,ST001,DIS014,,"Kodagu Central PS, Kodagu, Karnataka",08022943000,u059@ksp.gov.in,true
+U060,Kodagu Cyber Crime PS,UT001,ST001,DIS014,,"Kodagu Cyber Crime PS, Kodagu, Karnataka",08022943000,u060@ksp.gov.in,true
+U061,Kodagu Traffic PS,UT001,ST001,DIS014,,"Kodagu Traffic PS, Kodagu, Karnataka",08022943000,u061@ksp.gov.in,true
+U062,Dakshina Kannada (Mangaluru) Town PS,UT001,ST001,DIS015,,"Dakshina Kannada (Mangaluru) Town PS, Dakshina Kannada (Mangaluru), Karnataka",08022943000,u062@ksp.gov.in,true
+U063,Dakshina Kannada (Mangaluru) Central PS,UT001,ST001,DIS015,,"Dakshina Kannada (Mangaluru) Central PS, Dakshina Kannada (Mangaluru), Karnataka",08022943000,u063@ksp.gov.in,true
+U064,Dakshina Kannada (Mangaluru) Cyber Crime PS,UT001,ST001,DIS015,,"Dakshina Kannada (Mangaluru) Cyber Crime PS, Dakshina Kannada (Mangaluru), Karnataka",08022943000,u064@ksp.gov.in,true
+U065,Dakshina Kannada (Mangaluru) Traffic PS,UT001,ST001,DIS015,,"Dakshina Kannada (Mangaluru) Traffic PS, Dakshina Kannada (Mangaluru), Karnataka",08022943000,u065@ksp.gov.in,true
+U066,Udupi Town PS,UT001,ST001,DIS016,,"Udupi Town PS, Udupi, Karnataka",08022943000,u066@ksp.gov.in,true
+U067,Udupi Central PS,UT001,ST001,DIS016,,"Udupi Central PS, Udupi, Karnataka",08022943000,u067@ksp.gov.in,true
+U068,Udupi Cyber Crime PS,UT001,ST001,DIS016,,"Udupi Cyber Crime PS, Udupi, Karnataka",08022943000,u068@ksp.gov.in,true
+U069,Udupi Traffic PS,UT001,ST001,DIS016,,"Udupi Traffic PS, Udupi, Karnataka",08022943000,u069@ksp.gov.in,true
+U070,Uttara Kannada (Karwar) Town PS,UT001,ST001,DIS017,,"Uttara Kannada (Karwar) Town PS, Uttara Kannada (Karwar), Karnataka",08022943000,u070@ksp.gov.in,true
+U071,Uttara Kannada (Karwar) Central PS,UT001,ST001,DIS017,,"Uttara Kannada (Karwar) Central PS, Uttara Kannada (Karwar), Karnataka",08022943000,u071@ksp.gov.in,true
+U072,Uttara Kannada (Karwar) Cyber Crime PS,UT001,ST001,DIS017,,"Uttara Kannada (Karwar) Cyber Crime PS, Uttara Kannada (Karwar), Karnataka",08022943000,u072@ksp.gov.in,true
+U073,Uttara Kannada (Karwar) Traffic PS,UT001,ST001,DIS017,,"Uttara Kannada (Karwar) Traffic PS, Uttara Kannada (Karwar), Karnataka",08022943000,u073@ksp.gov.in,true
+U074,Belagavi Town PS,UT001,ST001,DIS018,,"Belagavi Town PS, Belagavi, Karnataka",08022943000,u074@ksp.gov.in,true
+U075,Belagavi Central PS,UT001,ST001,DIS018,,"Belagavi Central PS, Belagavi, Karnataka",08022943000,u075@ksp.gov.in,true
+U076,Belagavi Cyber Crime PS,UT001,ST001,DIS018,,"Belagavi Cyber Crime PS, Belagavi, Karnataka",08022943000,u076@ksp.gov.in,true
+U077,Belagavi Traffic PS,UT001,ST001,DIS018,,"Belagavi Traffic PS, Belagavi, Karnataka",08022943000,u077@ksp.gov.in,true
+U078,Dharwad Town PS,UT001,ST001,DIS019,,"Dharwad Town PS, Dharwad, Karnataka",08022943000,u078@ksp.gov.in,true
+U079,Dharwad Central PS,UT001,ST001,DIS019,,"Dharwad Central PS, Dharwad, Karnataka",08022943000,u079@ksp.gov.in,true
+U080,Dharwad Cyber Crime PS,UT001,ST001,DIS019,,"Dharwad Cyber Crime PS, Dharwad, Karnataka",08022943000,u080@ksp.gov.in,true
+U081,Dharwad Traffic PS,UT001,ST001,DIS019,,"Dharwad Traffic PS, Dharwad, Karnataka",08022943000,u081@ksp.gov.in,true
+U082,Hubballi City Town PS,UT001,ST001,DIS020,,"Hubballi City Town PS, Hubballi City, Karnataka",08022943000,u082@ksp.gov.in,true
+U083,Hubballi City Central PS,UT001,ST001,DIS020,,"Hubballi City Central PS, Hubballi City, Karnataka",08022943000,u083@ksp.gov.in,true
+U084,Hubballi City Cyber Crime PS,UT001,ST001,DIS020,,"Hubballi City Cyber Crime PS, Hubballi City, Karnataka",08022943000,u084@ksp.gov.in,true
+U085,Hubballi City Traffic PS,UT001,ST001,DIS020,,"Hubballi City Traffic PS, Hubballi City, Karnataka",08022943000,u085@ksp.gov.in,true
+U086,Gadag Town PS,UT001,ST001,DIS021,,"Gadag Town PS, Gadag, Karnataka",08022943000,u086@ksp.gov.in,true
+U087,Gadag Central PS,UT001,ST001,DIS021,,"Gadag Central PS, Gadag, Karnataka",08022943000,u087@ksp.gov.in,true
+U088,Gadag Cyber Crime PS,UT001,ST001,DIS021,,"Gadag Cyber Crime PS, Gadag, Karnataka",08022943000,u088@ksp.gov.in,true
+U089,Gadag Traffic PS,UT001,ST001,DIS021,,"Gadag Traffic PS, Gadag, Karnataka",08022943000,u089@ksp.gov.in,true
+U090,Haveri Town PS,UT001,ST001,DIS022,,"Haveri Town PS, Haveri, Karnataka",08022943000,u090@ksp.gov.in,true
+U091,Haveri Central PS,UT001,ST001,DIS022,,"Haveri Central PS, Haveri, Karnataka",08022943000,u091@ksp.gov.in,true
+U092,Haveri Cyber Crime PS,UT001,ST001,DIS022,,"Haveri Cyber Crime PS, Haveri, Karnataka",08022943000,u092@ksp.gov.in,true
+U093,Haveri Traffic PS,UT001,ST001,DIS022,,"Haveri Traffic PS, Haveri, Karnataka",08022943000,u093@ksp.gov.in,true
+U094,Vijayapura Town PS,UT001,ST001,DIS023,,"Vijayapura Town PS, Vijayapura, Karnataka",08022943000,u094@ksp.gov.in,true
+U095,Vijayapura Central PS,UT001,ST001,DIS023,,"Vijayapura Central PS, Vijayapura, Karnataka",08022943000,u095@ksp.gov.in,true
+U096,Vijayapura Cyber Crime PS,UT001,ST001,DIS023,,"Vijayapura Cyber Crime PS, Vijayapura, Karnataka",08022943000,u096@ksp.gov.in,true
+U097,Vijayapura Traffic PS,UT001,ST001,DIS023,,"Vijayapura Traffic PS, Vijayapura, Karnataka",08022943000,u097@ksp.gov.in,true
+U098,Bagalkote Town PS,UT001,ST001,DIS024,,"Bagalkote Town PS, Bagalkote, Karnataka",08022943000,u098@ksp.gov.in,true
+U099,Bagalkote Central PS,UT001,ST001,DIS024,,"Bagalkote Central PS, Bagalkote, Karnataka",08022943000,u099@ksp.gov.in,true
+U100,Bagalkote Cyber Crime PS,UT001,ST001,DIS024,,"Bagalkote Cyber Crime PS, Bagalkote, Karnataka",08022943000,u100@ksp.gov.in,true
+U101,Bagalkote Traffic PS,UT001,ST001,DIS024,,"Bagalkote Traffic PS, Bagalkote, Karnataka",08022943000,u101@ksp.gov.in,true
+U102,Kalaburagi Town PS,UT001,ST001,DIS025,,"Kalaburagi Town PS, Kalaburagi, Karnataka",08022943000,u102@ksp.gov.in,true
+U103,Kalaburagi Central PS,UT001,ST001,DIS025,,"Kalaburagi Central PS, Kalaburagi, Karnataka",08022943000,u103@ksp.gov.in,true
+U104,Kalaburagi Cyber Crime PS,UT001,ST001,DIS025,,"Kalaburagi Cyber Crime PS, Kalaburagi, Karnataka",08022943000,u104@ksp.gov.in,true
+U105,Kalaburagi Traffic PS,UT001,ST001,DIS025,,"Kalaburagi Traffic PS, Kalaburagi, Karnataka",08022943000,u105@ksp.gov.in,true
+U106,Bidar Town PS,UT001,ST001,DIS026,,"Bidar Town PS, Bidar, Karnataka",08022943000,u106@ksp.gov.in,true
+U107,Bidar Central PS,UT001,ST001,DIS026,,"Bidar Central PS, Bidar, Karnataka",08022943000,u107@ksp.gov.in,true
+U108,Bidar Cyber Crime PS,UT001,ST001,DIS026,,"Bidar Cyber Crime PS, Bidar, Karnataka",08022943000,u108@ksp.gov.in,true
+U109,Bidar Traffic PS,UT001,ST001,DIS026,,"Bidar Traffic PS, Bidar, Karnataka",08022943000,u109@ksp.gov.in,true
+U110,Raichur Town PS,UT001,ST001,DIS027,,"Raichur Town PS, Raichur, Karnataka",08022943000,u110@ksp.gov.in,true
+U111,Raichur Central PS,UT001,ST001,DIS027,,"Raichur Central PS, Raichur, Karnataka",08022943000,u111@ksp.gov.in,true
+U112,Raichur Cyber Crime PS,UT001,ST001,DIS027,,"Raichur Cyber Crime PS, Raichur, Karnataka",08022943000,u112@ksp.gov.in,true
+U113,Raichur Traffic PS,UT001,ST001,DIS027,,"Raichur Traffic PS, Raichur, Karnataka",08022943000,u113@ksp.gov.in,true
+U114,Koppal Town PS,UT001,ST001,DIS028,,"Koppal Town PS, Koppal, Karnataka",08022943000,u114@ksp.gov.in,true
+U115,Koppal Central PS,UT001,ST001,DIS028,,"Koppal Central PS, Koppal, Karnataka",08022943000,u115@ksp.gov.in,true
+U116,Koppal Cyber Crime PS,UT001,ST001,DIS028,,"Koppal Cyber Crime PS, Koppal, Karnataka",08022943000,u116@ksp.gov.in,true
+U117,Koppal Traffic PS,UT001,ST001,DIS028,,"Koppal Traffic PS, Koppal, Karnataka",08022943000,u117@ksp.gov.in,true
+U118,Yadgir Town PS,UT001,ST001,DIS029,,"Yadgir Town PS, Yadgir, Karnataka",08022943000,u118@ksp.gov.in,true
+U119,Yadgir Central PS,UT001,ST001,DIS029,,"Yadgir Central PS, Yadgir, Karnataka",08022943000,u119@ksp.gov.in,true
+U120,Yadgir Cyber Crime PS,UT001,ST001,DIS029,,"Yadgir Cyber Crime PS, Yadgir, Karnataka",08022943000,u120@ksp.gov.in,true
+U121,Yadgir Traffic PS,UT001,ST001,DIS029,,"Yadgir Traffic PS, Yadgir, Karnataka",08022943000,u121@ksp.gov.in,true
+U122,Ballari Town PS,UT001,ST001,DIS030,,"Ballari Town PS, Ballari, Karnataka",08022943000,u122@ksp.gov.in,true
+U123,Ballari Central PS,UT001,ST001,DIS030,,"Ballari Central PS, Ballari, Karnataka",08022943000,u123@ksp.gov.in,true
+U124,Ballari Cyber Crime PS,UT001,ST001,DIS030,,"Ballari Cyber Crime PS, Ballari, Karnataka",08022943000,u124@ksp.gov.in,true
+U125,Ballari Traffic PS,UT001,ST001,DIS030,,"Ballari Traffic PS, Ballari, Karnataka",08022943000,u125@ksp.gov.in,true
+U126,Vijayanagara (Hospete) Town PS,UT001,ST001,DIS031,,"Vijayanagara (Hospete) Town PS, Vijayanagara (Hospete), Karnataka",08022943000,u126@ksp.gov.in,true
+U127,Vijayanagara (Hospete) Central PS,UT001,ST001,DIS031,,"Vijayanagara (Hospete) Central PS, Vijayanagara (Hospete), Karnataka",08022943000,u127@ksp.gov.in,true
+U128,Vijayanagara (Hospete) Cyber Crime PS,UT001,ST001,DIS031,,"Vijayanagara (Hospete) Cyber Crime PS, Vijayanagara (Hospete), Karnataka",08022943000,u128@ksp.gov.in,true
+U129,Vijayanagara (Hospete) Traffic PS,UT001,ST001,DIS031,,"Vijayanagara (Hospete) Traffic PS, Vijayanagara (Hospete), Karnataka",08022943000,u129@ksp.gov.in,true

@@ -1,11 +1,5 @@
-CategoryID,CategoryName,Description,IsActive
-CAT001,Crime Against Person,Offences involving harm to individuals,true
-CAT002,Crime Against Property,Offences involving theft or damage to property,true
-CAT003,Economic Offence,Financial and economic crimes,true
-CAT004,Cyber Crime,Crimes committed using computers or digital networks,true
-CAT005,Women and Child Crime,Crimes against women and children,true
-CAT006,Narcotics Offence,Offences related to drugs and narcotics,true
-CAT007,Traffic Offence,Violations of traffic and road safety laws,true
-CAT008,Public Order Offence,Offences affecting public peace and order,true
-CAT009,Special and Local Laws,Cases registered under special acts,true
-CAT010,Others,Other categories of criminal offences,true
+CategoryID,CategoryName,Description
+CAT001,Cognizable Offence,Police can arrest without warrant
+CAT002,Non-Cognizable Offence,Requires judicial Magistrate order
+CAT003,Special & Local Laws (SLL),Regulated under specific state statutes
+CAT004,Petition / Inquiry,Preliminary investigation inquiry

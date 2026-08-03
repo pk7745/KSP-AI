@@ -1,11 +1,13 @@
-CrimeHeadID,CrimeHeadName,CategoryID,GravityID,Description,IsActive
-CH001,Murder,CAT001,GR010,Intentional unlawful killing,true
-CH002,Assault,CAT001,GR004,Physical attack causing injury,true
-CH003,Theft,CAT002,GR003,Unlawful taking of property,true
-CH004,Burglary,CAT002,GR005,Breaking into property to commit theft,true
-CH005,Cheating and Fraud,CAT003,GR005,Financial deception and fraud,true
-CH006,Cyber Fraud,CAT004,GR007,Online financial and identity fraud,true
-CH007,Crime Against Women,CAT005,GR008,Offences against women,true
-CH008,Narcotics Offence,CAT006,GR006,Illegal possession or trafficking of drugs,true
-CH009,Traffic Accident,CAT007,GR002,Road traffic related offences,true
-CH010,Rioting,CAT008,GR006,Unlawful assembly involving violence,true
+CrimeHeadID,CrimeHeadName,Description
+CH001,Violent Crime,"Homicide, Murder, Attempted Murder, Grievous Assault"
+CH002,Property Crime,"Burglary, Dacoity, Robbery, Housebreak, Chain Snatching"
+CH003,Vehicle Theft,"Two-Wheeler, Four-Wheeler, Commercial Transport Theft"
+CH004,Cyber Crime & Online Fraud,"UPI Phishing, Banking Fraud, Identity Theft, ATM Frauds"
+CH005,Crime Against Women & Children,"Rape, Sexual Assault, POCSO, Domestic Violence, Harassment"
+CH006,Narcotics & Contraband,"NDPS, Drug Trafficking, Synthetic Drugs, Ganja Seizure"
+CH007,Organized Crime & Extortion,"Syndicate Extortion, Blackmail, Illegal Weapons, Human Trafficking"
+CH008,Economic & White Collar Offence,"Forgery, Fake Currency, Counterfeit Documents, Corruption, Frauds"
+CH009,Environmental & Forest Crime,"Wildlife Poaching, Teak Smuggling, Illegal Mining"
+CH010,Terror & National Security,"Subversive Activity, Radicalization, Explosives Seizure"
+CH011,Traffic & Road Incident,"Fatal Road Accident, Hit & Run, Drunk Driving Incident"
+CH012,Public Disturbance & Miscellaneous,"Riot, Unknown Dead Body, Suicide Investigation, Property Dispute"

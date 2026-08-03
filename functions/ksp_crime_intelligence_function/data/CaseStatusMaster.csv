@@ -1,11 +1,7 @@
-CaseStatusID,StatusName,Description,IsActive
-CS001,Under Investigation,Investigation is currently in progress,true
-CS002,Charge Sheet Filed,Charge sheet has been submitted to the court,true
-CS003,Pending Trial,Case is awaiting trial,true
-CS004,Trial in Progress,Court trial is currently ongoing,true
-CS005,Convicted,Accused has been convicted by the court,true
-CS006,Acquitted,Accused has been acquitted by the court,true
-CS007,Closed,Case has been closed,true
-CS008,Transferred,Case transferred to another police station or agency,true
-CS009,Reopened,Previously closed case reopened for investigation,true
-CS010,Cancelled,FIR or case cancelled as per legal procedure,true
+CaseStatusID,CaseStatusName,Description
+CS001,Under Investigation,Active investigation led by assigned IO
+CS002,Charge Sheeted,Final prosecution report filed in court
+CS003,Pending Trial,Trial ongoing before judicial Magistrate
+CS004,Convicted,Court judgment passed finding accused guilty
+CS005,Acquitted,Court acquitted accused due to benefit of doubt
+CS006,Closed / Undetected,Case closed after exhausting investigative leads

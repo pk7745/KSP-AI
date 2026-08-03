@@ -1,13 +1,11 @@
-RankID,RankName,RankCode,RankLevel,IsActive
+RankID,RankName,RankCode,HierarchyLevel,IsActive
 R001,Director General of Police,DGP,1,true
-R002,Additional Director General of Police,ADGP,2,true
-R003,Inspector General of Police,IGP,3,true
-R004,Deputy Inspector General,DIG,4,true
-R005,Superintendent of Police,SP,5,true
-R006,Deputy Superintendent of Police,DSP,6,true
-R007,Assistant Commissioner of Police,ACP,7,true
-R008,Inspector,PI,8,true
-R009,Sub Inspector,PSI,9,true
-R010,Assistant Sub Inspector,ASI,10,true
-R011,Head Constable,HC,11,true
-R012,Police Constable,PC,12,true
+R002,Inspector General of Police,IGP,2,true
+R003,Commissioner of Police,CP,2,true
+R004,Deputy Inspector General,DIG,3,true
+R005,Superintendent of Police,SP / DCP,4,true
+R006,Deputy Superintendent of Police,DySP / ACP,5,true
+R007,Circle Inspector of Police,CI / Inspector,6,true
+R008,Police Sub-Inspector,PSI,7,true
+R009,Assistant Sub-Inspector,ASI,8,true
+R010,Head Constable / Constable,HC / PC,9,true

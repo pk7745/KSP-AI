@@ -1,11 +1,4 @@
-NotificationID,OfficerID,Title,Message,Type,IsRead,CreatedAt
-NOT001,OFF001,New Case Assigned,You have been assigned CASE001 for investigation.,Assignment,Yes,2026-01-15 09:00:00
-NOT002,OFF002,Hearing Scheduled,Hearing for CASE002 has been scheduled on 2026-03-18.,Court,No,2026-03-10 10:30:00
-NOT003,OFF003,Evidence Uploaded,New CCTV footage has been uploaded for CASE003.,Evidence,Yes,2026-04-08 14:15:00
-NOT004,OFF004,AI Analysis Completed,AI analysis for CASE004 has been completed successfully.,AI Analysis,No,2026-04-19 11:45:00
-NOT005,OFF005,Chargesheet Filed,Chargesheet for CASE005 has been filed before the court.,Chargesheet,Yes,2026-06-08 16:20:00
-NOT006,OFF006,Accused Surrendered,Accused ACC006 has surrendered in CASE006.,Arrest,No,2026-06-22 09:40:00
-NOT007,OFF007,Court Reminder,Upcoming hearing for CASE007 is scheduled tomorrow.,Reminder,No,2026-09-01 08:30:00
-NOT008,OFF008,Illegal Weapon Report,Ballistic examination report is available for CASE008.,Evidence,Yes,2026-09-25 15:00:00
-NOT009,OFF009,Bail Granted,Bail has been granted to the accused in CASE009.,Court,No,2026-09-10 13:10:00
-NOT010,OFF010,Identity Fraud Alert,Additional digital evidence has been received for CASE010.,Investigation,No,2026-10-07 12:00:00
+NotificationID,UserID,Title,Message,Timestamp,Status
+NOT001,OFF001,New FIR Assigned,FIR KSP/DIS001/2026/00001 assigned to your IO queue.,2026-07-10 14:35:00,Unread
+NOT002,OFF002,Cybercrime Spike Alert,Predictive engine detected 98% fraud spike in IT corridor.,2026-07-14 09:20:00,Unread
+NOT003,OFF004,Chargesheet Approved,Chargesheet CS-2026-00002 approved by court.,2026-07-20 16:00:00,Read

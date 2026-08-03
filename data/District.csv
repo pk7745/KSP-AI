@@ -1,11 +1,32 @@
 DistrictID,StateID,DistrictName,IsActive
 DIS001,ST001,Bengaluru Urban,true
-DIS002,ST001,Mysuru,true
-DIS003,ST001,Mangaluru,true
-DIS004,ST001,Belagavi,true
-DIS005,ST001,Hubballi-Dharwad,true
-DIS006,ST001,Shivamogga,true
-DIS007,ST001,Davanagere,true
-DIS008,ST001,Ballari,true
-DIS009,ST001,Tumakuru,true
-DIS010,ST001,Udupi,true
+DIS002,ST001,Bengaluru Rural,true
+DIS003,ST001,Ramanagara,true
+DIS004,ST001,Chikkaballapura,true
+DIS005,ST001,Kolar,true
+DIS006,ST001,Tumakuru,true
+DIS007,ST001,Shivamogga,true
+DIS008,ST001,Chitradurga,true
+DIS009,ST001,Davanagere,true
+DIS010,ST001,Mysuru,true
+DIS011,ST001,Mandya,true
+DIS012,ST001,Hassan,true
+DIS013,ST001,Chamarajanagara,true
+DIS014,ST001,Kodagu,true
+DIS015,ST001,Dakshina Kannada (Mangaluru),true
+DIS016,ST001,Udupi,true
+DIS017,ST001,Uttara Kannada (Karwar),true
+DIS018,ST001,Belagavi,true
+DIS019,ST001,Dharwad,true
+DIS020,ST001,Hubballi City,true
+DIS021,ST001,Gadag,true
+DIS022,ST001,Haveri,true
+DIS023,ST001,Vijayapura,true
+DIS024,ST001,Bagalkote,true
+DIS025,ST001,Kalaburagi,true
+DIS026,ST001,Bidar,true
+DIS027,ST001,Raichur,true
+DIS028,ST001,Koppal,true
+DIS029,ST001,Yadgir,true
+DIS030,ST001,Ballari,true
+DIS031,ST001,Vijayanagara (Hospete),true

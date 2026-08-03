@@ -1,21 +1,43 @@
-CrimeSubHeadID,CrimeHeadID,CrimeSubHeadName,Description,IsActive
-CSH001,CH001,Homicide,Intentional killing of a person,true
-CSH002,CH001,Attempt to Murder,Attempt to unlawfully kill a person,true
-CSH003,CH002,Simple Assault,Assault causing minor injuries,true
-CSH004,CH002,Aggravated Assault,Assault involving serious injuries or weapons,true
-CSH005,CH003,Vehicle Theft,Theft of cars, bikes, or other vehicles,true
-CSH006,CH003,Mobile Theft,Theft of mobile phones,true
-CSH007,CH004,House Burglary,Breaking into a residence to commit theft,true
-CSH008,CH004,Commercial Burglary,Breaking into commercial premises,true
-CSH009,CH005,Financial Fraud,Fraud involving money or financial transactions,true
-CSH010,CH005,Identity Fraud,Using another person's identity illegally,true
-CSH011,CH006,Online Banking Fraud,Fraud through internet banking,true
-CSH012,CH006,Phishing Attack,Stealing sensitive information through fake communications,true
-CSH013,CH007,Domestic Violence,Violence occurring within the family,true
-CSH014,CH007,Sexual Harassment,Harassment of a sexual nature,true
-CSH015,CH008,Drug Possession,Illegal possession of narcotic substances,true
-CSH016,CH008,Drug Trafficking,Illegal transportation or sale of narcotics,true
-CSH017,CH009,Drunk Driving,Driving under the influence of alcohol,true
-CSH018,CH009,Hit and Run,Leaving the accident scene without assistance,true
-CSH019,CH010,Unlawful Assembly,Gathering illegally and disturbing public order,true
-CSH020,CH010,Violent Riot,Riot involving violence and property damage,true
+CrimeSubHeadID,CrimeHeadID,CrimeSubHeadName,Description
+CSH001,CH001,Murder,Premeditated homicide investigation
+CSH002,CH001,Attempt to Murder,Violent assault with deadly weapon
+CSH003,CH001,Assault & Grievous Hurt,Physical injury caused during gang/group clash
+CSH004,CH001,Kidnapping,Abduction for ransom or coercion
+CSH005,CH001,Missing Person,Trace & locate missing citizen petition
+CSH006,CH002,Theft,Larceny of personal or commercial goods
+CSH007,CH003,Vehicle Theft,Stolen motor vehicle or two-wheeler
+CSH008,CH002,Burglary,Overnight trespass and property theft
+CSH009,CH002,Robbery,Armed robbery using force or coercion
+CSH010,CH002,Chain Snatching,Snatching jewelry from pedestrians on public road
+CSH011,CH004,Cyber Crime,"Hacking, malware infection, IT Act violation"
+CSH012,CH004,UPI Fraud,Fake QR code or deceptive payment request
+CSH013,CH004,Online Banking Fraud,Phishing link leading to net banking unauthorized debit
+CSH014,CH004,Identity Theft,SIM swap or stolen credential impersonation
+CSH015,CH004,ATM Fraud,ATM skimming device or card cloning
+CSH016,CH005,Rape,Penal Code Section 376 prosecution
+CSH017,CH005,Sexual Assault,Outraging modesty and sexual harassment
+CSH018,CH005,POCSO,Protection of Children from Sexual Offences Act case
+CSH019,CH005,Domestic Violence,Spousal abuse and dowry harassment IPC 498A
+CSH020,CH007,Illegal Weapons,Arms Act violation involving unlicensed firearms
+CSH021,CH006,Drug Trafficking,NDPS Act commercial quantity drug seizure
+CSH022,CH007,Human Trafficking,Forced labor or trafficking rescue operation
+CSH023,CH012,Gambling,Illegal betting & Matka operation bust
+CSH024,CH009,Wildlife Crime,Poaching of protected species or ivory seizure
+CSH025,CH009,Forest Crime,Illegal sandalwood or timber smuggling
+CSH026,CH010,Terror Related Activity,Unlawful Activities Prevention Act (UAPA) investigation
+CSH027,CH008,Corruption,Prevention of Corruption Act bribe trap
+CSH028,CH008,Economic Offence,Multi-crore Ponzi scheme or financial fraud
+CSH029,CH008,White Collar Crime,Corporate embezzlement or insider fraud
+CSH030,CH007,Smuggling,Contraband gold or red sanders interception
+CSH031,CH007,Extortion,Demanding protection money under threat
+CSH032,CH007,Blackmail,Chantaje or extortion via compromised media
+CSH033,CH008,Counterfeit Currency,FICN high-quality fake currency notes circulating
+CSH034,CH008,Fake Documents,Forgery of land title deeds or government IDs
+CSH035,CH011,Hit and Run,Fatal vehicular collision where driver fled scene
+CSH036,CH011,Road Accident,Negligent driving causing injury IPC 279/338
+CSH037,CH012,Fire Incident,Industrial or residential fire accident inquiry
+CSH038,CH012,Unknown Dead Body,Unidentified corpse inquest Section 174 CrPC
+CSH039,CH012,Suicide Investigation,Unnatural death and suicide note inquiry
+CSH040,CH012,Property Disputes,Civil boundary dispute causing law and order friction
+CSH041,CH012,Public Disturbance,"Unlawful assembly, rioting, or public brawl"
+CSH042,CH006,Synthetic Drugs (MDMA),Commercial seizure of MDMA / Methamphetamine

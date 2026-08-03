@@ -1,13 +1,16 @@
-SectionID,ActID,SectionNumber,SectionTitle,Punishment,Description,IsCognizable,IsActive,IsBailable
-SEC001,ACT001,302,Murder,Death or life imprisonment,Whoever commits murder shall be punished,true,true,false
-SEC002,ACT001,307,Attempt to Murder,Up to 10 years or life imprisonment,Attempt to commit murder,true,true,false
-SEC003,ACT001,379,Theft,Up to 3 years imprisonment or fine,Whoever commits theft,true,true,true
-SEC004,ACT001,420,Cheating,Up to 7 years imprisonment and fine,Cheating and dishonestly inducing delivery of property,true,true,false
-SEC005,ACT001,376,Rape,Rigorous imprisonment not less than 10 years,Offence of rape,true,true,false
-SEC006,ACT005,66C,Identity Theft,Up to 3 years imprisonment and fine,Fraudulent use of electronic identity,true,true,true
-SEC007,ACT005,66D,Cheating by Personation Online,Up to 3 years imprisonment and fine,Online cheating using computer resources,true,true,true
-SEC008,ACT006,21,Possession of Narcotic Drugs,Rigorous imprisonment and fine,Illegal possession of narcotic substances,true,true,false
-SEC009,ACT007,4,Penetrative Sexual Assault,Imprisonment not less than 20 years,Penalty under the POCSO Act,true,true,false
-SEC010,ACT008,185,Driving Under Influence,Up to 6 months imprisonment or fine,Driving under the influence of alcohol,false,true,true
-SEC011,ACT009,25,Illegal Possession of Arms,Up to 7 years imprisonment and fine,Possession of arms without licence,true,true,false
-SEC012,ACT010,7,Public Servant Taking Bribe,Imprisonment and fine,Illegal gratification by a public servant,true,true,false
+SectionID,ActID,SectionCode,Description
+SEC001,ACT001,IPC 302 / BNS 101,Punishment for murder
+SEC002,ACT001,IPC 307 / BNS 109,Attempt to murder
+SEC003,ACT001,IPC 379 / BNS 303,Punishment for theft
+SEC004,ACT001,IPC 392 / BNS 309,Punishment for robbery
+SEC005,ACT001,IPC 457 / BNS 331,Lurking house-trespass or house-breaking by night
+SEC006,ACT001,IPC 420 / BNS 318,Cheating and dishonestly inducing delivery of property
+SEC007,ACT002,IT Act Sec 66D,Punishment for cheating by personation by using computer resource
+SEC008,ACT002,IT Act Sec 66C,Punishment for identity theft
+SEC009,ACT003,NDPS Sec 20(b),Possession or trafficking of commercial quantity cannabis/drugs
+SEC010,ACT004,Arms Act Sec 25,Punishment for possession of unlicensed firearm
+SEC011,ACT005,POCSO Sec 4,Punishment for penetrative sexual assault on minor
+SEC012,ACT001,IPC 498A / BNS 85,Husband or relative of husband subjecting woman to cruelty
+SEC013,ACT001,IPC 363 / BNS 137,Punishment for kidnapping
+SEC014,ACT001,IPC 279 / BNS 281,Rash driving or riding on a public way
+SEC015,ACT006,UAPA Sec 18,Punishment for conspiring or preparing terror act

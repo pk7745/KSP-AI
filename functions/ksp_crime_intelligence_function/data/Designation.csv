@@ -1,11 +1,11 @@
 DesignationID,DesignationName,DesignationCode,Description,IsActive
-DES001,Station House Officer,SHO,Officer in charge of a Police Station,true
-DES002,Circle Inspector,CI,Supervises multiple police stations,true
-DES003,Investigation Officer,IO,Officer responsible for criminal investigation,true
-DES004,Assistant Commissioner of Police,ACP,Heads a police subdivision,true
-DES005,Deputy Superintendent of Police,DSP,Supervises police subdivisions,true
-DES006,Superintendent of Police,SP,District Police Chief,true
-DES007,Deputy Inspector General,DIG,Heads a police range,true
-DES008,Inspector General of Police,IGP,Heads a police zone,true
-DES009,Additional Director General of Police,ADGP,Senior state police officer,true
-DES010,Director General of Police,DGP,Head of Karnataka State Police,true
+DES001,Station House Officer,SHO,Head of Police Station,true
+DES002,Investigating Officer,IO,Primary Case Investigator,true
+DES003,Law & Order In-charge,L&O,Maintains public order,true
+DES004,Crime Branch Specialist,CB,Handles serious crime investigations,true
+DES005,Sub-Divisional Officer,SDPO,Supervises circle stations,true
+DES006,District Intelligence Officer,DIO,District crime analysis,true
+DES007,Cybercrime Specialist,CCPS,Digital forensics & cyber fraud,true
+DES008,Traffic & Highway Patrol,THP,Traffic control & accident investigation,true
+DES009,Beat Officer,Beat,Local neighborhood patrol officer,true
+DES010,Special Task Force Officer,STF,Organized crime & terror unit,true

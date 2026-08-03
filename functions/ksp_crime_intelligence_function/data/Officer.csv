@@ -1,37 +1,472 @@
 OfficerID,CaseID,OfficerName,Rank,PoliceStation,Contact,RankID,DesignationID,UnitID,DistrictID,StateID,Email,Status,JoiningDate
-OFF001,CASE001,Rajesh Kumar,Inspector,Cubbon Park Police Station,9876510000,R008,DES001,U001,DIS001,ST001,rajesh.kumar@ksp.gov.in,Active,2018-06-15
-OFF002,CASE002,Priya Sharma,Sub Inspector,Whitefield Police Station,9876510001,R009,DES003,U002,DIS001,ST001,priya.sharma@ksp.gov.in,Active,2018-06-15
-OFF003,CASE003,Manjunath Hegde,Inspector,Indiranagar Police Station,9876510002,R008,DES001,U003,DIS001,ST001,manjunath.hegde@ksp.gov.in,Active,2018-06-15
-OFF004,CASE004,Anita Rao,Deputy Superintendent of Police,Electronic City Police Station,9876510003,R006,DES005,U004,DIS001,ST001,anita.rao@ksp.gov.in,Active,2018-06-15
-OFF005,CASE005,Suresh Patil,Inspector,Jayanagar Police Station,9876510004,R008,DES001,U005,DIS001,ST001,suresh.patil@ksp.gov.in,Active,2018-06-15
-OFF008,CASE006,Ramesh Kulkarni,IGP,Belagavi Police Station,9876510005,R-01,DES005,U008,DIS004,ST001,ramesh.kulkarni@ksp.gov.in,Active,2018-06-15
-OFF011,CASE007,Bengaluru Urban SP,SP,Cubbon Park Police Station,9876510006,R006,DES005,U001,DIS001,ST001,sp.bengaluruurban@ksp.gov.in,Active,2018-06-15
-OFF012,CASE008,Bengaluru Urban Inspector,Inspector,Cubbon Park Police Station,9876510007,R008,DES001,U001,DIS001,ST001,inspector.bengaluruurban@ksp.gov.in,Active,2018-06-15
-OFF013,CASE009,Bengaluru Urban Sub Inspector,Sub Inspector,Cubbon Park Police Station,9876510008,R009,DES003,U001,DIS001,ST001,si.bengaluruurban@ksp.gov.in,Active,2018-06-15
-OFF014,CASE0010,Mysuru SP,SP,Mysuru South Police Station,9876510009,R006,DES005,U006,DIS002,ST001,sp.mysuru@ksp.gov.in,Active,2018-06-15
-OFF015,CASE001,Mysuru Inspector,Inspector,Mysuru South Police Station,9876510010,R008,DES001,U006,DIS002,ST001,inspector.mysuru@ksp.gov.in,Active,2018-06-15
-OFF016,CASE002,Mysuru Sub Inspector,Sub Inspector,Mysuru South Police Station,9876510011,R009,DES003,U006,DIS002,ST001,si.mysuru@ksp.gov.in,Active,2018-06-15
-OFF017,CASE003,Mangaluru SP,SP,Mangaluru North Police Station,9876510012,R006,DES005,U007,DIS003,ST001,sp.mangaluru@ksp.gov.in,Active,2018-06-15
-OFF018,CASE004,Mangaluru Inspector,Inspector,Mangaluru North Police Station,9876510013,R008,DES001,U007,DIS003,ST001,inspector.mangaluru@ksp.gov.in,Active,2018-06-15
-OFF019,CASE005,Mangaluru Sub Inspector,Sub Inspector,Mangaluru North Police Station,9876510014,R009,DES003,U007,DIS003,ST001,si.mangaluru@ksp.gov.in,Active,2018-06-15
-OFF020,CASE006,Belagavi SP,SP,Belagavi Police Station,9876510015,R006,DES005,U008,DIS004,ST001,sp.belagavi@ksp.gov.in,Active,2018-06-15
-OFF021,CASE007,Belagavi Inspector,Inspector,Belagavi Police Station,9876510016,R008,DES001,U008,DIS004,ST001,inspector.belagavi@ksp.gov.in,Active,2018-06-15
-OFF022,CASE008,Belagavi Sub Inspector,Sub Inspector,Belagavi Police Station,9876510017,R009,DES003,U008,DIS004,ST001,si.belagavi@ksp.gov.in,Active,2018-06-15
-OFF023,CASE009,Hubballi-Dharwad SP,SP,Hubballi Town Police Station,9876510018,R006,DES005,U009,DIS005,ST001,sp.hubballi-dharwad@ksp.gov.in,Active,2018-06-15
-OFF024,CASE0010,Hubballi-Dharwad Inspector,Inspector,Hubballi Town Police Station,9876510019,R008,DES001,U009,DIS005,ST001,inspector.hubballi-dharwad@ksp.gov.in,Active,2018-06-15
-OFF025,CASE001,Hubballi-Dharwad Sub Inspector,Sub Inspector,Hubballi Town Police Station,9876510020,R009,DES003,U009,DIS005,ST001,si.hubballi-dharwad@ksp.gov.in,Active,2018-06-15
-OFF026,CASE002,Shivamogga SP,SP,Shivamogga Police Station,9876510021,R006,DES005,U010,DIS006,ST001,sp.shivamogga@ksp.gov.in,Active,2018-06-15
-OFF027,CASE003,Shivamogga Inspector,Inspector,Shivamogga Police Station,9876510022,R008,DES001,U010,DIS006,ST001,inspector.shivamogga@ksp.gov.in,Active,2018-06-15
-OFF028,CASE004,Shivamogga Sub Inspector,Sub Inspector,Shivamogga Police Station,9876510023,R009,DES003,U010,DIS006,ST001,si.shivamogga@ksp.gov.in,Active,2018-06-15
-OFF029,CASE005,Davanagere SP,SP,Davanagere Town Police Station,9876510024,R006,DES005,U011,DIS007,ST001,sp.davanagere@ksp.gov.in,Active,2018-06-15
-OFF030,CASE006,Davanagere Inspector,Inspector,Davanagere Town Police Station,9876510025,R008,DES001,U011,DIS007,ST001,inspector.davanagere@ksp.gov.in,Active,2018-06-15
-OFF031,CASE007,Davanagere Sub Inspector,Sub Inspector,Davanagere Town Police Station,9876510026,R009,DES003,U011,DIS007,ST001,si.davanagere@ksp.gov.in,Active,2018-06-15
-OFF032,CASE008,Ballari SP,SP,Ballari Central Police Station,9876510027,R006,DES005,U012,DIS008,ST001,sp.ballari@ksp.gov.in,Active,2018-06-15
-OFF033,CASE009,Ballari Inspector,Inspector,Ballari Central Police Station,9876510028,R008,DES001,U012,DIS008,ST001,inspector.ballari@ksp.gov.in,Active,2018-06-15
-OFF034,CASE0010,Ballari Sub Inspector,Sub Inspector,Ballari Central Police Station,9876510029,R009,DES003,U012,DIS008,ST001,si.ballari@ksp.gov.in,Active,2018-06-15
-OFF035,CASE001,Tumakuru SP,SP,Tumakuru Town Police Station,9876510030,R006,DES005,U013,DIS009,ST001,sp.tumakuru@ksp.gov.in,Active,2018-06-15
-OFF036,CASE002,Tumakuru Inspector,Inspector,Tumakuru Town Police Station,9876510031,R008,DES001,U013,DIS009,ST001,inspector.tumakuru@ksp.gov.in,Active,2018-06-15
-OFF037,CASE003,Tumakuru Sub Inspector,Sub Inspector,Tumakuru Town Police Station,9876510032,R009,DES003,U013,DIS009,ST001,si.tumakuru@ksp.gov.in,Active,2018-06-15
-OFF038,CASE004,Udupi SP,SP,Udupi Town Police Station,9876510033,R006,DES005,U014,DIS010,ST001,sp.udupi@ksp.gov.in,Active,2018-06-15
-OFF039,CASE005,Udupi Inspector,Inspector,Udupi Town Police Station,9876510034,R008,DES001,U014,DIS010,ST001,inspector.udupi@ksp.gov.in,Active,2018-06-15
-OFF040,CASE006,Udupi Sub Inspector,Sub Inspector,Udupi Town Police Station,9876510035,R009,DES003,U014,DIS010,ST001,si.udupi@ksp.gov.in,Active,2018-06-15
+OFF001,CASE00001,Rajesh Kumar,Circle Inspector,Cubbon Park Police Station,948080000,R007,DES001,U001,DIS001,ST001,rajesh.kumar@ksp.gov.in,Active,2018-06-15
+OFF002,CASE00002,Priya Sharma,Police Sub-Inspector,Whitefield Police Station,948080001,R008,DES002,U002,DIS001,ST001,priya.sharma@ksp.gov.in,Active,2018-06-15
+OFF003,CASE00003,Manjunath Hegde,Circle Inspector,Indiranagar Police Station,948080002,R007,DES001,U003,DIS001,ST001,manjunath.hegde@ksp.gov.in,Active,2018-06-15
+OFF004,CASE00004,Anita Rao,Deputy Superintendent of Police,Electronic City Police Station,948080003,R006,DES005,U004,DIS001,ST001,anita.rao@ksp.gov.in,Active,2018-06-15
+OFF005,CASE00005,Suresh Patil,Circle Inspector,Jayanagar Police Station,948080004,R007,DES001,U005,DIS001,ST001,suresh.patil@ksp.gov.in,Active,2018-06-15
+OFF008,CASE00006,Ramesh Kulkarni,Inspector General of Police,Cubbon Park Police Station,948080005,R002,DES005,U001,DIS001,ST001,ramesh.kulkarni@ksp.gov.in,Active,2018-06-15
+OFF011,CASE00007,Bengaluru Urban Officer 1,Superintendent of Police,Bengaluru Urban Town PS,948080006,R005,DES005,U001,DIS001,ST001,officer.off011@ksp.gov.in,Active,2018-06-15
+OFF012,CASE00008,Bengaluru Urban Officer 2,Deputy Superintendent of Police,Bengaluru Urban Central PS,948080007,R006,DES005,U002,DIS001,ST001,officer.off012@ksp.gov.in,Active,2018-06-15
+OFF013,CASE00009,Bengaluru Urban Officer 3,Circle Inspector,Bengaluru Urban Cyber Crime PS,948080008,R007,DES001,U003,DIS001,ST001,officer.off013@ksp.gov.in,Active,2018-06-15
+OFF014,CASE00010,Bengaluru Urban Officer 4,Police Sub-Inspector,Bengaluru Urban Traffic PS,948080009,R008,DES002,U004,DIS001,ST001,officer.off014@ksp.gov.in,Active,2018-06-15
+OFF015,CASE00011,Bengaluru Urban Officer 5,Assistant Sub-Inspector,Cubbon Park Police Station,948080010,R009,DES003,U005,DIS001,ST001,officer.off015@ksp.gov.in,Active,2018-06-15
+OFF016,CASE00012,Bengaluru Urban Officer 6,Head Constable,Whitefield Police Station,948080011,R010,DES009,U006,DIS001,ST001,officer.off016@ksp.gov.in,Active,2018-06-15
+OFF017,CASE00013,Bengaluru Urban Officer 7,Police Constable,Indiranagar Police Station,948080012,R010,DES009,U007,DIS001,ST001,officer.off017@ksp.gov.in,Active,2018-06-15
+OFF018,CASE00014,Bengaluru Urban Officer 8,CID Officer,Electronic City Police Station,948080013,R004,DES004,U008,DIS001,ST001,officer.off018@ksp.gov.in,Active,2018-06-15
+OFF019,CASE00015,Bengaluru Urban Officer 9,Crime Branch Specialist,Jayanagar Police Station,948080014,R006,DES007,U009,DIS001,ST001,officer.off019@ksp.gov.in,Active,2018-06-15
+OFF020,CASE00016,Bengaluru Urban Officer 10,Superintendent of Police,Bengaluru Urban Town PS,948080015,R005,DES005,U001,DIS001,ST001,officer.off020@ksp.gov.in,Active,2018-06-15
+OFF021,CASE00017,Bengaluru Urban Officer 11,Deputy Superintendent of Police,Bengaluru Urban Central PS,948080016,R006,DES005,U002,DIS001,ST001,officer.off021@ksp.gov.in,Active,2018-06-15
+OFF022,CASE00018,Bengaluru Urban Officer 12,Circle Inspector,Bengaluru Urban Cyber Crime PS,948080017,R007,DES001,U003,DIS001,ST001,officer.off022@ksp.gov.in,Active,2018-06-15
+OFF023,CASE00019,Bengaluru Urban Officer 13,Police Sub-Inspector,Bengaluru Urban Traffic PS,948080018,R008,DES002,U004,DIS001,ST001,officer.off023@ksp.gov.in,Active,2018-06-15
+OFF024,CASE00020,Bengaluru Urban Officer 14,Assistant Sub-Inspector,Cubbon Park Police Station,948080019,R009,DES003,U005,DIS001,ST001,officer.off024@ksp.gov.in,Active,2018-06-15
+OFF025,CASE00021,Bengaluru Urban Officer 15,Head Constable,Whitefield Police Station,948080020,R010,DES009,U006,DIS001,ST001,officer.off025@ksp.gov.in,Active,2018-06-15
+OFF026,CASE00022,Bengaluru Rural Officer 1,Superintendent of Police,Bengaluru Rural Town PS,948080021,R005,DES005,U010,DIS002,ST001,officer.off026@ksp.gov.in,Active,2018-06-15
+OFF027,CASE00023,Bengaluru Rural Officer 2,Deputy Superintendent of Police,Bengaluru Rural Central PS,948080022,R006,DES005,U011,DIS002,ST001,officer.off027@ksp.gov.in,Active,2018-06-15
+OFF028,CASE00024,Bengaluru Rural Officer 3,Circle Inspector,Bengaluru Rural Cyber Crime PS,948080023,R007,DES001,U012,DIS002,ST001,officer.off028@ksp.gov.in,Active,2018-06-15
+OFF029,CASE00025,Bengaluru Rural Officer 4,Police Sub-Inspector,Bengaluru Rural Traffic PS,948080024,R008,DES002,U013,DIS002,ST001,officer.off029@ksp.gov.in,Active,2018-06-15
+OFF030,CASE00026,Bengaluru Rural Officer 5,Assistant Sub-Inspector,Bengaluru Rural Town PS,948080025,R009,DES003,U010,DIS002,ST001,officer.off030@ksp.gov.in,Active,2018-06-15
+OFF031,CASE00027,Bengaluru Rural Officer 6,Head Constable,Bengaluru Rural Central PS,948080026,R010,DES009,U011,DIS002,ST001,officer.off031@ksp.gov.in,Active,2018-06-15
+OFF032,CASE00028,Bengaluru Rural Officer 7,Police Constable,Bengaluru Rural Cyber Crime PS,948080027,R010,DES009,U012,DIS002,ST001,officer.off032@ksp.gov.in,Active,2018-06-15
+OFF033,CASE00029,Bengaluru Rural Officer 8,CID Officer,Bengaluru Rural Traffic PS,948080028,R004,DES004,U013,DIS002,ST001,officer.off033@ksp.gov.in,Active,2018-06-15
+OFF034,CASE00030,Bengaluru Rural Officer 9,Crime Branch Specialist,Bengaluru Rural Town PS,948080029,R006,DES007,U010,DIS002,ST001,officer.off034@ksp.gov.in,Active,2018-06-15
+OFF035,CASE00031,Bengaluru Rural Officer 10,Superintendent of Police,Bengaluru Rural Central PS,948080030,R005,DES005,U011,DIS002,ST001,officer.off035@ksp.gov.in,Active,2018-06-15
+OFF036,CASE00032,Bengaluru Rural Officer 11,Deputy Superintendent of Police,Bengaluru Rural Cyber Crime PS,948080031,R006,DES005,U012,DIS002,ST001,officer.off036@ksp.gov.in,Active,2018-06-15
+OFF037,CASE00033,Bengaluru Rural Officer 12,Circle Inspector,Bengaluru Rural Traffic PS,948080032,R007,DES001,U013,DIS002,ST001,officer.off037@ksp.gov.in,Active,2018-06-15
+OFF038,CASE00034,Bengaluru Rural Officer 13,Police Sub-Inspector,Bengaluru Rural Town PS,948080033,R008,DES002,U010,DIS002,ST001,officer.off038@ksp.gov.in,Active,2018-06-15
+OFF039,CASE00035,Bengaluru Rural Officer 14,Assistant Sub-Inspector,Bengaluru Rural Central PS,948080034,R009,DES003,U011,DIS002,ST001,officer.off039@ksp.gov.in,Active,2018-06-15
+OFF040,CASE00036,Bengaluru Rural Officer 15,Head Constable,Bengaluru Rural Cyber Crime PS,948080035,R010,DES009,U012,DIS002,ST001,officer.off040@ksp.gov.in,Active,2018-06-15
+OFF041,CASE00037,Ramanagara Officer 1,Superintendent of Police,Ramanagara Town PS,948080036,R005,DES005,U014,DIS003,ST001,officer.off041@ksp.gov.in,Active,2018-06-15
+OFF042,CASE00038,Ramanagara Officer 2,Deputy Superintendent of Police,Ramanagara Central PS,948080037,R006,DES005,U015,DIS003,ST001,officer.off042@ksp.gov.in,Active,2018-06-15
+OFF043,CASE00039,Ramanagara Officer 3,Circle Inspector,Ramanagara Cyber Crime PS,948080038,R007,DES001,U016,DIS003,ST001,officer.off043@ksp.gov.in,Active,2018-06-15
+OFF044,CASE00040,Ramanagara Officer 4,Police Sub-Inspector,Ramanagara Traffic PS,948080039,R008,DES002,U017,DIS003,ST001,officer.off044@ksp.gov.in,Active,2018-06-15
+OFF045,CASE00041,Ramanagara Officer 5,Assistant Sub-Inspector,Ramanagara Town PS,948080040,R009,DES003,U014,DIS003,ST001,officer.off045@ksp.gov.in,Active,2018-06-15
+OFF046,CASE00042,Ramanagara Officer 6,Head Constable,Ramanagara Central PS,948080041,R010,DES009,U015,DIS003,ST001,officer.off046@ksp.gov.in,Active,2018-06-15
+OFF047,CASE00043,Ramanagara Officer 7,Police Constable,Ramanagara Cyber Crime PS,948080042,R010,DES009,U016,DIS003,ST001,officer.off047@ksp.gov.in,Active,2018-06-15
+OFF048,CASE00044,Ramanagara Officer 8,CID Officer,Ramanagara Traffic PS,948080043,R004,DES004,U017,DIS003,ST001,officer.off048@ksp.gov.in,Active,2018-06-15
+OFF049,CASE00045,Ramanagara Officer 9,Crime Branch Specialist,Ramanagara Town PS,948080044,R006,DES007,U014,DIS003,ST001,officer.off049@ksp.gov.in,Active,2018-06-15
+OFF050,CASE00046,Ramanagara Officer 10,Superintendent of Police,Ramanagara Central PS,948080045,R005,DES005,U015,DIS003,ST001,officer.off050@ksp.gov.in,Active,2018-06-15
+OFF051,CASE00047,Ramanagara Officer 11,Deputy Superintendent of Police,Ramanagara Cyber Crime PS,948080046,R006,DES005,U016,DIS003,ST001,officer.off051@ksp.gov.in,Active,2018-06-15
+OFF052,CASE00048,Ramanagara Officer 12,Circle Inspector,Ramanagara Traffic PS,948080047,R007,DES001,U017,DIS003,ST001,officer.off052@ksp.gov.in,Active,2018-06-15
+OFF053,CASE00049,Ramanagara Officer 13,Police Sub-Inspector,Ramanagara Town PS,948080048,R008,DES002,U014,DIS003,ST001,officer.off053@ksp.gov.in,Active,2018-06-15
+OFF054,CASE00050,Ramanagara Officer 14,Assistant Sub-Inspector,Ramanagara Central PS,948080049,R009,DES003,U015,DIS003,ST001,officer.off054@ksp.gov.in,Active,2018-06-15
+OFF055,CASE00051,Ramanagara Officer 15,Head Constable,Ramanagara Cyber Crime PS,948080050,R010,DES009,U016,DIS003,ST001,officer.off055@ksp.gov.in,Active,2018-06-15
+OFF056,CASE00052,Chikkaballapura Officer 1,Superintendent of Police,Chikkaballapura Town PS,948080051,R005,DES005,U018,DIS004,ST001,officer.off056@ksp.gov.in,Active,2018-06-15
+OFF057,CASE00053,Chikkaballapura Officer 2,Deputy Superintendent of Police,Chikkaballapura Central PS,948080052,R006,DES005,U019,DIS004,ST001,officer.off057@ksp.gov.in,Active,2018-06-15
+OFF058,CASE00054,Chikkaballapura Officer 3,Circle Inspector,Chikkaballapura Cyber Crime PS,948080053,R007,DES001,U020,DIS004,ST001,officer.off058@ksp.gov.in,Active,2018-06-15
+OFF059,CASE00055,Chikkaballapura Officer 4,Police Sub-Inspector,Chikkaballapura Traffic PS,948080054,R008,DES002,U021,DIS004,ST001,officer.off059@ksp.gov.in,Active,2018-06-15
+OFF060,CASE00056,Chikkaballapura Officer 5,Assistant Sub-Inspector,Chikkaballapura Town PS,948080055,R009,DES003,U018,DIS004,ST001,officer.off060@ksp.gov.in,Active,2018-06-15
+OFF061,CASE00057,Chikkaballapura Officer 6,Head Constable,Chikkaballapura Central PS,948080056,R010,DES009,U019,DIS004,ST001,officer.off061@ksp.gov.in,Active,2018-06-15
+OFF062,CASE00058,Chikkaballapura Officer 7,Police Constable,Chikkaballapura Cyber Crime PS,948080057,R010,DES009,U020,DIS004,ST001,officer.off062@ksp.gov.in,Active,2018-06-15
+OFF063,CASE00059,Chikkaballapura Officer 8,CID Officer,Chikkaballapura Traffic PS,948080058,R004,DES004,U021,DIS004,ST001,officer.off063@ksp.gov.in,Active,2018-06-15
+OFF064,CASE00060,Chikkaballapura Officer 9,Crime Branch Specialist,Chikkaballapura Town PS,948080059,R006,DES007,U018,DIS004,ST001,officer.off064@ksp.gov.in,Active,2018-06-15
+OFF065,CASE00061,Chikkaballapura Officer 10,Superintendent of Police,Chikkaballapura Central PS,948080060,R005,DES005,U019,DIS004,ST001,officer.off065@ksp.gov.in,Active,2018-06-15
+OFF066,CASE00062,Chikkaballapura Officer 11,Deputy Superintendent of Police,Chikkaballapura Cyber Crime PS,948080061,R006,DES005,U020,DIS004,ST001,officer.off066@ksp.gov.in,Active,2018-06-15
+OFF067,CASE00063,Chikkaballapura Officer 12,Circle Inspector,Chikkaballapura Traffic PS,948080062,R007,DES001,U021,DIS004,ST001,officer.off067@ksp.gov.in,Active,2018-06-15
+OFF068,CASE00064,Chikkaballapura Officer 13,Police Sub-Inspector,Chikkaballapura Town PS,948080063,R008,DES002,U018,DIS004,ST001,officer.off068@ksp.gov.in,Active,2018-06-15
+OFF069,CASE00065,Chikkaballapura Officer 14,Assistant Sub-Inspector,Chikkaballapura Central PS,948080064,R009,DES003,U019,DIS004,ST001,officer.off069@ksp.gov.in,Active,2018-06-15
+OFF070,CASE00066,Chikkaballapura Officer 15,Head Constable,Chikkaballapura Cyber Crime PS,948080065,R010,DES009,U020,DIS004,ST001,officer.off070@ksp.gov.in,Active,2018-06-15
+OFF071,CASE00067,Kolar Officer 1,Superintendent of Police,Kolar Town PS,948080066,R005,DES005,U022,DIS005,ST001,officer.off071@ksp.gov.in,Active,2018-06-15
+OFF072,CASE00068,Kolar Officer 2,Deputy Superintendent of Police,Kolar Central PS,948080067,R006,DES005,U023,DIS005,ST001,officer.off072@ksp.gov.in,Active,2018-06-15
+OFF073,CASE00069,Kolar Officer 3,Circle Inspector,Kolar Cyber Crime PS,948080068,R007,DES001,U024,DIS005,ST001,officer.off073@ksp.gov.in,Active,2018-06-15
+OFF074,CASE00070,Kolar Officer 4,Police Sub-Inspector,Kolar Traffic PS,948080069,R008,DES002,U025,DIS005,ST001,officer.off074@ksp.gov.in,Active,2018-06-15
+OFF075,CASE00071,Kolar Officer 5,Assistant Sub-Inspector,Kolar Town PS,948080070,R009,DES003,U022,DIS005,ST001,officer.off075@ksp.gov.in,Active,2018-06-15
+OFF076,CASE00072,Kolar Officer 6,Head Constable,Kolar Central PS,948080071,R010,DES009,U023,DIS005,ST001,officer.off076@ksp.gov.in,Active,2018-06-15
+OFF077,CASE00073,Kolar Officer 7,Police Constable,Kolar Cyber Crime PS,948080072,R010,DES009,U024,DIS005,ST001,officer.off077@ksp.gov.in,Active,2018-06-15
+OFF078,CASE00074,Kolar Officer 8,CID Officer,Kolar Traffic PS,948080073,R004,DES004,U025,DIS005,ST001,officer.off078@ksp.gov.in,Active,2018-06-15
+OFF079,CASE00075,Kolar Officer 9,Crime Branch Specialist,Kolar Town PS,948080074,R006,DES007,U022,DIS005,ST001,officer.off079@ksp.gov.in,Active,2018-06-15
+OFF080,CASE00076,Kolar Officer 10,Superintendent of Police,Kolar Central PS,948080075,R005,DES005,U023,DIS005,ST001,officer.off080@ksp.gov.in,Active,2018-06-15
+OFF081,CASE00077,Kolar Officer 11,Deputy Superintendent of Police,Kolar Cyber Crime PS,948080076,R006,DES005,U024,DIS005,ST001,officer.off081@ksp.gov.in,Active,2018-06-15
+OFF082,CASE00078,Kolar Officer 12,Circle Inspector,Kolar Traffic PS,948080077,R007,DES001,U025,DIS005,ST001,officer.off082@ksp.gov.in,Active,2018-06-15
+OFF083,CASE00079,Kolar Officer 13,Police Sub-Inspector,Kolar Town PS,948080078,R008,DES002,U022,DIS005,ST001,officer.off083@ksp.gov.in,Active,2018-06-15
+OFF084,CASE00080,Kolar Officer 14,Assistant Sub-Inspector,Kolar Central PS,948080079,R009,DES003,U023,DIS005,ST001,officer.off084@ksp.gov.in,Active,2018-06-15
+OFF085,CASE00081,Kolar Officer 15,Head Constable,Kolar Cyber Crime PS,948080080,R010,DES009,U024,DIS005,ST001,officer.off085@ksp.gov.in,Active,2018-06-15
+OFF086,CASE00082,Tumakuru Officer 1,Superintendent of Police,Tumakuru Town PS,948080081,R005,DES005,U026,DIS006,ST001,officer.off086@ksp.gov.in,Active,2018-06-15
+OFF087,CASE00083,Tumakuru Officer 2,Deputy Superintendent of Police,Tumakuru Central PS,948080082,R006,DES005,U027,DIS006,ST001,officer.off087@ksp.gov.in,Active,2018-06-15
+OFF088,CASE00084,Tumakuru Officer 3,Circle Inspector,Tumakuru Cyber Crime PS,948080083,R007,DES001,U028,DIS006,ST001,officer.off088@ksp.gov.in,Active,2018-06-15
+OFF089,CASE00085,Tumakuru Officer 4,Police Sub-Inspector,Tumakuru Traffic PS,948080084,R008,DES002,U029,DIS006,ST001,officer.off089@ksp.gov.in,Active,2018-06-15
+OFF090,CASE00086,Tumakuru Officer 5,Assistant Sub-Inspector,Tumakuru Town PS,948080085,R009,DES003,U026,DIS006,ST001,officer.off090@ksp.gov.in,Active,2018-06-15
+OFF091,CASE00087,Tumakuru Officer 6,Head Constable,Tumakuru Central PS,948080086,R010,DES009,U027,DIS006,ST001,officer.off091@ksp.gov.in,Active,2018-06-15
+OFF092,CASE00088,Tumakuru Officer 7,Police Constable,Tumakuru Cyber Crime PS,948080087,R010,DES009,U028,DIS006,ST001,officer.off092@ksp.gov.in,Active,2018-06-15
+OFF093,CASE00089,Tumakuru Officer 8,CID Officer,Tumakuru Traffic PS,948080088,R004,DES004,U029,DIS006,ST001,officer.off093@ksp.gov.in,Active,2018-06-15
+OFF094,CASE00090,Tumakuru Officer 9,Crime Branch Specialist,Tumakuru Town PS,948080089,R006,DES007,U026,DIS006,ST001,officer.off094@ksp.gov.in,Active,2018-06-15
+OFF095,CASE00091,Tumakuru Officer 10,Superintendent of Police,Tumakuru Central PS,948080090,R005,DES005,U027,DIS006,ST001,officer.off095@ksp.gov.in,Active,2018-06-15
+OFF096,CASE00092,Tumakuru Officer 11,Deputy Superintendent of Police,Tumakuru Cyber Crime PS,948080091,R006,DES005,U028,DIS006,ST001,officer.off096@ksp.gov.in,Active,2018-06-15
+OFF097,CASE00093,Tumakuru Officer 12,Circle Inspector,Tumakuru Traffic PS,948080092,R007,DES001,U029,DIS006,ST001,officer.off097@ksp.gov.in,Active,2018-06-15
+OFF098,CASE00094,Tumakuru Officer 13,Police Sub-Inspector,Tumakuru Town PS,948080093,R008,DES002,U026,DIS006,ST001,officer.off098@ksp.gov.in,Active,2018-06-15
+OFF099,CASE00095,Tumakuru Officer 14,Assistant Sub-Inspector,Tumakuru Central PS,948080094,R009,DES003,U027,DIS006,ST001,officer.off099@ksp.gov.in,Active,2018-06-15
+OFF100,CASE00096,Tumakuru Officer 15,Head Constable,Tumakuru Cyber Crime PS,948080095,R010,DES009,U028,DIS006,ST001,officer.off100@ksp.gov.in,Active,2018-06-15
+OFF101,CASE00097,Shivamogga Officer 1,Superintendent of Police,Shivamogga Town PS,948080096,R005,DES005,U030,DIS007,ST001,officer.off101@ksp.gov.in,Active,2018-06-15
+OFF102,CASE00098,Shivamogga Officer 2,Deputy Superintendent of Police,Shivamogga Central PS,948080097,R006,DES005,U031,DIS007,ST001,officer.off102@ksp.gov.in,Active,2018-06-15
+OFF103,CASE00099,Shivamogga Officer 3,Circle Inspector,Shivamogga Cyber Crime PS,948080098,R007,DES001,U032,DIS007,ST001,officer.off103@ksp.gov.in,Active,2018-06-15
+OFF104,CASE00100,Shivamogga Officer 4,Police Sub-Inspector,Shivamogga Traffic PS,948080099,R008,DES002,U033,DIS007,ST001,officer.off104@ksp.gov.in,Active,2018-06-15
+OFF105,CASE00001,Shivamogga Officer 5,Assistant Sub-Inspector,Shivamogga Town PS,948080100,R009,DES003,U030,DIS007,ST001,officer.off105@ksp.gov.in,Active,2018-06-15
+OFF106,CASE00002,Shivamogga Officer 6,Head Constable,Shivamogga Central PS,948080101,R010,DES009,U031,DIS007,ST001,officer.off106@ksp.gov.in,Active,2018-06-15
+OFF107,CASE00003,Shivamogga Officer 7,Police Constable,Shivamogga Cyber Crime PS,948080102,R010,DES009,U032,DIS007,ST001,officer.off107@ksp.gov.in,Active,2018-06-15
+OFF108,CASE00004,Shivamogga Officer 8,CID Officer,Shivamogga Traffic PS,948080103,R004,DES004,U033,DIS007,ST001,officer.off108@ksp.gov.in,Active,2018-06-15
+OFF109,CASE00005,Shivamogga Officer 9,Crime Branch Specialist,Shivamogga Town PS,948080104,R006,DES007,U030,DIS007,ST001,officer.off109@ksp.gov.in,Active,2018-06-15
+OFF110,CASE00006,Shivamogga Officer 10,Superintendent of Police,Shivamogga Central PS,948080105,R005,DES005,U031,DIS007,ST001,officer.off110@ksp.gov.in,Active,2018-06-15
+OFF111,CASE00007,Shivamogga Officer 11,Deputy Superintendent of Police,Shivamogga Cyber Crime PS,948080106,R006,DES005,U032,DIS007,ST001,officer.off111@ksp.gov.in,Active,2018-06-15
+OFF112,CASE00008,Shivamogga Officer 12,Circle Inspector,Shivamogga Traffic PS,948080107,R007,DES001,U033,DIS007,ST001,officer.off112@ksp.gov.in,Active,2018-06-15
+OFF113,CASE00009,Shivamogga Officer 13,Police Sub-Inspector,Shivamogga Town PS,948080108,R008,DES002,U030,DIS007,ST001,officer.off113@ksp.gov.in,Active,2018-06-15
+OFF114,CASE00010,Shivamogga Officer 14,Assistant Sub-Inspector,Shivamogga Central PS,948080109,R009,DES003,U031,DIS007,ST001,officer.off114@ksp.gov.in,Active,2018-06-15
+OFF115,CASE00011,Shivamogga Officer 15,Head Constable,Shivamogga Cyber Crime PS,948080110,R010,DES009,U032,DIS007,ST001,officer.off115@ksp.gov.in,Active,2018-06-15
+OFF116,CASE00012,Chitradurga Officer 1,Superintendent of Police,Chitradurga Town PS,948080111,R005,DES005,U034,DIS008,ST001,officer.off116@ksp.gov.in,Active,2018-06-15
+OFF117,CASE00013,Chitradurga Officer 2,Deputy Superintendent of Police,Chitradurga Central PS,948080112,R006,DES005,U035,DIS008,ST001,officer.off117@ksp.gov.in,Active,2018-06-15
+OFF118,CASE00014,Chitradurga Officer 3,Circle Inspector,Chitradurga Cyber Crime PS,948080113,R007,DES001,U036,DIS008,ST001,officer.off118@ksp.gov.in,Active,2018-06-15
+OFF119,CASE00015,Chitradurga Officer 4,Police Sub-Inspector,Chitradurga Traffic PS,948080114,R008,DES002,U037,DIS008,ST001,officer.off119@ksp.gov.in,Active,2018-06-15
+OFF120,CASE00016,Chitradurga Officer 5,Assistant Sub-Inspector,Chitradurga Town PS,948080115,R009,DES003,U034,DIS008,ST001,officer.off120@ksp.gov.in,Active,2018-06-15
+OFF121,CASE00017,Chitradurga Officer 6,Head Constable,Chitradurga Central PS,948080116,R010,DES009,U035,DIS008,ST001,officer.off121@ksp.gov.in,Active,2018-06-15
+OFF122,CASE00018,Chitradurga Officer 7,Police Constable,Chitradurga Cyber Crime PS,948080117,R010,DES009,U036,DIS008,ST001,officer.off122@ksp.gov.in,Active,2018-06-15
+OFF123,CASE00019,Chitradurga Officer 8,CID Officer,Chitradurga Traffic PS,948080118,R004,DES004,U037,DIS008,ST001,officer.off123@ksp.gov.in,Active,2018-06-15
+OFF124,CASE00020,Chitradurga Officer 9,Crime Branch Specialist,Chitradurga Town PS,948080119,R006,DES007,U034,DIS008,ST001,officer.off124@ksp.gov.in,Active,2018-06-15
+OFF125,CASE00021,Chitradurga Officer 10,Superintendent of Police,Chitradurga Central PS,948080120,R005,DES005,U035,DIS008,ST001,officer.off125@ksp.gov.in,Active,2018-06-15
+OFF126,CASE00022,Chitradurga Officer 11,Deputy Superintendent of Police,Chitradurga Cyber Crime PS,948080121,R006,DES005,U036,DIS008,ST001,officer.off126@ksp.gov.in,Active,2018-06-15
+OFF127,CASE00023,Chitradurga Officer 12,Circle Inspector,Chitradurga Traffic PS,948080122,R007,DES001,U037,DIS008,ST001,officer.off127@ksp.gov.in,Active,2018-06-15
+OFF128,CASE00024,Chitradurga Officer 13,Police Sub-Inspector,Chitradurga Town PS,948080123,R008,DES002,U034,DIS008,ST001,officer.off128@ksp.gov.in,Active,2018-06-15
+OFF129,CASE00025,Chitradurga Officer 14,Assistant Sub-Inspector,Chitradurga Central PS,948080124,R009,DES003,U035,DIS008,ST001,officer.off129@ksp.gov.in,Active,2018-06-15
+OFF130,CASE00026,Chitradurga Officer 15,Head Constable,Chitradurga Cyber Crime PS,948080125,R010,DES009,U036,DIS008,ST001,officer.off130@ksp.gov.in,Active,2018-06-15
+OFF131,CASE00027,Davanagere Officer 1,Superintendent of Police,Davanagere Town PS,948080126,R005,DES005,U038,DIS009,ST001,officer.off131@ksp.gov.in,Active,2018-06-15
+OFF132,CASE00028,Davanagere Officer 2,Deputy Superintendent of Police,Davanagere Central PS,948080127,R006,DES005,U039,DIS009,ST001,officer.off132@ksp.gov.in,Active,2018-06-15
+OFF133,CASE00029,Davanagere Officer 3,Circle Inspector,Davanagere Cyber Crime PS,948080128,R007,DES001,U040,DIS009,ST001,officer.off133@ksp.gov.in,Active,2018-06-15
+OFF134,CASE00030,Davanagere Officer 4,Police Sub-Inspector,Davanagere Traffic PS,948080129,R008,DES002,U041,DIS009,ST001,officer.off134@ksp.gov.in,Active,2018-06-15
+OFF135,CASE00031,Davanagere Officer 5,Assistant Sub-Inspector,Davanagere Town PS,948080130,R009,DES003,U038,DIS009,ST001,officer.off135@ksp.gov.in,Active,2018-06-15
+OFF136,CASE00032,Davanagere Officer 6,Head Constable,Davanagere Central PS,948080131,R010,DES009,U039,DIS009,ST001,officer.off136@ksp.gov.in,Active,2018-06-15
+OFF137,CASE00033,Davanagere Officer 7,Police Constable,Davanagere Cyber Crime PS,948080132,R010,DES009,U040,DIS009,ST001,officer.off137@ksp.gov.in,Active,2018-06-15
+OFF138,CASE00034,Davanagere Officer 8,CID Officer,Davanagere Traffic PS,948080133,R004,DES004,U041,DIS009,ST001,officer.off138@ksp.gov.in,Active,2018-06-15
+OFF139,CASE00035,Davanagere Officer 9,Crime Branch Specialist,Davanagere Town PS,948080134,R006,DES007,U038,DIS009,ST001,officer.off139@ksp.gov.in,Active,2018-06-15
+OFF140,CASE00036,Davanagere Officer 10,Superintendent of Police,Davanagere Central PS,948080135,R005,DES005,U039,DIS009,ST001,officer.off140@ksp.gov.in,Active,2018-06-15
+OFF141,CASE00037,Davanagere Officer 11,Deputy Superintendent of Police,Davanagere Cyber Crime PS,948080136,R006,DES005,U040,DIS009,ST001,officer.off141@ksp.gov.in,Active,2018-06-15
+OFF142,CASE00038,Davanagere Officer 12,Circle Inspector,Davanagere Traffic PS,948080137,R007,DES001,U041,DIS009,ST001,officer.off142@ksp.gov.in,Active,2018-06-15
+OFF143,CASE00039,Davanagere Officer 13,Police Sub-Inspector,Davanagere Town PS,948080138,R008,DES002,U038,DIS009,ST001,officer.off143@ksp.gov.in,Active,2018-06-15
+OFF144,CASE00040,Davanagere Officer 14,Assistant Sub-Inspector,Davanagere Central PS,948080139,R009,DES003,U039,DIS009,ST001,officer.off144@ksp.gov.in,Active,2018-06-15
+OFF145,CASE00041,Davanagere Officer 15,Head Constable,Davanagere Cyber Crime PS,948080140,R010,DES009,U040,DIS009,ST001,officer.off145@ksp.gov.in,Active,2018-06-15
+OFF146,CASE00042,Mysuru Officer 1,Superintendent of Police,Mysuru Town PS,948080141,R005,DES005,U042,DIS010,ST001,officer.off146@ksp.gov.in,Active,2018-06-15
+OFF147,CASE00043,Mysuru Officer 2,Deputy Superintendent of Police,Mysuru Central PS,948080142,R006,DES005,U043,DIS010,ST001,officer.off147@ksp.gov.in,Active,2018-06-15
+OFF148,CASE00044,Mysuru Officer 3,Circle Inspector,Mysuru Cyber Crime PS,948080143,R007,DES001,U044,DIS010,ST001,officer.off148@ksp.gov.in,Active,2018-06-15
+OFF149,CASE00045,Mysuru Officer 4,Police Sub-Inspector,Mysuru Traffic PS,948080144,R008,DES002,U045,DIS010,ST001,officer.off149@ksp.gov.in,Active,2018-06-15
+OFF150,CASE00046,Mysuru Officer 5,Assistant Sub-Inspector,Mysuru Town PS,948080145,R009,DES003,U042,DIS010,ST001,officer.off150@ksp.gov.in,Active,2018-06-15
+OFF151,CASE00047,Mysuru Officer 6,Head Constable,Mysuru Central PS,948080146,R010,DES009,U043,DIS010,ST001,officer.off151@ksp.gov.in,Active,2018-06-15
+OFF152,CASE00048,Mysuru Officer 7,Police Constable,Mysuru Cyber Crime PS,948080147,R010,DES009,U044,DIS010,ST001,officer.off152@ksp.gov.in,Active,2018-06-15
+OFF153,CASE00049,Mysuru Officer 8,CID Officer,Mysuru Traffic PS,948080148,R004,DES004,U045,DIS010,ST001,officer.off153@ksp.gov.in,Active,2018-06-15
+OFF154,CASE00050,Mysuru Officer 9,Crime Branch Specialist,Mysuru Town PS,948080149,R006,DES007,U042,DIS010,ST001,officer.off154@ksp.gov.in,Active,2018-06-15
+OFF155,CASE00051,Mysuru Officer 10,Superintendent of Police,Mysuru Central PS,948080150,R005,DES005,U043,DIS010,ST001,officer.off155@ksp.gov.in,Active,2018-06-15
+OFF156,CASE00052,Mysuru Officer 11,Deputy Superintendent of Police,Mysuru Cyber Crime PS,948080151,R006,DES005,U044,DIS010,ST001,officer.off156@ksp.gov.in,Active,2018-06-15
+OFF157,CASE00053,Mysuru Officer 12,Circle Inspector,Mysuru Traffic PS,948080152,R007,DES001,U045,DIS010,ST001,officer.off157@ksp.gov.in,Active,2018-06-15
+OFF158,CASE00054,Mysuru Officer 13,Police Sub-Inspector,Mysuru Town PS,948080153,R008,DES002,U042,DIS010,ST001,officer.off158@ksp.gov.in,Active,2018-06-15
+OFF159,CASE00055,Mysuru Officer 14,Assistant Sub-Inspector,Mysuru Central PS,948080154,R009,DES003,U043,DIS010,ST001,officer.off159@ksp.gov.in,Active,2018-06-15
+OFF160,CASE00056,Mysuru Officer 15,Head Constable,Mysuru Cyber Crime PS,948080155,R010,DES009,U044,DIS010,ST001,officer.off160@ksp.gov.in,Active,2018-06-15
+OFF161,CASE00057,Mandya Officer 1,Superintendent of Police,Mandya Town PS,948080156,R005,DES005,U046,DIS011,ST001,officer.off161@ksp.gov.in,Active,2018-06-15
+OFF162,CASE00058,Mandya Officer 2,Deputy Superintendent of Police,Mandya Central PS,948080157,R006,DES005,U047,DIS011,ST001,officer.off162@ksp.gov.in,Active,2018-06-15
+OFF163,CASE00059,Mandya Officer 3,Circle Inspector,Mandya Cyber Crime PS,948080158,R007,DES001,U048,DIS011,ST001,officer.off163@ksp.gov.in,Active,2018-06-15
+OFF164,CASE00060,Mandya Officer 4,Police Sub-Inspector,Mandya Traffic PS,948080159,R008,DES002,U049,DIS011,ST001,officer.off164@ksp.gov.in,Active,2018-06-15
+OFF165,CASE00061,Mandya Officer 5,Assistant Sub-Inspector,Mandya Town PS,948080160,R009,DES003,U046,DIS011,ST001,officer.off165@ksp.gov.in,Active,2018-06-15
+OFF166,CASE00062,Mandya Officer 6,Head Constable,Mandya Central PS,948080161,R010,DES009,U047,DIS011,ST001,officer.off166@ksp.gov.in,Active,2018-06-15
+OFF167,CASE00063,Mandya Officer 7,Police Constable,Mandya Cyber Crime PS,948080162,R010,DES009,U048,DIS011,ST001,officer.off167@ksp.gov.in,Active,2018-06-15
+OFF168,CASE00064,Mandya Officer 8,CID Officer,Mandya Traffic PS,948080163,R004,DES004,U049,DIS011,ST001,officer.off168@ksp.gov.in,Active,2018-06-15
+OFF169,CASE00065,Mandya Officer 9,Crime Branch Specialist,Mandya Town PS,948080164,R006,DES007,U046,DIS011,ST001,officer.off169@ksp.gov.in,Active,2018-06-15
+OFF170,CASE00066,Mandya Officer 10,Superintendent of Police,Mandya Central PS,948080165,R005,DES005,U047,DIS011,ST001,officer.off170@ksp.gov.in,Active,2018-06-15
+OFF171,CASE00067,Mandya Officer 11,Deputy Superintendent of Police,Mandya Cyber Crime PS,948080166,R006,DES005,U048,DIS011,ST001,officer.off171@ksp.gov.in,Active,2018-06-15
+OFF172,CASE00068,Mandya Officer 12,Circle Inspector,Mandya Traffic PS,948080167,R007,DES001,U049,DIS011,ST001,officer.off172@ksp.gov.in,Active,2018-06-15
+OFF173,CASE00069,Mandya Officer 13,Police Sub-Inspector,Mandya Town PS,948080168,R008,DES002,U046,DIS011,ST001,officer.off173@ksp.gov.in,Active,2018-06-15
+OFF174,CASE00070,Mandya Officer 14,Assistant Sub-Inspector,Mandya Central PS,948080169,R009,DES003,U047,DIS011,ST001,officer.off174@ksp.gov.in,Active,2018-06-15
+OFF175,CASE00071,Mandya Officer 15,Head Constable,Mandya Cyber Crime PS,948080170,R010,DES009,U048,DIS011,ST001,officer.off175@ksp.gov.in,Active,2018-06-15
+OFF176,CASE00072,Hassan Officer 1,Superintendent of Police,Hassan Town PS,948080171,R005,DES005,U050,DIS012,ST001,officer.off176@ksp.gov.in,Active,2018-06-15
+OFF177,CASE00073,Hassan Officer 2,Deputy Superintendent of Police,Hassan Central PS,948080172,R006,DES005,U051,DIS012,ST001,officer.off177@ksp.gov.in,Active,2018-06-15
+OFF178,CASE00074,Hassan Officer 3,Circle Inspector,Hassan Cyber Crime PS,948080173,R007,DES001,U052,DIS012,ST001,officer.off178@ksp.gov.in,Active,2018-06-15
+OFF179,CASE00075,Hassan Officer 4,Police Sub-Inspector,Hassan Traffic PS,948080174,R008,DES002,U053,DIS012,ST001,officer.off179@ksp.gov.in,Active,2018-06-15
+OFF180,CASE00076,Hassan Officer 5,Assistant Sub-Inspector,Hassan Town PS,948080175,R009,DES003,U050,DIS012,ST001,officer.off180@ksp.gov.in,Active,2018-06-15
+OFF181,CASE00077,Hassan Officer 6,Head Constable,Hassan Central PS,948080176,R010,DES009,U051,DIS012,ST001,officer.off181@ksp.gov.in,Active,2018-06-15
+OFF182,CASE00078,Hassan Officer 7,Police Constable,Hassan Cyber Crime PS,948080177,R010,DES009,U052,DIS012,ST001,officer.off182@ksp.gov.in,Active,2018-06-15
+OFF183,CASE00079,Hassan Officer 8,CID Officer,Hassan Traffic PS,948080178,R004,DES004,U053,DIS012,ST001,officer.off183@ksp.gov.in,Active,2018-06-15
+OFF184,CASE00080,Hassan Officer 9,Crime Branch Specialist,Hassan Town PS,948080179,R006,DES007,U050,DIS012,ST001,officer.off184@ksp.gov.in,Active,2018-06-15
+OFF185,CASE00081,Hassan Officer 10,Superintendent of Police,Hassan Central PS,948080180,R005,DES005,U051,DIS012,ST001,officer.off185@ksp.gov.in,Active,2018-06-15
+OFF186,CASE00082,Hassan Officer 11,Deputy Superintendent of Police,Hassan Cyber Crime PS,948080181,R006,DES005,U052,DIS012,ST001,officer.off186@ksp.gov.in,Active,2018-06-15
+OFF187,CASE00083,Hassan Officer 12,Circle Inspector,Hassan Traffic PS,948080182,R007,DES001,U053,DIS012,ST001,officer.off187@ksp.gov.in,Active,2018-06-15
+OFF188,CASE00084,Hassan Officer 13,Police Sub-Inspector,Hassan Town PS,948080183,R008,DES002,U050,DIS012,ST001,officer.off188@ksp.gov.in,Active,2018-06-15
+OFF189,CASE00085,Hassan Officer 14,Assistant Sub-Inspector,Hassan Central PS,948080184,R009,DES003,U051,DIS012,ST001,officer.off189@ksp.gov.in,Active,2018-06-15
+OFF190,CASE00086,Hassan Officer 15,Head Constable,Hassan Cyber Crime PS,948080185,R010,DES009,U052,DIS012,ST001,officer.off190@ksp.gov.in,Active,2018-06-15
+OFF191,CASE00087,Chamarajanagara Officer 1,Superintendent of Police,Chamarajanagara Town PS,948080186,R005,DES005,U054,DIS013,ST001,officer.off191@ksp.gov.in,Active,2018-06-15
+OFF192,CASE00088,Chamarajanagara Officer 2,Deputy Superintendent of Police,Chamarajanagara Central PS,948080187,R006,DES005,U055,DIS013,ST001,officer.off192@ksp.gov.in,Active,2018-06-15
+OFF193,CASE00089,Chamarajanagara Officer 3,Circle Inspector,Chamarajanagara Cyber Crime PS,948080188,R007,DES001,U056,DIS013,ST001,officer.off193@ksp.gov.in,Active,2018-06-15
+OFF194,CASE00090,Chamarajanagara Officer 4,Police Sub-Inspector,Chamarajanagara Traffic PS,948080189,R008,DES002,U057,DIS013,ST001,officer.off194@ksp.gov.in,Active,2018-06-15
+OFF195,CASE00091,Chamarajanagara Officer 5,Assistant Sub-Inspector,Chamarajanagara Town PS,948080190,R009,DES003,U054,DIS013,ST001,officer.off195@ksp.gov.in,Active,2018-06-15
+OFF196,CASE00092,Chamarajanagara Officer 6,Head Constable,Chamarajanagara Central PS,948080191,R010,DES009,U055,DIS013,ST001,officer.off196@ksp.gov.in,Active,2018-06-15
+OFF197,CASE00093,Chamarajanagara Officer 7,Police Constable,Chamarajanagara Cyber Crime PS,948080192,R010,DES009,U056,DIS013,ST001,officer.off197@ksp.gov.in,Active,2018-06-15
+OFF198,CASE00094,Chamarajanagara Officer 8,CID Officer,Chamarajanagara Traffic PS,948080193,R004,DES004,U057,DIS013,ST001,officer.off198@ksp.gov.in,Active,2018-06-15
+OFF199,CASE00095,Chamarajanagara Officer 9,Crime Branch Specialist,Chamarajanagara Town PS,948080194,R006,DES007,U054,DIS013,ST001,officer.off199@ksp.gov.in,Active,2018-06-15
+OFF200,CASE00096,Chamarajanagara Officer 10,Superintendent of Police,Chamarajanagara Central PS,948080195,R005,DES005,U055,DIS013,ST001,officer.off200@ksp.gov.in,Active,2018-06-15
+OFF201,CASE00097,Chamarajanagara Officer 11,Deputy Superintendent of Police,Chamarajanagara Cyber Crime PS,948080196,R006,DES005,U056,DIS013,ST001,officer.off201@ksp.gov.in,Active,2018-06-15
+OFF202,CASE00098,Chamarajanagara Officer 12,Circle Inspector,Chamarajanagara Traffic PS,948080197,R007,DES001,U057,DIS013,ST001,officer.off202@ksp.gov.in,Active,2018-06-15
+OFF203,CASE00099,Chamarajanagara Officer 13,Police Sub-Inspector,Chamarajanagara Town PS,948080198,R008,DES002,U054,DIS013,ST001,officer.off203@ksp.gov.in,Active,2018-06-15
+OFF204,CASE00100,Chamarajanagara Officer 14,Assistant Sub-Inspector,Chamarajanagara Central PS,948080199,R009,DES003,U055,DIS013,ST001,officer.off204@ksp.gov.in,Active,2018-06-15
+OFF205,CASE00001,Chamarajanagara Officer 15,Head Constable,Chamarajanagara Cyber Crime PS,948080200,R010,DES009,U056,DIS013,ST001,officer.off205@ksp.gov.in,Active,2018-06-15
+OFF206,CASE00002,Kodagu Officer 1,Superintendent of Police,Kodagu Town PS,948080201,R005,DES005,U058,DIS014,ST001,officer.off206@ksp.gov.in,Active,2018-06-15
+OFF207,CASE00003,Kodagu Officer 2,Deputy Superintendent of Police,Kodagu Central PS,948080202,R006,DES005,U059,DIS014,ST001,officer.off207@ksp.gov.in,Active,2018-06-15
+OFF208,CASE00004,Kodagu Officer 3,Circle Inspector,Kodagu Cyber Crime PS,948080203,R007,DES001,U060,DIS014,ST001,officer.off208@ksp.gov.in,Active,2018-06-15
+OFF209,CASE00005,Kodagu Officer 4,Police Sub-Inspector,Kodagu Traffic PS,948080204,R008,DES002,U061,DIS014,ST001,officer.off209@ksp.gov.in,Active,2018-06-15
+OFF210,CASE00006,Kodagu Officer 5,Assistant Sub-Inspector,Kodagu Town PS,948080205,R009,DES003,U058,DIS014,ST001,officer.off210@ksp.gov.in,Active,2018-06-15
+OFF211,CASE00007,Kodagu Officer 6,Head Constable,Kodagu Central PS,948080206,R010,DES009,U059,DIS014,ST001,officer.off211@ksp.gov.in,Active,2018-06-15
+OFF212,CASE00008,Kodagu Officer 7,Police Constable,Kodagu Cyber Crime PS,948080207,R010,DES009,U060,DIS014,ST001,officer.off212@ksp.gov.in,Active,2018-06-15
+OFF213,CASE00009,Kodagu Officer 8,CID Officer,Kodagu Traffic PS,948080208,R004,DES004,U061,DIS014,ST001,officer.off213@ksp.gov.in,Active,2018-06-15
+OFF214,CASE00010,Kodagu Officer 9,Crime Branch Specialist,Kodagu Town PS,948080209,R006,DES007,U058,DIS014,ST001,officer.off214@ksp.gov.in,Active,2018-06-15
+OFF215,CASE00011,Kodagu Officer 10,Superintendent of Police,Kodagu Central PS,948080210,R005,DES005,U059,DIS014,ST001,officer.off215@ksp.gov.in,Active,2018-06-15
+OFF216,CASE00012,Kodagu Officer 11,Deputy Superintendent of Police,Kodagu Cyber Crime PS,948080211,R006,DES005,U060,DIS014,ST001,officer.off216@ksp.gov.in,Active,2018-06-15
+OFF217,CASE00013,Kodagu Officer 12,Circle Inspector,Kodagu Traffic PS,948080212,R007,DES001,U061,DIS014,ST001,officer.off217@ksp.gov.in,Active,2018-06-15
+OFF218,CASE00014,Kodagu Officer 13,Police Sub-Inspector,Kodagu Town PS,948080213,R008,DES002,U058,DIS014,ST001,officer.off218@ksp.gov.in,Active,2018-06-15
+OFF219,CASE00015,Kodagu Officer 14,Assistant Sub-Inspector,Kodagu Central PS,948080214,R009,DES003,U059,DIS014,ST001,officer.off219@ksp.gov.in,Active,2018-06-15
+OFF220,CASE00016,Kodagu Officer 15,Head Constable,Kodagu Cyber Crime PS,948080215,R010,DES009,U060,DIS014,ST001,officer.off220@ksp.gov.in,Active,2018-06-15
+OFF221,CASE00017,Dakshina Kannada (Mangaluru) Officer 1,Superintendent of Police,Dakshina Kannada (Mangaluru) Town PS,948080216,R005,DES005,U062,DIS015,ST001,officer.off221@ksp.gov.in,Active,2018-06-15
+OFF222,CASE00018,Dakshina Kannada (Mangaluru) Officer 2,Deputy Superintendent of Police,Dakshina Kannada (Mangaluru) Central PS,948080217,R006,DES005,U063,DIS015,ST001,officer.off222@ksp.gov.in,Active,2018-06-15
+OFF223,CASE00019,Dakshina Kannada (Mangaluru) Officer 3,Circle Inspector,Dakshina Kannada (Mangaluru) Cyber Crime PS,948080218,R007,DES001,U064,DIS015,ST001,officer.off223@ksp.gov.in,Active,2018-06-15
+OFF224,CASE00020,Dakshina Kannada (Mangaluru) Officer 4,Police Sub-Inspector,Dakshina Kannada (Mangaluru) Traffic PS,948080219,R008,DES002,U065,DIS015,ST001,officer.off224@ksp.gov.in,Active,2018-06-15
+OFF225,CASE00021,Dakshina Kannada (Mangaluru) Officer 5,Assistant Sub-Inspector,Dakshina Kannada (Mangaluru) Town PS,948080220,R009,DES003,U062,DIS015,ST001,officer.off225@ksp.gov.in,Active,2018-06-15
+OFF226,CASE00022,Dakshina Kannada (Mangaluru) Officer 6,Head Constable,Dakshina Kannada (Mangaluru) Central PS,948080221,R010,DES009,U063,DIS015,ST001,officer.off226@ksp.gov.in,Active,2018-06-15
+OFF227,CASE00023,Dakshina Kannada (Mangaluru) Officer 7,Police Constable,Dakshina Kannada (Mangaluru) Cyber Crime PS,948080222,R010,DES009,U064,DIS015,ST001,officer.off227@ksp.gov.in,Active,2018-06-15
+OFF228,CASE00024,Dakshina Kannada (Mangaluru) Officer 8,CID Officer,Dakshina Kannada (Mangaluru) Traffic PS,948080223,R004,DES004,U065,DIS015,ST001,officer.off228@ksp.gov.in,Active,2018-06-15
+OFF229,CASE00025,Dakshina Kannada (Mangaluru) Officer 9,Crime Branch Specialist,Dakshina Kannada (Mangaluru) Town PS,948080224,R006,DES007,U062,DIS015,ST001,officer.off229@ksp.gov.in,Active,2018-06-15
+OFF230,CASE00026,Dakshina Kannada (Mangaluru) Officer 10,Superintendent of Police,Dakshina Kannada (Mangaluru) Central PS,948080225,R005,DES005,U063,DIS015,ST001,officer.off230@ksp.gov.in,Active,2018-06-15
+OFF231,CASE00027,Dakshina Kannada (Mangaluru) Officer 11,Deputy Superintendent of Police,Dakshina Kannada (Mangaluru) Cyber Crime PS,948080226,R006,DES005,U064,DIS015,ST001,officer.off231@ksp.gov.in,Active,2018-06-15
+OFF232,CASE00028,Dakshina Kannada (Mangaluru) Officer 12,Circle Inspector,Dakshina Kannada (Mangaluru) Traffic PS,948080227,R007,DES001,U065,DIS015,ST001,officer.off232@ksp.gov.in,Active,2018-06-15
+OFF233,CASE00029,Dakshina Kannada (Mangaluru) Officer 13,Police Sub-Inspector,Dakshina Kannada (Mangaluru) Town PS,948080228,R008,DES002,U062,DIS015,ST001,officer.off233@ksp.gov.in,Active,2018-06-15
+OFF234,CASE00030,Dakshina Kannada (Mangaluru) Officer 14,Assistant Sub-Inspector,Dakshina Kannada (Mangaluru) Central PS,948080229,R009,DES003,U063,DIS015,ST001,officer.off234@ksp.gov.in,Active,2018-06-15
+OFF235,CASE00031,Dakshina Kannada (Mangaluru) Officer 15,Head Constable,Dakshina Kannada (Mangaluru) Cyber Crime PS,948080230,R010,DES009,U064,DIS015,ST001,officer.off235@ksp.gov.in,Active,2018-06-15
+OFF236,CASE00032,Udupi Officer 1,Superintendent of Police,Udupi Town PS,948080231,R005,DES005,U066,DIS016,ST001,officer.off236@ksp.gov.in,Active,2018-06-15
+OFF237,CASE00033,Udupi Officer 2,Deputy Superintendent of Police,Udupi Central PS,948080232,R006,DES005,U067,DIS016,ST001,officer.off237@ksp.gov.in,Active,2018-06-15
+OFF238,CASE00034,Udupi Officer 3,Circle Inspector,Udupi Cyber Crime PS,948080233,R007,DES001,U068,DIS016,ST001,officer.off238@ksp.gov.in,Active,2018-06-15
+OFF239,CASE00035,Udupi Officer 4,Police Sub-Inspector,Udupi Traffic PS,948080234,R008,DES002,U069,DIS016,ST001,officer.off239@ksp.gov.in,Active,2018-06-15
+OFF240,CASE00036,Udupi Officer 5,Assistant Sub-Inspector,Udupi Town PS,948080235,R009,DES003,U066,DIS016,ST001,officer.off240@ksp.gov.in,Active,2018-06-15
+OFF241,CASE00037,Udupi Officer 6,Head Constable,Udupi Central PS,948080236,R010,DES009,U067,DIS016,ST001,officer.off241@ksp.gov.in,Active,2018-06-15
+OFF242,CASE00038,Udupi Officer 7,Police Constable,Udupi Cyber Crime PS,948080237,R010,DES009,U068,DIS016,ST001,officer.off242@ksp.gov.in,Active,2018-06-15
+OFF243,CASE00039,Udupi Officer 8,CID Officer,Udupi Traffic PS,948080238,R004,DES004,U069,DIS016,ST001,officer.off243@ksp.gov.in,Active,2018-06-15
+OFF244,CASE00040,Udupi Officer 9,Crime Branch Specialist,Udupi Town PS,948080239,R006,DES007,U066,DIS016,ST001,officer.off244@ksp.gov.in,Active,2018-06-15
+OFF245,CASE00041,Udupi Officer 10,Superintendent of Police,Udupi Central PS,948080240,R005,DES005,U067,DIS016,ST001,officer.off245@ksp.gov.in,Active,2018-06-15
+OFF246,CASE00042,Udupi Officer 11,Deputy Superintendent of Police,Udupi Cyber Crime PS,948080241,R006,DES005,U068,DIS016,ST001,officer.off246@ksp.gov.in,Active,2018-06-15
+OFF247,CASE00043,Udupi Officer 12,Circle Inspector,Udupi Traffic PS,948080242,R007,DES001,U069,DIS016,ST001,officer.off247@ksp.gov.in,Active,2018-06-15
+OFF248,CASE00044,Udupi Officer 13,Police Sub-Inspector,Udupi Town PS,948080243,R008,DES002,U066,DIS016,ST001,officer.off248@ksp.gov.in,Active,2018-06-15
+OFF249,CASE00045,Udupi Officer 14,Assistant Sub-Inspector,Udupi Central PS,948080244,R009,DES003,U067,DIS016,ST001,officer.off249@ksp.gov.in,Active,2018-06-15
+OFF250,CASE00046,Udupi Officer 15,Head Constable,Udupi Cyber Crime PS,948080245,R010,DES009,U068,DIS016,ST001,officer.off250@ksp.gov.in,Active,2018-06-15
+OFF251,CASE00047,Uttara Kannada (Karwar) Officer 1,Superintendent of Police,Uttara Kannada (Karwar) Town PS,948080246,R005,DES005,U070,DIS017,ST001,officer.off251@ksp.gov.in,Active,2018-06-15
+OFF252,CASE00048,Uttara Kannada (Karwar) Officer 2,Deputy Superintendent of Police,Uttara Kannada (Karwar) Central PS,948080247,R006,DES005,U071,DIS017,ST001,officer.off252@ksp.gov.in,Active,2018-06-15
+OFF253,CASE00049,Uttara Kannada (Karwar) Officer 3,Circle Inspector,Uttara Kannada (Karwar) Cyber Crime PS,948080248,R007,DES001,U072,DIS017,ST001,officer.off253@ksp.gov.in,Active,2018-06-15
+OFF254,CASE00050,Uttara Kannada (Karwar) Officer 4,Police Sub-Inspector,Uttara Kannada (Karwar) Traffic PS,948080249,R008,DES002,U073,DIS017,ST001,officer.off254@ksp.gov.in,Active,2018-06-15
+OFF255,CASE00051,Uttara Kannada (Karwar) Officer 5,Assistant Sub-Inspector,Uttara Kannada (Karwar) Town PS,948080250,R009,DES003,U070,DIS017,ST001,officer.off255@ksp.gov.in,Active,2018-06-15
+OFF256,CASE00052,Uttara Kannada (Karwar) Officer 6,Head Constable,Uttara Kannada (Karwar) Central PS,948080251,R010,DES009,U071,DIS017,ST001,officer.off256@ksp.gov.in,Active,2018-06-15
+OFF257,CASE00053,Uttara Kannada (Karwar) Officer 7,Police Constable,Uttara Kannada (Karwar) Cyber Crime PS,948080252,R010,DES009,U072,DIS017,ST001,officer.off257@ksp.gov.in,Active,2018-06-15
+OFF258,CASE00054,Uttara Kannada (Karwar) Officer 8,CID Officer,Uttara Kannada (Karwar) Traffic PS,948080253,R004,DES004,U073,DIS017,ST001,officer.off258@ksp.gov.in,Active,2018-06-15
+OFF259,CASE00055,Uttara Kannada (Karwar) Officer 9,Crime Branch Specialist,Uttara Kannada (Karwar) Town PS,948080254,R006,DES007,U070,DIS017,ST001,officer.off259@ksp.gov.in,Active,2018-06-15
+OFF260,CASE00056,Uttara Kannada (Karwar) Officer 10,Superintendent of Police,Uttara Kannada (Karwar) Central PS,948080255,R005,DES005,U071,DIS017,ST001,officer.off260@ksp.gov.in,Active,2018-06-15
+OFF261,CASE00057,Uttara Kannada (Karwar) Officer 11,Deputy Superintendent of Police,Uttara Kannada (Karwar) Cyber Crime PS,948080256,R006,DES005,U072,DIS017,ST001,officer.off261@ksp.gov.in,Active,2018-06-15
+OFF262,CASE00058,Uttara Kannada (Karwar) Officer 12,Circle Inspector,Uttara Kannada (Karwar) Traffic PS,948080257,R007,DES001,U073,DIS017,ST001,officer.off262@ksp.gov.in,Active,2018-06-15
+OFF263,CASE00059,Uttara Kannada (Karwar) Officer 13,Police Sub-Inspector,Uttara Kannada (Karwar) Town PS,948080258,R008,DES002,U070,DIS017,ST001,officer.off263@ksp.gov.in,Active,2018-06-15
+OFF264,CASE00060,Uttara Kannada (Karwar) Officer 14,Assistant Sub-Inspector,Uttara Kannada (Karwar) Central PS,948080259,R009,DES003,U071,DIS017,ST001,officer.off264@ksp.gov.in,Active,2018-06-15
+OFF265,CASE00061,Uttara Kannada (Karwar) Officer 15,Head Constable,Uttara Kannada (Karwar) Cyber Crime PS,948080260,R010,DES009,U072,DIS017,ST001,officer.off265@ksp.gov.in,Active,2018-06-15
+OFF266,CASE00062,Belagavi Officer 1,Superintendent of Police,Belagavi Town PS,948080261,R005,DES005,U074,DIS018,ST001,officer.off266@ksp.gov.in,Active,2018-06-15
+OFF267,CASE00063,Belagavi Officer 2,Deputy Superintendent of Police,Belagavi Central PS,948080262,R006,DES005,U075,DIS018,ST001,officer.off267@ksp.gov.in,Active,2018-06-15
+OFF268,CASE00064,Belagavi Officer 3,Circle Inspector,Belagavi Cyber Crime PS,948080263,R007,DES001,U076,DIS018,ST001,officer.off268@ksp.gov.in,Active,2018-06-15
+OFF269,CASE00065,Belagavi Officer 4,Police Sub-Inspector,Belagavi Traffic PS,948080264,R008,DES002,U077,DIS018,ST001,officer.off269@ksp.gov.in,Active,2018-06-15
+OFF270,CASE00066,Belagavi Officer 5,Assistant Sub-Inspector,Belagavi Town PS,948080265,R009,DES003,U074,DIS018,ST001,officer.off270@ksp.gov.in,Active,2018-06-15
+OFF271,CASE00067,Belagavi Officer 6,Head Constable,Belagavi Central PS,948080266,R010,DES009,U075,DIS018,ST001,officer.off271@ksp.gov.in,Active,2018-06-15
+OFF272,CASE00068,Belagavi Officer 7,Police Constable,Belagavi Cyber Crime PS,948080267,R010,DES009,U076,DIS018,ST001,officer.off272@ksp.gov.in,Active,2018-06-15
+OFF273,CASE00069,Belagavi Officer 8,CID Officer,Belagavi Traffic PS,948080268,R004,DES004,U077,DIS018,ST001,officer.off273@ksp.gov.in,Active,2018-06-15
+OFF274,CASE00070,Belagavi Officer 9,Crime Branch Specialist,Belagavi Town PS,948080269,R006,DES007,U074,DIS018,ST001,officer.off274@ksp.gov.in,Active,2018-06-15
+OFF275,CASE00071,Belagavi Officer 10,Superintendent of Police,Belagavi Central PS,948080270,R005,DES005,U075,DIS018,ST001,officer.off275@ksp.gov.in,Active,2018-06-15
+OFF276,CASE00072,Belagavi Officer 11,Deputy Superintendent of Police,Belagavi Cyber Crime PS,948080271,R006,DES005,U076,DIS018,ST001,officer.off276@ksp.gov.in,Active,2018-06-15
+OFF277,CASE00073,Belagavi Officer 12,Circle Inspector,Belagavi Traffic PS,948080272,R007,DES001,U077,DIS018,ST001,officer.off277@ksp.gov.in,Active,2018-06-15
+OFF278,CASE00074,Belagavi Officer 13,Police Sub-Inspector,Belagavi Town PS,948080273,R008,DES002,U074,DIS018,ST001,officer.off278@ksp.gov.in,Active,2018-06-15
+OFF279,CASE00075,Belagavi Officer 14,Assistant Sub-Inspector,Belagavi Central PS,948080274,R009,DES003,U075,DIS018,ST001,officer.off279@ksp.gov.in,Active,2018-06-15
+OFF280,CASE00076,Belagavi Officer 15,Head Constable,Belagavi Cyber Crime PS,948080275,R010,DES009,U076,DIS018,ST001,officer.off280@ksp.gov.in,Active,2018-06-15
+OFF281,CASE00077,Dharwad Officer 1,Superintendent of Police,Dharwad Town PS,948080276,R005,DES005,U078,DIS019,ST001,officer.off281@ksp.gov.in,Active,2018-06-15
+OFF282,CASE00078,Dharwad Officer 2,Deputy Superintendent of Police,Dharwad Central PS,948080277,R006,DES005,U079,DIS019,ST001,officer.off282@ksp.gov.in,Active,2018-06-15
+OFF283,CASE00079,Dharwad Officer 3,Circle Inspector,Dharwad Cyber Crime PS,948080278,R007,DES001,U080,DIS019,ST001,officer.off283@ksp.gov.in,Active,2018-06-15
+OFF284,CASE00080,Dharwad Officer 4,Police Sub-Inspector,Dharwad Traffic PS,948080279,R008,DES002,U081,DIS019,ST001,officer.off284@ksp.gov.in,Active,2018-06-15
+OFF285,CASE00081,Dharwad Officer 5,Assistant Sub-Inspector,Dharwad Town PS,948080280,R009,DES003,U078,DIS019,ST001,officer.off285@ksp.gov.in,Active,2018-06-15
+OFF286,CASE00082,Dharwad Officer 6,Head Constable,Dharwad Central PS,948080281,R010,DES009,U079,DIS019,ST001,officer.off286@ksp.gov.in,Active,2018-06-15
+OFF287,CASE00083,Dharwad Officer 7,Police Constable,Dharwad Cyber Crime PS,948080282,R010,DES009,U080,DIS019,ST001,officer.off287@ksp.gov.in,Active,2018-06-15
+OFF288,CASE00084,Dharwad Officer 8,CID Officer,Dharwad Traffic PS,948080283,R004,DES004,U081,DIS019,ST001,officer.off288@ksp.gov.in,Active,2018-06-15
+OFF289,CASE00085,Dharwad Officer 9,Crime Branch Specialist,Dharwad Town PS,948080284,R006,DES007,U078,DIS019,ST001,officer.off289@ksp.gov.in,Active,2018-06-15
+OFF290,CASE00086,Dharwad Officer 10,Superintendent of Police,Dharwad Central PS,948080285,R005,DES005,U079,DIS019,ST001,officer.off290@ksp.gov.in,Active,2018-06-15
+OFF291,CASE00087,Dharwad Officer 11,Deputy Superintendent of Police,Dharwad Cyber Crime PS,948080286,R006,DES005,U080,DIS019,ST001,officer.off291@ksp.gov.in,Active,2018-06-15
+OFF292,CASE00088,Dharwad Officer 12,Circle Inspector,Dharwad Traffic PS,948080287,R007,DES001,U081,DIS019,ST001,officer.off292@ksp.gov.in,Active,2018-06-15
+OFF293,CASE00089,Dharwad Officer 13,Police Sub-Inspector,Dharwad Town PS,948080288,R008,DES002,U078,DIS019,ST001,officer.off293@ksp.gov.in,Active,2018-06-15
+OFF294,CASE00090,Dharwad Officer 14,Assistant Sub-Inspector,Dharwad Central PS,948080289,R009,DES003,U079,DIS019,ST001,officer.off294@ksp.gov.in,Active,2018-06-15
+OFF295,CASE00091,Dharwad Officer 15,Head Constable,Dharwad Cyber Crime PS,948080290,R010,DES009,U080,DIS019,ST001,officer.off295@ksp.gov.in,Active,2018-06-15
+OFF296,CASE00092,Hubballi City Officer 1,Superintendent of Police,Hubballi City Town PS,948080291,R005,DES005,U082,DIS020,ST001,officer.off296@ksp.gov.in,Active,2018-06-15
+OFF297,CASE00093,Hubballi City Officer 2,Deputy Superintendent of Police,Hubballi City Central PS,948080292,R006,DES005,U083,DIS020,ST001,officer.off297@ksp.gov.in,Active,2018-06-15
+OFF298,CASE00094,Hubballi City Officer 3,Circle Inspector,Hubballi City Cyber Crime PS,948080293,R007,DES001,U084,DIS020,ST001,officer.off298@ksp.gov.in,Active,2018-06-15
+OFF299,CASE00095,Hubballi City Officer 4,Police Sub-Inspector,Hubballi City Traffic PS,948080294,R008,DES002,U085,DIS020,ST001,officer.off299@ksp.gov.in,Active,2018-06-15
+OFF300,CASE00096,Hubballi City Officer 5,Assistant Sub-Inspector,Hubballi City Town PS,948080295,R009,DES003,U082,DIS020,ST001,officer.off300@ksp.gov.in,Active,2018-06-15
+OFF301,CASE00097,Hubballi City Officer 6,Head Constable,Hubballi City Central PS,948080296,R010,DES009,U083,DIS020,ST001,officer.off301@ksp.gov.in,Active,2018-06-15
+OFF302,CASE00098,Hubballi City Officer 7,Police Constable,Hubballi City Cyber Crime PS,948080297,R010,DES009,U084,DIS020,ST001,officer.off302@ksp.gov.in,Active,2018-06-15
+OFF303,CASE00099,Hubballi City Officer 8,CID Officer,Hubballi City Traffic PS,948080298,R004,DES004,U085,DIS020,ST001,officer.off303@ksp.gov.in,Active,2018-06-15
+OFF304,CASE00100,Hubballi City Officer 9,Crime Branch Specialist,Hubballi City Town PS,948080299,R006,DES007,U082,DIS020,ST001,officer.off304@ksp.gov.in,Active,2018-06-15
+OFF305,CASE00001,Hubballi City Officer 10,Superintendent of Police,Hubballi City Central PS,948080300,R005,DES005,U083,DIS020,ST001,officer.off305@ksp.gov.in,Active,2018-06-15
+OFF306,CASE00002,Hubballi City Officer 11,Deputy Superintendent of Police,Hubballi City Cyber Crime PS,948080301,R006,DES005,U084,DIS020,ST001,officer.off306@ksp.gov.in,Active,2018-06-15
+OFF307,CASE00003,Hubballi City Officer 12,Circle Inspector,Hubballi City Traffic PS,948080302,R007,DES001,U085,DIS020,ST001,officer.off307@ksp.gov.in,Active,2018-06-15
+OFF308,CASE00004,Hubballi City Officer 13,Police Sub-Inspector,Hubballi City Town PS,948080303,R008,DES002,U082,DIS020,ST001,officer.off308@ksp.gov.in,Active,2018-06-15
+OFF309,CASE00005,Hubballi City Officer 14,Assistant Sub-Inspector,Hubballi City Central PS,948080304,R009,DES003,U083,DIS020,ST001,officer.off309@ksp.gov.in,Active,2018-06-15
+OFF310,CASE00006,Hubballi City Officer 15,Head Constable,Hubballi City Cyber Crime PS,948080305,R010,DES009,U084,DIS020,ST001,officer.off310@ksp.gov.in,Active,2018-06-15
+OFF311,CASE00007,Gadag Officer 1,Superintendent of Police,Gadag Town PS,948080306,R005,DES005,U086,DIS021,ST001,officer.off311@ksp.gov.in,Active,2018-06-15
+OFF312,CASE00008,Gadag Officer 2,Deputy Superintendent of Police,Gadag Central PS,948080307,R006,DES005,U087,DIS021,ST001,officer.off312@ksp.gov.in,Active,2018-06-15
+OFF313,CASE00009,Gadag Officer 3,Circle Inspector,Gadag Cyber Crime PS,948080308,R007,DES001,U088,DIS021,ST001,officer.off313@ksp.gov.in,Active,2018-06-15
+OFF314,CASE00010,Gadag Officer 4,Police Sub-Inspector,Gadag Traffic PS,948080309,R008,DES002,U089,DIS021,ST001,officer.off314@ksp.gov.in,Active,2018-06-15
+OFF315,CASE00011,Gadag Officer 5,Assistant Sub-Inspector,Gadag Town PS,948080310,R009,DES003,U086,DIS021,ST001,officer.off315@ksp.gov.in,Active,2018-06-15
+OFF316,CASE00012,Gadag Officer 6,Head Constable,Gadag Central PS,948080311,R010,DES009,U087,DIS021,ST001,officer.off316@ksp.gov.in,Active,2018-06-15
+OFF317,CASE00013,Gadag Officer 7,Police Constable,Gadag Cyber Crime PS,948080312,R010,DES009,U088,DIS021,ST001,officer.off317@ksp.gov.in,Active,2018-06-15
+OFF318,CASE00014,Gadag Officer 8,CID Officer,Gadag Traffic PS,948080313,R004,DES004,U089,DIS021,ST001,officer.off318@ksp.gov.in,Active,2018-06-15
+OFF319,CASE00015,Gadag Officer 9,Crime Branch Specialist,Gadag Town PS,948080314,R006,DES007,U086,DIS021,ST001,officer.off319@ksp.gov.in,Active,2018-06-15
+OFF320,CASE00016,Gadag Officer 10,Superintendent of Police,Gadag Central PS,948080315,R005,DES005,U087,DIS021,ST001,officer.off320@ksp.gov.in,Active,2018-06-15
+OFF321,CASE00017,Gadag Officer 11,Deputy Superintendent of Police,Gadag Cyber Crime PS,948080316,R006,DES005,U088,DIS021,ST001,officer.off321@ksp.gov.in,Active,2018-06-15
+OFF322,CASE00018,Gadag Officer 12,Circle Inspector,Gadag Traffic PS,948080317,R007,DES001,U089,DIS021,ST001,officer.off322@ksp.gov.in,Active,2018-06-15
+OFF323,CASE00019,Gadag Officer 13,Police Sub-Inspector,Gadag Town PS,948080318,R008,DES002,U086,DIS021,ST001,officer.off323@ksp.gov.in,Active,2018-06-15
+OFF324,CASE00020,Gadag Officer 14,Assistant Sub-Inspector,Gadag Central PS,948080319,R009,DES003,U087,DIS021,ST001,officer.off324@ksp.gov.in,Active,2018-06-15
+OFF325,CASE00021,Gadag Officer 15,Head Constable,Gadag Cyber Crime PS,948080320,R010,DES009,U088,DIS021,ST001,officer.off325@ksp.gov.in,Active,2018-06-15
+OFF326,CASE00022,Haveri Officer 1,Superintendent of Police,Haveri Town PS,948080321,R005,DES005,U090,DIS022,ST001,officer.off326@ksp.gov.in,Active,2018-06-15
+OFF327,CASE00023,Haveri Officer 2,Deputy Superintendent of Police,Haveri Central PS,948080322,R006,DES005,U091,DIS022,ST001,officer.off327@ksp.gov.in,Active,2018-06-15
+OFF328,CASE00024,Haveri Officer 3,Circle Inspector,Haveri Cyber Crime PS,948080323,R007,DES001,U092,DIS022,ST001,officer.off328@ksp.gov.in,Active,2018-06-15
+OFF329,CASE00025,Haveri Officer 4,Police Sub-Inspector,Haveri Traffic PS,948080324,R008,DES002,U093,DIS022,ST001,officer.off329@ksp.gov.in,Active,2018-06-15
+OFF330,CASE00026,Haveri Officer 5,Assistant Sub-Inspector,Haveri Town PS,948080325,R009,DES003,U090,DIS022,ST001,officer.off330@ksp.gov.in,Active,2018-06-15
+OFF331,CASE00027,Haveri Officer 6,Head Constable,Haveri Central PS,948080326,R010,DES009,U091,DIS022,ST001,officer.off331@ksp.gov.in,Active,2018-06-15
+OFF332,CASE00028,Haveri Officer 7,Police Constable,Haveri Cyber Crime PS,948080327,R010,DES009,U092,DIS022,ST001,officer.off332@ksp.gov.in,Active,2018-06-15
+OFF333,CASE00029,Haveri Officer 8,CID Officer,Haveri Traffic PS,948080328,R004,DES004,U093,DIS022,ST001,officer.off333@ksp.gov.in,Active,2018-06-15
+OFF334,CASE00030,Haveri Officer 9,Crime Branch Specialist,Haveri Town PS,948080329,R006,DES007,U090,DIS022,ST001,officer.off334@ksp.gov.in,Active,2018-06-15
+OFF335,CASE00031,Haveri Officer 10,Superintendent of Police,Haveri Central PS,948080330,R005,DES005,U091,DIS022,ST001,officer.off335@ksp.gov.in,Active,2018-06-15
+OFF336,CASE00032,Haveri Officer 11,Deputy Superintendent of Police,Haveri Cyber Crime PS,948080331,R006,DES005,U092,DIS022,ST001,officer.off336@ksp.gov.in,Active,2018-06-15
+OFF337,CASE00033,Haveri Officer 12,Circle Inspector,Haveri Traffic PS,948080332,R007,DES001,U093,DIS022,ST001,officer.off337@ksp.gov.in,Active,2018-06-15
+OFF338,CASE00034,Haveri Officer 13,Police Sub-Inspector,Haveri Town PS,948080333,R008,DES002,U090,DIS022,ST001,officer.off338@ksp.gov.in,Active,2018-06-15
+OFF339,CASE00035,Haveri Officer 14,Assistant Sub-Inspector,Haveri Central PS,948080334,R009,DES003,U091,DIS022,ST001,officer.off339@ksp.gov.in,Active,2018-06-15
+OFF340,CASE00036,Haveri Officer 15,Head Constable,Haveri Cyber Crime PS,948080335,R010,DES009,U092,DIS022,ST001,officer.off340@ksp.gov.in,Active,2018-06-15
+OFF341,CASE00037,Vijayapura Officer 1,Superintendent of Police,Vijayapura Town PS,948080336,R005,DES005,U094,DIS023,ST001,officer.off341@ksp.gov.in,Active,2018-06-15
+OFF342,CASE00038,Vijayapura Officer 2,Deputy Superintendent of Police,Vijayapura Central PS,948080337,R006,DES005,U095,DIS023,ST001,officer.off342@ksp.gov.in,Active,2018-06-15
+OFF343,CASE00039,Vijayapura Officer 3,Circle Inspector,Vijayapura Cyber Crime PS,948080338,R007,DES001,U096,DIS023,ST001,officer.off343@ksp.gov.in,Active,2018-06-15
+OFF344,CASE00040,Vijayapura Officer 4,Police Sub-Inspector,Vijayapura Traffic PS,948080339,R008,DES002,U097,DIS023,ST001,officer.off344@ksp.gov.in,Active,2018-06-15
+OFF345,CASE00041,Vijayapura Officer 5,Assistant Sub-Inspector,Vijayapura Town PS,948080340,R009,DES003,U094,DIS023,ST001,officer.off345@ksp.gov.in,Active,2018-06-15
+OFF346,CASE00042,Vijayapura Officer 6,Head Constable,Vijayapura Central PS,948080341,R010,DES009,U095,DIS023,ST001,officer.off346@ksp.gov.in,Active,2018-06-15
+OFF347,CASE00043,Vijayapura Officer 7,Police Constable,Vijayapura Cyber Crime PS,948080342,R010,DES009,U096,DIS023,ST001,officer.off347@ksp.gov.in,Active,2018-06-15
+OFF348,CASE00044,Vijayapura Officer 8,CID Officer,Vijayapura Traffic PS,948080343,R004,DES004,U097,DIS023,ST001,officer.off348@ksp.gov.in,Active,2018-06-15
+OFF349,CASE00045,Vijayapura Officer 9,Crime Branch Specialist,Vijayapura Town PS,948080344,R006,DES007,U094,DIS023,ST001,officer.off349@ksp.gov.in,Active,2018-06-15
+OFF350,CASE00046,Vijayapura Officer 10,Superintendent of Police,Vijayapura Central PS,948080345,R005,DES005,U095,DIS023,ST001,officer.off350@ksp.gov.in,Active,2018-06-15
+OFF351,CASE00047,Vijayapura Officer 11,Deputy Superintendent of Police,Vijayapura Cyber Crime PS,948080346,R006,DES005,U096,DIS023,ST001,officer.off351@ksp.gov.in,Active,2018-06-15
+OFF352,CASE00048,Vijayapura Officer 12,Circle Inspector,Vijayapura Traffic PS,948080347,R007,DES001,U097,DIS023,ST001,officer.off352@ksp.gov.in,Active,2018-06-15
+OFF353,CASE00049,Vijayapura Officer 13,Police Sub-Inspector,Vijayapura Town PS,948080348,R008,DES002,U094,DIS023,ST001,officer.off353@ksp.gov.in,Active,2018-06-15
+OFF354,CASE00050,Vijayapura Officer 14,Assistant Sub-Inspector,Vijayapura Central PS,948080349,R009,DES003,U095,DIS023,ST001,officer.off354@ksp.gov.in,Active,2018-06-15
+OFF355,CASE00051,Vijayapura Officer 15,Head Constable,Vijayapura Cyber Crime PS,948080350,R010,DES009,U096,DIS023,ST001,officer.off355@ksp.gov.in,Active,2018-06-15
+OFF356,CASE00052,Bagalkote Officer 1,Superintendent of Police,Bagalkote Town PS,948080351,R005,DES005,U098,DIS024,ST001,officer.off356@ksp.gov.in,Active,2018-06-15
+OFF357,CASE00053,Bagalkote Officer 2,Deputy Superintendent of Police,Bagalkote Central PS,948080352,R006,DES005,U099,DIS024,ST001,officer.off357@ksp.gov.in,Active,2018-06-15
+OFF358,CASE00054,Bagalkote Officer 3,Circle Inspector,Bagalkote Cyber Crime PS,948080353,R007,DES001,U100,DIS024,ST001,officer.off358@ksp.gov.in,Active,2018-06-15
+OFF359,CASE00055,Bagalkote Officer 4,Police Sub-Inspector,Bagalkote Traffic PS,948080354,R008,DES002,U101,DIS024,ST001,officer.off359@ksp.gov.in,Active,2018-06-15
+OFF360,CASE00056,Bagalkote Officer 5,Assistant Sub-Inspector,Bagalkote Town PS,948080355,R009,DES003,U098,DIS024,ST001,officer.off360@ksp.gov.in,Active,2018-06-15
+OFF361,CASE00057,Bagalkote Officer 6,Head Constable,Bagalkote Central PS,948080356,R010,DES009,U099,DIS024,ST001,officer.off361@ksp.gov.in,Active,2018-06-15
+OFF362,CASE00058,Bagalkote Officer 7,Police Constable,Bagalkote Cyber Crime PS,948080357,R010,DES009,U100,DIS024,ST001,officer.off362@ksp.gov.in,Active,2018-06-15
+OFF363,CASE00059,Bagalkote Officer 8,CID Officer,Bagalkote Traffic PS,948080358,R004,DES004,U101,DIS024,ST001,officer.off363@ksp.gov.in,Active,2018-06-15
+OFF364,CASE00060,Bagalkote Officer 9,Crime Branch Specialist,Bagalkote Town PS,948080359,R006,DES007,U098,DIS024,ST001,officer.off364@ksp.gov.in,Active,2018-06-15
+OFF365,CASE00061,Bagalkote Officer 10,Superintendent of Police,Bagalkote Central PS,948080360,R005,DES005,U099,DIS024,ST001,officer.off365@ksp.gov.in,Active,2018-06-15
+OFF366,CASE00062,Bagalkote Officer 11,Deputy Superintendent of Police,Bagalkote Cyber Crime PS,948080361,R006,DES005,U100,DIS024,ST001,officer.off366@ksp.gov.in,Active,2018-06-15
+OFF367,CASE00063,Bagalkote Officer 12,Circle Inspector,Bagalkote Traffic PS,948080362,R007,DES001,U101,DIS024,ST001,officer.off367@ksp.gov.in,Active,2018-06-15
+OFF368,CASE00064,Bagalkote Officer 13,Police Sub-Inspector,Bagalkote Town PS,948080363,R008,DES002,U098,DIS024,ST001,officer.off368@ksp.gov.in,Active,2018-06-15
+OFF369,CASE00065,Bagalkote Officer 14,Assistant Sub-Inspector,Bagalkote Central PS,948080364,R009,DES003,U099,DIS024,ST001,officer.off369@ksp.gov.in,Active,2018-06-15
+OFF370,CASE00066,Bagalkote Officer 15,Head Constable,Bagalkote Cyber Crime PS,948080365,R010,DES009,U100,DIS024,ST001,officer.off370@ksp.gov.in,Active,2018-06-15
+OFF371,CASE00067,Kalaburagi Officer 1,Superintendent of Police,Kalaburagi Town PS,948080366,R005,DES005,U102,DIS025,ST001,officer.off371@ksp.gov.in,Active,2018-06-15
+OFF372,CASE00068,Kalaburagi Officer 2,Deputy Superintendent of Police,Kalaburagi Central PS,948080367,R006,DES005,U103,DIS025,ST001,officer.off372@ksp.gov.in,Active,2018-06-15
+OFF373,CASE00069,Kalaburagi Officer 3,Circle Inspector,Kalaburagi Cyber Crime PS,948080368,R007,DES001,U104,DIS025,ST001,officer.off373@ksp.gov.in,Active,2018-06-15
+OFF374,CASE00070,Kalaburagi Officer 4,Police Sub-Inspector,Kalaburagi Traffic PS,948080369,R008,DES002,U105,DIS025,ST001,officer.off374@ksp.gov.in,Active,2018-06-15
+OFF375,CASE00071,Kalaburagi Officer 5,Assistant Sub-Inspector,Kalaburagi Town PS,948080370,R009,DES003,U102,DIS025,ST001,officer.off375@ksp.gov.in,Active,2018-06-15
+OFF376,CASE00072,Kalaburagi Officer 6,Head Constable,Kalaburagi Central PS,948080371,R010,DES009,U103,DIS025,ST001,officer.off376@ksp.gov.in,Active,2018-06-15
+OFF377,CASE00073,Kalaburagi Officer 7,Police Constable,Kalaburagi Cyber Crime PS,948080372,R010,DES009,U104,DIS025,ST001,officer.off377@ksp.gov.in,Active,2018-06-15
+OFF378,CASE00074,Kalaburagi Officer 8,CID Officer,Kalaburagi Traffic PS,948080373,R004,DES004,U105,DIS025,ST001,officer.off378@ksp.gov.in,Active,2018-06-15
+OFF379,CASE00075,Kalaburagi Officer 9,Crime Branch Specialist,Kalaburagi Town PS,948080374,R006,DES007,U102,DIS025,ST001,officer.off379@ksp.gov.in,Active,2018-06-15
+OFF380,CASE00076,Kalaburagi Officer 10,Superintendent of Police,Kalaburagi Central PS,948080375,R005,DES005,U103,DIS025,ST001,officer.off380@ksp.gov.in,Active,2018-06-15
+OFF381,CASE00077,Kalaburagi Officer 11,Deputy Superintendent of Police,Kalaburagi Cyber Crime PS,948080376,R006,DES005,U104,DIS025,ST001,officer.off381@ksp.gov.in,Active,2018-06-15
+OFF382,CASE00078,Kalaburagi Officer 12,Circle Inspector,Kalaburagi Traffic PS,948080377,R007,DES001,U105,DIS025,ST001,officer.off382@ksp.gov.in,Active,2018-06-15
+OFF383,CASE00079,Kalaburagi Officer 13,Police Sub-Inspector,Kalaburagi Town PS,948080378,R008,DES002,U102,DIS025,ST001,officer.off383@ksp.gov.in,Active,2018-06-15
+OFF384,CASE00080,Kalaburagi Officer 14,Assistant Sub-Inspector,Kalaburagi Central PS,948080379,R009,DES003,U103,DIS025,ST001,officer.off384@ksp.gov.in,Active,2018-06-15
+OFF385,CASE00081,Kalaburagi Officer 15,Head Constable,Kalaburagi Cyber Crime PS,948080380,R010,DES009,U104,DIS025,ST001,officer.off385@ksp.gov.in,Active,2018-06-15
+OFF386,CASE00082,Bidar Officer 1,Superintendent of Police,Bidar Town PS,948080381,R005,DES005,U106,DIS026,ST001,officer.off386@ksp.gov.in,Active,2018-06-15
+OFF387,CASE00083,Bidar Officer 2,Deputy Superintendent of Police,Bidar Central PS,948080382,R006,DES005,U107,DIS026,ST001,officer.off387@ksp.gov.in,Active,2018-06-15
+OFF388,CASE00084,Bidar Officer 3,Circle Inspector,Bidar Cyber Crime PS,948080383,R007,DES001,U108,DIS026,ST001,officer.off388@ksp.gov.in,Active,2018-06-15
+OFF389,CASE00085,Bidar Officer 4,Police Sub-Inspector,Bidar Traffic PS,948080384,R008,DES002,U109,DIS026,ST001,officer.off389@ksp.gov.in,Active,2018-06-15
+OFF390,CASE00086,Bidar Officer 5,Assistant Sub-Inspector,Bidar Town PS,948080385,R009,DES003,U106,DIS026,ST001,officer.off390@ksp.gov.in,Active,2018-06-15
+OFF391,CASE00087,Bidar Officer 6,Head Constable,Bidar Central PS,948080386,R010,DES009,U107,DIS026,ST001,officer.off391@ksp.gov.in,Active,2018-06-15
+OFF392,CASE00088,Bidar Officer 7,Police Constable,Bidar Cyber Crime PS,948080387,R010,DES009,U108,DIS026,ST001,officer.off392@ksp.gov.in,Active,2018-06-15
+OFF393,CASE00089,Bidar Officer 8,CID Officer,Bidar Traffic PS,948080388,R004,DES004,U109,DIS026,ST001,officer.off393@ksp.gov.in,Active,2018-06-15
+OFF394,CASE00090,Bidar Officer 9,Crime Branch Specialist,Bidar Town PS,948080389,R006,DES007,U106,DIS026,ST001,officer.off394@ksp.gov.in,Active,2018-06-15
+OFF395,CASE00091,Bidar Officer 10,Superintendent of Police,Bidar Central PS,948080390,R005,DES005,U107,DIS026,ST001,officer.off395@ksp.gov.in,Active,2018-06-15
+OFF396,CASE00092,Bidar Officer 11,Deputy Superintendent of Police,Bidar Cyber Crime PS,948080391,R006,DES005,U108,DIS026,ST001,officer.off396@ksp.gov.in,Active,2018-06-15
+OFF397,CASE00093,Bidar Officer 12,Circle Inspector,Bidar Traffic PS,948080392,R007,DES001,U109,DIS026,ST001,officer.off397@ksp.gov.in,Active,2018-06-15
+OFF398,CASE00094,Bidar Officer 13,Police Sub-Inspector,Bidar Town PS,948080393,R008,DES002,U106,DIS026,ST001,officer.off398@ksp.gov.in,Active,2018-06-15
+OFF399,CASE00095,Bidar Officer 14,Assistant Sub-Inspector,Bidar Central PS,948080394,R009,DES003,U107,DIS026,ST001,officer.off399@ksp.gov.in,Active,2018-06-15
+OFF400,CASE00096,Bidar Officer 15,Head Constable,Bidar Cyber Crime PS,948080395,R010,DES009,U108,DIS026,ST001,officer.off400@ksp.gov.in,Active,2018-06-15
+OFF401,CASE00097,Raichur Officer 1,Superintendent of Police,Raichur Town PS,948080396,R005,DES005,U110,DIS027,ST001,officer.off401@ksp.gov.in,Active,2018-06-15
+OFF402,CASE00098,Raichur Officer 2,Deputy Superintendent of Police,Raichur Central PS,948080397,R006,DES005,U111,DIS027,ST001,officer.off402@ksp.gov.in,Active,2018-06-15
+OFF403,CASE00099,Raichur Officer 3,Circle Inspector,Raichur Cyber Crime PS,948080398,R007,DES001,U112,DIS027,ST001,officer.off403@ksp.gov.in,Active,2018-06-15
+OFF404,CASE00100,Raichur Officer 4,Police Sub-Inspector,Raichur Traffic PS,948080399,R008,DES002,U113,DIS027,ST001,officer.off404@ksp.gov.in,Active,2018-06-15
+OFF405,CASE00001,Raichur Officer 5,Assistant Sub-Inspector,Raichur Town PS,948080400,R009,DES003,U110,DIS027,ST001,officer.off405@ksp.gov.in,Active,2018-06-15
+OFF406,CASE00002,Raichur Officer 6,Head Constable,Raichur Central PS,948080401,R010,DES009,U111,DIS027,ST001,officer.off406@ksp.gov.in,Active,2018-06-15
+OFF407,CASE00003,Raichur Officer 7,Police Constable,Raichur Cyber Crime PS,948080402,R010,DES009,U112,DIS027,ST001,officer.off407@ksp.gov.in,Active,2018-06-15
+OFF408,CASE00004,Raichur Officer 8,CID Officer,Raichur Traffic PS,948080403,R004,DES004,U113,DIS027,ST001,officer.off408@ksp.gov.in,Active,2018-06-15
+OFF409,CASE00005,Raichur Officer 9,Crime Branch Specialist,Raichur Town PS,948080404,R006,DES007,U110,DIS027,ST001,officer.off409@ksp.gov.in,Active,2018-06-15
+OFF410,CASE00006,Raichur Officer 10,Superintendent of Police,Raichur Central PS,948080405,R005,DES005,U111,DIS027,ST001,officer.off410@ksp.gov.in,Active,2018-06-15
+OFF411,CASE00007,Raichur Officer 11,Deputy Superintendent of Police,Raichur Cyber Crime PS,948080406,R006,DES005,U112,DIS027,ST001,officer.off411@ksp.gov.in,Active,2018-06-15
+OFF412,CASE00008,Raichur Officer 12,Circle Inspector,Raichur Traffic PS,948080407,R007,DES001,U113,DIS027,ST001,officer.off412@ksp.gov.in,Active,2018-06-15
+OFF413,CASE00009,Raichur Officer 13,Police Sub-Inspector,Raichur Town PS,948080408,R008,DES002,U110,DIS027,ST001,officer.off413@ksp.gov.in,Active,2018-06-15
+OFF414,CASE00010,Raichur Officer 14,Assistant Sub-Inspector,Raichur Central PS,948080409,R009,DES003,U111,DIS027,ST001,officer.off414@ksp.gov.in,Active,2018-06-15
+OFF415,CASE00011,Raichur Officer 15,Head Constable,Raichur Cyber Crime PS,948080410,R010,DES009,U112,DIS027,ST001,officer.off415@ksp.gov.in,Active,2018-06-15
+OFF416,CASE00012,Koppal Officer 1,Superintendent of Police,Koppal Town PS,948080411,R005,DES005,U114,DIS028,ST001,officer.off416@ksp.gov.in,Active,2018-06-15
+OFF417,CASE00013,Koppal Officer 2,Deputy Superintendent of Police,Koppal Central PS,948080412,R006,DES005,U115,DIS028,ST001,officer.off417@ksp.gov.in,Active,2018-06-15
+OFF418,CASE00014,Koppal Officer 3,Circle Inspector,Koppal Cyber Crime PS,948080413,R007,DES001,U116,DIS028,ST001,officer.off418@ksp.gov.in,Active,2018-06-15
+OFF419,CASE00015,Koppal Officer 4,Police Sub-Inspector,Koppal Traffic PS,948080414,R008,DES002,U117,DIS028,ST001,officer.off419@ksp.gov.in,Active,2018-06-15
+OFF420,CASE00016,Koppal Officer 5,Assistant Sub-Inspector,Koppal Town PS,948080415,R009,DES003,U114,DIS028,ST001,officer.off420@ksp.gov.in,Active,2018-06-15
+OFF421,CASE00017,Koppal Officer 6,Head Constable,Koppal Central PS,948080416,R010,DES009,U115,DIS028,ST001,officer.off421@ksp.gov.in,Active,2018-06-15
+OFF422,CASE00018,Koppal Officer 7,Police Constable,Koppal Cyber Crime PS,948080417,R010,DES009,U116,DIS028,ST001,officer.off422@ksp.gov.in,Active,2018-06-15
+OFF423,CASE00019,Koppal Officer 8,CID Officer,Koppal Traffic PS,948080418,R004,DES004,U117,DIS028,ST001,officer.off423@ksp.gov.in,Active,2018-06-15
+OFF424,CASE00020,Koppal Officer 9,Crime Branch Specialist,Koppal Town PS,948080419,R006,DES007,U114,DIS028,ST001,officer.off424@ksp.gov.in,Active,2018-06-15
+OFF425,CASE00021,Koppal Officer 10,Superintendent of Police,Koppal Central PS,948080420,R005,DES005,U115,DIS028,ST001,officer.off425@ksp.gov.in,Active,2018-06-15
+OFF426,CASE00022,Koppal Officer 11,Deputy Superintendent of Police,Koppal Cyber Crime PS,948080421,R006,DES005,U116,DIS028,ST001,officer.off426@ksp.gov.in,Active,2018-06-15
+OFF427,CASE00023,Koppal Officer 12,Circle Inspector,Koppal Traffic PS,948080422,R007,DES001,U117,DIS028,ST001,officer.off427@ksp.gov.in,Active,2018-06-15
+OFF428,CASE00024,Koppal Officer 13,Police Sub-Inspector,Koppal Town PS,948080423,R008,DES002,U114,DIS028,ST001,officer.off428@ksp.gov.in,Active,2018-06-15
+OFF429,CASE00025,Koppal Officer 14,Assistant Sub-Inspector,Koppal Central PS,948080424,R009,DES003,U115,DIS028,ST001,officer.off429@ksp.gov.in,Active,2018-06-15
+OFF430,CASE00026,Koppal Officer 15,Head Constable,Koppal Cyber Crime PS,948080425,R010,DES009,U116,DIS028,ST001,officer.off430@ksp.gov.in,Active,2018-06-15
+OFF431,CASE00027,Yadgir Officer 1,Superintendent of Police,Yadgir Town PS,948080426,R005,DES005,U118,DIS029,ST001,officer.off431@ksp.gov.in,Active,2018-06-15
+OFF432,CASE00028,Yadgir Officer 2,Deputy Superintendent of Police,Yadgir Central PS,948080427,R006,DES005,U119,DIS029,ST001,officer.off432@ksp.gov.in,Active,2018-06-15
+OFF433,CASE00029,Yadgir Officer 3,Circle Inspector,Yadgir Cyber Crime PS,948080428,R007,DES001,U120,DIS029,ST001,officer.off433@ksp.gov.in,Active,2018-06-15
+OFF434,CASE00030,Yadgir Officer 4,Police Sub-Inspector,Yadgir Traffic PS,948080429,R008,DES002,U121,DIS029,ST001,officer.off434@ksp.gov.in,Active,2018-06-15
+OFF435,CASE00031,Yadgir Officer 5,Assistant Sub-Inspector,Yadgir Town PS,948080430,R009,DES003,U118,DIS029,ST001,officer.off435@ksp.gov.in,Active,2018-06-15
+OFF436,CASE00032,Yadgir Officer 6,Head Constable,Yadgir Central PS,948080431,R010,DES009,U119,DIS029,ST001,officer.off436@ksp.gov.in,Active,2018-06-15
+OFF437,CASE00033,Yadgir Officer 7,Police Constable,Yadgir Cyber Crime PS,948080432,R010,DES009,U120,DIS029,ST001,officer.off437@ksp.gov.in,Active,2018-06-15
+OFF438,CASE00034,Yadgir Officer 8,CID Officer,Yadgir Traffic PS,948080433,R004,DES004,U121,DIS029,ST001,officer.off438@ksp.gov.in,Active,2018-06-15
+OFF439,CASE00035,Yadgir Officer 9,Crime Branch Specialist,Yadgir Town PS,948080434,R006,DES007,U118,DIS029,ST001,officer.off439@ksp.gov.in,Active,2018-06-15
+OFF440,CASE00036,Yadgir Officer 10,Superintendent of Police,Yadgir Central PS,948080435,R005,DES005,U119,DIS029,ST001,officer.off440@ksp.gov.in,Active,2018-06-15
+OFF441,CASE00037,Yadgir Officer 11,Deputy Superintendent of Police,Yadgir Cyber Crime PS,948080436,R006,DES005,U120,DIS029,ST001,officer.off441@ksp.gov.in,Active,2018-06-15
+OFF442,CASE00038,Yadgir Officer 12,Circle Inspector,Yadgir Traffic PS,948080437,R007,DES001,U121,DIS029,ST001,officer.off442@ksp.gov.in,Active,2018-06-15
+OFF443,CASE00039,Yadgir Officer 13,Police Sub-Inspector,Yadgir Town PS,948080438,R008,DES002,U118,DIS029,ST001,officer.off443@ksp.gov.in,Active,2018-06-15
+OFF444,CASE00040,Yadgir Officer 14,Assistant Sub-Inspector,Yadgir Central PS,948080439,R009,DES003,U119,DIS029,ST001,officer.off444@ksp.gov.in,Active,2018-06-15
+OFF445,CASE00041,Yadgir Officer 15,Head Constable,Yadgir Cyber Crime PS,948080440,R010,DES009,U120,DIS029,ST001,officer.off445@ksp.gov.in,Active,2018-06-15
+OFF446,CASE00042,Ballari Officer 1,Superintendent of Police,Ballari Town PS,948080441,R005,DES005,U122,DIS030,ST001,officer.off446@ksp.gov.in,Active,2018-06-15
+OFF447,CASE00043,Ballari Officer 2,Deputy Superintendent of Police,Ballari Central PS,948080442,R006,DES005,U123,DIS030,ST001,officer.off447@ksp.gov.in,Active,2018-06-15
+OFF448,CASE00044,Ballari Officer 3,Circle Inspector,Ballari Cyber Crime PS,948080443,R007,DES001,U124,DIS030,ST001,officer.off448@ksp.gov.in,Active,2018-06-15
+OFF449,CASE00045,Ballari Officer 4,Police Sub-Inspector,Ballari Traffic PS,948080444,R008,DES002,U125,DIS030,ST001,officer.off449@ksp.gov.in,Active,2018-06-15
+OFF450,CASE00046,Ballari Officer 5,Assistant Sub-Inspector,Ballari Town PS,948080445,R009,DES003,U122,DIS030,ST001,officer.off450@ksp.gov.in,Active,2018-06-15
+OFF451,CASE00047,Ballari Officer 6,Head Constable,Ballari Central PS,948080446,R010,DES009,U123,DIS030,ST001,officer.off451@ksp.gov.in,Active,2018-06-15
+OFF452,CASE00048,Ballari Officer 7,Police Constable,Ballari Cyber Crime PS,948080447,R010,DES009,U124,DIS030,ST001,officer.off452@ksp.gov.in,Active,2018-06-15
+OFF453,CASE00049,Ballari Officer 8,CID Officer,Ballari Traffic PS,948080448,R004,DES004,U125,DIS030,ST001,officer.off453@ksp.gov.in,Active,2018-06-15
+OFF454,CASE00050,Ballari Officer 9,Crime Branch Specialist,Ballari Town PS,948080449,R006,DES007,U122,DIS030,ST001,officer.off454@ksp.gov.in,Active,2018-06-15
+OFF455,CASE00051,Ballari Officer 10,Superintendent of Police,Ballari Central PS,948080450,R005,DES005,U123,DIS030,ST001,officer.off455@ksp.gov.in,Active,2018-06-15
+OFF456,CASE00052,Ballari Officer 11,Deputy Superintendent of Police,Ballari Cyber Crime PS,948080451,R006,DES005,U124,DIS030,ST001,officer.off456@ksp.gov.in,Active,2018-06-15
+OFF457,CASE00053,Ballari Officer 12,Circle Inspector,Ballari Traffic PS,948080452,R007,DES001,U125,DIS030,ST001,officer.off457@ksp.gov.in,Active,2018-06-15
+OFF458,CASE00054,Ballari Officer 13,Police Sub-Inspector,Ballari Town PS,948080453,R008,DES002,U122,DIS030,ST001,officer.off458@ksp.gov.in,Active,2018-06-15
+OFF459,CASE00055,Ballari Officer 14,Assistant Sub-Inspector,Ballari Central PS,948080454,R009,DES003,U123,DIS030,ST001,officer.off459@ksp.gov.in,Active,2018-06-15
+OFF460,CASE00056,Ballari Officer 15,Head Constable,Ballari Cyber Crime PS,948080455,R010,DES009,U124,DIS030,ST001,officer.off460@ksp.gov.in,Active,2018-06-15
+OFF461,CASE00057,Vijayanagara (Hospete) Officer 1,Superintendent of Police,Vijayanagara (Hospete) Town PS,948080456,R005,DES005,U126,DIS031,ST001,officer.off461@ksp.gov.in,Active,2018-06-15
+OFF462,CASE00058,Vijayanagara (Hospete) Officer 2,Deputy Superintendent of Police,Vijayanagara (Hospete) Central PS,948080457,R006,DES005,U127,DIS031,ST001,officer.off462@ksp.gov.in,Active,2018-06-15
+OFF463,CASE00059,Vijayanagara (Hospete) Officer 3,Circle Inspector,Vijayanagara (Hospete) Cyber Crime PS,948080458,R007,DES001,U128,DIS031,ST001,officer.off463@ksp.gov.in,Active,2018-06-15
+OFF464,CASE00060,Vijayanagara (Hospete) Officer 4,Police Sub-Inspector,Vijayanagara (Hospete) Traffic PS,948080459,R008,DES002,U129,DIS031,ST001,officer.off464@ksp.gov.in,Active,2018-06-15
+OFF465,CASE00061,Vijayanagara (Hospete) Officer 5,Assistant Sub-Inspector,Vijayanagara (Hospete) Town PS,948080460,R009,DES003,U126,DIS031,ST001,officer.off465@ksp.gov.in,Active,2018-06-15
+OFF466,CASE00062,Vijayanagara (Hospete) Officer 6,Head Constable,Vijayanagara (Hospete) Central PS,948080461,R010,DES009,U127,DIS031,ST001,officer.off466@ksp.gov.in,Active,2018-06-15
+OFF467,CASE00063,Vijayanagara (Hospete) Officer 7,Police Constable,Vijayanagara (Hospete) Cyber Crime PS,948080462,R010,DES009,U128,DIS031,ST001,officer.off467@ksp.gov.in,Active,2018-06-15
+OFF468,CASE00064,Vijayanagara (Hospete) Officer 8,CID Officer,Vijayanagara (Hospete) Traffic PS,948080463,R004,DES004,U129,DIS031,ST001,officer.off468@ksp.gov.in,Active,2018-06-15
+OFF469,CASE00065,Vijayanagara (Hospete) Officer 9,Crime Branch Specialist,Vijayanagara (Hospete) Town PS,948080464,R006,DES007,U126,DIS031,ST001,officer.off469@ksp.gov.in,Active,2018-06-15
+OFF470,CASE00066,Vijayanagara (Hospete) Officer 10,Superintendent of Police,Vijayanagara (Hospete) Central PS,948080465,R005,DES005,U127,DIS031,ST001,officer.off470@ksp.gov.in,Active,2018-06-15
+OFF471,CASE00067,Vijayanagara (Hospete) Officer 11,Deputy Superintendent of Police,Vijayanagara (Hospete) Cyber Crime PS,948080466,R006,DES005,U128,DIS031,ST001,officer.off471@ksp.gov.in,Active,2018-06-15
+OFF472,CASE00068,Vijayanagara (Hospete) Officer 12,Circle Inspector,Vijayanagara (Hospete) Traffic PS,948080467,R007,DES001,U129,DIS031,ST001,officer.off472@ksp.gov.in,Active,2018-06-15
+OFF473,CASE00069,Vijayanagara (Hospete) Officer 13,Police Sub-Inspector,Vijayanagara (Hospete) Town PS,948080468,R008,DES002,U126,DIS031,ST001,officer.off473@ksp.gov.in,Active,2018-06-15
+OFF474,CASE00070,Vijayanagara (Hospete) Officer 14,Assistant Sub-Inspector,Vijayanagara (Hospete) Central PS,948080469,R009,DES003,U127,DIS031,ST001,officer.off474@ksp.gov.in,Active,2018-06-15
+OFF475,CASE00071,Vijayanagara (Hospete) Officer 15,Head Constable,Vijayanagara (Hospete) Cyber Crime PS,948080470,R010,DES009,U128,DIS031,ST001,officer.off475@ksp.gov.in,Active,2018-06-15
