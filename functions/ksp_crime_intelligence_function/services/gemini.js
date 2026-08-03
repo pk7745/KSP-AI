@@ -6,42 +6,85 @@ if (apiKey) {
   genAI = new GoogleGenerativeAI(apiKey);
 }
 
-// Dictionary to translate English crime terms into Kannada
+// Dictionary to translate English crime terms into 100% pure Kannada (no English in parenthesis)
 const KANNADA_TRANSLATION_MAP = {
-  // Crime Heads
-  'Murder': 'ಕೊಲೆ ಪ್ರಕರಣ (Murder)',
-  'Homicide': 'ಕೊಲೆ ಪ್ರಕರಣ (Homicide)',
-  'Cybercrime': 'ಸೈಬರ್ ಅಪರಾಧ (Cybercrime)',
-  'Cyber Crime': 'ಸೈಬರ್ ಅಪರಾಧ (Cyber Crime)',
-  'Theft': 'ಕಳವು/ಕಳ್ಳತನ (Theft)',
-  'Vehicle Theft': 'ವಾಹನ ಕಳವು (Vehicle Theft)',
-  'Burglary': 'ಸಂತೋಷದ ಒಳನುಗ್ಗುವಿಕೆ/ಕಳ್ಳತನ (Burglary)',
-  'Robbery': 'ದರೋಡೆ (Robbery)',
-  'Assault': 'ಹಲ್ಲೆ ಪ್ರಕರಣ (Assault)',
-  'NDPS': 'ಮಾದಕ ದ್ರವ್ಯ ಪ್ರಕರಣ (NDPS)',
+  // Crime Major & Minor Heads
+  'Attempt to murder using a sharp weapon': 'ಚೂಪಾದ ಆಯುಧದಿಂದ ಕೊಲೆಗೆ ಯತ್ನಿಸಲಾಗಿದೆ.',
+  'Attempt to murder using sharp weapon': 'ಚೂಪಾದ ಆಯುಧದಿಂದ ಕೊಲೆಗೆ ಯತ್ನಿಸಲಾಗಿದೆ.',
+  'Motorcycle stolen from parking area': 'ಪಾರ್ಕಿಂಗ್ ಪ್ರದೇಶದಿಂದ ಬೈಕ್ ಕಳವಾಗಿದೆ.',
+  'Online banking fraud reported': 'ಆನ್‌ಲೈನ್ ಬ್ಯಾಂಕಿಂಗ್ ವಂಚನೆ ವರದಿಯಾಗಿದೆ.',
+  'Domestic violence complaint registered': 'ಗೃಹ ಹಿಂಸಾಚಾರ ದೂರು ದಾಖಲಾಗಿದೆ.',
+  'Victim found murdered in a residential apartment': 'ವಸತಿ ಅಪಾರ್ಟ್‌ಮೆಂಟ್‌ನಲ್ಲಿ ಸಂತ್ರಸ್ತರು ಕೊಲೆಯಾದ ಸ್ಥಿತಿಯಲ್ಲಿ ಪತ್ತೆಯಾಗಿದ್ದಾರೆ.',
+  'Victim found dead under suspicious circumstances in residential quarters.': 'ವಸತಿ ಅಪಾರ್ಟ್‌ಮೆಂಟ್‌ನಲ್ಲಿ ಸಂತ್ರಸ್ತರು ಕೊಲೆಯಾದ ಸ್ಥಿತಿಯಲ್ಲಿ ಪತ್ತೆಯಾಗಿದ್ದಾರೆ.',
+
+  'Murder': 'ಕೊಲೆ ಪ್ರಕರಣ',
+  'Homicide': 'ಕೊಲೆ ಪ್ರಕರಣ',
+  'Attempt to Murder': 'ಕೊಲೆಗೆ ಯತ್ನ',
+  'Attempted Homicide': 'ಕೊಲೆಗೆ ಯತ್ನ',
+  'Assault & Grievous Hurt': 'ತೀವ್ರ ಹಲ್ಲೆ',
+  'Grievous Assault & Extortion': 'ತೀವ್ರ ಹಲ್ಲೆ ಮತ್ತು ವಸೂಲಿ',
+  'Grievous Assault': 'ತೀವ್ರ ಹಲ್ಲೆ',
+  'Assault': 'ಹಲ್ಲೆ ಪ್ರಕರಣ',
+  'Kidnapping': 'ಅಪಹರಣ ಪ್ರಕರಣ',
+  'Missing Person': 'ಕಾಣೆಯಾದ ವ್ಯಕ್ತಿ',
+  'Cybercrime': 'ಸೈಬರ್ ಅಪರಾಧ',
+  'Cyber Crime': 'ಸೈಬರ್ ಅಪರಾಧ',
+  'Cyber Fraud': 'ಸೈಬರ್ ವಂಚನೆ',
+  'UPI Phishing Fraud': 'ಯುಪಿಐ ಫಿಶಿಂಗ್ ವಂಚನೆ',
+  'UPI Fraud': 'ಯುಪಿಐ ವಂಚನೆ',
+  'Online Banking Fraud': 'ಆನ್‌ಲೈನ್ ಬ್ಯಾಂಕಿಂಗ್ ವಂಚನೆ',
+  'Identity Theft': 'ಗುರುತು ಕಳವು',
+  'ATM Fraud': 'ಎಟಿಎಂ ವಂಚನೆ',
+  'Theft': 'ಕಳವು / ಕಳ್ಳತನ',
+  'Vehicle Theft': 'ವಾಹನ ಕಳವು',
+  'Burglary': 'ಕನ್ನಗಳವು / ಕಳ್ಳತನ',
+  'Armed Robbery': 'ಸಶಸ್ತ್ರ ದರೋಡೆ',
+  'Commercial Burglary': 'ವಾಣಿಜ್ಯ ಮಳಿಗೆ ಕಳ್ಳತನ',
+  'Robbery': 'ದರೋಡೆ',
+  'Chain Snatching': 'ಚೈನ್ ಸ್ನ್ಯಾಚಿಂಗ್',
+  'Rape': 'ಲೈಂಗಿಕ ದೌರ್ಜನ್ಯ / ಅತ್ಯಾಚಾರ',
+  'Sexual Assault': 'ಲೈಂಗಿಕ ದೌರ್ಜನ್ಯ',
+  'POCSO': 'ಪೋಕ್ಸೋ ಅಪರಾಧ',
+  'Domestic Violence': 'ಗೃಹ ಹಿಂಸಾಚಾರ',
+  'Crime Against Women': 'ಮಹಿಳೆಯರ ವಿರುದ್ಧದ ಅಪರಾಧ',
+  'Illegal Weapons': 'ಅಕ್ರಮ ಆಯುಧಗಳ ಸಾಗಾಣಿಕೆ',
+  'NDPS': 'ಮಾದಕ ದ್ರವ್ಯ ಅಪರಾಧ',
+  'Drug Trafficking': 'ಮಾದಕ ದ್ರವ್ಯ ಸಾಗಾಣಿಕೆ',
+  'MDMA Interception': 'ಎಂಡಿಎಂಎ ಸಿಂಥೆಟಿಕ್ ಡ್ರಗ್ಸ್ ಸಪ್ಲೈ',
+  'Human Trafficking': 'ಮಾನವ ಸಾಗಾಣಿಕೆ',
+  'Gambling': 'ಅಕ್ರಮ ಜೂಜು',
+  'Wildlife Crime': 'ವನ್ಯಜೀವಿ ಅಪರಾಧ',
+  'Forest Crime': 'ಅರಣ್ಯ ಅಪರಾಧ',
+  'Land Title Deed Forgery': 'ಜಮೀನು ಪತ್ರ ನಕಲಿ ರಚನೆ',
+  'Counterfeit Currency': 'ನಕಲಿ ನೋಟು ಚಲಾವಣೆ',
+  'Hit and Run': 'ಹಿಟ್ ಆಂಡ್ ರನ್',
+  'Road Accident': 'ರಸ್ತೆ ಅಪಘಾತ',
   
   // Statuses
-  'Under Investigation': 'ತನಿಖೆಯಲ್ಲಿದೆ (Under Investigation)',
-  'Charge Sheeted': 'ದೋಷಾರೋಪ ಪಟ್ಟಿ ಸಲ್ಲಿಸಲಾಗಿದೆ (Charge Sheeted)',
-  'Pending Trial': 'ವಿಚಾರಣೆ ಬಾಕಿಯಿದೆ (Pending Trial)',
-  'Convicted': 'ದೋಷಿ ಎಂದು ಸಾಬೀತಾಗಿದೆ (Convicted)',
-  'Acquitted': 'ಖುಲಾಸೆಗೊಳಿಸಲಾಗಿದೆ (Acquitted)',
-  'Closed': 'ಮುಚ್ಚಲಾಗಿದೆ (Closed)',
+  'Under Investigation': 'ತನಿಖೆಯಲ್ಲಿದೆ',
+  'Charge Sheeted': 'ದೋಷಾರೋಪ ಪಟ್ಟಿ ಸಲ್ಲಿಸಲಾಗಿದೆ',
+  'Charge Sheet Filed': 'ದೋಷಾರೋಪ ಪಟ್ಟಿ ಸಲ್ಲಿಕೆಯಾಗಿದೆ',
+  'Pending Trial': 'ವಿಚಾರಣೆ ಬಾಕಿಯಿದೆ',
+  'Convicted': 'ದೋಷಿ ಎಂದು ಸಾಬೀತಾಗಿದೆ',
+  'Acquitted': 'ಖುಲಾಸೆಗೊಳಿಸಲಾಗಿದೆ',
+  'Closed / Undetected': 'ಪ್ರಕರಣ ಮುಚ್ಚಲಾಗಿದೆ',
+  'Closed': 'ಮುಚ್ಚಲಾಗಿದೆ',
 
   // Stations & Districts
   'Police Station': 'ಪೊಲೀಸ್ ಠಾಣೆ',
   'Bengaluru Urban': 'ಬೆಂಗಳೂರು ನಗರ',
   'Bengaluru City': 'ಬೆಂಗಳೂರು ನಗರ',
+  'Mysuru': 'ಮೈಸೂರು',
+  'Mangaluru': 'ಮಂಗಳೂರು',
+  'Belagavi': 'ಬೆಳಗಾವಿ',
+  'Hubballi-Dharwad': 'ಹುಬ್ಬಳ್ಳಿ-ಧಾರವಾಡ',
   'Cubbon Park Police Station': 'ಕಬ್ಬನ್ ಪಾರ್ಕ್ ಪೊಲೀಸ್ ಠಾಣೆ',
+  'Whitefield Police Station': 'ವೈಟ್‌ಫೀಲ್ಡ್ ಪೊಲೀಸ್ ಠಾಣೆ',
   'Whitefield PS': 'ವೈಟ್‌ಫೀಲ್ಡ್ ಪೊಲೀಸ್ ಠಾಣೆ',
-  'Koramangala PS': 'ಕೋರಮಂಗಲ ಪೊಲೀಸ್ ಠಾಣೆ',
-  'Jayanagar PS': 'ಜಯನಗರ ಪೊಲೀಸ್ ಠಾಣೆ',
-
-  // Descriptions
-  'Victim found murdered in a residential apartment': 'ವಸತಿ ಅಪಾರ್ಟ್‌ಮೆಂಟ್‌ನಲ್ಲಿ ಸಂತ್ರಸ್ತರು ಕೊಲೆಯಾದ ಸ್ಥಿತಿಯಲ್ಲಿ ಪತ್ತೆಯಾಗಿದ್ದಾರೆ.',
-  'Cyber fraud involving unauthorized online banking transfer': 'ಅನಧಿಕೃತ ಆನ್‌ಲೈನ್ ಬ್ಯಾಂಕಿಂಗ್ ವರ್ಗಾವಣೆಯನ್ನು ಒಳಗೊಂಡಿರುವ ಸೈಬರ್ ವಂಚನೆ.',
-  'Vehicle stolen from public parking area': 'ಸಾರ್ವಜನಿಕ ಪಾರ್ಕಿಂಗ್ ಪ್ರದೇಶದಿಂದ ವಾಹನ ಕಳವಾಗಿದೆ.',
-  'Commercial shop burglary during midnight hours': 'ಮಧ್ಯರಾತ್ರಿಯ ಸಮಯದಲ್ಲಿ ವಾಣಿಜ್ಯ ಮಳಿಗೆಯಲ್ಲಿ ಕಳ್ಳತನ.'
+  'Indiranagar Police Station': 'ಇಂದಿರಾನಗರ ಪೊಲೀಸ್ ಠಾಣೆ',
+  'Electronic City Police Station': 'ಎಲೆಕ್ಟ್ರಾನಿಕ್ ಸಿಟಿ ಪೊಲೀಸ್ ಠಾಣೆ',
+  'Jayanagar Police Station': 'ಜಯನಗರ ಪೊಲೀಸ್ ಠಾಣೆ',
+  'Koramangala PS': 'ಕೋರಮಂಗಲ ಪೊಲೀಸ್ ಠಾಣೆ'
 };
 
 function translateTextToKannada(text) {
@@ -56,7 +99,7 @@ function translateTextToKannada(text) {
 }
 
 export async function processConversationalQuery({ message, history = [], lang = 'en', retrievedFacts = [] }) {
-  const isKannadaRequested = lang === 'kn' || /[\u0C80-\u0CFF]/.test(message) || message.toLowerCase().includes('kannada') || message.toLowerCase().includes('kannada');
+  const isKannadaRequested = lang === 'kn' || /[\u0C80-\u0CFF]/.test(message) || message.toLowerCase().includes('kannada');
 
   const systemPrompt = `
 You are KSP-AI, the official Crime Intelligence AI for Karnataka State Police (SCRB).
@@ -71,7 +114,7 @@ INSTRUCTIONS FOR GENERATING INTELLIGENCE DOSSIERS:
 2. Highlight FIR Numbers (e.g. KSP/BLR/2026/0104), Crime Major Head, Police Station, District, and Investigation Status.
 3. Provide actionable intelligence insights and recommended next steps for police officers.
 ${isKannadaRequested 
-  ? "CRITICAL MANDATE: Write your ENTIRE response in 100% pure, natural, fluent Kannada language (Noto Sans Kannada script). Convert ALL crime heads, station names, district names, case statuses, and descriptions into pure Kannada (e.g. Murder -> ಕೊಲೆ ಪ್ರಕರಣ, Under Investigation -> ತನಿಖೆಯಲ್ಲಿದೆ). DO NOT leave English words in the case summaries!" 
+  ? "CRITICAL MANDATE: Write your ENTIRE response in 100% pure, natural, fluent Kannada language. Convert EVERY SINGLE WORD (crime heads, station names, district names, case statuses, descriptions, headers, bullet points) into pure Kannada (e.g. Murder -> ಕೊಲೆ ಪ್ರಕರಣ, Under Investigation -> ತನಿಖೆಯಲ್ಲಿದೆ). DO NOT include English words or English text in parentheses!" 
   : "Write your response in authoritative, professional English."
 }
 `;
@@ -108,7 +151,13 @@ ${message}
     try {
       const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
       const result = await model.generateContent(fullPrompt);
-      const reply = result.response.text();
+      let reply = result.response.text();
+
+      // Post-process to ensure 100% pure Kannada translation without residual English parentheses
+      if (isKannadaRequested) {
+        reply = translateTextToKannada(reply);
+      }
+
       return {
         reply,
         modelUsed: 'gemini-1.5-flash',
@@ -131,10 +180,10 @@ function fallbackResponseGenerator(message, facts, lang) {
     knReply += `ಲಭ್ಯವಿರುವ ಡಾಟಾಸ್ಟೋರ್ ಪರಿಶೀಲನೆಯಲ್ಲಿ **${facts.length} ಸಕ್ರಿಯ ಪ್ರಕರಣಗಳು** ಪತ್ತೆಯಾಗಿವೆ:\n\n`;
     
     facts.slice(0, 5).forEach((f, idx) => {
-      const crimeHead = translateTextToKannada(f.CrimeMajorHeadName || 'Cybercrime');
-      const station = translateTextToKannada(f.StationName || 'Whitefield PS');
-      const district = translateTextToKannada(f.DistrictName || 'Bengaluru City');
-      const status = translateTextToKannada(f.CaseStatusName || 'Under Investigation');
+      const crimeHead = translateTextToKannada(f.CrimeMajorHeadName || 'ಸೈಬರ್ ಅಪರಾಧ');
+      const station = translateTextToKannada(f.StationName || 'ವೈಟ್‌ಫೀಲ್ಡ್ ಪೊಲೀಸ್ ಠಾಣೆ');
+      const district = translateTextToKannada(f.DistrictName || 'ಬೆಂಗಳೂರು ನಗರ');
+      const status = translateTextToKannada(f.CaseStatusName || 'ತನಿಖೆಯಲ್ಲಿದೆ');
       const desc = translateTextToKannada(f.ComplaintDescription || 'ತನಿಖಾಧಿಕಾರಿಗಳಿಂದ ತನಿಖೆ ಮುಂದುವರಿದಿದೆ.');
 
       knReply += `${idx + 1}. **FIR No: ${f.FIRNumber || f.CrimeNo || 'KSP/2026/0101'}**\n`;
@@ -147,7 +196,7 @@ function fallbackResponseGenerator(message, facts, lang) {
     knReply += `\n**ತನಿಖಾಧಿಕಾರಿಗಳ ಜಾಗೃತಿ ಸಲಹೆ:** ಹೆಚ್ಚಿನ ಮಾಹಿತಿಗಾಗಿ 'Case 360' ವರ್ಕ್‌ಸ್ಪೇಸ್‌ ವೀಕ್ಷಿಸಿ.`;
 
     return {
-      reply: knReply,
+      reply: translateTextToKannada(knReply),
       modelUsed: 'rule-engine-kannada',
       grounded: true
     };

@@ -6,10 +6,52 @@ import { showToast } from '../../utils/toast';
 import { useNavigation } from '../../context/NavigationContext';
 import './Case360.css';
 
+const translateValue = (val: string, isKn: boolean) => {
+  if (!isKn || !val) return val;
+  const map: Record<string, string> = {
+    'Safe & Recovered': 'ಸುರಕ್ಷಿತ ಮತ್ತು ಚೇತರಿಸಿಕೊಂಡಿದ್ದಾರೆ',
+    'Safe': 'ಸುರಕ್ಷಿತ',
+    'Deceased': 'ಮೃತಪಟ್ಟಿದ್ದಾರೆ',
+    'Critical': 'ಗಂಭೀರ ಸ್ಥಿತಿ',
+    'Mild': 'ಸಾಮಾನ್ಯ ಗಾಯ',
+    'Minor': 'ಸಾಮಾನ್ಯ ಗಾಯ',
+    'Fatal': 'ಮಾರಕ ಗಾಯ',
+    'Under Investigation': 'ತನಿಖೆಯಲ್ಲಿದೆ',
+    'Charge Sheeted': 'ದೋಷಾರೋಪ ಪಟ್ಟಿ ಸಲ್ಲಿಸಲಾಗಿದೆ',
+    'Arrested': 'ಬಂಧಿಸಲಾಗಿದೆ',
+    'Bail Rejected': 'ಜಾಮೀನು ತಿರಸ್ಕರಿಸಲಾಗಿದೆ',
+    'Judicial Custody': 'ನ್ಯಾಯಾಂಗ ಬಂಧನ',
+    'Not in Custody': 'ಬಂಧನದಲ್ಲಿಲ್ಲ',
+    'None': 'ಯಾವುದೂ ಇಲ್ಲ',
+    'Victim': 'ಸಂತ್ರಸ್ತರು',
+    'Eyewitness': 'ಪ್ರತ್ಯಕ್ಷದರ್ಶಿ'
+  };
+
+  let res = String(val);
+  Object.keys(map).forEach(k => {
+    if (res.includes(k)) {
+      res = res.replaceAll(k, map[k]);
+    }
+  });
+
+  // Brief Facts auto-translations for common patterns
+  res = res.replaceAll('Missing Person reported at', 'ಕಾಣೆಯಾದ ವ್ಯಕ್ತಿಯ ಪ್ರಕರಣ ದಾಖಲಾಗಿದೆ:')
+           .replaceAll('Brief: Trace & locate missing citizen petition.', 'ವಿವರ: ಕಾಣೆಯಾದ ಸಾರ್ವಜನಿಕರನ್ನು ಪತ್ತೆಹಚ್ಚುವ ಅರ್ಜಿ.')
+           .replaceAll('Incident occurred near', 'ಘಟನೆಯು ಸಮೀಪ ಸಂಭವಿಸಿದೆ:')
+           .replaceAll('Karnataka', 'ಕರ್ನಾಟಕ')
+           .replaceAll('High-value tech warehouse burglary', 'ತಂತ್ರಜ್ಞಾನ ಗೋದಾಮಿನಲ್ಲಿ ಹೆಚ್ಚಿನ ಮೌಲ್ಯದ ಕಳ್ಳತನ')
+           .replaceAll('Victim defrauded of', 'ಸಂತ್ರಸ್ತರಿಗೆ ವಂಚಿಸಲಾಗಿದೆ')
+           .replaceAll('through fake electricity bill payment link sent via WhatsApp.', 'ವಾಟ್ಸಾಪ್ ಮೂಲಕ ಕಳುಹಿಸಲಾದ ನಕಲಿ ವಿದ್ಯುತ್ ಬಿಲ್ ಲಿಂಕ್ ಮೂಲಕ.')
+           .replaceAll('Fraudulent account traced to Jamtara module.', 'ವಂಚನೆಯ ಖಾತೆಯನ್ನು ಜಮ್ತಾರಾ ಮಾಡ್ಯೂಲ್‌ಗೆ ಪತ್ತೆಹಚ್ಚಲಾಗಿದೆ.');
+
+  return res;
+};
+
 export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, onClose: () => void }) {
   const { t, i18n } = useTranslation();
   const { setCurrentView } = useNavigation();
   const [selectedEvidence, setSelectedEvidence] = useState<any | null>(null);
+  const isKn = i18n.language === 'kn';
 
   // Render Jurisdiction & Rank Restriction Banner if case is outside assigned district/rank
   if (caseDetails?.isRestricted) {
@@ -42,7 +84,7 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
             </div>
             
             <p className="text-slate-400 text-[11px]">
-              {i18n.language === 'kn'
+              {isKn
                 ? 'ಪ್ರಕರಣದ ವಿವರಗಳನ್ನು ವೀಕ್ಷಿಸಲು ಎಮರ್ಜೆನ್ಸಿ ಕಮಾಂಡ್ ಸೆಂಟರ್ ಮೂಲಕ ತುರ್ತು ಪ್ರವೇಶಕ್ಕಾಗಿ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ.'
                 : 'To access restricted case dossiers outside your assigned district, submit an Emergency Access Request or contact the District SP.'}
             </p>
@@ -67,10 +109,10 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
   const cd = caseDetails?.caseDetails || {};
   
   const [checklist, setChecklist] = useState([
-    { id: 1, text: i18n.language === 'kn' ? 'ಸಾಕ್ಷಿಗಳ ಹೇಳಿಕೆಯನ್ನು ದಾಖಲಿಸಿ' : 'Record witness statements', done: true },
-    { id: 2, text: i18n.language === 'kn' ? 'ಘಟನಾ ಸ್ಥಳದಿಂದ ಸಿಸಿಟಿವಿ ದೃಶ್ಯಾವಳಿ ಸಂಗ್ರಹಿಸಿ' : 'Collect CCTV footage from scene', done: true },
-    { id: 3, text: i18n.language === 'kn' ? 'ಫೊರೆನ್ಸಿಕ್ ಮಾದರಿಗಳನ್ನು ಪ್ರಯೋಗಾಲಯಕ್ಕೆ ಕಳುಹಿಸಿ' : 'Send forensic samples to lab', done: false },
-    { id: 4, text: i18n.language === 'kn' ? 'ಮುಖ್ಯ ಶಂಕಿತನ ವಿವರ ಪರಿಶೀಲಿಸಿ' : 'Verify alibi of primary suspect', done: false }
+    { id: 1, text: isKn ? 'ಸಾಕ್ಷಿಗಳ ಹೇಳಿಕೆಯನ್ನು ದಾಖಲಿಸಿ' : 'Record witness statements', done: true },
+    { id: 2, text: isKn ? 'ಘಟನಾ ಸ್ಥಳದಿಂದ ಸಿಸಿಟಿವಿ ದೃಶ್ಯಾವಳಿ ಸಂಗ್ರಹಿಸಿ' : 'Collect CCTV footage from scene', done: true },
+    { id: 3, text: isKn ? 'ಫೊರೆನ್ಸಿಕ್ ಮಾದರಿಗಳನ್ನು ಪ್ರಯೋಗಾಲಯಕ್ಕೆ ಕಳುಹಿಸಿ' : 'Send forensic samples to lab', done: false },
+    { id: 4, text: isKn ? 'ಮುಖ್ಯ ಶಂಕಿತನ ವಿವರ ಪರಿಶೀಲಿಸಿ' : 'Verify alibi of primary suspect', done: false }
   ]);
 
   const toggleCheckItem = (id: number) => {
@@ -116,12 +158,12 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
               <div className="flex-row align-center gap-sm">
                 <h2 className="workspace-title">{cd.CrimeNo || 'FIR Record'}</h2>
                 <span className={`status-badge ${cd.CaseStatus === 'Under Investigation' ? 'badge-amber' : 'badge-emerald'}`}>
-                  {String(t(`cases.statuses.${cd.CaseStatus}`, cd.CaseStatus || 'Active'))}
+                  {translateValue(cd.CaseStatus || 'Active', isKn)}
                 </span>
               </div>
               <p className="text-muted mt-xs">
-                <MapPin size={14} className="inline-icon" /> {cd.DistrictName} • {cd.PoliceStationName} | 
-                <Scale size={14} className="inline-icon ml-md" /> {t(`db.crimeHeads.${cd.CrimeMajorHead}`, cd.CrimeMajorHead)}
+                <MapPin size={14} className="inline-icon" /> {translateValue(cd.DistrictName, isKn)} • {translateValue(cd.PoliceStationName, isKn)} | 
+                <Scale size={14} className="inline-icon ml-md" /> {translateValue(cd.CrimeMajorHead, isKn)}
               </p>
             </div>
           </div>
@@ -143,7 +185,7 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
           <div className="workspace-col">
             <div className="panel-box wireframe-box registration-mark">
               <h4><FileText size={16} className="text-cyan" /> {t('case360.briefFacts', 'FIR Brief Facts')}</h4>
-              <p className="mt-sm leading-relaxed">{cd.BriefFacts || 'Brief facts filed in CCTNS CaseMaster.'}</p>
+              <p className="mt-sm leading-relaxed">{translateValue(cd.BriefFacts || 'Brief facts filed in CCTNS CaseMaster.', isKn)}</p>
               
               {cd.ActSections && (
                 <div className="mt-md p-sm glass-panel-inner rounded">
@@ -158,8 +200,8 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
                 </h4>
                 <div className="ai-chat-bubble mt-sm">
                   <p className="text-sm">
-                    {i18n.language === 'kn'
-                      ? `${cd.DistrictName} ಸರಹದ್ದಿನಲ್ಲಿ ಈ ಪ್ರಕರಣದ ಮಾದರಿಯು ಸಕ್ರಿಯ ಅಪರಾಧ ಗುಂಪುಗಳೊಂದಿಗೆ ಸಂಪರ್ಕ ಹೊಂದಿದೆ. ಸಿಸಿಟಿವಿ ಸಾಕ್ಷ್ಯಾಧಾರಗಳನ್ನು ಪರಿಶೀಲಿಸಲು ನಾನು ಶಿಫಾರಸು ಮಾಡುತ್ತೇನೆ.`
+                    {isKn
+                      ? `${translateValue(cd.DistrictName, true)} ಸರಹದ್ದಿನಲ್ಲಿ ಈ ಪ್ರಕರಣದ ಮಾದರಿಯು ಸಕ್ರಿಯ ಅಪರಾಧ ಗುಂಪುಗಳೊಂದಿಗೆ ಸಂಪರ್ಕ ಹೊಂದಿದೆ. ಸಿಸಿಟಿವಿ ಸಾಕ್ಷ್ಯಾಧಾರಗಳನ್ನು ಪರಿಶೀಲಿಸಲು ನಾನು ಶಿಫಾರಸು ಮಾಡುತ್ತೇನೆ.`
                       : `Based on the MO and registered sections, this case pattern correlates with active crime clusters in ${cd.DistrictName}. I recommend reviewing CCTV evidence and checking tower dump logs.`
                     }
                   </p>
@@ -209,8 +251,8 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
                   >
                     <ShieldAlert size={16} className="text-crimson" />
                     <div className="flex-1">
-                      <strong>{a.AccusedName}</strong> ({a.Age || 'N/A'}y)
-                      <div className="text-xs text-muted">{String(t(`cases.statuses.${a.ArrestStatus}`, a.ArrestStatus || 'Under Investigation'))}</div>
+                      <strong>{a.AccusedName}</strong> ({a.Age || 'N/A'}{isKn ? ' ವರ್ಷ' : 'y'})
+                      <div className="text-xs text-muted">{translateValue(a.ArrestStatus || 'Under Investigation', isKn)}</div>
                     </div>
                     <ChevronRight size={16} />
                   </div>
@@ -229,8 +271,8 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
                   >
                     <User size={16} className="text-cyan" />
                     <div className="flex-1">
-                      <strong>{v.VictimName}</strong> ({v.Age || 'N/A'}y)
-                      <div className="text-xs text-muted">{v.VictimStatus || 'Victim'}</div>
+                      <strong>{v.VictimName}</strong> ({v.Age || 'N/A'}{isKn ? ' ವರ್ಷ' : 'y'})
+                      <div className="text-xs text-muted">{translateValue(v.VictimStatus || 'Victim', isKn)}</div>
                     </div>
                     <ChevronRight size={16} />
                   </div>
@@ -248,15 +290,15 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
                   <div className="vt-dot bg-cyan"></div>
                   <div className="vt-content">
                     <span className="vt-date">{cd.CrimeRegisteredDate ? new Date(cd.CrimeRegisteredDate).toLocaleDateString() : 'Active'}</span>
-                    <p>{i18n.language === 'kn' ? `ಎಫ್‌ಐಆರ್ ದಾಖಲಿಸಲಾಗಿದೆ: ${cd.PoliceStationName}` : `FIR Registered at ${cd.PoliceStationName}`}</p>
+                    <p>{isKn ? `ಎಫ್‌ಐಆರ್ ದಾಖಲಿಸಲಾಗಿದೆ: ${translateValue(cd.PoliceStationName, true)}` : `FIR Registered at ${cd.PoliceStationName}`}</p>
                   </div>
                 </div>
                 {caseDetails.evidence?.length > 0 && (
                   <div className="vt-item">
                     <div className="vt-dot bg-emerald"></div>
                     <div className="vt-content">
-                      <span className="vt-date">{i18n.language === 'kn' ? 'ಸಾಕ್ಷ್ಯಾಧಾರ ದಾಖಲಾಗಿದೆ' : 'Evidence Logged'}</span>
-                      <p>{i18n.language === 'kn' ? `${caseDetails.evidence.length} ಸಾಕ್ಷ್ಯಗಳನ್ನು ಕ್ಯಾಟಲಿಸ್ಟ್‌ನಲ್ಲಿ ದಾಖಲಿಸಲಾಗಿದೆ` : `${caseDetails.evidence.length} items logged in Stratus storage`}</p>
+                      <span className="vt-date">{isKn ? 'ಸಾಕ್ಷ್ಯಾಧಾರ ದಾಖಲಾಗಿದೆ' : 'Evidence Logged'}</span>
+                      <p>{isKn ? `${caseDetails.evidence.length} ಸಾಕ್ಷ್ಯಗಳನ್ನು ಕ್ಯಾಟಲಿಸ್ಟ್‌ನಲ್ಲಿ ದಾಖಲಿಸಲಾಗಿದೆ` : `${caseDetails.evidence.length} items logged in Stratus storage`}</p>
                     </div>
                   </div>
                 )}
@@ -264,8 +306,8 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
                   <div className="vt-item">
                     <div className="vt-dot bg-crimson"></div>
                     <div className="vt-content">
-                      <span className="vt-date">{i18n.language === 'kn' ? 'ಆರೋಪಿಯನ್ನು ಗುರುತಿಸಲಾಗಿದೆ' : 'Accused Identified'}</span>
-                      <p>{caseDetails.accused[0].AccusedName} ({caseDetails.accused[0].ArrestStatus || 'Accused'})</p>
+                      <span className="vt-date">{isKn ? 'ಆರೋಪಿಯನ್ನು ಗುರುತಿಸಲಾಗಿದೆ' : 'Accused Identified'}</span>
+                      <p>{caseDetails.accused[0].AccusedName} ({translateValue(caseDetails.accused[0].ArrestStatus || 'Accused', isKn)})</p>
                     </div>
                   </div>
                 )}
@@ -285,7 +327,7 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
                     onClick={() => setSelectedEvidence(e)}
                   >
                     {getEvidenceIcon(e.EvidenceType)}
-                    <div className="mt-xs text-xs fw-bold text-center truncate">{e.Description || `Evidence #${e.EvidenceNumber}`}</div>
+                    <div className="mt-xs text-xs fw-bold text-center truncate">{translateValue(e.Description || `Evidence #${e.EvidenceNumber}`, isKn)}</div>
                     <div className="badge-cyan text-xs mt-xs">AI OCR Scanned</div>
                   </div>
                 ))}
@@ -305,8 +347,8 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
               <div className="nexus-placeholder mt-sm p-md text-center">
                 <p className="text-sm opacity-70">
                   {caseDetails.accused?.length 
-                    ? `Linked Suspect: ${caseDetails.accused[0].AccusedName} (${caseDetails.accused.length} active connection)`
-                    : (i18n.language === 'kn' ? 'ಯಾವುದೇ ನೆಟ್‌ವರ್ಕ್ ಸಂಪರ್ಕ ಕಂಡುಬಂದಿಲ್ಲ.' : 'No cross-jurisdiction nexus identified yet.')}
+                    ? `${isKn ? 'ಸಂಪರ್ಕಿತ ಶಂಕಿತ:' : 'Linked Suspect:'} ${caseDetails.accused[0].AccusedName} (${caseDetails.accused.length} ${isKn ? 'ಸಕ್ರಿಯ ಸಂಪರ್ಕ' : 'active connection'})`
+                    : (isKn ? 'ಯಾವುದೇ ನೆಟ್‌ವರ್ಕ್ ಸಂಪರ್ಕ ಕಂಡುಬಂದಿಲ್ಲ.' : 'No cross-jurisdiction nexus identified yet.')}
                 </p>
                 <button 
                   className="btn btn-outline text-xs mt-md"
@@ -328,7 +370,7 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
             <div className="flex-row justify-between align-center mb-md">
               <h3 className="flex-row align-center gap-sm">
                 {getEvidenceIcon(selectedEvidence.EvidenceType)}
-                Evidence Item #{selectedEvidence.EvidenceNumber}
+                {isKn ? 'ಸಾಕ್ಷ್ಯ ಐಟಂ #' : 'Evidence Item #'}{selectedEvidence.EvidenceNumber}
               </h3>
               <button className="btn-icon" onClick={() => setSelectedEvidence(null)}><X size={20} /></button>
             </div>
@@ -336,35 +378,35 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
             <div className="p-md glass-panel-inner rounded mb-md">
               <div className="info-grid">
                 <div className="info-item">
-                  <span className="label">Type</span>
-                  <span className="value fw-bold text-cyan">{selectedEvidence.EvidenceType || 'Document'}</span>
+                  <span className="label">{isKn ? 'ಪ್ರಕಾರ' : 'Type'}</span>
+                  <span className="value fw-bold text-cyan">{translateValue(selectedEvidence.EvidenceType || 'Document', isKn)}</span>
                 </div>
                 <div className="info-item">
-                  <span className="label">Date Collected</span>
+                  <span className="label">{isKn ? 'ಸಂಗ್ರಹಿಸಿದ ದಿನಾಂಕ' : 'Date Collected'}</span>
                   <span className="value">{selectedEvidence.CollectionDate || 'N/A'}</span>
                 </div>
                 <div className="info-item">
-                  <span className="label">Collected By</span>
-                  <span className="value">{selectedEvidence.CollectedBy || 'Investigating Team'}</span>
+                  <span className="label">{isKn ? 'ಸಂಗ್ರಹಿಸಿದವರು' : 'Collected By'}</span>
+                  <span className="value">{translateValue(selectedEvidence.CollectedBy || 'Investigating Team', isKn)}</span>
                 </div>
                 <div className="info-item">
-                  <span className="label">Chain of Custody</span>
-                  <span className="value text-emerald fw-bold">Verified</span>
+                  <span className="label">{isKn ? 'ಸಾಕ್ಷ್ಯ ಸರಣಿ' : 'Chain of Custody'}</span>
+                  <span className="value text-emerald fw-bold">{isKn ? 'ದೃಢೀಕರಿಸಲಾಗಿದೆ' : 'Verified'}</span>
                 </div>
               </div>
             </div>
 
             <div className="mb-md">
-              <span className="label">Description & Facts</span>
-              <p className="text-sm mt-xs leading-relaxed">{selectedEvidence.Description || 'No detailed description provided.'}</p>
+              <span className="label">{isKn ? 'ವಿವರಣೆ ಮತ್ತು ಮಾಹಿತಿ' : 'Description & Facts'}</span>
+              <p className="text-sm mt-xs leading-relaxed">{translateValue(selectedEvidence.Description || 'No detailed description provided.', isKn)}</p>
             </div>
 
             <div className="p-md bg-dark rounded border border-cyan mb-md">
               <span className="label text-cyan flex-row align-center gap-xs">
-                <Sparkles size={14} /> AI Analysis & OCR Extracted Metadata
+                <Sparkles size={14} /> {isKn ? 'ಎಐ ಸಾಕ್ಷ್ಯ ವಿಶ್ಲೇಷಣೆ ಮತ್ತು ಮೆಟಾಡೇಟಾ' : 'AI Analysis & OCR Extracted Metadata'}
               </span>
               <p className="text-xs mt-xs text-muted font-mono">
-                {selectedEvidence.AiOcrText || 'Metadata index matched against regional crime database. High confidence indicator.'}
+                {translateValue(selectedEvidence.AiOcrText || 'Metadata index matched against regional crime database. High confidence indicator.', isKn)}
               </p>
             </div>
 
