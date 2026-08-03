@@ -1,12 +1,13 @@
 import { intelligenceIndex } from './intelligenceIndex.js';
+import { computeConceptualSimilarity } from './semanticConceptMatcher.js';
 
 /**
  * Enterprise Multi-Vector Case Similarity Search Engine
- * Compares Cause of Death, Weapon, Modus Operandi, Scene, Victim Age/Gender,
- * Accused Fingerprints, Evidence, Vehicles, and Crime Patterns to generate Similarity Scores (0-100%).
+ * Returns Top 10 similar case matches with percentage confidence scores
+ * and explicit point-by-point explanations of WHY cases were selected.
  */
 
-export function searchSimilarCases(targetCaseOrQuery, limit = 5) {
+export function searchSimilarCases(targetCaseOrQuery, limit = 10) {
   const allCases = intelligenceIndex.getCases();
   if (!allCases || allCases.length === 0) return [];
 
@@ -29,52 +30,45 @@ export function searchSimilarCases(targetCaseOrQuery, limit = 5) {
     // 1. Crime Major & Minor Head Match (25% Weight)
     if (targetCrimeHead.includes(cMajor) || cMajor.includes(targetCrimeHead)) {
       score += 25;
-      matchingFactors.push(`Matching Crime Major Head (${c.CrimeMajorHead})`);
+      matchingFactors.push(`Same Crime Major Head (${c.CrimeMajorHead})`);
     } else if (targetCrimeHead.includes(cMinor) || cMinor.includes(targetCrimeHead)) {
       score += 20;
-      matchingFactors.push(`Matching Crime Sub-Head (${c.CrimeMinorHead})`);
+      matchingFactors.push(`Same Crime Sub-Head (${c.CrimeMinorHead})`);
     }
 
-    // 2. Weapon / Modus Operandi Match (20% Weight)
-    const weaponKeywords = ['knife', 'pistol', 'crowbar', 'phishing', 'upi', 'strangled', 'sharp weapon', 'revolver', 'ganja', 'mdma', 'wire'];
+    // 2. Conceptual Semantic Matching (30% Weight)
+    const conceptualScore = computeConceptualSimilarity(targetFacts, cFacts);
+    if (conceptualScore > 20) {
+      const addedScore = Math.min(30, Math.round(conceptualScore * 0.3));
+      score += addedScore;
+      matchingFactors.push(`Similar Crime Scene Narrative & Modus Operandi (${conceptualScore}% conceptual overlap)`);
+    }
+
+    // 3. Weapon / Key Identifier Match (20% Weight)
+    const weaponKeywords = ['knife', 'pistol', 'crowbar', 'phishing', 'upi', 'strangled', 'sharp weapon', 'revolver', 'ganja', 'mdma', 'wire', 'poison', 'cyanide'];
     for (const kw of weaponKeywords) {
       if (targetFacts.includes(kw) && cFacts.includes(kw)) {
         score += 20;
-        matchingFactors.push(`Identical Modus Operandi / Weapon Key (${kw})`);
+        matchingFactors.push(`Same Weapon / Offense Mechanism Key (${kw})`);
         break;
       }
     }
 
-    // 3. District / Police Station Match (10% Weight)
+    // 4. District / Police Station Match (10% Weight)
     if (targetCaseOrQuery.District && c.District && targetCaseOrQuery.District.toLowerCase() === c.District.toLowerCase()) {
       score += 10;
-      matchingFactors.push(`Same District (${c.District})`);
+      matchingFactors.push(`Same District Jurisdiction (${c.District})`);
     }
 
-    // 4. Case Status & Gravity Match (15% Weight)
+    // 5. Case Status & Gravity Match (15% Weight)
     if (targetCaseOrQuery.GravityOffence && c.GravityOffence && targetCaseOrQuery.GravityOffence === c.GravityOffence) {
       score += 15;
-      matchingFactors.push(`Identical Gravity Level (${c.GravityOffence})`);
-    }
-
-    // 5. Textual Overlap in Brief Facts (30% Weight)
-    const targetWords = targetFacts.split(/\s+/).filter(w => w.length > 3);
-    let matchCount = 0;
-    for (const tw of targetWords) {
-      if (cFacts.includes(tw)) matchCount++;
-    }
-    if (targetWords.length > 0) {
-      const textSimilarityRatio = matchCount / Math.max(targetWords.length, 5);
-      const textScore = Math.min(30, Math.round(textSimilarityRatio * 30));
-      if (textScore > 0) {
-        score += textScore;
-        matchingFactors.push(`Shared Crime Scene Narrative Features (${textScore}% overlap)`);
-      }
+      matchingFactors.push(`Same Gravity Level Classification (${c.GravityOffence})`);
     }
 
     const finalScore = Math.min(98, score);
 
-    if (finalScore >= 35) {
+    if (finalScore >= 25) {
       const entities = intelligenceIndex.getEntitiesForCase(crimeNo);
       results.push({
         caseRecord: c,
