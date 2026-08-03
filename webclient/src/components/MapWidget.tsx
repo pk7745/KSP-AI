@@ -4,22 +4,14 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import './MapWidget.css';
 
-// Fix for default Leaflet marker icons in React
-delete (L.Icon.Default.prototype as any)._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-  iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-});
+// SVG Data URI for map markers (eliminates external CDN Tracking Prevention blocks)
+const redMarkerSvg = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="30" height="42" viewBox="0 0 24 36"><path fill="%23ef4444" stroke="%23991b1b" stroke-width="1.5" d="M12 0C5.37 0 0 5.37 0 12c0 9 12 24 12 24s12-15 12-24c0-6.63-5.37-12-12-12zm0 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/></svg>`;
 
-// Custom dark mode icon
 const customIcon = new L.Icon({
-  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
-  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowSize: [41, 41]
+  iconUrl: redMarkerSvg,
+  iconSize: [28, 40],
+  iconAnchor: [14, 40],
+  popupAnchor: [0, -36]
 });
 
 interface CasePoint {
@@ -36,7 +28,6 @@ interface MapWidgetProps {
   cases: CasePoint[];
 }
 
-// Component to dynamically re-center map on officer's jurisdiction
 function MapRecenter({ center, zoom }: { center: [number, number]; zoom: number }) {
   const map = useMap();
   React.useEffect(() => {
@@ -48,15 +39,13 @@ function MapRecenter({ center, zoom }: { center: [number, number]; zoom: number 
 export function MapWidget({ cases }: MapWidgetProps) {
   const validCases = (cases || []).filter(c => c.latitude && c.longitude && !isNaN(c.latitude) && !isNaN(c.longitude));
 
-  // Determine Map Center & Zoom based on jurisdiction
-  let center: [number, number] = [15.3173, 75.7139]; // Default Karnataka State
+  let center: [number, number] = [15.3173, 75.7139];
   let zoom = 6;
 
   if (validCases.length > 0) {
     const avgLat = validCases.reduce((sum, c) => sum + c.latitude, 0) / validCases.length;
     const avgLng = validCases.reduce((sum, c) => sum + c.longitude, 0) / validCases.length;
     center = [avgLat, avgLng];
-    // Zoom in closer if cases are localized to a station or district
     zoom = validCases.length < 10 ? 11 : 7;
   }
 

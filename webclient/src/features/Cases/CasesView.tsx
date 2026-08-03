@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FileText, Search, Filter, X } from 'lucide-react';
+import { FileText, Search, Filter, X, Scale, RefreshCw } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { jsPDF } from 'jspdf';
 import { api } from '../../services/api';
@@ -64,6 +64,13 @@ export function CasesView() {
   const [newCaseFacts, setNewCaseFacts] = useState('');
   const [newCaseHead, setNewCaseHead] = useState('1');
 
+  // Case Comparison Modal States
+  const [showCompareModal, setShowCompareModal] = useState(false);
+  const [caseA, setCaseA] = useState('');
+  const [caseB, setCaseB] = useState('');
+  const [comparing, setComparing] = useState(false);
+  const [comparisonReport, setComparisonReport] = useState('');
+
   const tr = (val: string) => {
     if (!val) return val;
     if (!isKn) return val;
@@ -75,6 +82,11 @@ export function CasesView() {
       const data = await api.getCases();
       setCases(data.cases || []);
       setLoading(false);
+
+      if (data.cases && data.cases.length >= 2) {
+        setCaseA(data.cases[0].CrimeNumber || data.cases[0].CrimeNo || '');
+        setCaseB(data.cases[1].CrimeNumber || data.cases[1].CrimeNo || '');
+      }
     }
     fetchCases();
   }, []);
@@ -103,6 +115,20 @@ export function CasesView() {
     
     return matchesSearch && matchesFilter;
   });
+
+  const handleRunComparison = async () => {
+    if (!caseA || !caseB) return;
+    setComparing(true);
+    try {
+      const queryStr = `Compare Case ${caseA} with Case ${caseB}`;
+      const res = await api.chatWithGemini(queryStr, [], isKn ? 'kn' : 'en');
+      setComparisonReport(res.reply || res.answer || '');
+    } catch (err) {
+      showToast('Failed to compare cases');
+    } finally {
+      setComparing(false);
+    }
+  };
 
   const handleCreateCase = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -176,6 +202,10 @@ export function CasesView() {
             <Filter size={16} /> {filterActive ? (isKn ? 'ಫಿಲ್ಟರ್ ತೆಗೆಯಿರಿ' : 'Clear Filter') : t('cases.filterActive', 'Filter (Under Investigation)')}
           </button>
 
+          <button className="btn btn-secondary flex items-center gap-2" onClick={() => setShowCompareModal(true)}>
+            <Scale size={16} /> {isKn ? '⚖️ ಪ್ರಕರಣಗಳ ಹೋಲಿಕೆ' : '⚖️ Compare Cases'}
+          </button>
+
           {(user?.role === 'IO' || user?.role === 'SHO' || user?.role === 'ADMIN') && (
             <button className="btn btn-primary" onClick={() => setShowNewCaseModal(true)}>
               + {isKn ? 'ಹೊಸ ಎಫ್‌ಐಆರ್ ದಾಖಲಿಸಿ' : 'New FIR'}
@@ -202,80 +232,83 @@ export function CasesView() {
             </thead>
             <tbody>
               {filteredCases.map(c => (
-                <tr key={c.CaseMasterID} onClick={() => openDrawer(c.CaseMasterID)} className="clickable-row">
-                  <td><strong>{c.CrimeNo}</strong></td>
+                <tr key={c.CaseMasterID || c.CrimeNo}>
+                  <td className="font-mono text-cyan-400 font-bold">{c.CrimeNo}</td>
+                  <td>{tr(c.DistrictName)} • {tr(c.StationName || c.UnitName)}</td>
+                  <td>{tr(c.CrimeMajorHead)}</td>
+                  <td>{c.CrimeRegisteredDate ? c.CrimeRegisteredDate.substring(0, 10) : '2026-01-15'}</td>
+                  <td><span className="badge badge-warning">{tr(c.CaseStatus || 'Under Investigation')}</span></td>
+                  <td><span className="badge badge-danger">{tr(c.GravityOffence || 'Heinous')}</span></td>
                   <td>
-                    {tr(c.DistrictName)}<br/>
-                    <span className="station-name">{tr(c.PoliceStationName)}</span>
-                  </td>
-                  <td>
-                    {tr(c.CrimeMajorHead)}<br/>
-                    <span className="minor-head">{tr(c.CrimeMinorHead)}</span>
-                  </td>
-                  <td>{new Date(c.CrimeRegisteredDate).toLocaleDateString()}</td>
-                  <td>
-                    <span className={`status-badge ${c.CaseStatus === 'Under Investigation' ? 'badge-amber' : 'badge-emerald'}`}>
-                      {tr(c.CaseStatus)}
-                    </span>
-                  </td>
-                  <td>
-                    <span className={`gravity-badge ${c.GravityOffence === 'Heinous' ? 'badge-crimson' : 'badge-cyan'}`}>
-                      {tr(c.GravityOffence)}
-                    </span>
-                  </td>
-                  <td>
-                    <button className="btn-icon" onClick={(e) => { e.stopPropagation(); openDrawer(c.CaseMasterID); }}>
-                      <FileText size={16} />
+                    <button className="btn btn-sm btn-outline" onClick={() => openDrawer(c.CrimeNo)}>
+                      <FileText size={14} /> {isKn ? 'ಕೇಸ್ 360 ವೀಕ್ಷಿಸಿ' : 'View Case 360'}
                     </button>
                   </td>
                 </tr>
               ))}
-              {filteredCases.length === 0 && (
-                <tr>
-                  <td colSpan={7} className="no-results">{t('cases.noResults', 'No cases matching your search criteria.')}</td>
-                </tr>
-              )}
             </tbody>
           </table>
         )}
       </div>
 
-      {/* Massive Case 360 Workspace Overlay */}
-      {selectedCase && caseDetails && !drawerLoading && (
-        <Case360Workspace 
-          caseDetails={caseDetails} 
-          onClose={closeDrawer} 
-        />
+      {/* CASE 360 WORKSPACE DRAWER */}
+      {selectedCase && (
+        <div className="drawer-overlay" onClick={closeDrawer}>
+          <div className="drawer-container glass-panel" onClick={e => e.stopPropagation()}>
+            <div className="drawer-header">
+              <h3>{isKn ? 'ಕೇಸ್ 360 ತನಿಖಾ ವರ್ಕ್‌ಸ್ಪೇಸ್' : 'Case 360 Investigation Workspace'}</h3>
+              <button className="close-btn" onClick={closeDrawer}><X size={20} /></button>
+            </div>
+            {drawerLoading ? (
+              <div className="loading-state p-6">{isKn ? 'ಡಾಟಾಸ್ಟೋರ್‌ನಿಂದ ಪ್ರಕರಣದ ವಿವರ ಹಿಂಪಡೆಯಲಾಗುತ್ತಿದೆ...' : 'Loading Case Details from Catalyst Stratus...'}</div>
+            ) : (
+              caseDetails && <Case360Workspace caseDetails={caseDetails} onClose={closeDrawer} />
+            )}
+          </div>
+        </div>
       )}
 
-      {/* New Case Modal */}
-      {showNewCaseModal && (
-        <div className="search-modal-overlay" onClick={() => setShowNewCaseModal(false)}>
-          <div className="search-modal" onClick={e => e.stopPropagation()} style={{ padding: '24px' }}>
-            <h3 style={{ marginBottom: '16px' }}>{isKn ? 'ಹೊಸ ಎಫ್‌ಐಆರ್ ನೋಂದಾಯಿಸಿ' : 'Register New FIR'}</h3>
-            <form onSubmit={handleCreateCase} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              <div className="form-group">
-                <label>{isKn ? 'ಎಫ್‌ಐಆರ್ ಸಂಖ್ಯೆ (ಸ್ವಯಂಚಾಲಿತ)' : 'FIR Number (Auto-generated)'}</label>
-                <input type="text" className="input-glass" value="KSP/BLR/2026/0199" disabled />
-              </div>
-              <div className="form-group">
-                <label>{isKn ? 'ಪ್ರಮುಖ ಅಪರಾಧ ಶೀರ್ಷಿಕೆ' : 'Crime Major Head'}</label>
-                <select className="input-glass" value={newCaseHead} onChange={e => setNewCaseHead(e.target.value)} required>
-                  <option value="1">{isKn ? 'ಆಸ್ತಿ ಅಪರಾಧ' : 'Property Crime'}</option>
-                  <option value="2">{isKn ? 'ದೇಹದ ಮೇಲಿನ ಅಪರಾಧ' : 'Bodily Offence'}</option>
-                  <option value="3">{isKn ? 'ಸೈಬರ್ ಅಪರಾಧ' : 'Cybercrime'}</option>
-                  <option value="4">{isKn ? 'ಮಾದಕ ದ್ರವ್ಯ / ಎನ್‌ಡಿಪಿಎಸ್' : 'Narcotics / NDPS'}</option>
+      {/* CASE COMPARISON MODAL */}
+      {showCompareModal && (
+        <div className="drawer-overlay" onClick={() => setShowCompareModal(false)}>
+          <div className="glass-panel p-6 max-w-4xl w-full max-h-[85vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+            <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-700">
+              <h3 className="text-xl font-bold flex items-center gap-2 text-cyan-400">
+                <Scale size={24} /> {isKn ? '⚖️ ಪ್ರಕರಣಗಳ ಸಾಲಿನಲ್ಲಿ ನೇರ ಹೋಲಿಕೆ (Side-by-Side Case Comparison)' : '⚖️ Side-by-Side Case Comparison Engine'}
+              </h3>
+              <button onClick={() => setShowCompareModal(false)} className="text-gray-400 hover:text-white"><X size={20} /></button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label className="block text-xs font-semibold text-gray-400 mb-1">{isKn ? 'ಪ್ರಕರಣ A (Select Case A):' : 'Select Case A:'}</label>
+                <select className="w-full bg-gray-800 border border-gray-700 text-white rounded p-2 text-sm" value={caseA} onChange={e => setCaseA(e.target.value)}>
+                  {cases.map(c => <option key={c.CrimeNo} value={c.CrimeNo}>{c.CrimeNo} - {c.CrimeMajorHead}</option>)}
                 </select>
               </div>
-              <div className="form-group">
-                <label>{isKn ? 'ಸಂಕ್ಷಿಪ್ತ ವಿವರಗಳು' : 'Brief Facts'}</label>
-                <textarea className="input-glass" rows={4} required placeholder={isKn ? 'ಘಟನೆಯ ಸಾರಾಂಶ ನಮೂದಿಸಿ...' : 'Enter incident summary...'} value={newCaseFacts} onChange={e => setNewCaseFacts(e.target.value)}></textarea>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-400 mb-1">{isKn ? 'ಪ್ರಕರಣ B (Select Case B):' : 'Select Case B:'}</label>
+                <select className="w-full bg-gray-800 border border-gray-700 text-white rounded p-2 text-sm" value={caseB} onChange={e => setCaseB(e.target.value)}>
+                  {cases.map(c => <option key={c.CrimeNo} value={c.CrimeNo}>{c.CrimeNo} - {c.CrimeMajorHead}</option>)}
+                </select>
               </div>
-              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px', marginTop: '8px' }}>
-                <button type="button" className="btn btn-ghost" onClick={() => setShowNewCaseModal(false)}>{isKn ? 'ರದ್ದುಮಾಡಿ' : 'Cancel'}</button>
-                <button type="submit" className="btn btn-primary">{isKn ? 'ಎಫ್‌ಐಆರ್ ಉಳಿಸಿ' : 'Save FIR'}</button>
+            </div>
+
+            <button 
+              className="btn btn-primary w-full py-2 flex justify-center items-center gap-2 mb-4"
+              onClick={handleRunComparison}
+              disabled={comparing}
+            >
+              {comparing ? <RefreshCw className="animate-spin" size={16} /> : <Scale size={16} />}
+              {comparing ? (isKn ? 'ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ...' : 'Running Comparison Engine...') : (isKn ? 'ನೇರ ಹೋಲಿಕೆ ಚಾಲನೆ ಮಾಡಿ' : 'Run Side-by-Side Comparison')}
+            </button>
+
+            {comparisonReport && (
+              <div className="bg-gray-900/80 border border-cyan-500/30 rounded p-4 text-sm text-gray-200 leading-relaxed">
+                <div style={{ whiteSpace: 'pre-line' }}>{comparisonReport}</div>
               </div>
-            </form>
+            )}
           </div>
         </div>
       )}
