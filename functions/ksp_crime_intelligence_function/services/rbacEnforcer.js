@@ -8,10 +8,10 @@ export function enforceRBAC(officerId, requestedDistrict, requestedQuery, isKn =
   const officers = intelligenceIndex.getOfficers();
   const districts = intelligenceIndex.getDistricts();
 
-  const officer = intelligenceIndex.getOfficer(officerId) || officers.find(o => o.OfficerID === 'OFF001') || {
-    OfficerID: 'OFF001',
+  const officer = intelligenceIndex.getOfficer(officerId) || officers.find(o => o.OfficerID === officerId) || {
+    OfficerID: officerId || 'OFF001',
     OfficerName: 'Inspector Rajesh Kumar',
-    Rank: 'Circle Inspector',
+    Rank: officerId && officerId.toUpperCase().includes('DGP') ? 'DGP' : 'Circle Inspector',
     DistrictID: 'DIS001',
     PoliceStation: 'Cubbon Park Police Station'
   };
@@ -21,8 +21,9 @@ export function enforceRBAC(officerId, requestedDistrict, requestedQuery, isKn =
   const officerDistrictObj = districts.find(d => d.DistrictID === officerDistrictId) || { DistrictName: 'Bengaluru Urban' };
   const authorizedDistrictName = officerDistrictObj.DistrictName || 'Bengaluru Urban';
 
-  // 1. Check if Officer has Statewide Clearance (DGP, IGP, DIG, Senior Command)
-  const isStatewideRank = officerRank.includes('DGP') || officerRank.includes('IGP') || officerRank.includes('DIG') || officerRank.includes('COMMISSIONER');
+  // 1. Check if Officer has Statewide Clearance (DGP, IGP, DIG, Senior Command, Admin)
+  const idUpper = (officerId || '').toUpperCase();
+  const isStatewideRank = idUpper.includes('DGP') || idUpper.includes('ADMIN') || officerRank.includes('DGP') || officerRank.includes('IGP') || officerRank.includes('DIG') || officerRank.includes('COMMISSIONER') || officerRank.includes('ADMIN');
 
   if (isStatewideRank) {
     return {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FileText, Search, Filter, X, Scale, RefreshCw } from 'lucide-react';
+import { FileText, Search, Filter, X, Scale, RefreshCw, CheckSquare, Square } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { jsPDF } from 'jspdf';
 import { api } from '../../services/api';
@@ -64,10 +64,9 @@ export function CasesView() {
   const [newCaseFacts, setNewCaseFacts] = useState('');
   const [newCaseHead, setNewCaseHead] = useState('1');
 
-  // Case Comparison Modal States
+  // Multi-Case Comparison Modal States (2, 3, 4, 5 cases)
   const [showCompareModal, setShowCompareModal] = useState(false);
-  const [caseA, setCaseA] = useState('');
-  const [caseB, setCaseB] = useState('');
+  const [selectedCaseIds, setSelectedCaseIds] = useState<string[]>([]);
   const [comparing, setComparing] = useState(false);
   const [comparisonReport, setComparisonReport] = useState('');
 
@@ -84,8 +83,10 @@ export function CasesView() {
       setLoading(false);
 
       if (data.cases && data.cases.length >= 2) {
-        setCaseA(data.cases[0].CrimeNumber || data.cases[0].CrimeNo || '');
-        setCaseB(data.cases[1].CrimeNumber || data.cases[1].CrimeNo || '');
+        setSelectedCaseIds([
+          data.cases[0].CrimeNumber || data.cases[0].CrimeNo,
+          data.cases[1].CrimeNumber || data.cases[1].CrimeNo
+        ]);
       }
     }
     fetchCases();
@@ -116,37 +117,36 @@ export function CasesView() {
     return matchesSearch && matchesFilter;
   });
 
-  const handleRunComparison = async () => {
-    if (!caseA || !caseB) return;
-    setComparing(true);
-    try {
-      const queryStr = `Compare Case ${caseA} with Case ${caseB}`;
-      const res = await api.chatWithGemini(queryStr, [], isKn ? 'kn' : 'en');
-      setComparisonReport(res.reply || res.answer || '');
-    } catch (err) {
-      showToast('Failed to compare cases');
-    } finally {
-      setComparing(false);
+  const toggleCaseSelection = (cNo: string) => {
+    if (selectedCaseIds.includes(cNo)) {
+      if (selectedCaseIds.length <= 2) {
+        showToast(isKn ? 'ಕನಿಷ್ಠ 2 ಪ್ರಕರಣಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಬೇಕು.' : 'Minimum 2 cases required for comparison.');
+        return;
+      }
+      setSelectedCaseIds(prev => prev.filter(id => id !== cNo));
+    } else {
+      if (selectedCaseIds.length >= 5) {
+        showToast(isKn ? 'ಗರಿಷ್ಠ 5 ಪ್ರಕರಣಗಳನ್ನು ಮಾತ್ರ ಆಯ್ಕೆ ಮಾಡಬಹುದು.' : 'Maximum 5 cases supported for comparison.');
+        return;
+      }
+      setSelectedCaseIds(prev => [...prev, cNo]);
     }
   };
 
-  const handleCreateCase = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleRunComparison = async () => {
+    if (selectedCaseIds.length < 2) {
+      showToast(isKn ? 'ದಯವಿಟ್ಟು ಕನಿಷ್ಠ 2 ಪ್ರಕರಣಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಿ' : 'Please select at least 2 cases');
+      return;
+    }
+    setComparing(true);
     try {
-      const res = await api.createCase({
-        CrimeHeadID: parseInt(newCaseHead),
-        BriefFacts: newCaseFacts,
-        DistrictID: parseInt(user?.districtId?.replace(/\D/g, '') || '1'),
-        UnitID: parseInt(user?.unitId?.replace(/\D/g, '') || '1')
-      });
-      setShowNewCaseModal(false);
-      setNewCaseFacts('');
-      showToast(`FIR ${res.data.CrimeNo} registered successfully.`);
-      
-      const data = await api.getCases();
-      setCases(data.cases || []);
+      const queryStr = `Compare Cases ${selectedCaseIds.join(' and ')}`;
+      const res = await api.chatWithGemini(queryStr, [], isKn ? 'kn' : 'en');
+      setComparisonReport(res.reply || res.answer || '');
     } catch (err) {
-      showToast('Failed to register FIR');
+      showToast('Failed to compare selected cases');
+    } finally {
+      setComparing(false);
     }
   };
 
@@ -203,14 +203,8 @@ export function CasesView() {
           </button>
 
           <button className="btn btn-secondary flex items-center gap-2" onClick={() => setShowCompareModal(true)}>
-            <Scale size={16} /> {isKn ? '⚖️ ಪ್ರಕರಣಗಳ ಹೋಲಿಕೆ' : '⚖️ Compare Cases'}
+            <Scale size={16} /> {isKn ? '⚖️ ಬಹು-ಪ್ರಕರಣಗಳ ಹೋಲಿಕೆ (2-5)' : '⚖️ Multi-Case Compare (2-5)'}
           </button>
-
-          {(user?.role === 'IO' || user?.role === 'SHO' || user?.role === 'ADMIN') && (
-            <button className="btn btn-primary" onClick={() => setShowNewCaseModal(true)}>
-              + {isKn ? 'ಹೊಸ ಎಫ್‌ಐಆರ್ ದಾಖಲಿಸಿ' : 'New FIR'}
-            </button>
-          )}
         </div>
       </div>
 
@@ -268,44 +262,51 @@ export function CasesView() {
         </div>
       )}
 
-      {/* CASE COMPARISON MODAL */}
+      {/* ENTERPRISE MULTI-CASE COMPARISON MODAL (2 TO 5 CASES) */}
       {showCompareModal && (
         <div className="drawer-overlay" onClick={() => setShowCompareModal(false)}>
           <div className="glass-panel p-6 max-w-4xl w-full max-h-[85vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
             <div className="flex justify-between items-center mb-4 pb-2 border-b border-gray-700">
               <h3 className="text-xl font-bold flex items-center gap-2 text-cyan-400">
-                <Scale size={24} /> {isKn ? '⚖️ ಪ್ರಕರಣಗಳ ಸಾಲಿನಲ್ಲಿ ನೇರ ಹೋಲಿಕೆ (Side-by-Side Case Comparison)' : '⚖️ Side-by-Side Case Comparison Engine'}
+                <Scale size={24} /> {isKn ? '⚖️ ಬಹು-ಪ್ರಕರಣಗಳ ಸಮಗ್ರ ತನಿಖಾ ಹೋಲಿಕೆ ಎಂಜಿನ್ (2 ರಿಂದ 5 ಪ್ರಕರಣಗಳು)' : '⚖️ Enterprise Multi-Case Investigation Comparison Engine (2-5 Cases)'}
               </h3>
               <button onClick={() => setShowCompareModal(false)} className="text-gray-400 hover:text-white"><X size={20} /></button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label className="block text-xs font-semibold text-gray-400 mb-1">{isKn ? 'ಪ್ರಕರಣ A (Select Case A):' : 'Select Case A:'}</label>
-                <select className="w-full bg-gray-800 border border-gray-700 text-white rounded p-2 text-sm" value={caseA} onChange={e => setCaseA(e.target.value)}>
-                  {cases.map(c => <option key={c.CrimeNo} value={c.CrimeNo}>{c.CrimeNo} - {c.CrimeMajorHead}</option>)}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-semibold text-gray-400 mb-1">{isKn ? 'ಪ್ರಕರಣ B (Select Case B):' : 'Select Case B:'}</label>
-                <select className="w-full bg-gray-800 border border-gray-700 text-white rounded p-2 text-sm" value={caseB} onChange={e => setCaseB(e.target.value)}>
-                  {cases.map(c => <option key={c.CrimeNo} value={c.CrimeNo}>{c.CrimeNo} - {c.CrimeMajorHead}</option>)}
-                </select>
+            <div className="mb-4">
+              <p className="text-xs text-cyan-300 font-semibold mb-2">
+                {isKn ? `ಆಯ್ಕೆಯಾದ ಪ್ರಕರಣಗಳು (${selectedCaseIds.length}/5):` : `Selected Cases for Deep Comparison (${selectedCaseIds.length}/5):`}
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 max-h-48 overflow-y-auto p-2 bg-gray-900/60 rounded border border-gray-800">
+                {cases.map(c => {
+                  const cNo = c.CrimeNumber || c.CrimeNo;
+                  const isChecked = selectedCaseIds.includes(cNo);
+                  return (
+                    <div 
+                      key={cNo} 
+                      className={`flex items-center gap-2 p-2 rounded cursor-pointer transition-colors ${isChecked ? 'bg-cyan-950/60 border border-cyan-500/40' : 'bg-gray-800/40 hover:bg-gray-800/80'}`}
+                      onClick={() => toggleCaseSelection(cNo)}
+                    >
+                      {isChecked ? <CheckSquare size={16} className="text-cyan-400" /> : <Square size={16} className="text-gray-500" />}
+                      <span className="font-mono text-xs font-bold text-gray-200">{cNo}</span>
+                      <span className="text-xs text-gray-400 truncate">— {tr(c.CrimeMajorHead)}</span>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
             <button 
-              className="btn btn-primary w-full py-2 flex justify-center items-center gap-2 mb-4"
+              className="btn btn-primary w-full py-2.5 flex justify-center items-center gap-2 mb-4 font-bold text-sm"
               onClick={handleRunComparison}
-              disabled={comparing}
+              disabled={comparing || selectedCaseIds.length < 2}
             >
-              {comparing ? <RefreshCw className="animate-spin" size={16} /> : <Scale size={16} />}
-              {comparing ? (isKn ? 'ವಿಶ್ಲೇಷಿಸಲಾಗುತ್ತಿದೆ...' : 'Running Comparison Engine...') : (isKn ? 'ನೇರ ಹೋಲಿಕೆ ಚಾಲನೆ ಮಾಡಿ' : 'Run Side-by-Side Comparison')}
+              {comparing ? <RefreshCw className="animate-spin" size={18} /> : <Scale size={18} />}
+              {comparing ? (isKn ? '13-ವಿಭಾಗಗಳ ತನಿಖಾ ವರದಿ ಸಿದ್ಧಪಡಿಸಲಾಗುತ್ತಿದೆ...' : 'Generating 13-Section Deep Comparison Report...') : (isKn ? `ಈ ${selectedCaseIds.length} ಪ್ರಕರಣಗಳನ್ನು ಸಮಗ್ರವಾಗಿ ಹೋಲಿಸಿ` : `Run Deep Investigation Comparison on ${selectedCaseIds.length} Cases`)}
             </button>
 
             {comparisonReport && (
-              <div className="bg-gray-900/80 border border-cyan-500/30 rounded p-4 text-sm text-gray-200 leading-relaxed">
+              <div className="bg-gray-950 border border-cyan-500/30 rounded p-5 text-sm text-gray-200 leading-relaxed shadow-2xl">
                 <div style={{ whiteSpace: 'pre-line' }}>{comparisonReport}</div>
               </div>
             )}

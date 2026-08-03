@@ -2,6 +2,7 @@ import express from 'express';
 import { dataSyncLayer } from '../services/dataSyncLayer.js';
 import { detectExactIdentifier, performExactIdentifierLookup } from '../services/identifierRecognizer.js';
 import { compareTwoCases } from '../services/caseComparisonEngine.js';
+import { compareMultipleCases } from '../services/multiCaseComparisonEngine.js';
 import { conversationalMemoryEngine } from '../services/conversationalMemoryEngine.js';
 import { enterpriseSearchIndex } from '../services/enterpriseSearchIndex.js';
 import { semanticVectorEngine } from '../services/semanticVectorEngine.js';
@@ -13,38 +14,42 @@ const router = express.Router();
 
 router.post('/', async (req, res) => {
   try {
-    const { query, language = 'en', history = [], officerId = 'OFF001', sessionId = 'default-session' } = req.body;
+    const { query, language = 'en', history = [], officerId = 'OFF001', sessionId = 'default-session', caseIds: reqCaseIds } = req.body;
     const rawMessage = query || req.body.message;
     const lang = language || req.body.lang || 'en';
     const isKn = lang === 'kn' || /[\u0C80-\u0CFF]/.test(rawMessage || '');
 
-    if (!rawMessage) {
-      return res.status(400).json({ error: 'Message is required' });
+    if (!rawMessage && (!reqCaseIds || reqCaseIds.length === 0)) {
+      return res.status(400).json({ error: 'Message or caseIds array is required' });
     }
 
     // STEP 12: Resolve Implicit Conversational Context
-    const { resolvedQuery, caseIdA, caseIdB } = conversationalMemoryEngine.resolveImplicitContext(rawMessage, sessionId);
-    const message = resolvedQuery;
+    const { resolvedQuery, caseIdA, caseIdB } = conversationalMemoryEngine.resolveImplicitContext(rawMessage || '', sessionId);
+    const message = resolvedQuery || rawMessage || '';
 
     console.log(`\n===============================================================`);
-    console.log(`[ENTERPRISE INVESTIGATION INTELLIGENCE SYSTEM PIPELINE]`);
+    console.log(`[ENTERPRISE MULTI-CASE COMPARISON INTELLIGENCE SYSTEM]`);
     console.log(`  • Raw Query      : "${rawMessage}"`);
-    console.log(`  • Resolved Query : "${message}"`);
+    console.log(`  • Case IDs Array : [${reqCaseIds ? reqCaseIds.join(', ') : ''}]`);
     console.log(`  • Language       : ${isKn ? 'Kannada (kn)' : 'English (en)'}`);
     console.log(`  • Session ID     : ${sessionId}`);
     console.log(`===============================================================`);
 
-    // STEP 1 & 2: Sync Datastore
+    // Sync Datastore
     dataSyncLayer.syncAll();
 
-    // STEP 7: Side-by-Side Case Comparison Query ("Compare Case A with Case B")
-    if (lowerIncludes(message, 'compare') && (caseIdA || message.match(/KSP\/[A-Z0-9]+\/\d{4}\/\d+/gi)?.length >= 2)) {
-      const ids = message.match(/KSP\/[A-Z0-9]+\/\d{4}\/\d+/gi) || [caseIdA, caseIdB];
-      const compResult = compareTwoCases(ids[0], ids[1] || ids[0]);
-      
+    // Multi-Case Comparison Route Trigger (2 to 5 cases)
+    const detectedCaseIds = message.match(/KSP\/[A-Z0-9]+\/\d{4}\/\d+/gi) || reqCaseIds || [];
+
+    if (detectedCaseIds.length >= 2 || (reqCaseIds && reqCaseIds.length >= 2)) {
+      const finalCaseIds = Array.from(new Set(detectedCaseIds)).slice(0, 5);
+      console.log(`  ✓ Executing Multi-Case Comparison across ${finalCaseIds.length} Case Files: [${finalCaseIds.join(', ')}]`);
+
+      const multiCaseResult = compareMultipleCases(finalCaseIds, officerId);
+
       const reportText = generateExplainableReport({
         query: message,
-        comparisonResult: compResult,
+        multiCaseResult,
         isKn,
         officerContext: { officerId, authorizedDistrict: 'Bengaluru Urban' }
       });
@@ -55,11 +60,11 @@ router.post('/', async (req, res) => {
         sessionId,
         lang,
         confidence: 0.98,
-        comparison: compResult
+        multiCaseResult
       });
     }
 
-    // STEP 1: Exact Identifier Auto-Recognition (Case ID, FIR, Evidence ID, Officer ID, Phone, Vehicle)
+    // Exact Identifier Auto-Recognition (Single Case ID, FIR, Evidence, Officer, Phone, Vehicle)
     const exactId = detectExactIdentifier(message);
 
     if (exactId) {
@@ -95,7 +100,7 @@ router.post('/', async (req, res) => {
       }
     }
 
-    // STEP 3-11: Multi-Table Semantic Vector & Similar Case Retrieval
+    // Standard Semantic Search & Retrieval
     const intent = extractEntitiesAndIntent(message);
     const rbacResult = enforceRBAC(officerId, intent.detectedDistrict, message, isKn);
 
@@ -138,17 +143,13 @@ router.post('/', async (req, res) => {
       retrievedCases: combinedMatches.slice(0, 5)
     });
   } catch (err) {
-    console.error('[INVESTIGATION INTELLIGENCE SYSTEM ERROR]', err);
-    res.status(500).json({ error: 'Failed to process Investigation Intelligence query', details: err.message });
+    console.error('[MULTI-CASE COMPARISON ERROR]', err);
+    res.status(500).json({ error: 'Failed to process Multi-Case Comparison query', details: err.message });
   }
 });
 
-function lowerIncludes(text, kw) {
-  return (text || '').toLowerCase().includes(kw);
-}
-
 function extractEntitiesAndIntent(msg) {
-  const lower = msg.toLowerCase();
+  const lower = (msg || '').toLowerCase();
   
   let detectedDistrict = null;
   if (lower.includes('bengaluru') || lower.includes('bangalore') || lower.includes('whitefield') || lower.includes('koramangala')) detectedDistrict = 'Bengaluru Urban';
