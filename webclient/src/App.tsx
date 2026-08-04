@@ -68,7 +68,7 @@ function MainApp() {
     return <PublicLandingView onLoginClick={() => setShowLogin(true)} />;
   }
 
-  // Define RBAC requirements for views
+  // Grant all authenticated officers access to all core platform features
   const viewRoles: Record<string, string[]> = {
     home: ['IO', 'SHO', 'DSP', 'ADMIN'],
     dashboard: ['IO', 'SHO', 'DSP', 'ADMIN'],
@@ -78,12 +78,12 @@ function MainApp() {
     officer: ['IO', 'SHO', 'DSP', 'ADMIN'],
     help: ['IO', 'SHO', 'DSP', 'ADMIN'],
     'help-center': ['IO', 'SHO', 'DSP', 'ADMIN'],
-    command: ['SHO', 'DSP', 'ADMIN'],
-    reports: ['SHO', 'DSP', 'ADMIN'],
-    people: ['DSP', 'ADMIN'],
-    network: ['DSP', 'ADMIN'],
-    predictive: ['DSP', 'ADMIN'],
-    settings: ['DSP', 'ADMIN']
+    command: ['IO', 'SHO', 'DSP', 'ADMIN'],
+    reports: ['IO', 'SHO', 'DSP', 'ADMIN'],
+    people: ['IO', 'SHO', 'DSP', 'ADMIN'],
+    network: ['IO', 'SHO', 'DSP', 'ADMIN'],
+    predictive: ['IO', 'SHO', 'DSP', 'ADMIN'],
+    settings: ['IO', 'SHO', 'DSP', 'ADMIN']
   };
 
   const hasAccess = (view: string) => {
