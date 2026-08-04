@@ -275,7 +275,20 @@ export const api = {
     }
   },
 
-  synthesizeSpeech: async (_text: string, _lang: string = 'en') => {
-    return new Blob([], { type: 'audio/mp3' });
+  synthesizeSpeech: async (text: string, lang: string = 'en'): Promise<Blob | null> => {
+    try {
+      const response = await fetchWithAuth('/speech', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text, language: lang })
+      });
+      if (!response.ok) return null;
+      const blob = await response.blob();
+      if (!blob || blob.size === 0) return null;
+      return blob;
+    } catch (error) {
+      console.error('Error synthesizing speech:', error);
+      return null;
+    }
   }
 };
