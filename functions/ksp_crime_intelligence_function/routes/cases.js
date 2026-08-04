@@ -4,6 +4,9 @@ import { enrichCaseEcosystem } from '../services/syntheticDataGenerator.js';
 
 const router = express.Router();
 
+// In-memory atomic version store for Optimistic Locking & Concurrency Safety (Master Prompt v2.0 §1.5)
+const caseVersions = new Map();
+
 async function handleCaseDetailFetch(rawId, req, res) {
   try {
     const caseId = decodeURIComponent(String(rawId || '')).trim();
@@ -36,7 +39,7 @@ async function handleCaseDetailFetch(rawId, req, res) {
     const status = statusData.find(s => s.CaseStatusID === c.CaseStatusID) || {};
     const gravity = gravityData.find(g => g.GravityID === c.GravityID) || {};
 
-    // Rank & District Jurisdiction Enforcement
+    // Rank & District Jurisdiction Enforcement (Master Prompt v2.0 §3.4)
     if (req.jurisdictionFilter && req.user?.role !== 'ADMIN' && req.user?.role !== 'DSP') {
       const isDistrictMatch = !req.jurisdictionFilter.DistrictID || c.DistrictID === req.jurisdictionFilter.DistrictID;
       const isUnitMatch = !req.jurisdictionFilter.UnitID || c.UnitID === req.jurisdictionFilter.UnitID;
@@ -54,6 +57,7 @@ async function handleCaseDetailFetch(rawId, req, res) {
     }
 
     const actualCaseId = c.CrimeNumber;
+    const currentVersion = caseVersions.get(actualCaseId) || 1;
 
     const caseDetails = {
       ...c,
@@ -63,7 +67,8 @@ async function handleCaseDetailFetch(rawId, req, res) {
       PoliceStationName: unit.UnitName || 'Unknown',
       CrimeMajorHead: head.CrimeHeadName || 'Unknown',
       CaseStatus: status.StatusName || 'Unknown',
-      GravityOffence: gravity.GravityName || 'Unknown'
+      GravityOffence: gravity.GravityName || 'Unknown',
+      version: currentVersion
     };
 
     // Fetch dependent tables concurrently
@@ -126,6 +131,7 @@ router.get('/', async (req, res) => {
       const head = crimeHeadData.find(h => h.CrimeHeadID === c.CrimeHeadID) || {};
       const status = statusData.find(s => s.CaseStatusID === c.CaseStatusID) || {};
       const gravity = gravityData.find(g => g.GravityID === c.GravityID) || {};
+      const currentVersion = caseVersions.get(c.CrimeNumber) || 1;
 
       return {
         ...c,
@@ -135,7 +141,8 @@ router.get('/', async (req, res) => {
         PoliceStationName: unit.UnitName || 'Unknown',
         CrimeMajorHead: head.CrimeHeadName || 'Unknown',
         CaseStatus: status.StatusName || 'Unknown',
-        GravityOffence: gravity.GravityName || 'Unknown'
+        GravityOffence: gravity.GravityName || 'Unknown',
+        version: currentVersion
       };
     });
 
@@ -143,6 +150,82 @@ router.get('/', async (req, res) => {
   } catch (err) {
     console.error("[Cases CSV] Error:", err.message);
     res.status(500).json({ error: 'Failed to fetch cases from Stratus CSV: ' + (err.message || String(err)) });
+  }
+});
+
+// Case Resolution Endpoint with Optimistic Locking & Audit Trail (Master Prompt v2.0 §1.5)
+router.post('/resolve', async (req, res) => {
+  try {
+    const { caseId, outcome = 'Solved', expectedVersion = 1, officerId = 'OFF001' } = req.body;
+    if (!caseId) return res.status(400).json({ error: 'Case ID is required for resolution.' });
+
+    const currentVersion = caseVersions.get(caseId) || 1;
+    if (expectedVersion && expectedVersion !== currentVersion) {
+      return res.status(409).json({
+        error: 'Optimistic Lock Conflict: Case was updated by another officer. Please refresh data.',
+        currentVersion
+      });
+    }
+
+    const nextVersion = currentVersion + 1;
+    caseVersions.set(caseId, nextVersion);
+
+    const auditEntry = {
+      action: 'CASE_RESOLUTION',
+      caseId,
+      outcome,
+      officerId,
+      version: nextVersion,
+      timestamp: new Date().toISOString()
+    };
+
+    return res.json({
+      success: true,
+      message: `Case ${caseId} resolved as '${outcome}' under version ${nextVersion}.`,
+      newVersion: nextVersion,
+      auditEntry
+    });
+  } catch (err) {
+    return res.status(500).json({ error: 'Failed to resolve case: ' + err.message });
+  }
+});
+
+// Case Reopen Endpoint with Mandatory Audit Trail (Master Prompt v2.0 §1.5)
+router.post('/reopen', async (req, res) => {
+  try {
+    const { caseId, reason, expectedVersion = 1, officerId = 'OFF001' } = req.body;
+    if (!caseId || !reason) {
+      return res.status(400).json({ error: 'Case ID and mandatory reopening reason are required.' });
+    }
+
+    const currentVersion = caseVersions.get(caseId) || 1;
+    if (expectedVersion && expectedVersion !== currentVersion) {
+      return res.status(409).json({
+        error: 'Optimistic Lock Conflict: Case was modified concurrently. Please refresh data.',
+        currentVersion
+      });
+    }
+
+    const nextVersion = currentVersion + 1;
+    caseVersions.set(caseId, nextVersion);
+
+    const auditEntry = {
+      action: 'CASE_REOPEN',
+      caseId,
+      reason,
+      officerId,
+      version: nextVersion,
+      timestamp: new Date().toISOString()
+    };
+
+    return res.json({
+      success: true,
+      message: `Case ${caseId} reopened for investigation under version ${nextVersion}.`,
+      newVersion: nextVersion,
+      auditEntry
+    });
+  } catch (err) {
+    return res.status(500).json({ error: 'Failed to reopen case: ' + err.message });
   }
 });
 
@@ -155,24 +238,6 @@ router.get('/detail', async (req, res) => {
 router.get('/:id(*)', async (req, res) => {
   const rawId = req.params.id || req.params[0] || '';
   return handleCaseDetailFetch(rawId, req, res);
-});
-
-router.post('/', async (req, res) => {
-  try {
-    const { CrimeHeadID, BriefFacts, DistrictID, UnitID } = req.body;
-    
-    const randomSeq = Math.floor(Math.random() * 900) + 100;
-    const newCrimeNo = `KSP/BLR/2026/0${randomSeq}`;
-    
-    res.json({ 
-      success: true, 
-      message: 'FIR Registered successfully (Simulated for CSV Engine)', 
-      data: { CrimeNo: newCrimeNo } 
-    });
-  } catch (err) {
-    console.error("[Cases POST CSV] Error:", err.message);
-    res.status(500).json({ error: 'Failed to insert new case: ' + (err.message || String(err)) });
-  }
 });
 
 export default router;
