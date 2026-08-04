@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { X, Clock, FileText, User, ShieldAlert, Sparkles, Download, CheckSquare, Square, Link2, Lightbulb, Heart, Image, FileVideo, FileAudio, File, ChevronRight, Activity, MapPin, Scale, Eye, Users, Lock } from 'lucide-react';
-import { jsPDF } from 'jspdf';
+import { X, Clock, FileText, User, ShieldAlert, Sparkles, Download, CheckSquare, Square, Link2, Lightbulb, Heart, Image, FileVideo, FileAudio, File, ChevronRight, Activity, MapPin, Scale, Eye, Users, Lock, RefreshCw } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { showToast } from '../../utils/toast';
 import { useNavigation } from '../../context/NavigationContext';
+import { useAuth } from '../../context/AuthContext';
+import { generateEnterpriseDossierPDF } from '../../services/dossierPdfGenerator';
+import { CaseResolutionModal } from '../../components/CaseResolutionModal';
 import './Case360.css';
 
 const translateValue = (val: string, isKn: boolean) => {
@@ -49,7 +51,9 @@ const translateValue = (val: string, isKn: boolean) => {
 export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, onClose: () => void }) {
   const { t, i18n } = useTranslation();
   const { setCurrentView } = useNavigation();
+  const { user } = useAuth();
   const [selectedEvidence, setSelectedEvidence] = useState<any | null>(null);
+  const [showResolutionModal, setShowResolutionModal] = useState(false);
   const isKn = i18n.language === 'kn';
 
   // Render Jurisdiction & Rank Restriction Banner if case is outside assigned district/rank
@@ -122,18 +126,17 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
     setChecklist(prev => prev.map(item => item.id === id ? { ...item, done: !item.done } : item));
   };
 
-  const generateCaseBrief = () => {
-    const doc = new jsPDF();
-    doc.setFontSize(20);
-    doc.text('KSP AI — Intelligence Report', 20, 20);
-    doc.setFontSize(14);
-    doc.text(`FIR: ${cd.CrimeNo || cd.CrimeNumber || 'N/A'}`, 20, 35);
-    doc.text(`Status: ${cd.CaseStatus || 'Under Investigation'}`, 20, 45);
-    doc.setFontSize(11);
-    const briefLines = doc.splitTextToSize(cd.BriefFacts || '', 170);
-    doc.text(briefLines, 20, 60);
-    doc.save(`KSP_Intelligence_${String(cd.CrimeNo || cd.CrimeNumber || 'case').replace(/\//g, '_')}.pdf`);
-    showToast('Intelligence Report exported to PDF');
+  const handleExportDossierPdf = () => {
+    const filename = generateEnterpriseDossierPDF({
+      caseDetails: cd,
+      victims,
+      accused,
+      witnesses,
+      evidence,
+      officerUser: user,
+      isKn
+    });
+    showToast(isKn ? `ವರದಿ ಯಶಸ್ವಿಯಾಗಿ ಡೌನ್‌ಲೋಡ್ ಆಗಿದೆ: ${filename}` : `Official KSP Intelligence Dossier exported to PDF: ${filename}`);
   };
 
   const getEvidenceIcon = (type: string) => {
@@ -178,11 +181,15 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
           </div>
           
           <div className="flex-row gap-sm">
-            <button className="btn btn-outline" onClick={generateCaseBrief}>
+            <button className="btn btn-outline" onClick={handleExportDossierPdf}>
               <Download size={16} /> {t('case360.exportReport', 'Export Intelligence Report')}
             </button>
-            <button className="btn btn-primary" onClick={() => showToast('Case marked as Resolved')}>
-              <Activity size={16} /> {t('case360.resolveCase', 'Resolve Case')}
+            <button 
+              className={`btn ${caseStatus === 'Under Investigation' ? 'btn-primary' : 'btn-outline'}`}
+              onClick={() => setShowResolutionModal(true)}
+            >
+              {caseStatus === 'Under Investigation' ? <Activity size={16} /> : <RefreshCw size={16} />}
+              {caseStatus === 'Under Investigation' ? t('case360.resolveCase', 'Resolve Case') : 'Reopen / Update Case'}
             </button>
           </div>
         </div>
@@ -351,6 +358,21 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
             </div>
           </div>
         </div>
+
+        {/* Enterprise Case Resolution & Reopen Wizard Modal */}
+        {showResolutionModal && (
+          <CaseResolutionModal
+            caseDetails={caseDetails}
+            onClose={() => setShowResolutionModal(false)}
+            onSuccess={(newStatus) => {
+              if (caseDetails?.caseDetails) {
+                caseDetails.caseDetails.CaseStatus = newStatus;
+              } else if (caseDetails) {
+                caseDetails.CaseStatus = newStatus;
+              }
+            }}
+          />
+        )}
       </div>
     </div>
   );
