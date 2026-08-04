@@ -1,11 +1,15 @@
 .sidebar {
   width: 260px;
   height: 100vh;
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
   display: flex;
   flex-direction: column;
   border-right: 1px solid var(--border-dark);
   background: var(--bg-primary);
   z-index: 100;
+  flex-shrink: 0;
 }
 
 .sidebar-brand {
@@ -112,12 +116,15 @@
 .sidebar-footer {
   padding: 24px;
   border-top: 1px solid var(--border-dark);
+  margin-top: auto;
 }
 
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
     height: auto;
+    min-height: auto;
+    position: relative;
     border-right: none;
     border-bottom: 1px solid var(--border-dark);
   }
@@ -140,10 +147,10 @@
   }
   
   .nav-item span {
-    display: none; /* Hide text on mobile */
+    display: none;
   }
   
   .sidebar-footer {
-    display: none; /* Hide profile footer on mobile */
+    display: none;
   }
 }
