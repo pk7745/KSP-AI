@@ -34,7 +34,6 @@ const translateValue = (val: string, isKn: boolean) => {
     }
   });
 
-  // Brief Facts auto-translations for common patterns
   res = res.replaceAll('Missing Person reported at', 'ಕಾಣೆಯಾದ ವ್ಯಕ್ತಿಯ ಪ್ರಕರಣ ದಾಖಲಾಗಿದೆ:')
            .replaceAll('Brief: Trace & locate missing citizen petition.', 'ವಿವರ: ಕಾಣೆಯಾದ ಸಾರ್ವಜನಿಕರನ್ನು ಪತ್ತೆಹಚ್ಚುವ ಅರ್ಜಿ.')
            .replaceAll('Incident occurred near', 'ಘಟನೆಯು ಸಮೀಪ ಸಂಭವಿಸಿದೆ:')
@@ -106,8 +105,12 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
     );
   }
 
-  const cd = caseDetails?.caseDetails || {};
-  
+  const cd = caseDetails?.caseDetails || caseDetails || {};
+  const victims = caseDetails?.victims || caseDetails?.Victims || [];
+  const accused = caseDetails?.accused || caseDetails?.Accused || [];
+  const evidence = caseDetails?.evidence || caseDetails?.Evidence || [];
+  const witnesses = caseDetails?.witnesses || caseDetails?.Witnesses || [];
+
   const [checklist, setChecklist] = useState([
     { id: 1, text: isKn ? 'ಸಾಕ್ಷಿಗಳ ಹೇಳಿಕೆಯನ್ನು ದಾಖಲಿಸಿ' : 'Record witness statements', done: true },
     { id: 2, text: isKn ? 'ಘಟನಾ ಸ್ಥಳದಿಂದ ಸಿಸಿಟಿವಿ ದೃಶ್ಯಾವಳಿ ಸಂಗ್ರಹಿಸಿ' : 'Collect CCTV footage from scene', done: true },
@@ -124,12 +127,12 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
     doc.setFontSize(20);
     doc.text('KSP AI — Intelligence Report', 20, 20);
     doc.setFontSize(14);
-    doc.text(`FIR: ${cd.CrimeNo || 'N/A'}`, 20, 35);
+    doc.text(`FIR: ${cd.CrimeNo || cd.CrimeNumber || 'N/A'}`, 20, 35);
     doc.text(`Status: ${cd.CaseStatus || 'Under Investigation'}`, 20, 45);
     doc.setFontSize(11);
     const briefLines = doc.splitTextToSize(cd.BriefFacts || '', 170);
     doc.text(briefLines, 20, 60);
-    doc.save(`KSP_Intelligence_${String(cd.CrimeNo || 'case').replace(/\//g, '_')}.pdf`);
+    doc.save(`KSP_Intelligence_${String(cd.CrimeNo || cd.CrimeNumber || 'case').replace(/\//g, '_')}.pdf`);
     showToast('Intelligence Report exported to PDF');
   };
 
@@ -147,6 +150,12 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
     setCurrentView('people');
   };
 
+  const crimeNo = cd.CrimeNo || cd.CrimeNumber || 'KSP/DIS001/2026/00001';
+  const stationName = cd.PoliceStationName || cd.PoliceStation || 'Cubbon Park PS';
+  const districtName = cd.DistrictName || cd.District || 'Bengaluru Urban';
+  const crimeHead = cd.CrimeMajorHead || 'Homicide / Offense';
+  const caseStatus = cd.CaseStatus || 'Under Investigation';
+
   return (
     <div className="case-360-overlay animate-fade-in">
       <div className="case-360-container animate-slide-up">
@@ -156,14 +165,14 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
             <button className="btn-icon" onClick={onClose}><X size={24} /></button>
             <div>
               <div className="flex-row align-center gap-sm">
-                <h2 className="workspace-title">{cd.CrimeNo || 'FIR Record'}</h2>
-                <span className={`status-badge ${cd.CaseStatus === 'Under Investigation' ? 'badge-amber' : 'badge-emerald'}`}>
-                  {translateValue(cd.CaseStatus || 'Active', isKn)}
+                <h2 className="workspace-title">{crimeNo}</h2>
+                <span className={`status-badge ${caseStatus === 'Under Investigation' ? 'badge-amber' : 'badge-emerald'}`}>
+                  {translateValue(caseStatus, isKn)}
                 </span>
               </div>
               <p className="text-muted mt-xs">
-                <MapPin size={14} className="inline-icon" /> {translateValue(cd.DistrictName, isKn)} • {translateValue(cd.PoliceStationName, isKn)} | 
-                <Scale size={14} className="inline-icon ml-md" /> {translateValue(cd.CrimeMajorHead, isKn)}
+                <MapPin size={14} className="inline-icon" /> {translateValue(districtName, isKn)} • {translateValue(stationName, isKn)} | 
+                <Scale size={14} className="inline-icon ml-md" /> {translateValue(crimeHead, isKn)}
               </p>
             </div>
           </div>
@@ -201,8 +210,8 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
                 <div className="ai-chat-bubble mt-sm">
                   <p className="text-sm">
                     {isKn
-                      ? `${translateValue(cd.DistrictName, true)} ಸರಹದ್ದಿನಲ್ಲಿ ಈ ಪ್ರಕರಣದ ಮಾದರಿಯು ಸಕ್ರಿಯ ಅಪರಾಧ ಗುಂಪುಗಳೊಂದಿಗೆ ಸಂಪರ್ಕ ಹೊಂದಿದೆ. ಸಿಸಿಟಿವಿ ಸಾಕ್ಷ್ಯಾಧಾರಗಳನ್ನು ಪರಿಶೀಲಿಸಲು ನಾನು ಶಿಫಾರಸು ಮಾಡುತ್ತೇನೆ.`
-                      : `Based on the MO and registered sections, this case pattern correlates with active crime clusters in ${cd.DistrictName}. I recommend reviewing CCTV evidence and checking tower dump logs.`
+                      ? `${translateValue(districtName, true)} ಸರಹದ್ದಿನಲ್ಲಿ ಈ ಪ್ರಕರಣದ ಮಾದರಿಯು ಸಕ್ರಿಯ ಅಪರಾಧ ಗುಂಪುಗಳೊಂದಿಗೆ ಸಂಪರ್ಕ ಹೊಂದಿದೆ. ಸಿಸಿಟಿವಿ ಸಾಕ್ಷ್ಯಾಧಾರಗಳನ್ನು ಪರಿಶೀಲಿಸಲು ನಾನು ಶಿಫಾರಸು ಮಾಡುತ್ತೇನೆ.`
+                      : `Based on the MO and registered sections, this case pattern correlates with active crime clusters in ${districtName}. I recommend reviewing CCTV evidence and checking tower dump logs.`
                     }
                   </p>
                   <div className="flex-row gap-xs mt-sm">
@@ -241,43 +250,43 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
               </div>
               
               <div className="mt-sm">
-                <h5 className="text-crimson font-sm mb-xs">{t('case360.accused', 'ACCUSED')} ({caseDetails.accused?.length || 0})</h5>
-                {caseDetails.accused?.map((a: any) => (
+                <h5 className="text-crimson font-sm mb-xs">{t('case360.accused', 'ACCUSED')} ({accused.length})</h5>
+                {accused.map((a: any, idx: number) => (
                   <div 
-                    key={a.AccusedID} 
+                    key={a.AccusedID || idx} 
                     className="entity-card accused-card clickable"
                     onClick={navigateToPeople}
                     title="Click to view in People CRM"
                   >
                     <ShieldAlert size={16} className="text-crimson" />
                     <div className="flex-1">
-                      <strong>{a.AccusedName}</strong> ({a.Age || 'N/A'}{isKn ? ' ವರ್ಷ' : 'y'})
+                      <strong>{a.AccusedName || 'Suspect'}</strong> ({a.Age || 'N/A'}{isKn ? ' ವರ್ಷ' : 'y'})
                       <div className="text-xs text-muted">{translateValue(a.ArrestStatus || 'Under Investigation', isKn)}</div>
                     </div>
                     <ChevronRight size={16} />
                   </div>
                 ))}
-                {!caseDetails.accused?.length && (
+                {!accused.length && (
                   <p className="text-muted text-xs py-xs">{t('case360.noAccused', 'No accused recorded.')}</p>
                 )}
 
-                <h5 className="text-cyan font-sm mt-md mb-xs">{t('case360.victims', 'VICTIMS')} ({caseDetails.victims?.length || 0})</h5>
-                {caseDetails.victims?.map((v: any) => (
+                <h5 className="text-cyan font-sm mt-md mb-xs">{t('case360.victims', 'VICTIMS')} ({victims.length})</h5>
+                {victims.map((v: any, idx: number) => (
                   <div 
-                    key={v.VictimID} 
+                    key={v.VictimID || idx} 
                     className="entity-card victim-card clickable"
                     onClick={navigateToPeople}
                     title="Click to view in People CRM"
                   >
                     <User size={16} className="text-cyan" />
                     <div className="flex-1">
-                      <strong>{v.VictimName}</strong> ({v.Age || 'N/A'}{isKn ? ' ವರ್ಷ' : 'y'})
+                      <strong>{v.VictimName || 'Victim'}</strong> ({v.Age || 'N/A'}{isKn ? ' ವರ್ಷ' : 'y'})
                       <div className="text-xs text-muted">{translateValue(v.VictimStatus || 'Victim', isKn)}</div>
                     </div>
                     <ChevronRight size={16} />
                   </div>
                 ))}
-                {!caseDetails.victims?.length && (
+                {!victims.length && (
                   <p className="text-muted text-xs py-xs">{t('case360.noVictims', 'No victims recorded.')}</p>
                 )}
               </div>
@@ -290,24 +299,24 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
                   <div className="vt-dot bg-cyan"></div>
                   <div className="vt-content">
                     <span className="vt-date">{cd.CrimeRegisteredDate ? new Date(cd.CrimeRegisteredDate).toLocaleDateString() : 'Active'}</span>
-                    <p>{isKn ? `ಎಫ್‌ಐಆರ್ ದಾಖಲಿಸಲಾಗಿದೆ: ${translateValue(cd.PoliceStationName, true)}` : `FIR Registered at ${cd.PoliceStationName}`}</p>
+                    <p>{isKn ? `ಎಫ್‌ಐಆರ್ ದಾಖಲಿಸಲಾಗಿದೆ: ${translateValue(stationName, true)}` : `FIR Registered at ${stationName}`}</p>
                   </div>
                 </div>
-                {caseDetails.evidence?.length > 0 && (
+                {evidence.length > 0 && (
                   <div className="vt-item">
                     <div className="vt-dot bg-emerald"></div>
                     <div className="vt-content">
                       <span className="vt-date">{isKn ? 'ಸಾಕ್ಷ್ಯಾಧಾರ ದಾಖಲಾಗಿದೆ' : 'Evidence Logged'}</span>
-                      <p>{isKn ? `${caseDetails.evidence.length} ಸಾಕ್ಷ್ಯಗಳನ್ನು ಕ್ಯಾಟಲಿಸ್ಟ್‌ನಲ್ಲಿ ದಾಖಲಿಸಲಾಗಿದೆ` : `${caseDetails.evidence.length} items logged in Stratus storage`}</p>
+                      <p>{isKn ? `${evidence.length} ಸಾಕ್ಷ್ಯಗಳನ್ನು ಕ್ಯಾಟಲಿಸ್ಟ್‌ನಲ್ಲಿ ದಾಖಲಿಸಲಾಗಿದೆ` : `${evidence.length} items logged in Stratus storage`}</p>
                     </div>
                   </div>
                 )}
-                {caseDetails.accused?.length > 0 && (
+                {accused.length > 0 && (
                   <div className="vt-item">
                     <div className="vt-dot bg-crimson"></div>
                     <div className="vt-content">
                       <span className="vt-date">{isKn ? 'ಆರೋಪಿಯನ್ನು ಗುರುತಿಸಲಾಗಿದೆ' : 'Accused Identified'}</span>
-                      <p>{caseDetails.accused[0].AccusedName} ({translateValue(caseDetails.accused[0].ArrestStatus || 'Accused', isKn)})</p>
+                      <p>{accused[0].AccusedName} ({translateValue(accused[0].ArrestStatus || 'Accused', isKn)})</p>
                     </div>
                   </div>
                 )}
@@ -315,110 +324,34 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
             </div>
           </div>
 
-          {/* Column 3: Evidence & Graph */}
+          {/* Column 3: Evidence & Storage */}
           <div className="workspace-col">
             <div className="panel-box flex-1 wireframe-box registration-mark">
-              <h4><Image size={16} className="text-emerald" /> {t('case360.evidenceViewer', 'Evidence Viewer')}</h4>
-              <div className="evidence-grid mt-sm">
-                {caseDetails.evidence?.map((e: any) => (
+              <h4><FileText size={16} className="text-emerald" /> {t('case360.evidenceVault', 'Evidence Vault & Digital Media')} ({evidence.length})</h4>
+              <div className="evidence-grid mt-md">
+                {evidence.map((e: any, idx: number) => (
                   <div 
-                    key={e.EvidenceID} 
-                    className="evidence-box clickable"
+                    key={e.EvidenceID || idx} 
+                    className="evidence-card clickable"
                     onClick={() => setSelectedEvidence(e)}
                   >
-                    {getEvidenceIcon(e.EvidenceType)}
-                    <div className="mt-xs text-xs fw-bold text-center truncate">{translateValue(e.Description || `Evidence #${e.EvidenceNumber}`, isKn)}</div>
-                    <div className="badge-cyan text-xs mt-xs">AI OCR Scanned</div>
+                    <div className="evidence-icon-wrapper">
+                      {getEvidenceIcon(e.EvidenceType)}
+                    </div>
+                    <div className="evidence-meta">
+                      <span className="evidence-title">{e.EvidenceNumber || e.EvidenceID || 'EV-001'}</span>
+                      <span className="text-xs text-muted">{translateValue(e.EvidenceType || 'Document', isKn)}</span>
+                    </div>
                   </div>
                 ))}
-                {!caseDetails.evidence?.length && (
-                  <p className="text-muted text-sm text-center py-lg">{t('case360.noEvidence', 'No evidence uploaded yet.')}</p>
+                {!evidence.length && (
+                  <p className="text-muted text-xs p-md">{t('case360.noEvidence', 'No digital evidence files cataloged.')}</p>
                 )}
               </div>
             </div>
-
-            <div className="panel-box flex-1 wireframe-box registration-mark">
-              <div className="flex-row justify-between align-center">
-                <h4><Link2 size={16} className="text-amber" /> {t('case360.nexus', 'Criminal Nexus')}</h4>
-                <button className="btn btn-ghost text-xs" onClick={() => { onClose(); setCurrentView('network'); }}>
-                  {t('case360.analyzeNetwork', 'Full Graph')} <ChevronRight size={14} />
-                </button>
-              </div>
-              <div className="nexus-placeholder mt-sm p-md text-center">
-                <p className="text-sm opacity-70">
-                  {caseDetails.accused?.length 
-                    ? `${isKn ? 'ಸಂಪರ್ಕಿತ ಶಂಕಿತ:' : 'Linked Suspect:'} ${caseDetails.accused[0].AccusedName} (${caseDetails.accused.length} ${isKn ? 'ಸಕ್ರಿಯ ಸಂಪರ್ಕ' : 'active connection'})`
-                    : (isKn ? 'ಯಾವುದೇ ನೆಟ್‌ವರ್ಕ್ ಸಂಪರ್ಕ ಕಂಡುಬಂದಿಲ್ಲ.' : 'No cross-jurisdiction nexus identified yet.')}
-                </p>
-                <button 
-                  className="btn btn-outline text-xs mt-md"
-                  onClick={() => { onClose(); setCurrentView('network'); }}
-                >
-                  {t('case360.analyzeNetwork', 'Analyze Criminal Network')}
-                </button>
-              </div>
-            </div>
           </div>
-
         </div>
       </div>
-
-      {/* Evidence Preview Modal */}
-      {selectedEvidence && (
-        <div className="search-modal-overlay" onClick={() => setSelectedEvidence(null)}>
-          <div className="search-modal glass-panel" onClick={e => e.stopPropagation()} style={{ padding: 24, maxWidth: 500 }}>
-            <div className="flex-row justify-between align-center mb-md">
-              <h3 className="flex-row align-center gap-sm">
-                {getEvidenceIcon(selectedEvidence.EvidenceType)}
-                {isKn ? 'ಸಾಕ್ಷ್ಯ ಐಟಂ #' : 'Evidence Item #'}{selectedEvidence.EvidenceNumber}
-              </h3>
-              <button className="btn-icon" onClick={() => setSelectedEvidence(null)}><X size={20} /></button>
-            </div>
-            
-            <div className="p-md glass-panel-inner rounded mb-md">
-              <div className="info-grid">
-                <div className="info-item">
-                  <span className="label">{isKn ? 'ಪ್ರಕಾರ' : 'Type'}</span>
-                  <span className="value fw-bold text-cyan">{translateValue(selectedEvidence.EvidenceType || 'Document', isKn)}</span>
-                </div>
-                <div className="info-item">
-                  <span className="label">{isKn ? 'ಸಂಗ್ರಹಿಸಿದ ದಿನಾಂಕ' : 'Date Collected'}</span>
-                  <span className="value">{selectedEvidence.CollectionDate || 'N/A'}</span>
-                </div>
-                <div className="info-item">
-                  <span className="label">{isKn ? 'ಸಂಗ್ರಹಿಸಿದವರು' : 'Collected By'}</span>
-                  <span className="value">{translateValue(selectedEvidence.CollectedBy || 'Investigating Team', isKn)}</span>
-                </div>
-                <div className="info-item">
-                  <span className="label">{isKn ? 'ಸಾಕ್ಷ್ಯ ಸರಣಿ' : 'Chain of Custody'}</span>
-                  <span className="value text-emerald fw-bold">{isKn ? 'ದೃಢೀಕರಿಸಲಾಗಿದೆ' : 'Verified'}</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="mb-md">
-              <span className="label">{isKn ? 'ವಿವರಣೆ ಮತ್ತು ಮಾಹಿತಿ' : 'Description & Facts'}</span>
-              <p className="text-sm mt-xs leading-relaxed">{translateValue(selectedEvidence.Description || 'No detailed description provided.', isKn)}</p>
-            </div>
-
-            <div className="p-md bg-dark rounded border border-cyan mb-md">
-              <span className="label text-cyan flex-row align-center gap-xs">
-                <Sparkles size={14} /> {isKn ? 'ಎಐ ಸಾಕ್ಷ್ಯ ವಿಶ್ಲೇಷಣೆ ಮತ್ತು ಮೆಟಾಡೇಟಾ' : 'AI Analysis & OCR Extracted Metadata'}
-              </span>
-              <p className="text-xs mt-xs text-muted font-mono">
-                {translateValue(selectedEvidence.AiOcrText || 'Metadata index matched against regional crime database. High confidence indicator.', isKn)}
-              </p>
-            </div>
-
-            <div className="flex-row justify-end gap-sm">
-              <button className="btn btn-outline" onClick={() => setSelectedEvidence(null)}>{t('case360.close', 'Close')}</button>
-              <button className="btn btn-primary" onClick={() => showToast('Evidence file requested from Stratus bucket')}>
-                <Download size={16} /> {t('case360.downloadFile', 'Download File')}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
