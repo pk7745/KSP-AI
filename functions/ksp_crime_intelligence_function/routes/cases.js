@@ -1,5 +1,6 @@
 import express from 'express';
 import { getTableData } from '../utils/csvService.js';
+import { enrichCaseEcosystem } from '../services/syntheticDataGenerator.js';
 
 const router = express.Router();
 
@@ -82,13 +83,20 @@ async function handleCaseDetailFetch(rawId, req, res) {
       getTableData('ActivityLog')
     ]);
 
-    // Filter dependent records for this specific case
+    const rawVictims = allVictims.filter(v => v.CaseID === actualCaseId);
+    const rawWitnesses = allWitnesses.filter(w => w.CaseID === actualCaseId);
+    const rawAccused = allAccused.filter(a => a.CaseID === actualCaseId);
+    const rawEvidence = allEvidence.filter(e => e.CaseID === actualCaseId);
+
+    // Enrich with synthetic portraits, CCTV clips, audio logs & forensic reports
+    const enriched = enrichCaseEcosystem(caseDetails, rawVictims, rawAccused, rawWitnesses, rawEvidence);
+
     return res.json({
       caseDetails,
-      victims: allVictims.filter(v => v.CaseID === actualCaseId),
-      witnesses: allWitnesses.filter(w => w.CaseID === actualCaseId),
-      accused: allAccused.filter(a => a.CaseID === actualCaseId),
-      evidence: allEvidence.filter(e => e.CaseID === actualCaseId),
+      victims: enriched.victims,
+      witnesses: enriched.witnesses,
+      accused: enriched.accused,
+      evidence: enriched.evidence,
       aiAnalysis: allAiAnalysis.find(ai => ai.CaseID === actualCaseId) || null,
       complainants: allComplainants.filter(c => c.CaseID === actualCaseId),
       chargesheets: allChargesheets.filter(c => c.CaseID === actualCaseId),

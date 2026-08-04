@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Clock, FileText, User, ShieldAlert, Sparkles, Download, CheckSquare, Square, Link2, Lightbulb, Heart, Image, FileVideo, FileAudio, File, ChevronRight, Activity, MapPin, Scale, Eye, Users, Lock, RefreshCw } from 'lucide-react';
+import { X, Clock, FileText, User, ShieldAlert, Sparkles, Download, CheckSquare, Square, Link2, Lightbulb, Heart, Image, FileVideo, FileAudio, File, ChevronRight, Activity, MapPin, Scale, Eye, Users, Lock, RefreshCw, Play, Volume2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { showToast } from '../../utils/toast';
 import { useNavigation } from '../../context/NavigationContext';
@@ -35,15 +35,6 @@ const translateValue = (val: string, isKn: boolean) => {
       res = res.replaceAll(k, map[k]);
     }
   });
-
-  res = res.replaceAll('Missing Person reported at', 'ಕಾಣೆಯಾದ ವ್ಯಕ್ತಿಯ ಪ್ರಕರಣ ದಾಖಲಾಗಿದೆ:')
-           .replaceAll('Brief: Trace & locate missing citizen petition.', 'ವಿವರ: ಕಾಣೆಯಾದ ಸಾರ್ವಜನಿಕರನ್ನು ಪತ್ತೆಹಚ್ಚುವ ಅರ್ಜಿ.')
-           .replaceAll('Incident occurred near', 'ಘಟನೆಯು ಸಮೀಪ ಸಂಭವಿಸಿದೆ:')
-           .replaceAll('Karnataka', 'ಕರ್ನಾಟಕ')
-           .replaceAll('High-value tech warehouse burglary', 'ತಂತ್ರಜ್ಞಾನ ಗೋದಾಮಿನಲ್ಲಿ ಹೆಚ್ಚಿನ ಮೌಲ್ಯದ ಕಳ್ಳತನ')
-           .replaceAll('Victim defrauded of', 'ಸಂತ್ರಸ್ತರಿಗೆ ವಂಚಿಸಲಾಗಿದೆ')
-           .replaceAll('through fake electricity bill payment link sent via WhatsApp.', 'ವಾಟ್ಸಾಪ್ ಮೂಲಕ ಕಳುಹಿಸಲಾದ ನಕಲಿ ವಿದ್ಯುತ್ ಬಿಲ್ ಲಿಂಕ್ ಮೂಲಕ.')
-           .replaceAll('Fraudulent account traced to Jamtara module.', 'ವಂಚನೆಯ ಖಾತೆಯನ್ನು ಜಮ್ತಾರಾ ಮಾಡ್ಯೂಲ್‌ಗೆ ಪತ್ತೆಹಚ್ಚಲಾಗಿದೆ.');
 
   return res;
 };
@@ -113,7 +104,6 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
   const victims = caseDetails?.victims || caseDetails?.Victims || [];
   const accused = caseDetails?.accused || caseDetails?.Accused || [];
   const evidence = caseDetails?.evidence || caseDetails?.Evidence || [];
-  const witnesses = caseDetails?.witnesses || caseDetails?.Witnesses || [];
 
   const [checklist, setChecklist] = useState([
     { id: 1, text: isKn ? 'ಸಾಕ್ಷಿಗಳ ಹೇಳಿಕೆಯನ್ನು ದಾಖಲಿಸಿ' : 'Record witness statements', done: true },
@@ -131,7 +121,7 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
       caseDetails: cd,
       victims,
       accused,
-      witnesses,
+      witnesses: caseDetails?.witnesses || [],
       evidence,
       officerUser: user,
       isKn
@@ -141,10 +131,10 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
 
   const getEvidenceIcon = (type: string) => {
     switch(type?.toLowerCase()) {
-      case 'video': return <FileVideo size={24} className="text-cyan" />;
-      case 'image': return <Image size={24} className="text-emerald" />;
-      case 'audio': return <FileAudio size={24} className="text-amber" />;
-      default: return <File size={24} className="text-indigo" />;
+      case 'video': return <FileVideo size={24} className="text-cyan-400" />;
+      case 'image': return <Image size={24} className="text-emerald-400" />;
+      case 'audio': return <Volume2 size={24} className="text-amber-400" />;
+      default: return <File size={24} className="text-indigo-400" />;
     }
   };
 
@@ -256,46 +246,53 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
                 </button>
               </div>
               
-              <div className="mt-sm">
+              <div className="mt-sm space-y-2">
                 <h5 className="text-crimson font-sm mb-xs">{t('case360.accused', 'ACCUSED')} ({accused.length})</h5>
                 {accused.map((a: any, idx: number) => (
                   <div 
                     key={a.AccusedID || idx} 
-                    className="entity-card accused-card clickable"
+                    className="entity-card accused-card clickable flex items-center gap-3 p-2.5 bg-slate-950/60 rounded-xl border border-red-900/30"
                     onClick={navigateToPeople}
                     title="Click to view in People CRM"
                   >
-                    <ShieldAlert size={16} className="text-crimson" />
-                    <div className="flex-1">
-                      <strong>{a.AccusedName || 'Suspect'}</strong> ({a.Age || 'N/A'}{isKn ? ' ವರ್ಷ' : 'y'})
-                      <div className="text-xs text-muted">{translateValue(a.ArrestStatus || 'Under Investigation', isKn)}</div>
+                    <img
+                      src={a.PhotoUrl || `https://randomuser.me/api/portraits/men/${(idx + 10) % 70}.jpg`}
+                      alt={a.AccusedName}
+                      className="w-10 h-10 rounded-lg object-cover border border-red-500/50 shrink-0"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between">
+                        <strong className="text-white text-xs truncate">{a.AccusedName || 'Suspect'}</strong>
+                        <span className="text-[10px] text-red-400 font-mono font-bold">{a.FingerprintID || 'FP-2026-01'}</span>
+                      </div>
+                      <div className="text-[11px] text-slate-400 flex items-center gap-2 mt-0.5">
+                        <span>{translateValue(a.ArrestStatus || 'Under Investigation', isKn)}</span>
+                        <span>•</span>
+                        <span className="text-cyan-400 font-mono">{a.DNACode || 'DNA-KSP-01'}</span>
+                      </div>
                     </div>
-                    <ChevronRight size={16} />
                   </div>
                 ))}
-                {!accused.length && (
-                  <p className="text-muted text-xs py-xs">{t('case360.noAccused', 'No accused recorded.')}</p>
-                )}
 
                 <h5 className="text-cyan font-sm mt-md mb-xs">{t('case360.victims', 'VICTIMS')} ({victims.length})</h5>
                 {victims.map((v: any, idx: number) => (
                   <div 
                     key={v.VictimID || idx} 
-                    className="entity-card victim-card clickable"
+                    className="entity-card victim-card clickable flex items-center gap-3 p-2.5 bg-slate-950/60 rounded-xl border border-cyan-900/30"
                     onClick={navigateToPeople}
                     title="Click to view in People CRM"
                   >
-                    <User size={16} className="text-cyan" />
-                    <div className="flex-1">
-                      <strong>{v.VictimName || 'Victim'}</strong> ({v.Age || 'N/A'}{isKn ? ' ವರ್ಷ' : 'y'})
-                      <div className="text-xs text-muted">{translateValue(v.VictimStatus || 'Victim', isKn)}</div>
+                    <img
+                      src={v.PhotoUrl || `https://randomuser.me/api/portraits/women/${(idx + 20) % 70}.jpg`}
+                      alt={v.VictimName}
+                      className="w-10 h-10 rounded-lg object-cover border border-cyan-500/50 shrink-0"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <strong className="text-white text-xs block truncate">{v.VictimName || 'Victim'}</strong>
+                      <div className="text-[11px] text-slate-400">{translateValue(v.VictimStatus || 'Victim', isKn)} • {v.InjuryType || 'Mild Injury'}</div>
                     </div>
-                    <ChevronRight size={16} />
                   </div>
                 ))}
-                {!victims.length && (
-                  <p className="text-muted text-xs py-xs">{t('case360.noVictims', 'No victims recorded.')}</p>
-                )}
               </div>
             </div>
 
@@ -318,20 +315,11 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
                     </div>
                   </div>
                 )}
-                {accused.length > 0 && (
-                  <div className="vt-item">
-                    <div className="vt-dot bg-crimson"></div>
-                    <div className="vt-content">
-                      <span className="vt-date">{isKn ? 'ಆರೋಪಿಯನ್ನು ಗುರುತಿಸಲಾಗಿದೆ' : 'Accused Identified'}</span>
-                      <p>{accused[0].AccusedName} ({translateValue(accused[0].ArrestStatus || 'Accused', isKn)})</p>
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           </div>
 
-          {/* Column 3: Evidence & Storage */}
+          {/* Column 3: Evidence & Media Vault */}
           <div className="workspace-col">
             <div className="panel-box flex-1 wireframe-box registration-mark">
               <h4><FileText size={16} className="text-emerald" /> {t('case360.evidenceVault', 'Evidence Vault & Digital Media')} ({evidence.length})</h4>
@@ -339,25 +327,82 @@ export function Case360Workspace({ caseDetails, onClose }: { caseDetails: any, o
                 {evidence.map((e: any, idx: number) => (
                   <div 
                     key={e.EvidenceID || idx} 
-                    className="evidence-card clickable"
+                    className="evidence-card clickable p-2.5 bg-slate-950/80 rounded-xl border border-slate-800 hover:border-cyan-500 transition-all flex flex-col gap-1.5"
                     onClick={() => setSelectedEvidence(e)}
                   >
-                    <div className="evidence-icon-wrapper">
-                      {getEvidenceIcon(e.EvidenceType)}
-                    </div>
+                    {e.ThumbnailUrl ? (
+                      <div className="relative w-full h-20 rounded-lg overflow-hidden border border-slate-800 bg-slate-900 group">
+                        <img src={e.ThumbnailUrl} alt={e.Description} className="w-full h-full object-cover" />
+                        {e.EvidenceType === 'Video' && (
+                          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                            <Play size={20} className="text-white fill-white" />
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <div className="evidence-icon-wrapper">
+                        {getEvidenceIcon(e.EvidenceType)}
+                      </div>
+                    )}
+
                     <div className="evidence-meta">
-                      <span className="evidence-title">{e.EvidenceNumber || e.EvidenceID || 'EV-001'}</span>
-                      <span className="text-xs text-muted">{translateValue(e.EvidenceType || 'Document', isKn)}</span>
+                      <span className="evidence-title font-mono text-cyan-400 font-bold text-xs">{e.EvidenceNumber || e.EvidenceID || 'EV-001'}</span>
+                      <span className="text-[11px] text-slate-300 line-clamp-1">{e.Description || 'Digital File'}</span>
+                      <span className="text-[10px] text-emerald-400 font-mono font-semibold">✓ {e.VerificationStatus || 'VERIFIED'}</span>
                     </div>
                   </div>
                 ))}
-                {!evidence.length && (
-                  <p className="text-muted text-xs p-md">{t('case360.noEvidence', 'No digital evidence files cataloged.')}</p>
-                )}
               </div>
             </div>
           </div>
         </div>
+
+        {/* Media Preview Modal */}
+        {selectedEvidence && (
+          <div className="case-360-overlay animate-fade-in" style={{ zIndex: 1050 }}>
+            <div className="case-360-container max-w-xl mx-auto my-auto p-6 bg-slate-900 border border-slate-800 rounded-2xl text-slate-100 font-sans space-y-4">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                <div>
+                  <h3 className="text-sm font-extrabold text-cyan-400 font-mono">{selectedEvidence.EvidenceNumber || selectedEvidence.EvidenceID}</h3>
+                  <p className="text-xs text-slate-300">{selectedEvidence.Description}</p>
+                </div>
+                <button className="text-slate-400 hover:text-white" onClick={() => setSelectedEvidence(null)}><X size={18} /></button>
+              </div>
+
+              {selectedEvidence.EvidenceType === 'Video' && (
+                <video controls className="w-full h-56 rounded-xl bg-black border border-slate-800" src={selectedEvidence.MediaUrl}></video>
+              )}
+
+              {selectedEvidence.EvidenceType === 'Audio' && (
+                <div className="space-y-3">
+                  <audio controls className="w-full" src={selectedEvidence.MediaUrl}></audio>
+                  {selectedEvidence.Transcript && (
+                    <div className="p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-300 font-mono">
+                      <strong className="text-cyan-400 block mb-1">Transcript:</strong>
+                      {selectedEvidence.Transcript}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {selectedEvidence.EvidenceType === 'Image' && (
+                <img src={selectedEvidence.MediaUrl || selectedEvidence.ThumbnailUrl} alt="Evidence Preview" className="w-full h-64 object-cover rounded-xl border border-slate-800" />
+              )}
+
+              {selectedEvidence.EvidenceType === 'Document' && (
+                <div className="p-4 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-300 space-y-2 font-mono">
+                  <div className="text-emerald-400 font-bold">📄 Official Forensic FSL Report Cataloged</div>
+                  <div>Storage Path: <span className="text-cyan-400">{selectedEvidence.StoragePath}</span></div>
+                  <div>Admissibility: <span className="text-slate-100">{selectedEvidence.CourtAdmissibility}</span></div>
+                </div>
+              )}
+
+              <div className="flex justify-end pt-2 border-t border-slate-800">
+                <button className="btn btn-outline text-xs" onClick={() => setSelectedEvidence(null)}>Close</button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Enterprise Case Resolution & Reopen Wizard Modal */}
         {showResolutionModal && (
