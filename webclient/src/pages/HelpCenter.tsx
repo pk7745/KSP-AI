@@ -44,20 +44,23 @@ export function HelpCenter() {
   const recentlyViewedArticles = HELP_ARTICLES.filter(a => recentlyViewedIds.includes(a.id));
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans p-4 sm:p-8 space-y-8 animate-fade-in relative pb-24 text-left">
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans p-4 sm:p-8 space-y-8 animate-fade-in relative pb-24 text-left">
       
+      {/* Background Glow */}
+      <div className="absolute top-0 left-1/3 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none" />
+
       {/* 1. Header Section */}
-      <div className="w-full max-w-6xl mx-auto space-y-2 border-b-2 border-slate-200 pb-6">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-100 border border-blue-300 text-blue-900 text-xs font-black uppercase tracking-wider">
-          <LifeBuoy size={14} className="text-blue-700 animate-spin" style={{ animationDuration: '12s' }} />
+      <div className="w-full max-w-6xl mx-auto space-y-2 border-b border-slate-800 pb-6">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs font-black uppercase tracking-wider">
+          <LifeBuoy size={14} className="text-cyan-400 animate-spin" style={{ animationDuration: '12s' }} />
           <span>{isKn ? '24×7 ಸರ್ಕಾರಿ ಅಧಿಕಾರಿ ಸಹಾಯ ಕೇಂದ್ರ' : '24×7 Police Support Help Center'}</span>
         </div>
 
-        <h1 className="text-3xl sm:text-5xl font-black text-slate-900 font-heading tracking-tight">
+        <h1 className="text-3xl sm:text-5xl font-black text-slate-100 font-heading tracking-tight uppercase">
           {isKn ? '24×7 ಸಹಾಯ ಕೇಂದ್ರ' : '24×7 Help Center'}
         </h1>
 
-        <p className="text-sm sm:text-lg font-bold text-slate-600 max-w-3xl leading-relaxed">
+        <p className="text-sm sm:text-lg font-bold text-slate-400 max-w-3xl leading-relaxed">
           {isKn 
             ? 'ಕೆಎಸ್‌ಪಿ ಎಐ ಅಪರಾಧ ಗುಪ್ತಚರ ಪ್ಲಾಟ್‌ಫಾರ್ಮ್ ಬಳಕೆಯ ಕುರಿತು ನೆರವು ಬೇಕೇ? ನಮ್ಮ ವರ್ಚುವಲ್ ಬೆಂಬಲ ಸಹಾಯಕ 24 ಗಂಟೆಯೂ ಲಭ್ಯವಿದೆ.' 
             : 'Need assistance using the KSP AI Crime Intelligence Platform? Our virtual support assistant is available 24 hours a day.'
@@ -87,17 +90,17 @@ export function HelpCenter() {
           {/* Quick Help Cards Grid */}
           <div className="space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl sm:text-2xl font-black text-slate-900 font-heading tracking-tight flex items-center gap-2">
-                <BookOpen size={22} className="text-blue-700" />
+              <h2 className="text-xl sm:text-2xl font-black text-slate-100 font-heading tracking-tight flex items-center gap-2">
+                <BookOpen size={22} className="text-cyan-400" />
                 <span>{isKn ? 'ತ್ವರಿತ ಸಹಾಯ ಲೇಖನಗಳು' : 'Quick Help Articles'}</span>
               </h2>
-              <span className="text-xs font-bold text-slate-500">
+              <span className="text-xs font-bold text-slate-400 font-mono">
                 {filteredArticles.length} {isKn ? 'ಲೇಖನಗಳು ಲಭ್ಯವಿದೆ' : 'articles available'}
               </span>
             </div>
 
             {filteredArticles.length === 0 ? (
-              <div className="p-8 text-center bg-white border-2 border-slate-200 rounded-2xl text-slate-600 font-bold">
+              <div className="p-8 text-center bg-slate-900 border border-slate-800 rounded-2xl text-slate-400 font-bold">
                 {isKn ? 'ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಹೊಂದಾಣಿಕೆಯಾಗುವ ಯಾವುದೇ ಸಹಾಯ ಲೇಖನಗಳು ಕಂಡುಬಂದಿಲ್ಲ.' : 'No help articles found matching your search query.'}
               </div>
             ) : (
@@ -118,54 +121,44 @@ export function HelpCenter() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             
             {/* Popular Articles */}
-            <div className="bg-white border-2 border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
-              <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                <Star size={20} className="text-amber-500 fill-current" />
-                <h3 className="text-base font-black text-slate-900 font-heading">
-                  {isKn ? 'ಪ್ರಮುಖ ಜನಪ್ರಿಯ ಲೇಖನಗಳು' : 'Popular Support Articles'}
-                </h3>
-              </div>
-              <div className="space-y-2.5">
-                {popularArticles.map(pop => (
-                  <button
-                    key={pop.id}
-                    onClick={() => handleSelectArticle(pop)}
-                    className="w-full p-3 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-left transition-all cursor-pointer flex items-center justify-between group"
+            <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
+              <h3 className="text-lg font-black text-slate-100 flex items-center gap-2">
+                <Star size={18} className="text-amber-400 fill-amber-400" />
+                <span>{isKn ? 'ಜನಪ್ರಿಯ ಲೇಖನಗಳು' : 'Popular Articles'}</span>
+              </h3>
+              <div className="space-y-2">
+                {popularArticles.map(article => (
+                  <div
+                    key={article.id}
+                    onClick={() => handleSelectArticle(article)}
+                    className="p-3 bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-xl cursor-pointer transition-all flex items-center justify-between"
                   >
-                    <span className="text-xs font-black text-slate-800 group-hover:text-blue-900 line-clamp-1">
-                      {pop.title[lang] || pop.title.en}
-                    </span>
-                    <span className="text-xs font-bold text-blue-600 group-hover:translate-x-1 transition-transform">→</span>
-                  </button>
+                    <span className="text-xs font-bold text-slate-200">{isKn ? article.title.kn : article.title.en}</span>
+                    <span className="text-[10px] font-mono text-cyan-400 uppercase font-bold">{article.category}</span>
+                  </div>
                 ))}
               </div>
             </div>
 
-            {/* Recently Viewed Articles */}
-            <div className="bg-white border-2 border-slate-200 rounded-3xl p-6 shadow-sm space-y-4">
-              <div className="flex items-center gap-2 border-b border-slate-200 pb-3">
-                <Clock size={20} className="text-blue-700" />
-                <h3 className="text-base font-black text-slate-900 font-heading">
-                  {isKn ? 'ಇತ್ತೀಚೆಗೆ ವೀಕ್ಷಿಸಿದ ಲೇಖನಗಳು' : 'Recently Viewed Articles'}
-                </h3>
-              </div>
+            {/* Recently Viewed */}
+            <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6 space-y-4 shadow-xl">
+              <h3 className="text-lg font-black text-slate-100 flex items-center gap-2">
+                <Clock size={18} className="text-cyan-400" />
+                <span>{isKn ? 'ಇತ್ತೀಚೆಗೆ ವೀಕ್ಷಿಸಿದ ಲೇಖನಗಳು' : 'Recently Viewed'}</span>
+              </h3>
               {recentlyViewedArticles.length === 0 ? (
-                <p className="text-xs font-bold text-slate-400 italic py-4">
-                  {isKn ? 'ನೀವು ವೀಕ್ಷಿಸುವ ಲೇಖನಗಳು ಇಲ್ಲಿ ಗೋಚರಿಸುತ್ತವೆ.' : 'Articles you open will appear here.'}
-                </p>
+                <p className="text-xs text-slate-500 italic p-4 text-center">{isKn ? 'ಇನ್ನೂ ಯಾವುದೇ ಲೇಖನಗಳನ್ನು ವೀಕ್ಷಿಸಿಲ್ಲ.' : 'No articles viewed yet in this session.'}</p>
               ) : (
-                <div className="space-y-2.5">
-                  {recentlyViewedArticles.map(rec => (
-                    <button
-                      key={rec.id}
-                      onClick={() => handleSelectArticle(rec)}
-                      className="w-full p-3 rounded-xl bg-slate-50 hover:bg-blue-50 border border-slate-200 hover:border-blue-300 text-left transition-all cursor-pointer flex items-center justify-between group"
+                <div className="space-y-2">
+                  {recentlyViewedArticles.map(article => (
+                    <div
+                      key={article.id}
+                      onClick={() => handleSelectArticle(article)}
+                      className="p-3 bg-slate-950 hover:bg-slate-900 border border-slate-800 hover:border-cyan-500/50 rounded-xl cursor-pointer transition-all flex items-center justify-between"
                     >
-                      <span className="text-xs font-black text-slate-800 group-hover:text-blue-900 line-clamp-1">
-                        {rec.title[lang] || rec.title.en}
-                      </span>
-                      <span className="text-xs font-bold text-blue-600 group-hover:translate-x-1 transition-transform">→</span>
-                    </button>
+                      <span className="text-xs font-bold text-slate-200">{isKn ? article.title.kn : article.title.en}</span>
+                      <span className="text-[10px] font-mono text-emerald-400 uppercase font-bold">VIEWED</span>
+                    </div>
                   ))}
                 </div>
               )}
@@ -173,15 +166,14 @@ export function HelpCenter() {
 
           </div>
 
-          {/* FAQ Section */}
+          {/* FAQ Accordion Section */}
           <FAQSection lang={lang} />
+
         </div>
       )}
 
-      {/* Floating 24x7 Assistant Chatbot */}
+      {/* Floating Support Chatbot Container */}
       <Chatbot lang={lang} />
     </div>
   );
 }
-
-export default HelpCenter;

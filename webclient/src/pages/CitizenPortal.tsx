@@ -47,51 +47,51 @@ export function CitizenPortal() {
       desc: lang === 'kn' ? 'ಅಪರಾಧ ಅಥವಾ ಕಾನೂನು ಸುವ್ಯವಸ್ಥೆ ಸಮಸ್ಯೆಗಳನ್ನು ಆನ್‌ಲೈನ್‌ನಲ್ಲಿ ವರದಿ ಮಾಡಿ.' : 'File non-cognizable reports and complaint petitions directly to your station online.',
       btn: lang === 'kn' ? 'ದೂರು ಸಲ್ಲಿಸಿ' : 'File Complaint',
       icon: FileText,
-      color: 'bg-blue-50 text-blue-600 border-blue-200'
+      color: 'bg-cyan-950/80 text-cyan-400 border-cyan-500/40'
     },
     {
       title: lang === 'kn' ? 'ದೂರು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ' : 'Track Complaint',
       desc: lang === 'kn' ? 'ನಿಮ್ಮ ದೂರಿನ ತನಿಖಾ ಸ್ಥಿತಿಯನ್ನು ನೈಜ ಸಮಯದಲ್ಲಿ ಪರಿಶೀಲಿಸಿ.' : 'Check real-time investigation progress using your petition number.',
       btn: lang === 'kn' ? 'ಟ್ರ್ಯಾಕ್ ಮಾಡಿ' : 'Track Status',
       icon: Search,
-      color: 'bg-indigo-50 text-indigo-600 border-indigo-200'
+      color: 'bg-indigo-950/80 text-indigo-400 border-indigo-500/40'
     },
     {
       title: lang === 'kn' ? 'ಕಳೆದುಹೋದ ಮತ್ತು ಸಿಕ್ಕಿದ ಆಸ್ತಿ' : 'Lost and Found',
       desc: lang === 'kn' ? 'ಕಳೆದುಹೋದ ವಸ್ತುಗಳನ್ನು ವರದಿ ಮಾಡಿ ಅಥವಾ ಹುಡುಕಿ.' : 'Search lost documents, mobile devices, and report found articles.',
       btn: lang === 'kn' ? 'ವರದಿ ವೀಕ್ಷಿಸಿ' : 'Explore Items',
       icon: Search,
-      color: 'bg-cyan-50 text-cyan-600 border-cyan-200'
+      color: 'bg-emerald-950/80 text-emerald-400 border-emerald-500/40'
     },
     {
       title: lang === 'kn' ? 'ಪೋಲಿಸ್ ಠಾಣೆ ಹುಡುಕಿ' : 'Find Police Station',
       desc: lang === 'kn' ? 'ನಿಮ್ಮ ಹತ್ತಿರದ ಪೋಲಿಸ್ ಠಾಣೆಯನ್ನು ನಕ್ಷೆಯಲ್ಲಿ ಗುರುತಿಸಿ.' : 'Locate nearest jurisdictional police station with contact numbers.',
       btn: lang === 'kn' ? 'ಠಾಣೆ ಹುಡುಕಿ' : 'Locate Station',
       icon: MapPin,
-      color: 'bg-emerald-50 text-emerald-600 border-emerald-200'
+      color: 'bg-amber-950/80 text-amber-400 border-amber-500/40'
     },
     {
       title: lang === 'kn' ? 'ಸಾರ್ವಜನಿಕ ಸುರಕ್ಷತಾ ಸಲಹೆಗಳು' : 'Safety Tips',
       desc: lang === 'kn' ? 'ಮಹಿಳೆಯರು, ಹಿರಿಯ ನಾಗರಿಕರು ಮತ್ತು ಮಕ್ಕಳಿಗಾಗಿ ಸುರಕ್ಷತಾ ಮಾರ್ಗದರ್ಶಿ.' : 'Essential safety guidelines for cyber security, women & child safety.',
       btn: lang === 'kn' ? 'ಸಲಹೆಗಳನ್ನು ಓದಿ' : 'Read Guidelines',
       icon: ShieldCheck,
-      color: 'bg-amber-50 text-amber-600 border-amber-200'
+      color: 'bg-pink-950/80 text-pink-400 border-pink-500/40'
     },
     {
       title: lang === 'kn' ? 'ಸಮುದಾಯ ಜಾಗೃತಿ' : 'Community Awareness',
       desc: lang === 'kn' ? 'ಅಪರಾಧ ತಡೆಗಟ್ಟುವಿಕೆ ಮತ್ತು ಜಾಗೃತಿ ಅಭಿಯಾನಗಳು.' : 'Latest crime prevention campaigns, traffic rules, and drug awareness.',
       btn: lang === 'kn' ? 'ಅಭಿಯಾನ ವೀಕ್ಷಿಸಿ' : 'View Campaigns',
       icon: HeartHandshake,
-      color: 'bg-purple-50 text-purple-600 border-purple-200'
+      color: 'bg-purple-950/80 text-purple-400 border-purple-500/40'
     }
   ];
 
   const emergencyHelplines = [
-    { title: lang === 'kn' ? 'ಪೊಲೀಸ್ ತುರ್ತು ಸೇವೆ' : 'Police Emergency', number: '112', desc: lang === 'kn' ? '24/7 ತುರ್ತು ಸ್ಪಂದನೆ' : 'National Emergency Helpline', icon: PhoneCall, bg: 'bg-red-600 text-white' },
-    { title: lang === 'kn' ? 'ಮಹಿಳಾ ಸಹಾಯವಾಣಿ' : 'Women Helpline', number: '1091', desc: lang === 'kn' ? 'ಮಹಿಳೆಯರ ಸುರಕ್ಷತೆ' : 'Immediate Women Protection', icon: Shield, bg: 'bg-pink-600 text-white' },
-    { title: lang === 'kn' ? 'ಮಕ್ಕಳ ಸಹಾಯವಾಣಿ' : 'Child Helpline', number: '1098', desc: lang === 'kn' ? 'ಮಕ್ಕಳ ರಕ್ಷಣೆ ಸೇವೆ' : 'Child Care & Protection', icon: HeartHandshake, bg: 'bg-blue-600 text-white' },
-    { title: lang === 'kn' ? 'ಸೈಬರ್ ಕ್ರೈಮ್' : 'Cyber Crime Helpline', number: '1930', desc: lang === 'kn' ? 'ಆನ್‌ಲೈನ್ ಹಣಕಾಸು ವಂಚನೆ' : 'Financial Fraud Helpline', icon: AlertTriangle, bg: 'bg-indigo-600 text-white' },
-    { title: lang === 'kn' ? 'ಆಂಬುಲೆನ್ಸ್ ಸೇವೆ' : 'Ambulance Medical', number: '108', desc: lang === 'kn' ? 'ತುರ್ತು ವೈದ್ಯಕೀಯ ಸೇವೆ' : 'Emergency Medical Response', icon: PhoneCall, bg: 'bg-emerald-600 text-white' }
+    { title: lang === 'kn' ? 'ಪೊಲೀಸ್ ತುರ್ತು ಸೇವೆ' : 'Police Emergency', number: '112', desc: lang === 'kn' ? '24/7 ತುರ್ತು ಸ್ಪಂದನೆ' : 'National Emergency Helpline', icon: PhoneCall, bg: 'bg-red-950 text-red-400 border border-red-500/40' },
+    { title: lang === 'kn' ? 'ಮಹಿಳಾ ಸಹಾಯವಾಣಿ' : 'Women Helpline', number: '1091', desc: lang === 'kn' ? 'ಮಹಿಳೆಯರ ಸುರಕ್ಷತೆ' : 'Immediate Women Protection', icon: Shield, bg: 'bg-pink-950 text-pink-400 border border-pink-500/40' },
+    { title: lang === 'kn' ? 'ಮಕ್ಕಳ ಸಹಾಯವಾಣಿ' : 'Child Helpline', number: '1098', desc: lang === 'kn' ? 'ಮಕ್ಕಳ ರಕ್ಷಣೆ ಸೇವೆ' : 'Child Care & Protection', icon: HeartHandshake, bg: 'bg-blue-950 text-blue-400 border border-blue-500/40' },
+    { title: lang === 'kn' ? 'ಸೈಬರ್ ಕ್ರೈಮ್' : 'Cyber Crime Helpline', number: '1930', desc: lang === 'kn' ? 'ಆನ್‌ಲೈನ್ ಹಣಕಾಸು ವಂಚನೆ' : 'Financial Fraud Helpline', icon: AlertTriangle, bg: 'bg-cyan-950 text-cyan-400 border border-cyan-500/40' },
+    { title: lang === 'kn' ? 'ಆಂಬುಲೆನ್ಸ್ ಸೇವೆ' : 'Ambulance Medical', number: '108', desc: lang === 'kn' ? 'ತುರ್ತು ವೈದ್ಯಕೀಯ ಸೇವೆ' : 'Emergency Medical Response', icon: PhoneCall, bg: 'bg-emerald-950 text-emerald-400 border border-emerald-500/40' }
   ];
 
   const faqs = [
@@ -114,70 +114,63 @@ export function CitizenPortal() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 font-sans flex flex-col">
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans flex flex-col justify-between relative overflow-hidden">
       
+      {/* Background Ambient Glow */}
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none" />
+
       {/* Navigation Header */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm">
+      <header className="bg-slate-900/80 backdrop-blur-xl border-b border-slate-800 sticky top-0 z-40 shadow-xl">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           
           <div className="flex items-center gap-3">
-            {/* Back Navigation Button */}
             <button 
               onClick={handleBack} 
-              className="px-3 py-1.5 rounded-lg border border-slate-200 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold text-xs flex items-center gap-1.5 transition-colors cursor-pointer mr-2 shadow-sm"
+              className="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800/80 hover:bg-slate-800 text-slate-200 font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer mr-2 shadow-sm"
               title="Navigate Back"
             >
-              <ArrowLeft size={14} className="text-blue-700" />
+              <ArrowLeft size={14} className="text-cyan-400" />
               <span>{lang === 'kn' ? 'ಹಿಂದಕ್ಕೆ' : 'Back'}</span>
             </button>
 
-            {/* Logo & Branding */}
             <Link to="/" className="flex items-center gap-3 group">
               <img 
                 src={kspLogo} 
-                alt="Karnataka State Police Official Logo" 
+                alt="Karnataka State Police Logo" 
                 className="h-10 sm:h-12 w-auto object-contain transition-transform group-hover:scale-105"
                 loading="lazy"
               />
-              <Shield size={28} className="text-blue-700 hidden sm:block" />
+              <Shield size={28} className="text-cyan-400 hidden sm:block" />
               <div>
-                <h1 className="text-sm sm:text-base font-extrabold text-blue-900 tracking-tight leading-tight uppercase font-heading">
+                <h1 className="text-sm sm:text-base font-extrabold text-cyan-400 tracking-tight leading-tight uppercase font-heading">
                   Karnataka State Police
                 </h1>
-                <p className="text-[11px] sm:text-xs font-semibold text-slate-500">
-                  Crime Intelligence Platform
+                <p className="text-[11px] sm:text-xs font-semibold text-slate-400">
+                  {lang === 'kn' ? 'ನಾಗರಿಕ ಸೇವೆಗಳ ಪೋರ್ಟಲ್' : 'Official Citizen Services Portal'}
                 </p>
               </div>
             </Link>
           </div>
 
-          {/* Navigation Links */}
           <nav className="flex items-center gap-2 sm:gap-4">
             <button 
               onClick={toggleLanguage}
-              className="px-3 py-1.5 rounded-lg border border-slate-200 hover:border-blue-500 text-xs font-bold text-blue-900 flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800/60 hover:border-cyan-500 text-xs font-bold text-slate-200 flex items-center gap-1.5 transition-colors cursor-pointer"
             >
-              <Globe size={14} className="text-blue-600" />
+              <Globe size={14} className="text-cyan-400" />
               <span>{lang === 'kn' ? 'English' : 'ಕನ್ನಡ'}</span>
             </button>
 
             <Link 
-              to="/citizen-portal" 
-              className="px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 font-semibold text-xs border border-blue-200 transition-colors"
-            >
-              {lang === 'kn' ? 'ನಾಗರಿಕ ಪೋರ್ಟಲ್' : 'Citizen Portal'}
-            </Link>
-
-            <Link 
               to="/emergency-services" 
-              className="px-3 py-1.5 rounded-lg hover:bg-red-50 text-rose-700 font-semibold text-xs border border-transparent hover:border-red-200 transition-colors"
+              className="px-3 py-1.5 rounded-lg bg-red-950/80 text-red-400 font-bold text-xs border border-red-500/40 transition-colors"
             >
               {lang === 'kn' ? 'ತುರ್ತು ಸೇವೆಗಳು (112)' : 'Emergency Services'}
             </Link>
 
             <button 
               onClick={() => navigate('/')} 
-              className="px-3.5 py-1.5 rounded-lg bg-blue-900 hover:bg-blue-800 text-white font-bold text-xs shadow flex items-center gap-1.5 transition-all cursor-pointer"
+              className="px-3.5 py-1.5 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-slate-950 font-extrabold text-xs shadow flex items-center gap-1.5 transition-all cursor-pointer"
             >
               <Lock size={13} />
               <span className="hidden sm:inline">{lang === 'kn' ? 'ಅಧಿಕಾರಿ ಲಾಗಿನ್' : 'Officer Login'}</span>
@@ -187,74 +180,95 @@ export function CitizenPortal() {
       </header>
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white py-16 px-6 relative overflow-hidden">
+      <section className="bg-gradient-to-b from-slate-900/90 via-slate-950 to-slate-950 text-slate-100 py-16 px-6 relative border-b border-slate-800">
         <div className="max-w-5xl mx-auto text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
+            className="space-y-6"
           >
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/20 border border-blue-400/30 text-blue-300 text-xs font-semibold uppercase tracking-wider mb-4">
-              <ShieldCheck size={14} /> {lang === 'kn' ? 'ಸಾರ್ವಜನಿಕ ಸೇವಾ ಕೇಂದ್ರ' : 'Public Information & Assistance'}
-            </span>
-            
-            <h1 className="text-3xl sm:text-5xl font-black tracking-tight mb-4 text-white">
-              {lang === 'kn' ? 'ನಾಗರಿಕ ಪೋರ್ಟಲ್' : 'Citizen Portal'}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-500/40 text-cyan-400 text-xs font-extrabold uppercase tracking-wider shadow-inner">
+              <ShieldCheck size={14} className="text-cyan-400" />
+              <span>{lang === 'kn' ? 'ಆನ್‌ಲೈನ್ ನಾಗರಿಕ ಪೊಲೀಸ್ ಸೇವೆಗಳು' : '24x7 Digital Citizen Police Services'}</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-6xl font-black tracking-tight uppercase font-heading text-slate-100">
+              {lang === 'kn' ? 'ಸಾರ್ವಜನಿಕ ಸೇವಾ ಪೋರ್ಟಲ್' : 'KSP Citizen Services Portal'}
             </h1>
-            
-            <p className="text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8">
+
+            <p className="text-base sm:text-xl text-cyan-300 max-w-2xl mx-auto font-bold leading-relaxed">
               {lang === 'kn' 
-                ? 'ಸಾರ್ವಜನಿಕ ಪೋಲಿಸ್ ಸೇವೆಗಳು, ಸುರಕ್ಷತಾ ಮಾಹಿತಿ ಮತ್ತು ಆನ್‌ಲೈನ್ ನೆರವನ್ನು ಸುಲಭವಾಗಿ ಪಡೆಯಿರಿ.' 
-                : 'Access public police services, safety information and online assistance with official transparency.'}
+                ? 'ದೂರುಗಳನ್ನು ಸಲ್ಲಿಸಿ, ತನಿಖೆಯ ಸ್ಥಿತಿಯನ್ನು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ ಮತ್ತು ಹತ್ತಿರದ ಪೊಲೀಸ್ ಠಾಣೆಗಳನ್ನು ಪತ್ತೆ ಮಾಡಿ.' 
+                : 'Empowering Karnataka citizens with online petition reporting, real-time complaint tracking, and instant emergency hotlines.'}
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <a 
-                href="#services-grid" 
-                className="px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-sm shadow-lg shadow-blue-600/30 flex items-center gap-2 transition-all cursor-pointer"
+            {/* Complaint Track Search Form */}
+            <form onSubmit={handleTrackComplaint} className="max-w-xl mx-auto pt-4 flex flex-col sm:flex-row gap-2">
+              <div className="relative flex-1">
+                <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                <input 
+                  type="text" 
+                  className="w-full bg-slate-900 border border-slate-800 rounded-xl py-3 pl-10 pr-4 text-xs font-mono text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                  placeholder={lang === 'kn' ? 'ದೂರು/ಅರ್ಜಿ ಸಂಖ್ಯೆ ನಮೂದಿಸಿ (ಉದಾ: PET-2026-88)' : 'Enter Complaint Ref # (e.g. PET-2026-88)'}
+                  value={complaintIdInput}
+                  onChange={e => setComplaintIdInput(e.target.value)}
+                />
+              </div>
+              <button 
+                type="submit" 
+                className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-lg cursor-pointer transition-all"
               >
-                <FileText size={18} /> {lang === 'kn' ? 'ದೂರು ಸಲ್ಲಿಸಿ' : 'Report Complaint'}
-              </a>
+                {lang === 'kn' ? 'ಟ್ರ್ಯಾಕ್ ಮಾಡಿ' : 'Track Status'}
+              </button>
+            </form>
 
-              <a 
-                href="#track-section" 
-                className="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-bold text-sm backdrop-blur flex items-center gap-2 transition-all cursor-pointer"
-              >
-                <Search size={18} /> {lang === 'kn' ? 'ದೂರು ಟ್ರ್ಯಾಕ್ ಮಾಡಿ' : 'Track Complaint'}
-              </a>
-            </div>
+            {trackStatus && (
+              <div className="max-w-xl mx-auto p-4 bg-slate-900/90 border border-cyan-500/50 rounded-xl text-xs text-cyan-300 font-mono text-left shadow-xl">
+                ✓ {trackStatus}
+              </div>
+            )}
           </motion.div>
         </div>
       </section>
 
-      {/* Services Grid Section */}
-      <section id="services-grid" className="max-w-7xl mx-auto px-6 py-16">
+      {/* Citizen Services Grid */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
         <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">
-            {lang === 'kn' ? 'ಸಾರ್ವಜನಿಕ ಸೇವೆಗಳು' : 'Online Citizen Services'}
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-100 mb-2">
+            {lang === 'kn' ? 'ಲಭ್ಯವಿರುವ ಆನ್‌ಲೈನ್ ಸೇವೆಗಳು' : 'Digital Citizen Services'}
           </h2>
-          <p className="text-sm text-slate-500 max-w-xl mx-auto">
-            {lang === 'kn' ? 'ನಾಗರಿಕರಿಗಾಗಿ ಕರ್ನಾಟಕ ರಾಜ್ಯ ಪೋಲಿಸ್ ಒದಗಿಸುವ ಪ್ರಮುಖ ಸೇವೆಗಳು' : 'Select a service below to register petitions, track status, or locate police stations.'}
+          <p className="text-sm font-semibold text-slate-400 max-w-xl mx-auto">
+            {lang === 'kn' ? 'ಸಾರ್ವಜನಿಕರಿಗಾಗಿ ಕರ್ನಾಟಕ ರಾಜ್ಯ ಪೊಲೀಸ್ ಒದಗಿಸುವ ಡಿಜಿಟಲ್ ಸೇವೆಗಳು' : 'Access essential police services online without visiting the police station.'}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((svc, idx) => (
-            <motion.div
+          {services.map((item, idx) => (
+            <motion.div 
               key={idx}
               whileHover={{ y: -4 }}
-              className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+              className="bg-slate-900/80 backdrop-blur-md rounded-2xl p-6 border border-slate-800 hover:border-cyan-500/50 transition-all flex flex-col justify-between shadow-xl"
             >
               <div>
-                <div className={`w-12 h-12 rounded-xl border flex items-center justify-center mb-4 ${svc.color}`}>
-                  <svc.icon size={24} />
+                <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 border ${item.color}`}>
+                  <item.icon size={26} />
                 </div>
-                <h3 className="text-lg font-bold text-slate-900 mb-2">{svc.title}</h3>
-                <p className="text-xs text-slate-600 leading-relaxed mb-6">{svc.desc}</p>
+                <h3 className="text-lg font-extrabold text-slate-100 mb-2">{item.title}</h3>
+                <p className="text-xs font-medium text-slate-400 leading-relaxed mb-6">{item.desc}</p>
               </div>
 
-              <button className="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-blue-700 text-white text-xs font-bold flex items-center justify-center gap-2 transition-colors cursor-pointer">
-                <span>{svc.btn}</span>
+              <button 
+                onClick={() => {
+                  if (item.title.includes('Track') || item.title.includes('ಟ್ರ್ಯಾಕ್')) {
+                    window.scrollTo({ top: 300, behavior: 'smooth' });
+                  } else {
+                    navigate('/emergency-services');
+                  }
+                }}
+                className="w-full py-2.5 px-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 text-cyan-400 hover:text-cyan-300 text-xs font-black flex items-center justify-center gap-1.5 transition-colors cursor-pointer"
+              >
+                <span>{item.btn}</span>
                 <ChevronRight size={14} />
               </button>
             </motion.div>
@@ -262,126 +276,57 @@ export function CitizenPortal() {
         </div>
       </section>
 
-      {/* Complaint Tracker Interactive Widget */}
-      <section id="track-section" className="bg-blue-50 py-12 px-6 border-y border-blue-100">
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl p-8 border border-blue-200 shadow-sm text-center">
-          <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center mx-auto mb-4">
-            <Search size={22} />
-          </div>
-          <h3 className="text-xl font-bold text-slate-900 mb-2">
-            {lang === 'kn' ? 'ಅರ್ಜಿ / ದೂರು ಸ್ಥಿತಿ ಪರಿಶೀಲನೆ' : 'Track Complaint Petition Status'}
+      {/* Emergency Helplines Bar */}
+      <section className="bg-slate-900/60 border-y border-slate-800 py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          <h3 className="text-center text-sm font-extrabold uppercase tracking-wider text-slate-400 mb-8">
+            {lang === 'kn' ? '24/7 ತುರ್ತು ಸಹಾಯವಾಣಿ ಎಮರ್ಜೆನ್ಸಿ ಲೈನ್ಸ್' : '24/7 Emergency Response Numbers'}
           </h3>
-          <p className="text-xs text-slate-500 mb-6">
-            {lang === 'kn' ? 'ನಿಮ್ಮ ದೂರು ಸ್ವೀಕೃತಿ ಸಂಖ್ಯೆಯನ್ನು ನಮೂದಿಸಿ (ಉದಾ: KSP/2026/9941)' : 'Enter your registered petition acknowledgement reference number (e.g. KSP/2026/8841)'}
-          </p>
 
-          <form onSubmit={handleTrackComplaint} className="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto mb-4">
-            <input 
-              type="text" 
-              value={complaintIdInput}
-              onChange={e => setComplaintIdInput(e.target.value)}
-              placeholder="e.g. KSP/2026/8841"
-              className="flex-1 px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 text-sm font-medium text-slate-800"
-            />
-            <button 
-              type="submit"
-              className="px-6 py-3 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm shadow transition-colors cursor-pointer"
-            >
-              {lang === 'kn' ? 'ಪರಿಶೀಲಿಸಿ' : 'Track'}
-            </button>
-          </form>
-
-          {trackStatus && (
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs font-semibold text-left flex items-start gap-2"
-            >
-              <UserCheck size={18} className="text-emerald-600 mt-0.5 shrink-0" />
-              <span>{trackStatus}</span>
-            </motion.div>
-          )}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+            {emergencyHelplines.map((h, idx) => (
+              <a 
+                key={idx}
+                href={`tel:${h.number}`}
+                className={`p-4 rounded-2xl ${h.bg} hover:scale-105 transition-all text-center flex flex-col items-center justify-center shadow-lg cursor-pointer`}
+              >
+                <h.icon size={22} className="mb-2" />
+                <span className="text-[11px] font-extrabold block truncate">{h.title}</span>
+                <span className="text-2xl font-black font-mono tracking-tight my-1">{h.number}</span>
+                <span className="text-[10px] opacity-80 block truncate">{h.desc}</span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Emergency Contacts Cards */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">
-            {lang === 'kn' ? 'ತುರ್ತು ಸಂಪರ್ಕ ಸಂಖ್ಯೆಗಳು' : 'Emergency Contacts & Helplines'}
+      {/* FAQ Section */}
+      <section className="max-w-4xl mx-auto px-6 py-16 w-full">
+        <div className="text-center mb-10">
+          <h2 className="text-2xl sm:text-3xl font-black text-slate-100 mb-2">
+            {lang === 'kn' ? 'ಸಾಮಾನ್ಯವಾಗಿ ಕೇಳಲಾಗುವ ಪ್ರಶ್ನೆಗಳು (FAQ)' : 'Frequently Asked Questions (FAQ)'}
           </h2>
-          <p className="text-sm text-slate-500">
-            {lang === 'kn' ? 'ಯಾವುದೇ ರೀತಿಯ ಅಪಾಯದಲ್ಲಿ ತಕ್ಷಣ ಈ ಸಂಖ್ಯೆಗಳಿಗೆ ಕರೆ ಮಾಡಿ' : 'Toll-free 24/7 helplines for immediate police, medical, and cyber response.'}
-          </p>
+          <p className="text-xs text-slate-400">{lang === 'kn' ? 'ನಾಗರಿಕ ಪೊಲೀಸ್ ಸೇವೆಗಳ ಕುರಿತು ಉತ್ತರಗಳು' : 'Answers to common queries about citizen police petitions and emergency hotlines.'}</p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {emergencyHelplines.map((hl, i) => (
-            <div key={i} className="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex flex-col justify-between">
-              <div>
-                <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-3 shadow-sm ${hl.bg}`}>
-                  <hl.icon size={20} />
-                </div>
-                <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">{hl.title}</h4>
-                <div className="text-2xl font-black text-slate-900 tracking-tight mb-1">{hl.number}</div>
-                <p className="text-[11px] text-slate-500">{hl.desc}</p>
+        <div className="space-y-3">
+          {faqs.map((faq, idx) => (
+            <div 
+              key={idx}
+              className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden cursor-pointer"
+              onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
+            >
+              <div className="p-4 flex items-center justify-between font-bold text-xs text-slate-100">
+                <span>{faq.q}</span>
+                <ChevronDown size={16} className={`text-cyan-400 transition-transform ${openFaq === idx ? 'rotate-180' : ''}`} />
               </div>
-              <a 
-                href={`tel:${hl.number}`} 
-                className="mt-4 py-2 px-3 rounded-lg bg-slate-100 hover:bg-red-50 hover:text-red-700 text-slate-700 text-xs font-bold text-center transition-colors block"
-              >
-                {lang === 'kn' ? 'ಕರೆ ಮಾಡಿ' : 'Call Helpline'}
-              </a>
+              {openFaq === idx && (
+                <div className="px-4 pb-4 text-xs text-slate-400 leading-relaxed border-t border-slate-800/60 pt-3">
+                  {faq.a}
+                </div>
+              )}
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* FAQ Accordion Section */}
-      <section className="bg-white py-16 px-6 border-t border-slate-200">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">
-              {lang === 'kn' ? 'ಸಾಮಾನ್ಯ ಪ್ರಶ್ನೆಗಳು (FAQ)' : 'Frequently Asked Questions'}
-            </h2>
-            <p className="text-sm text-slate-500">
-              {lang === 'kn' ? 'ನಾಗರಿಕ ಸೇವೆಗಳ ಕುರಿತು ಮಾಹಿತಿ' : 'Clear guidance on reporting complaints, tracking petitions, and contacting police.'}
-            </p>
-          </div>
-
-          <div className="space-y-4">
-            {faqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
-              return (
-                <div 
-                  key={idx} 
-                  className="rounded-2xl border border-slate-200 overflow-hidden transition-colors"
-                >
-                  <button
-                    onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full p-5 bg-slate-50 hover:bg-slate-100 text-left font-bold text-slate-900 text-sm sm:text-base flex items-center justify-between transition-colors cursor-pointer"
-                  >
-                    <span>{faq.q}</span>
-                    <ChevronDown size={18} className={`text-slate-500 transition-transform ${isOpen ? 'rotate-180 text-blue-600' : ''}`} />
-                  </button>
-
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="p-5 bg-white border-t border-slate-200 text-xs sm:text-sm text-slate-600 leading-relaxed"
-                      >
-                        {faq.a}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              );
-            })}
-          </div>
         </div>
       </section>
 
