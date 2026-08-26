@@ -8,35 +8,84 @@ import { compareMultipleCases } from './multiCaseComparisonEngine.js';
 import { dataSyncLayer } from './dataSyncLayer.js';
 
 /**
- * Conversational Police RAG Intelligence Engine (v5.0 Expert Assistant)
+ * Conversational Dual-Mode RAG Intelligence Engine (v5.5 Dual-Mode Chatbot)
  * 
- * Supports Human-like Conversational RAG with direct CCTNS Database Grounding:
- * 1. Victim Cross-Case Lookup: "What is victim name in case X? Is victim present in any other case?"
- * 2. Accused Crime Pattern & Location: "What is accused pattern of crime? What crime has accused done more? Which location is accused from?"
- * 3. New Case Possibility Analysis: "Analyze crime possibilities for this new case description..."
- * 4. Bilingual English & Kannada (ಕನ್ನಡ) accuracy with exact FIR provenance citations.
+ * Supports:
+ * 1. Casual Small-Talk Mode: Natural human-like responses for greetings, "how are you", "what is your name", "what are you doing".
+ * 2. Grounded Police RAG Mode: Grounded CCTNS database retrieval for victim cross-checks, accused patterns, locations, and new case possibilities.
+ * 3. Dual Language: English & Native Kannada (ಕನ್ನಡ) accuracy.
  */
 
 export function processOfficerQuery({ query, officerId = 'OFF001', sessionId = 'default-session', language = 'en', caseIds = [] }) {
   const rawQ = (query || '').trim();
   const isKn = language === 'kn' || /[\u0C80-\u0CFF]/.test(rawQ);
+  const lowerQ = rawQ.toLowerCase().replace(/[^\w\s\u0C80-\u0CFF]/gi, '');
 
-  console.log(`[QueryPlanner v5.0 RAG] Processing query: "${rawQ}" for Officer ${officerId}`);
+  console.log(`[QueryPlanner v5.5 Dual-Mode] Processing query: "${rawQ}" for Officer ${officerId}`);
 
-  // Sync data layer to access relational tables
+  // =========================================================================
+  // SCENARIO 0: CASUAL SMALL-TALK & HUMAN CONVERSATION MODE
+  // Handles greetings, "how are you", "what is your name", "what are you doing"
+  // =========================================================================
+
+  // Check if query is a pure casual greeting / small-talk without case keywords
+  const isPoliceRelated = /case|fir|victim|accused|suspect|crime|theft|murder|burglary|cyber|ndps|bengaluru|mysuru|mangaluru|police|station|evidence|investigat|ksp|bns|ipc|ಕಳ್ಳತನ|ಕೊಲೆ|ಆರೋಪಿ|ಸಂತ್ರಸ್ತ|ಪ್ರಕರಣ/i.test(rawQ);
+
+  if (!isPoliceRelated) {
+
+    // 0A. GREETINGS (hello, hi, hey, namaste, namaskara)
+    if (/^(hello|hi|hey|helo|namaste|namaskara|good morning|good afternoon|good evening|ನಮಸ್ಕಾರ|ಹಲೋ|ಹಾಯ್)$/i.test(lowerQ) || lowerQ.startsWith('hello') || lowerQ.startsWith('hi ') || lowerQ === 'hi') {
+      const reply = isKn
+        ? `ನಮಸ್ಕಾರ ಆಫೀಸರ್! 👋 ದಿನ ಹೇಗಿದೆ? ನಾನು ಕೆ.ಎಸ್.ಪಿ ಎಐ ತನಿಖಾಧಿಕಾರಿ (KSP AI Investigator). ನಿಮ್ಮ ತನಿಖೆಯಲ್ಲಿ ಅಥವಾ ದತ್ತಾಂಶ ಪರಿಶೀಲನೆಯಲ್ಲಿ ನಾನು ಹೇಗೆ ಸಹಾಯ ಮಾಡಲಿ?`
+        : `Hello Officer! 👋 I'm doing well, thank you! I am KSP AI Investigator, your digital assistant for Karnataka State Police investigations. How can I help you today?`;
+      return { intent: 'CASUAL_GREETING', authorized: true, reply, answer: reply, sessionId };
+    }
+
+    // 0B. HOW ARE YOU (how are you, how r u, how do you do)
+    if (lowerQ.includes('how are you') || lowerQ.includes('how r u') || lowerQ.includes('how do you do') || lowerQ.includes('how is it going') || lowerQ.includes('ಹೇಗಿದ್ದೀರಾ') || lowerQ.includes('ಹೇಗಿದ್ದೀಯಾ')) {
+      const reply = isKn
+        ? `ನಾನು ತುಂಬಾ ಚೆನ್ನಾಗಿದ್ದೇನೆ, ಧನ್ಯವಾದಗಳು! 😊 ನಾನು 5,500+ ಸಿಎಸ್‌ಟಿಎನ್‌ಎಸ್ ಪ್ರಕರಣಗಳ ತನಿಖೆಗೆ ಸಂಪೂರ್ಣ ಸಿದ್ಧವಾಗಿದ್ದೇನೆ. ನೀವು ಯಾವುದೇ ಪ್ರಕರಣ ಅಥವಾ ಆರೋಪಿಯ ವಿವರಗಳನ್ನು ಕೇಳಬಹುದು.`
+        : `I'm doing great, thank you for asking! 😊 I am fully operational and connected to 5,500+ CCTNS FIR database records. How can I assist with your investigation today?`;
+      return { intent: 'CASUAL_HOW_ARE_YOU', authorized: true, reply, answer: reply, sessionId };
+    }
+
+    // 0C. WHAT IS YOUR NAME (what is your name, who are you, whats your name)
+    if (lowerQ.includes('your name') || lowerQ.includes('who are you') || lowerQ.includes('whats your name') || lowerQ.includes('ನಿನ್ನ ಹೆಸರೇನು') || lowerQ.includes('ನಿಮ್ಮ ಹೆಸರೇನು') || lowerQ.includes('ಯಾರು ನೀನು')) {
+      const reply = isKn
+        ? `ನನ್ನ ಹೆಸರು **ಕೆ.ಎಸ್.ಪಿ ಎಐ ತನಿಖಾಧಿಕಾರಿ (KSP AI Investigator)**. ನಾನು ಕರ್ನಾಟಕ ರಾಜ್ಯ ಪೊಲೀಸ್ ಅಧಿಕಾರಿಗಳಿಗಾಗಿ ನಿರ್ಮಿಸಲಾದ ಕೃತಕ ಬುದ್ಧಿಮತ್ತೆ ಸಹಾಯಕ.`
+        : `My name is **KSP AI Investigator** — an AI assistant developed for Karnataka State Police officers to analyze FIR records, suspect profiles, and evidence lockers. What can I check for you?`;
+      return { intent: 'CASUAL_NAME', authorized: true, reply, answer: reply, sessionId };
+    }
+
+    // 0D. WHAT ARE YOU DOING (what are you doing, what r u doing, what can you do)
+    if (lowerQ.includes('what are you doing') || lowerQ.includes('what r u doing') || lowerQ.includes('what can you do') || lowerQ.includes('ಏನು ಮಾಡುತ್ತಿದ್ದೀಯಾ') || lowerQ.includes('ಏನು ಮಾಡ್ತೀಯಾ')) {
+      const reply = isKn
+        ? `ನಾನು ಪ್ರಸ್ತುತ ನಿಮ್ಮ ಆಜ್ಞೆಗಾಗಿ ಕಾಯುತ್ತಿದ್ದೇನೆ! 🫡 ನಾನು ದೂರುಗಳನ್ನು ವಿಶ್ಲೇಷಿಸಲು, ಆರೋಪಿಗಳ ಅಪರಾಧ ಶೈಲಿ ಪತ್ತೆಹಚ್ಚಲು, ಮತ್ತು ಹೊಸ ಪ್ರಕರಣಗಳ ಸಾಧ್ಯತೆಗಳನ್ನು ತಿಳಿಸಲು ಸಿದ್ಧನಾಗಿದ್ದೇನೆ.`
+        : `I'm currently standing by to assist you! 🫡 I can analyze FIR records, check if a victim appears in other cases, identify accused crime patterns, or evaluate new case crime possibilities. What's on your mind?`;
+      return { intent: 'CASUAL_WHAT_DOING', authorized: true, reply, answer: reply, sessionId };
+    }
+
+    // 0E. GENERAL CASUAL FALLBACK
+    if (rawQ.length < 30) {
+      const reply = isKn
+        ? `ಖಂಡಿತ! ನಾನು ನಿಮಗೆ ಸಹಾಯ ಮಾಡಲು ಇಲ್ಲಿದ್ದೇನೆ. ನೀವು ಪ್ರಕರಣದ ಸಂಖ್ಯೆ, ಸಂತ್ರಸ್ತರ ಹೆಸರು ಅಥವಾ ಆರೋಪಿಯ ಅಪರಾಧ ಶೈಲಿಯ ಬಗ್ಗೆ ಕೇಳಬಹುದು.`
+        : `Sure! I'm here to help you. Feel free to ask any question about a case, victim cross-checks, accused crime patterns, or new case scenarios!`;
+      return { intent: 'CASUAL_CHAT', authorized: true, reply, answer: reply, sessionId };
+    }
+
+  }
+
+  // Sync data layer to access relational tables for Police RAG Mode
   const { datasets } = dataSyncLayer.syncAll();
   const casesData = datasets.get('CaseMaster') || [];
   const victimsData = datasets.get('Victim') || [];
   const accusedData = datasets.get('Accused') || [];
-  const evidenceData = datasets.get('Evidence') || [];
 
   // Step 1: Detect explicit Case IDs in query
   const detectedCaseIds = Array.from(new Set([
     ...(rawQ.match(/KSP\/[A-Z0-9]+\/\d{4}\/\d+/gi) || []),
     ...(caseIds || [])
   ]));
-
-  const lowerQ = rawQ.toLowerCase();
 
   // =========================================================================
   // SCENARIO A: VICTIM CROSS-CASE LOOKUP & VERIFICATION
@@ -99,12 +148,10 @@ export function processOfficerQuery({ query, officerId = 'OFF001', sessionId = '
   // =========================================================================
   if (lowerQ.includes('accused') || lowerQ.includes('pattern') || lowerQ.includes('done more') || lowerQ.includes('location') || lowerQ.includes('ಆರೋಪಿ')) {
     
-    // Extract accused name or search query
     let targetAccusedName = '';
-    const matchName = rawQ.match(/accused\s+([A-Za-z0-9\s@]+)/i) || rawQ.match(/آರೋಪಿ\s+([A-Za-z0-9\s@]+)/i);
+    const matchName = rawQ.match(/accused\s+([A-Za-z0-9\s@]+)/i) || rawQ.match(/ಆರೋಪಿ\s+([A-Za-z0-9\s@]+)/i);
     if (matchName) targetAccusedName = matchName[1].trim();
 
-    // Search accused across all 5,500 cases
     let matchedAccusedList = accusedData;
     if (targetAccusedName) {
       matchedAccusedList = accusedData.filter(a => String(a.AccusedName || '').toLowerCase().includes(targetAccusedName.toLowerCase()));
@@ -113,17 +160,15 @@ export function processOfficerQuery({ query, officerId = 'OFF001', sessionId = '
     }
 
     if (matchedAccusedList.length === 0) {
-      matchedAccusedList = accusedData.slice(0, 3); // Fallback to primary catalog accused
+      matchedAccusedList = accusedData.slice(0, 3);
     }
 
     const primaryAccused = matchedAccusedList[0] || {};
     const accName = primaryAccused.AccusedName || 'Ramesh @ Manya';
     
-    // Find all cases involving this specific accused across the entire database
     const allAccusedRecords = accusedData.filter(a => String(a.AccusedName || '').toLowerCase().trim() === accName.toLowerCase().trim());
     const linkedCaseIds = Array.from(new Set(allAccusedRecords.map(a => a.CaseID))).filter(Boolean);
 
-    // Map linked case IDs to CaseMaster to calculate crime category distribution
     const crimeCategoryCounts = {};
     linkedCaseIds.forEach(cid => {
       const cRecord = casesData.find(c => String(c.CrimeNumber || c.CrimeNo || '').toUpperCase() === String(cid).toUpperCase());
@@ -131,7 +176,6 @@ export function processOfficerQuery({ query, officerId = 'OFF001', sessionId = '
       crimeCategoryCounts[cHead] = (crimeCategoryCounts[cHead] || 0) + 1;
     });
 
-    // Find most frequent crime type
     let mostFrequentCrime = 'Vehicle Theft';
     let maxCount = 0;
     Object.entries(crimeCategoryCounts).forEach(([head, count]) => {
@@ -143,8 +187,6 @@ export function processOfficerQuery({ query, officerId = 'OFF001', sessionId = '
 
     const totalCasesCount = linkedCaseIds.length || 1;
     const primaryPercentage = Math.round((maxCount / totalCasesCount) * 100) || 75;
-
-    // Location extraction
     const accLocation = primaryAccused.Address || primaryAccused.NativePlace || 'Cubbon Park PS Radius, Bengaluru Urban';
 
     let replyText = isKn ? `### 🕵️ ಆಪಾದಿತರ ಅಪರಾಧ ಶೈಲಿ ಮತ್ತು ಸ್ಥಳದ ವಿಶ್ಲೇಷಣೆ (RAG Intelligence)\n\n` : `### 🕵️ Accused Crime Pattern, Dominant Offense & Location Analysis\n\n`;
@@ -213,7 +255,7 @@ export function processOfficerQuery({ query, officerId = 'OFF001', sessionId = '
   }
 
   // =========================================================================
-  // SCENARIO D: GENERAL RAG SEARCH FALLBACK
+  // SCENARIO D: GENERAL POLICE RAG SEARCH FALLBACK
   // =========================================================================
   let district = null;
   if (lowerQ.includes('bengaluru') || lowerQ.includes('bangalore') || lowerQ.includes('ಬೆಂಗಳೂರು')) district = 'Bengaluru Urban';
