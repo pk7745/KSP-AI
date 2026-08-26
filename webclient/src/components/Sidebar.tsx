@@ -47,8 +47,8 @@ export function Sidebar({ currentView, onNavigate }: SidebarProps) {
     { id: 'home', icon: Home, label: t('nav.home', 'Home'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
     { id: 'dashboard', icon: LayoutDashboard, label: t('nav.dashboard', 'Dashboard'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
     { id: 'cases', icon: FileText, label: t('nav.cases', 'Cases 360'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
-    { id: 'analysis', icon: Microscope, label: t('nav.analysis', 'AI Analysis'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
-    { id: 'chat', icon: MessageSquare, label: t('nav.chat', 'AI Investigator'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
+    { id: 'analysis', icon: Microscope, label: t('nav.analysis', 'Evidence Vault'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
+    { id: 'chat', icon: MessageSquare, label: t('nav.chat', 'KSP AI Investigator'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
     { id: 'officer', icon: Users, label: t('nav.officer', 'Officer Portal'), roles: ['IO', 'SHO', 'DSP', 'ADMIN'] },
     
     // SHO and above
