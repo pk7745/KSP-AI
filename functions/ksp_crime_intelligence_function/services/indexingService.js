@@ -30,7 +30,7 @@ class IndexingService {
       const cNo = String(c.CrimeNumber || c.CrimeNo || '').toUpperCase();
       if (!cNo) return;
 
-      const searchableText = `${cNo} ${c.CrimeMajorHead || ''} ${c.CrimeMinorHead || ''} ${c.BriefFacts || ''} ${c.District || ''} ${c.PoliceStation || ''} ${c.CaseStatus || ''} ${c.InvestigatingOfficer || ''} ${c.ActsSections || ''}`.toLowerCase();
+      const searchableText = `${cNo} ${c.CrimeMajorHead || ''} ${c.CrimeMinorHead || ''} ${c.BriefFacts || ''} ${c.DistrictName || c.District || ''} ${c.PoliceStationName || c.PoliceStation || ''} ${c.CaseStatus || ''} ${c.InvestigatingOfficer || ''} ${c.ActsSections || ''}`.toLowerCase();
 
       this.indexes.set(`CASE:${cNo}`, {
         type: 'CASE',
@@ -75,16 +75,35 @@ class IndexingService {
 
   searchKeyword(keyword) {
     if (this.indexes.size === 0) this.indexAll();
-    const kw = (keyword || '').toLowerCase().trim();
-    if (!kw) return [];
+    const rawKw = (keyword || '').toLowerCase().trim();
+    if (!rawKw) return [];
 
-    const matches = [];
+    // Direct match check first
+    const directMatches = [];
     this.indexes.forEach(item => {
-      if (item.text.includes(kw)) {
-        matches.push(item);
+      if (item.text.includes(rawKw)) {
+        directMatches.push(item);
       }
     });
-    return matches;
+
+    if (directMatches.length > 0) return directMatches;
+
+    // Token-based keyword match fallback (ignores stop words)
+    const stopWords = new Set(['show', 'cases', 'in', 'the', 'and', 'or', 'of', 'with', 'for', 'cases', 'all', 'cases']);
+    const tokens = rawKw.split(/\s+/).filter(t => t.length > 2 && !stopWords.has(t));
+
+    if (tokens.length === 0) return [];
+
+    const tokenMatches = [];
+    this.indexes.forEach(item => {
+      const matchCount = tokens.filter(t => item.text.includes(t)).length;
+      if (matchCount > 0) {
+        tokenMatches.push({ item, score: matchCount });
+      }
+    });
+
+    tokenMatches.sort((a, b) => b.score - a.score);
+    return tokenMatches.map(tm => tm.item);
   }
 }
 
