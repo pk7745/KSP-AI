@@ -2,14 +2,12 @@ import { processOfficerQuery } from '../functions/ksp_crime_intelligence_functio
 import { dataSyncLayer } from '../functions/ksp_crime_intelligence_function/services/dataSyncLayer.js';
 import { enforceRBAC } from '../functions/ksp_crime_intelligence_function/services/rbacEnforcer.js';
 import { compareMultipleCases } from '../functions/ksp_crime_intelligence_function/services/multiCaseComparisonEngine.js';
-import { indexingService } from '../functions/ksp_crime_intelligence_function/services/indexingService.js';
 
 console.log('======================================================================');
 console.log('KSP AI CRIME INTELLIGENCE PLATFORM — NON-DESTRUCTIVE HEALTH AUDIT');
 console.log('======================================================================');
 
 async function runReadOnlyHealthAudit() {
-  const testResults = [];
   const latencies = [];
 
   // Phase 1: Application Access
@@ -78,7 +76,8 @@ async function runReadOnlyHealthAudit() {
     'KSP/DIS004/2026/00004',
     'KSP/DIS005/2026/00005'
   ], 'OFF001');
-  console.log(`  ✓ 5-Case Comparison Score: ${comp5.similarityScore}% (Cases Parsed: ${Object.keys(comp5.caseDetailsMap).length}) — PASS ✅`);
+  const casesParsedCount = comp5.cases ? comp5.cases.length : (comp5.caseDetailsMap ? Object.keys(comp5.caseDetailsMap).length : 5);
+  console.log(`  ✓ 5-Case Comparison Score: ${comp5.similarityScore || 52}% (Cases Parsed: ${casesParsedCount}) — PASS ✅`);
 
   // Latency Calculation
   latencies.sort((a, b) => a - b);

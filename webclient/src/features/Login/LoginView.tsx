@@ -42,7 +42,6 @@ export function LoginView({ onBack }: LoginViewProps) {
     e.preventDefault();
     setError('');
 
-    // Only display 'Already logged in' if an active session is currently logged in
     if (user) {
       setError(isKn ? 'ಈಗಾಗಲೇ ಲಾಗ್ ಇನ್ ಆಗಿದ್ದೀರಿ (Already logged in)' : 'Already logged in');
       return;
@@ -89,135 +88,142 @@ export function LoginView({ onBack }: LoginViewProps) {
     <div className="login-container animate-fade-in">
       <div className="login-box wireframe-box relative">
         
-        {/* Top Control Bar with Back Button & Language Toggle */}
-        <div className="flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+        {/* Top Control Bar */}
+        <div className="flex items-center justify-between mb-3 border-b border-slate-800 pb-2">
           <button 
             type="button"
-            className="btn btn-ghost flex items-center gap-1.5 text-xs font-bold px-2 py-1" 
+            className="btn btn-ghost flex items-center gap-1 text-[11px] font-bold px-2 py-0.5" 
             onClick={handleBackClick}
             title="Navigate Back to Landing Page"
           >
-            <ArrowLeft size={16} className="icon-cyan" />
+            <ArrowLeft size={14} className="icon-cyan" />
             <span>{isKn ? 'ಹಿಂದಕ್ಕೆ' : 'Back'}</span>
           </button>
 
           <button 
             type="button"
-            className="btn btn-ghost flex items-center gap-1.5 text-xs font-bold px-2 py-1" 
+            className="btn btn-ghost flex items-center gap-1 text-[11px] font-bold px-2 py-0.5" 
             onClick={toggleLanguage} 
             title={t('header.toggleKannada')}
           >
-            <Globe size={16} className="icon-cyan" />
+            <Globe size={14} className="icon-cyan" />
             <span className="font-heading font-bold">{isKn ? 'EN' : 'ಕನ್ನಡ'}</span>
           </button>
         </div>
 
-        {/* Login Header with Official KSP Emblem Logo */}
+        {/* Minimized Compact Login Header */}
         <div className="login-header flex flex-col items-center">
           <img 
             src={kspLogo} 
-            alt="Official Karnataka State Police Logo" 
-            className="h-16 sm:h-20 w-auto object-contain mb-3 select-none drop-shadow-lg"
-            decoding="sync"
+            alt="Official KSP Logo" 
+            className="h-12 w-auto object-contain mb-2 select-none drop-shadow-md"
           />
-          <div className="flex items-center justify-center gap-2 mb-1">
-            <Shield size={24} className="icon-cyan" />
-            <h2 className="login-title font-heading">{t('login.secureLogin')}</h2>
-          </div>
-          <span className="badge-outline">{t('login.authorizedOnly')}</span>
+          <h2 className="login-title text-cyan-400 font-bold text-lg">{t('login.title', 'KSP OFFICER PORTAL')}</h2>
+          <p className="subtitle text-slate-400 text-xs">{t('login.subtitle', 'Karnataka State Police Intelligence Terminal')}</p>
         </div>
 
+        {/* Error / Alert Message */}
         {error && (
-          <div className="login-error glass-panel">
-            <AlertCircle size={16} />
+          <div className="login-error">
+            <AlertCircle size={16} className="shrink-0" />
             <span>{error}</span>
           </div>
         )}
 
-        <form className="login-form" onSubmit={handleLogin}>
-          {!forgotMode && (
-            <div className="auth-tabs flex-row gap-xs mb-md border-bottom pb-sm">
-              <button type="button" className={`btn btn-ghost text-xs ${authType === 'id' ? 'text-cyan' : ''}`} onClick={() => setAuthType('id')}>
-                ID
-              </button>
-              <button type="button" className={`btn btn-ghost text-xs ${authType === 'email' ? 'text-cyan' : ''}`} onClick={() => setAuthType('email')}>
-                EMAIL
-              </button>
-              <button type="button" className={`btn btn-ghost text-xs ${authType === 'phone' ? 'text-cyan' : ''}`} onClick={() => setAuthType('phone')}>
-                PHONE
-              </button>
-            </div>
-          )}
+        {/* Login Form */}
+        <form onSubmit={handleLogin} className="login-form">
+          <div className="flex gap-1 mb-1 p-1 bg-slate-900/80 rounded border border-slate-800">
+            <button 
+              type="button"
+              className={`flex-1 py-1 text-[11px] font-bold rounded transition-colors ${authType === 'id' ? 'bg-cyan-950 text-cyan-400 border border-cyan-500/40' : 'text-slate-400 hover:text-white'}`}
+              onClick={() => setAuthType('id')}
+            >
+              Officer ID
+            </button>
+            <button 
+              type="button"
+              className={`flex-1 py-1 text-[11px] font-bold rounded transition-colors ${authType === 'email' ? 'bg-cyan-950 text-cyan-400 border border-cyan-500/40' : 'text-slate-400 hover:text-white'}`}
+              onClick={() => setAuthType('email')}
+            >
+              Email
+            </button>
+            <button 
+              type="button"
+              className={`flex-1 py-1 text-[11px] font-bold rounded transition-colors ${authType === 'phone' ? 'bg-cyan-950 text-cyan-400 border border-cyan-500/40' : 'text-slate-400 hover:text-white'}`}
+              onClick={() => setAuthType('phone')}
+            >
+              Phone
+            </button>
+          </div>
 
-          <div className="form-group">
-            <label>
-              {authType === 'id' ? t('login.officerId') : authType === 'email' ? t('login.email') : t('login.phone')}
-            </label>
+          <div className="input-with-icon">
+            {authType === 'id' && <User className="input-icon" size={16} />}
+            {authType === 'email' && <Mail className="input-icon" size={16} />}
+            {authType === 'phone' && <Phone className="input-icon" size={16} />}
+            <input 
+              type={authType === 'email' ? 'email' : authType === 'phone' ? 'tel' : 'text'}
+              className="input-wireframe text-xs"
+              placeholder={
+                authType === 'id' ? t('login.empIdPlaceholder', 'Officer Employee ID (e.g. OFF001)') :
+                authType === 'email' ? 'Officer Email Address' :
+                'Registered Mobile Number'
+              }
+              value={identifier}
+              onChange={(e) => setIdentifier(e.target.value)}
+              required
+            />
+          </div>
+
+          {!forgotMode && (
             <div className="input-with-icon">
-              {authType === 'id' ? <User size={16} className="input-icon" /> : 
-               authType === 'email' ? <Mail size={16} className="input-icon" /> : 
-               <Phone size={16} className="input-icon" />}
+              <Key className="input-icon" size={16} />
               <input 
-                type={authType === 'email' ? "email" : "text"}
-                className="input-wireframe" 
-                placeholder={authType === 'id' ? "e.g. OFF001" : authType === 'email' ? "officer@ksp.gov.in" : "+91 9876543210"}
-                value={identifier}
-                onChange={e => setIdentifier(e.target.value)}
-                required
+                type="password"
+                className="input-wireframe text-xs"
+                placeholder={t('login.passwordPlaceholder', 'Password')}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required={!forgotMode}
               />
             </div>
-          </div>
-          
-          {!forgotMode && (
-            <div className="form-group">
-              <div className="flex-row justify-between align-center">
-                <label>{t('login.password')}</label>
-                <button type="button" className="text-xs text-cyan bg-transparent border-none cursor-pointer" onClick={() => setForgotMode(true)}>
-                  {t('login.forgotPassword')}
-                </button>
-              </div>
-              <div className="input-with-icon">
-                <Key size={16} className="input-icon" />
-                <input 
-                  type="password" 
-                  className="input-wireframe" 
-                  placeholder="••••••••" 
-                  value={password}
-                  onChange={e => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-            </div>
           )}
-          
-          <button type="submit" className="btn btn-primary registration-mark mt-4" disabled={loading}>
-            {loading ? t('login.authenticating') : (forgotMode ? "RESET PASSWORD" : t('login.authenticate'))} <ChevronRight size={16} />
-          </button>
 
-          {forgotMode && (
-            <button type="button" className="btn btn-ghost mt-sm w-full" onClick={() => setForgotMode(false)}>
-              Back to Login
+          <div className="flex justify-between items-center text-[11px] text-slate-400">
+            <button 
+              type="button"
+              className="hover:text-cyan-400 underline transition-colors"
+              onClick={() => { setForgotMode(!forgotMode); setError(''); }}
+            >
+              {forgotMode ? 'Back to Password Login' : 'Forgot Password?'}
             </button>
-          )}
+          </div>
+
+          <button 
+            type="submit" 
+            className="btn btn-primary w-full py-2 font-bold text-xs flex justify-center items-center gap-1.5"
+            disabled={loading}
+          >
+            <span>{forgotMode ? 'Send Reset Link' : (isKn ? 'ಪ್ರವೇಶಿಸಿ (LOG IN)' : t('login.submit', 'AUTHENTICATE & LOG IN'))}</span>
+            <ChevronRight size={14} />
+          </button>
         </form>
 
+        {/* Demo Roles Quick Select */}
         <div className="login-footer">
-          <p className="text-muted text-sm mb-2">{t('login.demoAccounts')}</p>
+          <p className="text-[11px] text-slate-400 mb-2 font-semibold">{t('login.quickRoleSelect', 'Quick Demo Officer Credentials:')}</p>
           <div className="demo-accounts-grid">
-            <button type="button" className="btn btn-ghost text-xs" onClick={() => fillDemoCreds('OFF002', 'ksp123')}>
-              {t('login.loadIo')}
+            <button type="button" className="demo-btn-pill" onClick={() => fillDemoCreds('OFF001', 'ksp123')}>
+              OFF001 (SHO)
             </button>
-            <button type="button" className="btn btn-ghost text-xs" onClick={() => fillDemoCreds('OFF001', 'ksp123')}>
-              {t('login.loadSho')}
+            <button type="button" className="demo-btn-pill" onClick={() => fillDemoCreds('OFF002', 'ksp123')}>
+              OFF002 (SP)
             </button>
-            <button type="button" className="btn btn-ghost text-xs" onClick={() => fillDemoCreds('OFF004', 'ksp123')}>
-              {t('login.loadDsp')}
-            </button>
-            <button type="button" className="btn btn-ghost text-xs" onClick={() => fillDemoCreds('OFF008', 'ksp123')}>
-              {t('login.loadAdmin')}
+            <button type="button" className="demo-btn-pill" onClick={() => fillDemoCreds('OFF008', 'ksp123')}>
+              OFF008 (DGP)
             </button>
           </div>
         </div>
+
       </div>
     </div>
   );
